@@ -2,7 +2,7 @@
 
 Tipser provides a RESTful API that you can use to fully integrate your platform with Tipser.
 
-#Endpoints
+##Endpoints
 
 ##Markets
 Available markets for the product endpoint 

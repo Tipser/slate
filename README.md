@@ -1,5 +1,5 @@
 See the live docs at https://tipser.github.io/docs/
-
+(temporary: https://tipser.github.io/slate/)
 
 Editing
 ------------------------------

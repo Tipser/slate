@@ -27,6 +27,8 @@ To use Tipser Widget, add the following snippet to your page.
 The recommended place to add the script is the end of the <code>body</code> tag of your page.
 </aside>
 
+If you are hosting your page on a CMS like Wordpress, one common pattern to load this script is to include it in a footer element of your page. If you are hosting your page on a web server, you may need to ask you web developers to include the snippet.
+
 The only part of the script really interesting for you is between the curly brackets (`{` and `}`). It is a list of configuration parameters, like `posId` and `lang`, and your are free to modify to fine-tune the look and behavior of Tipser widgets on your page. (The remaining code examples will only include that part).
 A complete index of all the supported options can be found in [All configuration options](#all-configuration-options) section.
 
@@ -54,7 +56,7 @@ This is the simplest way to use Tipser Widget and a good place to start when in 
 
 To activate this mode, set `domReplacementMode` to `true` in Tipser Widget configuration.
 
-Prerequisites: find Tipser ids of products that you want to sell or to create your own customized collections of products on www.tipser.com page.
+_Prerequisites:_ find Tipser ids of products that you want to sell or to create your own customized collections of products on your account at [www.tipser.com](www.tipser.com).
 
 ### Embedding single Tipser products on page ###
 
@@ -90,7 +92,7 @@ In this mode, Tipser Widget renders on your page a shop widget defined in Tipser
 
 To activate this mode, set domReplacementMode to `false` in Tipser Widget configuration or just skip this option altogether.
 
-The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
+_Prerequisites:_ you need to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
 
 `domElementSelectorWhereToMount` parameter is required in this mode. It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where Tipser Shop will be injected.
 

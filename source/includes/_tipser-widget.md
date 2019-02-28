@@ -27,7 +27,7 @@ To use Tipser Widget, add the following snippet to your page.
 The recommended place to add the script is the end of the <code>body</code> tag of your page.
 </aside>
 
-The only part of the script that may be interesting for you is between the curly brackets (`{` and `}`). It is a list of configuration parameters, like `posId` and `lang`, and your are free to modify it to satisfy your needs. (The following code examples will only include that part).
+The only part of the script really interesting for you is between the curly brackets (`{` and `}`). It is a list of configuration parameters, like `posId` and `lang`, and your are free to modify to fine-tune the look and behavior of Tipser widgets on your page. (The remaining code examples will only include that part).
 A complete index of all the supported options can be found in [All configuration options](#all-configuration-options) section.
 
 `lang` parameter specifies the language to be used. Supported languages are currently: `en`, `de` and `sv`.

@@ -69,12 +69,6 @@ Elements with attribute `data-tipser-cid` will be replaced with Tipser collectio
 
 ## Usage mode 2: Mounting the shop on page ##
 
-In this mode, Tipser Widget renders on your page a shop widget defined in Tipser's CMS (Contentful). 
-
-The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
-
-`domElementSelectorWhereToMount` parameter is required in this mode. It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where Tipser Shop will be injected.
-
 ```js
 TIPSER.init({
     posId: 'myPosId',
@@ -87,11 +81,14 @@ TIPSER.init({
 
 > Make sure to replace the values for `posId`, `domElementSelectorWhereToMount` and `tipserElementIdToBeMount`.
 
+In this mode, Tipser Widget renders on your page a shop widget defined in Tipser's CMS (Contentful). 
+
+The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
+
+`domElementSelectorWhereToMount` parameter is required in this mode. It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where Tipser Shop will be injected.
+
+
 ## Displaying cart icon ##
-
-To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
-
-To make it possible you need to dedicate a part of your page to host a shopping cart and define a CSS selector to it in `domElementSelectorWhereToMountCart` option.
 
 ```js
 TIPSER.init({
@@ -100,6 +97,10 @@ TIPSER.init({
   //...
 });
 ```
+
+To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
+
+To make it possible you need to dedicate a part of your page to host a shopping cart and define a CSS selector to it in `domElementSelectorWhereToMountCart` option.
 
 ## All configuration options ##
 

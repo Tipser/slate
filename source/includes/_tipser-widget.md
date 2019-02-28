@@ -1,10 +1,10 @@
 #Tipser Widget
 
-Tipser Widget is a small and handy script that you can use to embed, and start selling, Tipser products and shops on your page.
+Tipser Widget is a small and handy script that you can use to embed Tipser products and shops on your page and start selling with Tipser.
 
 ## Basic usage ##
 
-> To use Tipser Widget, add this snippet to your page:
+To use Tipser Widget, add the following snippet to your page.
 
 ```html
 <script>
@@ -23,7 +23,12 @@ Tipser Widget is a small and handy script that you can use to embed, and start s
 
 > Make sure to replace `myPosId` with your Tipser account id.
 
-The recommended place to add this script is the end of the `<body>` tag of your page.
+<aside class="notice">
+The recommended place to add the script is the end of the <code>body</code> tag of your page.
+</aside>
+
+The only part of the script that may be interesting for you is between the curly brackets (`{` and `}`). It is a list of configuration parameters, like `posId` and `lang`, and your are free to modify it to satisfy your needs. (All the following code examples will only include this relevant fragment).
+A complete index of all the supported options can be found in [All configuration options](#all-configuration-options) section.
 
 `lang` parameter specifies the language to be used. Supported languages are currently: `en`, `de` and `sv`.
 
@@ -31,7 +36,7 @@ The recommended place to add this script is the end of the `<body>` tag of your 
 Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
 </aside>
 
-Tipser Widget can be used in one of two modes described below which are intended to satisfy different clients and use cases. Find out which one suits the best for you!
+Tipser Widget can be used in one of two modes described below, controlled by `domReplacementMode` parameter. They are are intended to satisfy different clients and use cases. Find out which one suits the best for you!
 
 ## Usage mode 1: Replacing elements on your page ##
 
@@ -81,7 +86,9 @@ TIPSER.init({
 
 > Make sure to replace the values for `posId`, `domElementSelectorWhereToMount` and `tipserElementIdToBeMount`.
 
-In this mode, Tipser Widget renders on your page a shop widget defined in Tipser's CMS (Contentful). 
+In this mode, Tipser Widget renders on your page a shop widget defined in Tipser's CMS (Contentful).
+
+To activate this mode, set domReplacementMode to `false` in Tipser Widget configuration or just skip this option..
 
 The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
 
@@ -108,7 +115,7 @@ Tipser Widget supports following configuration options.
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
-domReplacementMode | false | should the script replace elements of the original page? See the section [Replacing elements on page](#replacing-elements-on-page) for details. | true
+domReplacementMode | false | should the script replace elements of the original page? See the section [Replacing elements on your page](#usage-mode-1-replacing-elements-on-your-page) for details. | true
 domElementSelectorWhereToMount | none | only used when `domReplacementMode: false`. A CSS selector to the container where the shop element should be mounted. | domElementSelectorWhereToMount: '#tipser_shop'
 tipserElementIdToBeMount | none | only used when `domReplacementMode: false` and `domElementSelectorWhereToMount` is defined. A Contentful id of the element to be mounted at the element specified by `domElementSelectorWhereToMount`.
 domElementSelectorWhereToMountCart | none | only used when `domReplacementMode: true`. A CSS selector for the container where Tipser cart tab should be mounted. If not specified, the Tipser shopping cart won't be displayed on the page. | domElementSelectorWhereToMountCart: "#cart"

@@ -35,11 +35,21 @@ Tipser Widget can be used in one of two modes described below which are intended
 
 ## Usage mode 1: Replacing elements on your page ##
 
+```js
+TIPSER.init({
+    posId: 'myPosId',
+    lang: 'en',
+    domReplacementMode: true,
+});
+```
+
+> Make sure to replace the values for `posId`
+
 This is the simplest way to use Tipser Widget and a good place to start when in doubt. You need to mark HTML elements on your page with special attributes. Tipser Widget will find them and replace with shoppable content.
 
 To activate this mode, set `domReplacementMode` to `true` in Tipser Widget configuration.
 
-Prerequisites: find Tipser ids of products that you want to sell or to create your own customized collections of products on www.tipser.com page.  
+Prerequisites: find Tipser ids of products that you want to sell or to create your own customized collections of products on www.tipser.com page.
 
 ### Embedding single Tipser products on page ###
 

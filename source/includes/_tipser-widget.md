@@ -36,7 +36,7 @@ A complete index of all the supported options can be found in [All configuration
 Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
 </aside>
 
-Tipser Widget can be used in one of two modes described below, controlled by `domReplacementMode` parameter. They are are intended to satisfy different clients and use cases. Find out which one suits the best for you!
+Tipser Widget can be used in one of two modes described below (controlled by `domReplacementMode` parameter). Those modes are are intended to satisfy different clients and use cases. Find out which one suits the best for you!
 
 ## Usage mode 1: Replacing elements on your page ##
 

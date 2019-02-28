@@ -29,7 +29,7 @@ The recommended place to add the script is the end of the <code>body</code> tag 
 
 If you are hosting your page on a CMS like Wordpress, one common pattern to load this script is to include it in a footer element of your page. If you are hosting your page on a web server, you may need to ask you web developers to include the snippet.
 
-The only part of the script really interesting for you is between the curly brackets (`{` and `}`). It is a list of configuration parameters, like `posId` and `lang`, and your are free to modify to fine-tune the look and behavior of Tipser widgets on your page. (The remaining code examples will only include that part).
+The only part of the script really interesting for you is between the curly brackets (`{` and `}`). It is a list of configuration parameters, like `posId` and `lang`, and your are free to modify it to fine-tune the look and behavior of Tipser widgets on your page. (The remaining code examples will only include that part).
 A complete index of all the supported options can be found in [All configuration options](#all-configuration-options) section.
 
 `lang` parameter specifies the language to be used. Supported languages are currently: `en`, `de` and `sv`.

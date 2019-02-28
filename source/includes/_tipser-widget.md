@@ -56,7 +56,7 @@ This is the simplest way to use Tipser Widget and a good place to start when in 
 
 To activate this mode, set `domReplacementMode` to `true` in Tipser Widget configuration.
 
-_Prerequisites:_ find Tipser ids of products that you want to sell or to create your own customized collections of products on your account at [www.tipser.com](www.tipser.com).
+_Prerequisites:_ find Tipser ids of products that you want to sell or create your own customized collections of products on your account at [www.tipser.com](www.tipser.com).
 
 ### Embedding single Tipser products on page ###
 

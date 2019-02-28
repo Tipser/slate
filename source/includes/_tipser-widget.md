@@ -88,7 +88,7 @@ TIPSER.init({
 
 In this mode, Tipser Widget renders on your page a shop widget defined in Tipser's CMS (Contentful).
 
-To activate this mode, set domReplacementMode to `false` in Tipser Widget configuration or just skip this option..
+To activate this mode, set domReplacementMode to `false` in Tipser Widget configuration or just skip this option altogether.
 
 The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
 

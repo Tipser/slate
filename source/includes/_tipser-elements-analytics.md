@@ -2,16 +2,37 @@
 
 Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.
 
-Most of analytics events emitted by Tipser Elements assume [Enhanced Ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) plugin to be enabled on
-a receiver's Google Analytics account.
+### GA account configuration ###
 
-Additionally, all the events contain the following [Custom Dimensions](https://support.google.com/analytics/answer/2709828?hl=en).
+Most of analytics events emitted by Tipser Elements assume [Enhanced Ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) plugin to be enabled on
+a receiver's Google Analytics account. So if you want to get most of Tipser Analytics, it is strongly recommended to enable Enhanced Ecommerce in your GA settings, as shown in a screenshots below.
+
+[![](enhanced_analytics_settings.png)](/images/enhanced_analytics_settings.png) 
+
+[![](enable_ecommerce.png)](/images/enable_ecommerce.png)
+
+The settings for "Enable Enhanced Ecommerce Reporting" and "Checkout Labeling" sections are up to you and are not required for integration with Tipser Elements analytics.
+
+### Custom dimensions ###
+
+Additionally, all the events documented here contain the following [Custom Dimensions](https://support.google.com/analytics/answer/2709828?hl=en). If you would like to analyze those dimensions, please
+make sure to configure the same Custom Dimensions, as described [here](google.com/analytics/answer/2709829?hl=en).
 
 Name                  | Index                   | Description
 ---------             | ---------               | ---------
 `posId`               | 1                       | The user ID on Tipser associated with a page that uses Tipser Elements.
 `from`                | 2                       | Deprecated. From what type of widget the event comes from. Possible values: `product-view`, `shopping-cart` and `tipser-sdk`.
 `article`             | 3                       | The URL of the page where the event occured (mostly the same as event's `location` field).
+
+Warning: if you use the same Custom Dimension indexes for your own
+purposes, you may be receiving unexpected values for those Custom Dimensions.
+
+### Advanced E-commerce events ###
+
+Some of the events emitted by Tipser Elements are standard Enhanced Ecommerce events which come with product data attached (as documented at "GA event format" section for each event).
+
+Please refer to [Enhanced Ecommerce Data Types and Actions](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data) and 
+ [Measuring Ecommerce Activities](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) sections in the official GA docs.
 
 ## Shop view
 
@@ -34,7 +55,7 @@ will be emitted for the shop that was not seen by the user.
 
 ### GA event format ###
 
-Category    | Action        | With product data?
+Category    | Action        | Standard Enhanced Ecommerce event?
 ---------   | -----------   | -----------
 `Shops`     | `shop-viewed` | No
 
@@ -54,7 +75,7 @@ Shop categories need to be defined as `Slottable Link` components (typically as 
 
 ### GA event format ###
 
-Category    | Action         | With product data?
+Category    | Action         | Standard Enhanced Ecommerce event?
 ---------   | -----------    | -----------
 `Shops`     | `list-clicked` | No
 
@@ -80,9 +101,9 @@ will be emitted for the product tile that was not seen by the user.
 
 ### GA event format ###
 
-Category         | Action       | With product data?
+Category         | Action       | Standard Enhanced Ecommerce event?
 ---------        | -----------  | -----------
-`E-commerce`     | `impression` | Yes (one product)
+`E-commerce`     | `impression` | Yes (with one product attached)
 
 ## Product details view
 
@@ -103,10 +124,10 @@ Please note below that opening a product dialog fires a pair of GA events (one w
 
 ### GA event format ###
 
-Category         | Action      | With product data?
+Category         | Action      | Standard Enhanced Ecommerce event?
 ---------        | ----------- | -----------
-`E-commerce`     | `click`     | Yes (one product)
-`E-commerce`     | `detail`    | Yes (one product)
+`E-commerce`     | `click`     | Yes (with one product attached)
+`E-commerce`     | `detail`    | Yes (with one product attached)
 
 ## Add to cart
 
@@ -118,9 +139,9 @@ _In the screenshot above the user has clicked "add to cart" button which resulte
 
 ### GA event format ###
 
-Category         | Action         | With product data?
+Category         | Action         | Standard Enhanced Ecommerce event?
 ---------        | -----------    | -----------        
-`E-commerce`     | `add`          | Yes (one product) 
+`E-commerce`     | `add`          | Yes (with one product attached) 
 
 ## Remove from cart
 
@@ -128,9 +149,9 @@ This event is emitted when product is removed from cart at checkout dialog.
 
 ### GA event format ###
 
-Category         | Action         | With product data?
+Category         | Action         | Standard Enhanced Ecommerce event?
 ---------        | -----------    | -----------       
-`E-commerce`     | `remove`       | Yes (one product)
+`E-commerce`     | `remove`       | Yes (with one product attached)
 
 ## Checkout
 
@@ -148,9 +169,9 @@ once or that was never purchased.
 
 ### GA event format ###
 
-Category         | Action         | With product data?        
+Category         | Action         | Standard Enhanced Ecommerce event?     
 ---------        | -----------    | -----------               
-`E-commerce`     | `checkout`     | Yes (one or many products)
+`E-commerce`     | `checkout`     | Yes (with one or many products attached)
 
 
 ## Purchase
@@ -163,6 +184,6 @@ _In the screenshot above the user has finalized the payment and the order confir
 
 ### GA event format ###
 
-Category         | Action         | With product data?        
+Category         | Action         | Standard Enhanced Ecommerce event?        
 ---------        | -----------    | -----------               
-`E-commerce`     | `checkout`     | Yes (one or many products)
+`E-commerce`     | `checkout`     | Yes (with one or many products attached)

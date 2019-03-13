@@ -7,15 +7,11 @@ a receiver's Google Analytics account.
 
 Additionally, all the events contain the following [Custom Dimensions](https://support.google.com/analytics/answer/2709828?hl=en).
 
-
-
-Custom Dimension Name | Custom Dimension Index  | Description
----------             | ---------               |
+Name                  | Index                   | Description
+---------             | ---------               | ---------
 `posId`               | 1                       | The user ID on Tipser associated with a page that uses Tipser Elements.
 `from`                | 2                       | Deprecated. From what type of widget the event comes from. Possible values: `product-view`, `shopping-cart` and `tipser-sdk`.
 `article`             | 3                       | The URL of the page where the event occured (mostly the same as event's `location` field).
-
-Please find the list and descriptions of the events below.
 
 ## Shop view
 
@@ -38,9 +34,9 @@ will be emitted for the shop that was not seen by the user.
 
 ### GA event format ###
 
-Category    | Action        
----------   | -----------   
-`Shops`     | `shop-viewed` 
+Category    | Action        | With product data?
+---------   | -----------   | -----------
+`Shops`     | `shop-viewed` | No
 
 
 ## Shop list clicked
@@ -58,9 +54,9 @@ Shop categories need to be defined as `Slottable Link` components (typically as 
 
 ### GA event format ###
 
-Category    | Action         
----------   | -----------    
-`Shops`     | `list-clicked`
+Category    | Action         | With product data?
+---------   | -----------    | -----------
+`Shops`     | `list-clicked` | No
 
 
 ## Product tile view
@@ -84,9 +80,9 @@ will be emitted for the product tile that was not seen by the user.
 
 ### GA event format ###
 
-Category         | Action     
----------        | -----------
-`E-commerce`     | `impression`
+Category         | Action       | With product data?
+---------        | -----------  | -----------
+`E-commerce`     | `impression` | Yes (one product)
 
 ## Product details view
 
@@ -107,10 +103,10 @@ Please note below that opening a product dialog fires a pair of GA events (one w
 
 ### GA event format ###
 
-Category         | Action      
----------        | ----------- 
-`E-commerce`     | `click`     
-`E-commerce`     | `detail`    
+Category         | Action      | With product data?
+---------        | ----------- | -----------
+`E-commerce`     | `click`     | Yes (one product)
+`E-commerce`     | `detail`    | Yes (one product)
 
 ## Add to cart
 
@@ -124,11 +120,13 @@ _In the screenshot above the user has clicked "add to cart" button which resulte
 
 Category         | Action         | With product data?
 ---------        | -----------    | -----------        
-`E-commerce`     | `add`       | Yes (one product) 
+`E-commerce`     | `add`          | Yes (one product) 
 
 ## Remove from cart
 
 This event is emitted when product is removed from cart at checkout dialog.
+
+### GA event format ###
 
 Category         | Action         | With product data?
 ---------        | -----------    | -----------       
@@ -161,7 +159,7 @@ This event is emitted when a product (or several products) is purchased.
 
 [![](purchase_event.png)](/images/purchase_event.png)
 
-_In the screenshot above the user has finalized the payment and the order confirmation dialog has been displayed. "Purchase" event has been emitted.
+_In the screenshot above the user has finalized the payment and the order confirmation dialog has been displayed. "Purchase" event has been emitted._
 
 ### GA event format ###
 

@@ -12,6 +12,7 @@ includes:
   - rest-api.md
   - tipser-sdk.md
   - tipser-widget.md
+  - tipser-elements-analytics.md
 
 search: true
 ---

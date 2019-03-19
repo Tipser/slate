@@ -9,50 +9,61 @@ The package allows you to use Tipser's product repository and create inline shop
 
 Follow the instructions in Available Components section to add particular components to your app.
 
-## Quick React example running as an App
-Create a React app using e.g. [Create React App](https://facebook.github.io/create-react-app/) (e.g. `npx create-react-app my-app`)
-cd my-app
+## Quick React example
+Create a React app using e.g. [Create React App](https://facebook.github.io/create-react-app/docs/getting-started) 
 
-Install Tipser Elements with yarn: `yarn install @tipser/tipser-elements`
+`npx create-react-app my-app`
+`cd my-app`
 
+Install Tipser Elements with yarn: 
+`yarn install @tipser/tipser-elements`
+
+Refresh dependencies
 `yarn install`
+
+Start the application
 `yarn start`
 
+### Example inserting elements in your site
+You can combine Tipser Elements with your own application
+
+- `TipserElement` is a generic Element that can render any Contentful content that's fed as a prop to the element.
+- `TipserProduct` is the Element that renders the product given the product ID as the prop.
+- `CartIcon` is the Element that displays the number of items in your cart, as well as links to  checkout.
+- `TipserContectProvider` takes care of putting the Tipser Elements app in context with the `tipserConfig` as props.
+
 
 ```js
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { App } from '@tipser/tipser-elements';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { TipserElement, TipserProduct, CartIcon, TipserContextProvider } from '@tipser/tipser-elements';
+
+let tipserConfig = {
+    posId: '59e86b79b8f3f60a94ecd26a',
+    lang: 'en',
+    env: 'prod',
+    primaryColor: 'blue',
+};
 
 ReactDOM.render(
-    <App 
-        options = {{
-            lang: "en"
-        }}
-        basePath="/"
-        id="45d4anZqSAmI848SQKmaSI" 
-    />,
+    <TipserContextProvider value = { tipserConfig }>   
+        <header>
+            <nav>
+                <span>Nav Element</span>
+                <CartIcon/>
+            </nav>
+        </header>
+        <main>
+            <TipserElement  id="1larHZb8TeMQiqmi4W8CIS" />
+            <TipserProduct productId="5ba2334a781baa0001ccdffc"/>
+        </main>
+        <footer>
+            <span>This is the footer</span>
+        </footer>
+    </TipserContextProvider>, 
     document.getElementById('root'));
 ```
-
-## Quick React example inserting one Element
-
-```js
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { TipserElement } from '@tipser/tipser-elements';
-
-ReactDOM.render(
-    <TipserElement 
-        options = {{
-            lang: "en"
-        }}
-        basePath="/"
-        id="1larHZb8TeMQiqmi4W8CIS" 
-    />,
-    document.getElementById('root'));
-```
-> root is id of your HTML element where to put the Tipser element
+> root is the id of the HTML element where the Tipser element goes
 
 
 ## Quick start with scripted injectable version
@@ -123,36 +134,18 @@ window.addEventListener('message', function(event) {
 });
 ```
 
-### Widget config options explained
-
 ### Custom styling
 
 ## Available components
 
-### Backend source of components
-
-### Main (root) components
-Main components are dedicated to render the whole structure or to configure nested components. 
-
-- **App**
-- **Site**
-- **Tipser Element**
-
 ### Content components
-Content components are the building blocks of Tipser Elements. Components may contain other components as act as hierachy. 
+Content components are the building blocks of Tipser Elements. Components may contain other components that act as a hierachy. 
 
 - **Article**
 - **Brand**
+- **CartIcon**
 - **Collection**
-- **Container**
 - **Grid**
-- **Image**
-- **Column Layout**
-- **Horizontal Menu**
-- **Link**
 - **Menu**
-- **Slot**
-- **SlottableLink**
 - **Page**
 - **Product**
-- **Site**

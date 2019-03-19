@@ -11,8 +11,9 @@ toc_footers:
 includes:
   - rest-api.md
   - tipser-sdk.md
-  - tipser-widget.md
+  - tipser-elements.md
   - tipser-elements-analytics.md
+  - tipser-widget.md
 
 search: true
 ---

@@ -103,13 +103,48 @@ The script should be added in the body section of the page (as a last element pr
         env: 'prod', // what environment would you like to use
         openOldDialog: true,
         primaryColor: 'black',
-        domElementSelectorWhereToMountCart: undefined // if we want the shop, where to mount the shop cart icon
-        
+        domElementSelectorWhereToMountCart: " if we want the shop, where to mount the shop cart icon"
+
         // HERE GOES ADDITIONAL WIDGET OPTIONS
     }; 
 ``` 
 
 ### Custom styling
+
+## Usage mode 2 mounting the shop on the page 
+
+If you need basic functionality of the shop you may use Tipser Elements as a library that will change your divs (marked with data-tipser-cid or data-tipser-pid attributes) into a buyable content. You should also add a cart icon to the page as well. We can achieve that in simply way by embedding the script within body tag:
+
+```js
+<script>
+    var scriptTag = document.createElement('script');
+    scriptTag.src = "https://cdn.tipser.com/tipser-script/latest.js";
+    scriptTag.onload = scriptTag.onreadystatechange = function() {
+        TIPSER.init({
+            posId: 'your pos id',
+            lang: 'en',
+            basePath: 'the url path to the page where the Tipser is displayed',
+            domReplacementMode: true,
+            domElementSelectorWhereToMountCart: " if we want the shop, where to mount the shop cart icon"
+        });
+    };
+    document.body.appendChild(scriptTag);
+</script>
+```
+
+then you have to add to your page some divs with data-tipser-pid attribute for products and data-tipser-cid attributes for collections. Like this:
+
+```html
+<div data-tipser-pid="5ba2334a781baa0001ccdf61" />
+```
+
+Elements with attribute `data-tipser-pid` will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.
+
+```html
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f"
+```
+
+Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.
 
 ## Available components
 

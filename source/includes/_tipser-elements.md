@@ -70,68 +70,23 @@ ReactDOM.render(
 They are a ready-to-use out-of-the-box solution to be placed on your website, using React even though your own website doesn’t.
 
 ### Script to be injected 
-The script should be added in the body section of the page. Please see widget config section to get more details on configuration options.
+The script should be added in the body section of the page (as a last element preferably) Please see widget config section to get more details on configuration options.
 
 ```js
-(function(){
-
-    // --------------------------------------
-    // TIPSER WIDGET CODE CONFIG STARTS HERE
-    // --------------------------------------
-    var widgetConfig = {
-        posId: 'xxxxxx',
-        lang: 'de',
-        env: 'prod',
-        openOldDialog: true,
-        primaryColor: 'black'
-        // HERE GOES ADDITIONAL WIDGET OPTIONS
+<script>
+    var scriptTag = document.createElement('script');
+    scriptTag.src = "https://cdn.tipser.com/tipser-script/latest.js";
+    scriptTag.onload = scriptTag.onreadystatechange = function() {
+        TIPSER.init({
+            posId: 'your pos id',
+            lang: 'en',
+            tipserElementIdToBeMount: "xxxxxxx",
+            domElementSelectorWhereToMount: ".shop-container",
+            basePath: 'the url path to the page where the Tipser is displayed'
+        });
     };
-
-    var basePath = '/shop'; // default /
-    var tipserElementIdToBeMount = "xxxxx";
-    var domElementSelectorWhereToMount = "#tipser_shop";
-
-    // --------------------------------------
-    // END OF CONFIG
-    // --------------------------------------
-
-    var head = document.head;
-    var link = document.createElement("link");
-
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    link.href = "https://cdn.tipser.com/tipser-publishers/" + widgetConfig.posId + "-latest.css";
-
-    head.appendChild(link);
-    
-    (function(d, s, id){
-        var js, tjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.async = false; js.id = id;
-        js.src = "https://cdn.tipser.com/tipser-widget2/Core-tipser-elements-latest.js";
-        js.onload = js.onreadystatechange = function() {
-            var rs = this.readyState; if (rs && rs != "complete" && rs != "loaded") return;
-            var tipserEl = new tipserWidget.Core.TipserElementModule(widgetConfig);
-                tipserEl.mount(tipserElementIdToBeMount, document.querySelector(domElementSelectorWhereToMount), basePath);
-        }
-        tjs.parentNode.insertBefore(js, tjs);
-    }(document, "script", "tipser-js-core"));
-
-})();
-
-window.addEventListener('message', function(event) {
-    var tab = document.getElementById('twshoptab');
-    if (!tab) {
-        console.warn('no Tipser shopping cart is visible on page.');
-    }
-    if (event.data.command && event.data.command === 'tipser.api.cartItemsCountChange') {
-        if (event.data.payload && event.data.payload.count > 0) {
-            tab.style.display='block';
-        } else {
-            tab.style.display='none';
-        }
-    }
-});
+    document.body.appendChild(scriptTag);
+</script>
 ```
 
 ### Custom styling

@@ -80,14 +80,34 @@ The script should be added in the body section of the page (as a last element pr
         TIPSER.init({
             posId: 'your pos id',
             lang: 'en',
-            tipserElementIdToBeMount: "xxxxxxx",
-            domElementSelectorWhereToMount: ".shop-container",
-            basePath: 'the url path to the page where the Tipser is displayed'
+            tipserElementIdToBeMount: "id of the Tipser Element to be displayed",
+            domElementSelectorWhereToMount: "the css selector of the element where Tipser Element will be mount",
+            basePath: 'the url path to the page where the Tipser is displayed',
+            domReplacementMode: false,
         });
     };
     document.body.appendChild(scriptTag);
 </script>
 ```
+
+### Available config options
+
+```js  
+    var widgetConfig = {
+        posId: 'your pos id',
+        lang: 'en',
+        tipserElementIdToBeMount: "id of the Tipser Element to be displayed",
+        domElementSelectorWhereToMount: "the css selector of the element where Tipser Element will be mount",
+        basePath: 'the url path to the page where the Tipser is displayed',
+        domReplacementMode: false, // shall we change data-tipser-pid and data-tipser-cid html tags to product / collections 
+        env: 'prod', // what environment would you like to use
+        openOldDialog: true,
+        primaryColor: 'black',
+        domElementSelectorWhereToMountCart: undefined // if we want the shop, where to mount the shop cart icon
+        
+        // HERE GOES ADDITIONAL WIDGET OPTIONS
+    }; 
+``` 
 
 ### Custom styling
 

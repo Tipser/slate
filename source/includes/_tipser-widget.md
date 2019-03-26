@@ -54,7 +54,7 @@ Elements with attribute `data-tipser-pid` will be replaced with Tipser product c
 
 Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.
 
-## Mounting the shop on page ##
+## Displaying CMS content on page ##
 
 ```js
 tipser.elements('myPosId')
@@ -82,6 +82,18 @@ tipser.elements('myPosId')
 To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
 
 To activate the cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to `mountCart` function, as in the example snippet.
+
+## Advanced example: displaying several pieces of CMS content and cart icon ##
+
+```js
+tipser.elements('myPosId')
+  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .content-container1")
+  .mountContent("3UvCQHKV7gmMdcegDHSr5C", ".shopping-zone .content-container2")
+  .mountCart(".shopping-zone .cart-container");
+```
+
+It is possible to combine multiple invocations of `mountContent()` with zero or one invocations of `mountCart()` as presented in the code snippet. That will lead to multiple pieces of content
+AND a cart icon being displayed on the page.
 
 ## Specifying a locale ##
 

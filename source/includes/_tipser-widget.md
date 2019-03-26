@@ -11,11 +11,7 @@ To use Tipser Widget, add the following snippet to your page.
     var scriptTag = document.createElement('script');
     scriptTag.src = "https://cdn.tipser.com/tipser-script/latest.js";
     scriptTag.onload = scriptTag.onreadystatechange = function() {
-        TIPSER.init({
-            posId: 'myPosId',
-            lang: 'en',
-            domReplacementMode: true
-        });
+        tipser.elements("myPosId")
     }
     document.body.appendChild(scriptTag);
 </script>
@@ -29,32 +25,28 @@ The recommended place to add the script is the end of the <code>body</code> tag 
 
 If you are hosting your page on a CMS like Wordpress, one common pattern to load this script is to include it in a footer element of your page. If you are hosting your page on a web server, you may need to ask you web developers to include the snippet.
 
-The only part of the script really interesting for you is between the curly brackets (`{` and `}`). It is a list of configuration parameters, like `posId` and `lang`, and your are free to modify it to fine-tune the look and behavior of Tipser widgets on your page. (The remaining code examples will only include that part).
-A complete index of all the supported options can be found in [All configuration options](#all-configuration-options) section.
-
-`lang` parameter specifies the language to be used. Supported languages are currently: `en`, `de` and `sv`.
+The only part of the script really interesting for you is the body of the function. (The remaining code examples will only include that part).
 
 <aside class="notice">
 Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
 </aside>
 
-Tipser Widget can be used in one of two modes described below (controlled by `domReplacementMode` parameter). Those modes are are intended to satisfy different clients and use cases. Find out which one suits the best for you!
-
-## Usage mode 1: Replacing elements on your page ##
+## Specifying a locale ##
 
 ```js
-TIPSER.init({
-    posId: 'myPosId',
-    lang: 'en',
-    domReplacementMode: true,
-});
+  tipser.elements("myPosId", {
+    lang: 'en'
+  })
 ```
 
-> Make sure to replace the values for `posId`
+`lang` parameter specifies the language to be used. Supported languages are currently: `en`, `de` and `sv`.
 
-This is the simplest way to use Tipser Widget and a good place to start when in doubt. You need to mark HTML elements on your page with special attributes. Tipser Widget will find them and replace with shoppable content.
+A complete index of all the supported options can be found in [All configuration options](#all-configuration-options) section.
 
-To activate this mode, set `domReplacementMode` to `true` in Tipser Widget configuration.
+## Replacing elements on your page ##
+
+The simplest way to use Tipser Widget is to include the script described in [Basic usage](#basic-usage) and mark HTML elements on your page with special attributes `data-tipser-pid` and/or `data-tipser-cid`. 
+Tipser Widget will find them and replace with Tipser products and collections.
 
 _Prerequisites:_ find Tipser ids of products that you want to sell or create your own customized collections of products on your account at [www.tipser.com](www.tipser.com).
 
@@ -74,42 +66,34 @@ Elements with attribute `data-tipser-pid` will be replaced with Tipser product c
 
 Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.
 
-## Usage mode 2: Mounting the shop on page ##
+## Mounting the shop on page ##
 
 ```js
-TIPSER.init({
-    posId: 'myPosId',
-    lang: 'en',
-    domReplacementMode: false,
-    domElementSelectorWhereToMount: ".shopping-zone .shop-container",
-    tipserElementIdToBeMount: "3UvCQHKV7gmMdcegDHSr5B"
-});
+tipser.elements('myPosId')
+  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .shop-container");
 ```
 
-> Make sure to replace the values for `posId`, `domElementSelectorWhereToMount` and `tipserElementIdToBeMount`.
+> Make sure to replace the value for `posId` and parameters of `mountContent` function.
 
-In this mode, Tipser Widget renders on your page a shop widget defined in Tipser's CMS (Contentful).
-
-To activate this mode, set domReplacementMode to `false` in Tipser Widget configuration or just skip this option altogether.
+Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser's CMS (Contentful) to your page with `.mountContent` function.
 
 _Prerequisites:_ you need to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
 
-`domElementSelectorWhereToMount` parameter is required in this mode. It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where Tipser Shop will be injected.
+`mountContent` function accepts two parameters:
 
+1. `contentId`: the id of the content in the CMS 
+2. `target`: It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where the CMS content will be injected.
 
 ## Displaying cart icon ##
 
 ```js
-TIPSER.init({
-  //...
-  domElementSelectorWhereToMountCart: ".shopping-zone .shoping-cart-container",
-  //...
-});
+tipser.elements('myPosId')
+  .mountCart(".shopping-zone .cart-container");
 ```
 
 To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
 
-To make it possible you need to dedicate a part of your page to host a shopping cart and define a CSS selector to it in `domElementSelectorWhereToMountCart` option.
+To make it possible you need to dedicate a part of your page to host a shopping cart and pass a CSS selector to to `mountCart` function.
 
 ## All configuration options ##
 
@@ -117,10 +101,9 @@ Tipser Widget supports following configuration options.
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
-domReplacementMode | false | should the script replace elements of the original page? See the section [Replacing elements on your page](#usage-mode-1-replacing-elements-on-your-page) for details. | true
-domElementSelectorWhereToMount | none | only used when `domReplacementMode: false`. A CSS selector to the container where the shop element should be mounted. | domElementSelectorWhereToMount: '#tipser_shop'
-tipserElementIdToBeMount | none | only used when `domReplacementMode: false` and `domElementSelectorWhereToMount` is defined. A Contentful id of the element to be mounted at the element specified by `domElementSelectorWhereToMount`.
-domElementSelectorWhereToMountCart | none | only used when `domReplacementMode: true`. A CSS selector for the container where Tipser cart tab should be mounted. If not specified, the Tipser shopping cart won't be displayed on the page. | domElementSelectorWhereToMountCart: "#cart"
+lang | `'en'` | a locale to be used by the Tipser content. Possible values: `en`, `de` and `sv`. | `'de'` 
+env | `prod` | a Tipser environment to be used by the Tipser content. Possible values: `stage` and `prod`. | `'stage'`
+disableDomReplacement | false | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
    

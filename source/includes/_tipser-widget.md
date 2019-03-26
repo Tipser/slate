@@ -31,18 +31,6 @@ The only part of the script really interesting for you is the body of the functi
 Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
 </aside>
 
-## Specifying a locale ##
-
-```js
-  tipser.elements("myPosId", {
-    lang: 'en'
-  })
-```
-
-`lang` parameter specifies the language to be used. Supported languages are currently: `en`, `de` and `sv`.
-
-A complete index of all the supported options can be found in [All configuration options](#all-configuration-options) section.
-
 ## Replacing elements on your page ##
 
 The simplest way to use Tipser Widget is to include the script described in [Basic usage](#basic-usage) and mark HTML elements on your page with special attributes `data-tipser-pid` and/or `data-tipser-cid`. 
@@ -73,7 +61,7 @@ tipser.elements('myPosId')
   .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .shop-container");
 ```
 
-> Make sure to replace the value for `posId` and parameters of `mountContent` function.
+> Make sure to replace the value for `myPosId` and parameters of `mountContent` function.
 
 Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser's CMS (Contentful) to your page with `.mountContent` function.
 
@@ -93,7 +81,32 @@ tipser.elements('myPosId')
 
 To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
 
-To make it possible you need to dedicate a part of your page to host a shopping cart and pass a CSS selector to to `mountCart` function.
+To activate the cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to `mountCart` function, as in the example snippet.
+
+## Specifying a locale ##
+
+```js
+  tipser.elements("myPosId", {
+    lang: 'en'
+  })
+```
+
+The function `tipser.elements` accepts a second optional parameter which is an object of configuraton options.
+
+`lang` configuration option specifies the language to be used. Supported languages are currently: `en`, `de` and `sv`.
+
+A complete index of all the supported configuration options can be found in [All configuration options](#all-configuration-options) section.
+
+## Specifying an environment ##
+
+```js
+  tipser.elements("myPosId", {
+    env: 'stage'
+  })
+```
+
+It is possible to use Tipser Elements in test (staging) environment to be able to do test checkouts. The environment can be activated using the `env` configuration option, as in the snippet, 
+where supported environments are `stage` and `prod`. This configuration option is optional and in case it is missing, `prod` environment will be used. 
 
 ## All configuration options ##
 

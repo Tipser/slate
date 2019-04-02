@@ -19,6 +19,8 @@ To use Tipser Widget, add the following snippet to your page.
 
 > Make sure to replace `myPosId` with your Tipser account id.
 
+> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/BEyogM)
+
 <aside class="notice">
 The recommended place to add the script is the end of the <code>body</code> tag of your page.
 </aside>
@@ -62,6 +64,8 @@ tipser.elements('myPosId')
 ```
 
 > Make sure to replace the value for `myPosId` and parameters of `mountContent` function.
+
+> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/RONrZv)
 
 Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser's CMS (Contentful) to your page with `.mountContent` function.
 

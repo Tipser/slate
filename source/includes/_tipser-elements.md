@@ -4,35 +4,34 @@ Tipser Elements is a React components library from Tipser enabling you to add sh
 The package allows you to use Tipser's product repository and create inline shops embedded into your pages as well as the entire websites. 
 
 ## Quick Start with NPM version
-Add the library to your project with npm: 
+
+Add the library to your project:
+
 `npm install --save @tipser/tipser-elements`
 
 Follow the instructions in Available Components section to add particular components to your app.
 
 ## Quick start with scripted injectable version
-They is a bundled, out-of-the-box solution to be placed on your website called Tipser Widget. For more information and instructions how to use it, please refer to [Tipser Widget docs](#tipser-widget).
+There is a bundled, out-of-the-box solution to be placed on your website called Tipser Widget. For more information and instructions how to use it, please refer to [Tipser Widget docs](#tipser-widget).
 
 If you feel comfortable with React and need to address more advanced use cases, read further!
 
 ## Quick React example
 Create a React app using e.g. [Create React App](https://facebook.github.io/create-react-app/docs/getting-started) (follow the instructions on their page). 
 
-```
-npx create-react-app my-tipser-elements-app
-cd my-tipser-elements-app
-```
+`npx create-react-app my-tipser-elements-app`
+
+`cd my-tipser-elements-app`
 
 Add Tipser Elements to the project with npm: 
 
-```
-npm install @tipser/tipser-elements
-```
+`npm install @tipser/tipser-elements`
 
 Put your Elements code (e.g. copy the example below) in src/index.js file.
 
 Start the application
 
-```npm start```
+`npm start`
 
 ### Example inserting elements in your site
 You can combine Tipser Elements with your own application

@@ -5,48 +5,48 @@ The package allows you to use Tipser's product repository and create inline shop
 
 ## Quick Start with NPM version
 - Install with npm: `npm install @tipser/tipser-elements`
-- Install with yarn: `yarn add @tipser/tipser-elements`
 
 Follow the instructions in Available Components section to add particular components to your app.
 
+## Quick start with scripted injectable version
+They is a bundled, out-of-the-box solution to be placed on your website called Tipser Widget. For more information and instructions how to use it, please refer to [Tipser Widget docs](#tipser-widget).
+
+If you feel comfortable with React and need to address more advanced use cases, read further!
+
 ## Quick React example
-Create a React app using e.g. [Create React App](https://facebook.github.io/create-react-app/docs/getting-started) 
+Create a React app using e.g. [Create React App](https://facebook.github.io/create-react-app/docs/getting-started) (follow the instructions on their page). 
 
-`npx create-react-app my-app`
-`cd my-app`
+`npx create-react-app my-tipser-elements-app`
+`cd my-tipser-elements-app`
 
-Install Tipser Elements with yarn: 
-`yarn install @tipser/tipser-elements`
+Add Tipser Elements to the project with yarn: 
+`npm install @tipser/tipser-elements`
 
-Refresh dependencies
-`yarn install`
+Put your Elements code (e.g. copy the example below) in src/index.js file 
 
 Start the application
-`yarn start`
+`npm start`
 
 ### Example inserting elements in your site
 You can combine Tipser Elements with your own application
 
+- `TipserElementsProvider` entry point to Tipser Elements (creating a context for other Elements) with the `tipserElementsConfig` as props.
 - `TipserElement` is a generic Element that can render any Contentful content that's fed as a prop to the element.
-- `TipserProduct` is the Element that renders the product given the product ID as the prop.
-- `CartIcon` is the Element that displays the number of items in your cart, as well as links to  checkout.
-- `TipserContectProvider` takes care of putting the Tipser Elements app in context with the `tipserConfig` as props.
-
+- `TipserProduct` is the Element that renders the product given the Tipser product ID as the prop.
+- `CartIcon` is the Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TipserElement, TipserProduct, CartIcon, TipserContextProvider } from '@tipser/tipser-elements';
+import { TipserElement, TipserProduct, CartIcon, TipserElementsProvider } from '@tipser/tipser-elements';
 
-let tipserConfig = {
-    posId: '59e86b79b8f3f60a94ecd26a',
+const tipserElementsConfig = {
     lang: 'en',
-    env: 'prod',
-    primaryColor: 'blue',
+    primaryColor: 'blue'
 };
 
 ReactDOM.render(
-    <TipserContextProvider value = { tipserConfig }>   
+    <TipserElementsProvider posId="59e86b79b8f3f60a94ecd26a" config={tipserElementsConfig}>   
         <header>
             <nav>
                 <span>Nav Element</span>
@@ -60,96 +60,15 @@ ReactDOM.render(
         <footer>
             <span>This is the footer</span>
         </footer>
-    </TipserContextProvider>, 
+    </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-> root is the id of the HTML element where the Tipser element goes
-
-
-## Quick start with scripted injectable version
-They are a ready-to-use out-of-the-box solution to be placed on your website, using React even though your own website doesn’t.
-
-### Script to be injected 
-The script should be added in the body section of the page (as a last element preferably) Please see widget config section to get more details on configuration options.
-
-```js
-<script>
-    var scriptTag = document.createElement('script');
-    scriptTag.src = "https://cdn.tipser.com/tipser-script/latest.js";
-    scriptTag.onload = scriptTag.onreadystatechange = function() {
-        TIPSER.init({
-            posId: 'your pos id',
-            lang: 'en',
-            tipserElementIdToBeMount: "id of the Tipser Element to be displayed",
-            domElementSelectorWhereToMount: "the css selector of the element where Tipser Element will be mount",
-            basePath: 'the url path to the page where the Tipser is displayed',
-            domReplacementMode: false,
-        });
-    };
-    document.body.appendChild(scriptTag);
-</script>
-```
-
-### Available config options
-
-```js  
-    var widgetConfig = {
-        posId: 'your pos id',
-        lang: 'en',
-        tipserElementIdToBeMount: "id of the Tipser Element to be displayed",
-        domElementSelectorWhereToMount: "the css selector of the element where Tipser Element will be mount",
-        basePath: 'the url path to the page where the Tipser is displayed',
-        domReplacementMode: false, // shall we change data-tipser-pid and data-tipser-cid html tags to product / collections 
-        env: 'prod', // what environment would you like to use
-        openOldDialog: true,
-        primaryColor: 'black',
-        domElementSelectorWhereToMountCart: " if we want the shop, where to mount the shop cart icon"
-
-        // HERE GOES ADDITIONAL WIDGET OPTIONS
-    }; 
-``` 
-
-### Custom styling
-
-## Usage mode 2 mounting the shop on the page 
-
-If you need basic functionality of the shop you may use Tipser Elements as a library that will change your divs (marked with data-tipser-cid or data-tipser-pid attributes) into a buyable content. You should also add a cart icon to the page as well. We can achieve that in simply way by embedding the script within body tag:
-
-```js
-<script>
-    var scriptTag = document.createElement('script');
-    scriptTag.src = "https://cdn.tipser.com/tipser-script/latest.js";
-    scriptTag.onload = scriptTag.onreadystatechange = function() {
-        TIPSER.init({
-            posId: 'your pos id',
-            lang: 'en',
-            basePath: 'the url path to the page where the Tipser is displayed',
-            domReplacementMode: true,
-            domElementSelectorWhereToMountCart: " if we want the shop, where to mount the shop cart icon"
-        });
-    };
-    document.body.appendChild(scriptTag);
-</script>
-```
-
-then you have to add to your page some divs with data-tipser-pid attribute for products and data-tipser-cid attributes for collections. Like this:
-
-```html
-<div data-tipser-pid="5ba2334a781baa0001ccdf61" />
-```
-
-Elements with attribute `data-tipser-pid` will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.
-
-```html
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f"
-```
-
-Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.
+> root is the id of the HTML element where the Tipser element goes 
 
 ## Available components
 
 ### Content components
-Content components are the building blocks of Tipser Elements. Components may contain other components that act as a hierachy. 
+Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 
 
 - **Article**
 - **Brand**

@@ -2,6 +2,12 @@
 
 Tipser Widget is a small and handy script that you can use to embed Tipser products and shops on your page and start selling with Tipser.
 
+## See it live! ##
+
+A working examples of page based on Tipser Widget can be found here: https://tipser.github.io/tipser-widget-bootstrap/ .
+
+The code of that page is available as a GitHub project: https://github.com/Tipser/tipser-widget-bootstrap . Feel free to checkout it and play with it on your local machine!
+
 ## Basic usage ##
 
 To use Tipser Widget, add the following snippet to your page.

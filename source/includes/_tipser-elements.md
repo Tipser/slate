@@ -1,7 +1,13 @@
 # Tipser Elements
 Tipser Elements is a React components library from Tipser enabling you to add shopable content to your site with minimal effort.  You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.
 
-The package allows you to use Tipser's product repository and create inline shops embedded into your pages as well as the entire websites. 
+The package allows you to use Tipser's product repository and create inline shops embedded into your pages as well as the entire websites.
+
+## See it live! ##
+
+A working examples of page based on tipser-elements can be found here: https://tipser.github.io/tipser-elements-react-bootstrap/ .
+
+The code of that page is available as a GitHub project: https://github.com/Tipser/tipser-elements-react-bootstrap . Feel free to checkout it and play with it on your local machine! 
 
 ## Quick Start with NPM version
 

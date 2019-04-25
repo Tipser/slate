@@ -105,6 +105,26 @@ tipser.elements('myPosId')
 It is possible to combine multiple invocations of `mountContent()` with zero or one invocations of `mountCart()` as presented in the code snippet. That will lead to multiple pieces of content
 AND a cart icon being displayed on the page.
 
+## Advanced example: Custom checkout popup ##
+
+Default Checkout Popup appears upon adding product to the cart. It can be however overridden by fully custom popup via `customCheckoutPopupHandler` configuration parameter. See snippet with an example:  
+
+```js
+tipser.elements('myPosId', {
+    customCheckoutPopupHandler: {
+        init: function (openPurchaseDialog){
+            const checkoutPopup = document.querySelector("#my-custom-checkout-popup");
+            checkoutPopup.querySelector('.checkout-button').addEventListener('click',openPurchaseDialog);
+        },
+        onOpen: function (product){
+            const checkoutPopup = document.querySelector("#my-custom-checkout-popup");
+            checkoutPopup.querySelector('.title').textContent = product.title;
+            checkoutPopup.querySelector('.price').textContent = product.priceIncVat.formatted;
+        }
+    }
+})
+```
+
 ## Specifying a locale ##
 
 ```js
@@ -138,7 +158,9 @@ Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
 lang | `'en'` | a locale to be used by the Tipser content. Possible values: `en`, `de` and `sv`. | `'de'` 
 env | `prod` | a Tipser environment to be used by the Tipser content. Possible values: `stage` and `prod`. | `'stage'`
-disableDomReplacement | false | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
+disableDomReplacement | `false` | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
+defaultCheckoutPopup | `true` | Controls default Checkout Popup. It is overrideable by `customCheckputPopupHandler`. Checkout Popup appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
+customCheckoutPopupHandler | `undefined` | Allows implementation of custom Checkout Popup. If defined, turns off default Checkout Popup | see [Advanced example: custom checkout popup](#advanced-example-custom-checkout-popup)
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
    

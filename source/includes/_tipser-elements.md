@@ -40,12 +40,28 @@ Start the application
 `npm start`
 
 ### Example inserting elements in your site
-You can combine Tipser Elements with your own application
+You can combine Tipser Elements with your own application:
 
-- `TipserElementsProvider` entry point to Tipser Elements (creating a context for other Elements) with the `tipserElementsConfig` as props.
-- `TipserElement` is a generic Element that can render any Contentful content that's fed as a prop to the element.
-- `TipserProduct` is the Element that renders the product given the Tipser product ID as the prop.
-- `CartIcon` is the Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
+#### `TipserElementsProvider` 
+Entry point to Tipser Elements (creating a context for other Elements);
+
+prop name  | description | type  | required | default value 
+-----------|-------------|-------|----------|--------------
+posId | id of Point of sale | string | true | 
+config | configuration object | {} | false   | {}
+defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | false | true
+ 
+#### `TipserElement` 
+Generic Element that can render any Contentful content that's fed as a prop to the element.
+
+#### `TipserProduct` 
+Element that renders the product given the Tipser product ID as the prop.
+
+#### `CartIcon` 
+Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
+
+
+#### Example of above components used together:
 
 ```js
 import React from 'react';
@@ -54,7 +70,7 @@ import { TipserElement, TipserProduct, CartIcon, TipserElementsProvider } from '
 
 const tipserElementsConfig = {
     lang: 'en',
-    primaryColor: 'blue'
+    primaryColor: 'blue',    
 };
 
 ReactDOM.render(
@@ -76,8 +92,6 @@ ReactDOM.render(
     document.getElementById('root'));
 ```
 > root is the id of the HTML element where the Tipser element goes 
-
-## Available components
 
 ### Content components
 Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 

@@ -46,7 +46,7 @@ Tipser Widget will find them and replace with Tipser products and collections.
 
 _Prerequisites:_ find Tipser ids of products that you want to sell or create your own customized collections of products on your account at [www.tipser.com](www.tipser.com).
 
-### Embedding single Tipser products on page ###
+### Embedding Tipser products on the page ###
 
 ```html
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
@@ -54,13 +54,28 @@ _Prerequisites:_ find Tipser ids of products that you want to sell or create you
 
 Elements with attribute `data-tipser-pid` will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.
 
-### Embedding Tipser collectons on page ###
+### Embedding Tipser collectons on the page ###
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f"
 ```
 
 Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.
+
+### Embedding a shop widget on the page ###
+
+```html
+<div id="tipser_shop"></div>
+```
+
+> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
+
+Element with id `tipser_shop` will be replaced with Tipser shop widget for the user whose `posId` has been passed to `tipser.elements()` call (see: [Basic Usage](#basic-usage) ).
+
+[![](shop_component.png)](/images/shop_component.png)
+
+Note: the shop widget is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
+For the same reason, there can't be more than one shop widget on the page (the DOM replacement logic will replace only the last occurence of a component with `tipser_shop` id).
 
 ## Displaying CMS content on page ##
 

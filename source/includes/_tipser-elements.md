@@ -50,7 +50,7 @@ You can combine Tipser Elements with your own application
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TipserElement, TipserProduct, CartIcon, TipserElementsProvider } from '@tipser/tipser-elements';
+import { TipserElement, TipserProduct, CartIcon, TipserElementsProvider, ShopComponent } from '@tipser/tipser-elements';
 
 const tipserElementsConfig = {
     lang: 'en',
@@ -68,6 +68,7 @@ ReactDOM.render(
         <main>
             <TipserElement  id="1larHZb8TeMQiqmi4W8CIS" />
             <TipserProduct productId="5ba2334a781baa0001ccdffc"/>
+            <ShopComponent />
         </main>
         <footer>
             <span>This is the footer</span>
@@ -90,3 +91,20 @@ Content components are the building blocks of Tipser Elements. Any components ne
 - **Menu**
 - **Page**
 - **Product**
+
+### Shop component
+
+Shop component is a HTML widget displaying a list of all Tipser public collections for the POS.   
+
+It can be used with `ShopComponent` react component.
+
+```js
+import { ShopComponent } from '@tipser/tipser-elements';
+ ...
+<ShopComponent />
+```
+
+[![](shop_component.png)](/images/shop_component.png)
+
+Note: the shop component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
+For the same reason, it's not recommended to include more than one `<ShopComponent />` on a single page. 

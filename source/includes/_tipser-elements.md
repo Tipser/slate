@@ -48,8 +48,7 @@ Entry point to Tipser Elements (creating a context for other Elements);
 prop name  | description | type  | required | default value 
 -----------|-------------|-------|----------|--------------
 posId | id of Point of sale | string | true | 
-config | configuration object | {} | false   | {}
-defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | false | true
+config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false   | {}
  
 #### `TipserElement` 
 Generic Element that can render any Contentful content that's fed as a prop to the element.
@@ -91,7 +90,17 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-> root is the id of the HTML element where the Tipser element goes 
+> root is the id of the HTML element where the Tipser element goes
+
+### All configuration options of Tipser Elements
+
+Configuration is an object, that should be inserted into `TipserElementsProvider` as `config` prop.
+
+All properties are optional:
+
+property name | description |type | default value
+--------------|-------------|-----|---------------
+defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | true 
 
 ### Content components
 Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 

@@ -40,12 +40,27 @@ Start the application
 `npm start`
 
 ### Example inserting elements in your site
-You can combine Tipser Elements with your own application
+You can combine Tipser Elements with your own application:
 
-- `TipserElementsProvider` entry point to Tipser Elements (creating a context for other Elements) with the `tipserElementsConfig` as props.
-- `TipserElement` is a generic Element that can render any Contentful content that's fed as a prop to the element.
-- `TipserProduct` is the Element that renders the product given the Tipser product ID as the prop.
-- `CartIcon` is the Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
+#### `TipserElementsProvider` 
+Entry point to Tipser Elements (creating a context for other Elements);
+
+prop name  | description | type  | required | default value 
+-----------|-------------|-------|----------|--------------
+posId | id of Point of sale | string | true | 
+config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false   | {}
+ 
+#### `TipserElement` 
+Generic Element that can render any Contentful content that's fed as a prop to the element.
+
+#### `TipserProduct` 
+Element that renders the product given the Tipser product ID as the prop.
+
+#### `CartIcon` 
+Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
+
+
+#### Example of above components used together:
 
 ```js
 import React from 'react';
@@ -54,7 +69,7 @@ import { TipserElement, TipserProduct, CartIcon, TipserElementsProvider, ShopCom
 
 const tipserElementsConfig = {
     lang: 'en',
-    primaryColor: 'blue'
+    primaryColor: 'blue',    
 };
 
 ReactDOM.render(
@@ -76,9 +91,17 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-> root is the id of the HTML element where the Tipser element goes 
+> root is the id of the HTML element where the Tipser element goes
 
-## Available components
+### All configuration options of Tipser Elements
+
+Configuration is an object, that should be inserted into `TipserElementsProvider` as `config` prop.
+
+All properties are optional:
+
+property name | description |type | default value
+--------------|-------------|-----|---------------
+defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | true 
 
 ### Content components
 Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 

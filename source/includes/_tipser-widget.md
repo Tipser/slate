@@ -151,9 +151,10 @@ Tipser Widget supports following configuration options.
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
-lang | `'en'` | a locale to be used by the Tipser content. Possible values: `en`, `de` and `sv`. | `'de'` 
-env | `prod` | a Tipser environment to be used by the Tipser content. Possible values: `stage` and `prod`. | `'stage'`
-disableDomReplacement | false | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
+lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'` and `'sv'`. | `'de'` 
+env | `'prod'` | a Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. | `'stage'`
+disableDomReplacement | `false` | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
+defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
    

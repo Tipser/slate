@@ -145,6 +145,58 @@ A complete index of all the supported configuration options can be found in [All
 It is possible to use Tipser Elements in test (staging) environment to be able to do test checkouts. The environment can be activated using the `env` configuration option, as in the snippet, 
 where supported environments are `stage` and `prod`. This configuration option is optional and in case it is missing, `prod` environment will be used. 
 
+## Adding event handlers ##
+Event handlers may be passed as a part of configuration. There is a number of events exposed for developer. Each of the handler may have a different params as arguments of handler. 
+
+There is `eventsHandler` config option available. This is the place where you can add your own handlers for events.
+
+Currently we are supporting `onError` and `onAddToCart` event handlers.
+
+`onError` is being triggered when some error appear (i.e. when adding product to the cart failed) and `onAddToCart` event is being triggered when the product has been added to the cart.
+
+The handler for `onError` gets error argument (see code example). Error argument is object type with properties : `type`, `id`, `message`, `stack`. The most important information is message and type. Currently all errors have `TipserElementError` and message contains the information for the user what went wrong. `Stack` is a typical error stack of js error.
+
+The `onError` event handler is used with `useDefaultErrorHandler` config option. When that option is set to false (default to true) the error message and error dialog will not be shown on the screen.
+
+`onAddToCart` event handler gets object of `{cartSize, product}` argument. `cartSize` property contains the value of current cartSize after adding it to the cart. `product` is object as well and representinh the product which has been added to cart. That object contains properties:
+
+```js
+{
+    id: string;
+    title: string;
+    description: string;
+    brand: string;
+    images: any[];
+    isInStock: boolean;
+    deliveryTime: string;
+    priceIncVat: PriceModel;
+    deliveryCost: PriceModel;
+    variants: TipserProductModel[];
+    discountPriceIncVat: PriceModel;
+    freeReturn: boolean;
+}
+```
+
+The code example how to use event handlers:
+
+```js
+ tipser.elements('5075d7715c3d090a90585e87', { //pos id (Tipser user id)
+    //The configuration of tipser widget comes here
+    lang: "en",
+    useDefaultErrorHandler: true, // default to true, false if you dont need error message
+    eventsHandlers: {
+      onError: (error) => {
+          console.log(error)
+      },
+      onAddToCart: (param) => {
+          console.log('Hurray, you have added item to cart. ', param.product);
+          console.log('Your cart size is now. ', param.cartSize);
+      }
+    }
+  })
+};
+```
+
 ## All configuration options ##
 
 Tipser Widget supports following configuration options.
@@ -155,6 +207,7 @@ lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en
 env | `'prod'` | a Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. | `'stage'`
 disableDomReplacement | `false` | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
+useDefaultErrorHandler | `true` | set it to false if you dont want to get error popup with message | see [Adding event handlers]
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
    

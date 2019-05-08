@@ -183,7 +183,7 @@ The code example how to use event handlers:
  tipser.elements('5075d7715c3d090a90585e87', { //pos id (Tipser user id)
     //The configuration of tipser widget comes here
     lang: "en",
-    useDefaultErrorHandler: true, // default to true, false if you dont need error message
+  useDefaultErrorHandler: true, // default to true, false if you dont need error message
     eventsHandlers: {
       onError: (error) => {
           console.log(error)
@@ -207,7 +207,8 @@ lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en
 env | `'prod'` | a Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. | `'stage'`
 disableDomReplacement | `false` | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
-useDefaultErrorHandler | `true` | set it to false if you dont want to get error popup with message | see [Adding event handlers]
+useDefaultErrorHandler | `true` | set it to false if you dont want to get error popup with message | see [Adding event handlers](#adding-event-handlers)
+eventsHandlers | `object` | `null` | the object of event handlers | see [Adding event handlers](#adding-event-handlers)
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
    

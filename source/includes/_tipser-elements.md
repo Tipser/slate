@@ -102,8 +102,8 @@ All properties are optional:
 property name | description |type | default value
 --------------|-------------|-----|---------------
 defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | true 
-eventsHandlers | gives possibility to add handlers to Tipser Elements events | object | empty
-useDefaultErrorHandler | if set to false there will be no error message displayed in case of error | boolean | true
+eventsHandlers | gives possibility to add handlers to Tipser Elements events | object | {}
+useDefaultErrorHandler | when false and error happens, default message won't be displayed | boolean | true
 
 #### Event Handlers
 Event handlers may be passed as a part of `config` option of `TipserElementsProvider`. There is a number of events exposed for developer. Each of the handler may have a different params as arguments of handler. 
@@ -127,25 +127,7 @@ let tipserConfig = {
     // -- EVENT HANDLING END
 };
 
-class App extends Component {
-
-    render() {
-        return (
-            <Router history={hashHistory}>
-                <TipserElementsProvider
-                    posId={"5075d7715c3d090a90585e87"}
-                    config={tipserConfig}>
-                    <Switch>
-                        <Route path="/product/:productId" component={ProductView} />
-                        <Route path="/" component={ComponentsView} />
-                        <Route component={NotFoundView} />
-                    </Switch>
-                </TipserElementsProvider>
-            </Router>
-        );
-    }
-
-}
+// ... as in example above class App extends Component { ... }
 
 ```
 
@@ -157,7 +139,11 @@ onError | Main goal of this handler is to add additional behavior when the error
     message?: string;
     stack?: string;
 }```
-onAddToCart | when product is being added to cart event is triggered | object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties ```js 
+onAddToCart | when product is being added to cart event is triggered | object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties see (see [TipserProductModel](#TipserProductModel-interface)) 
+
+##### TipserProductModel interface
+
+```js 
 export interface TipserProductModel {
     id: string;
     title: string;

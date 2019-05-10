@@ -133,13 +133,18 @@ let tipserConfig = {
 
 Handler name  | description | params
 --------------|-------------|--------
-onError | Main goal of this handler is to add additional behavior when the error appears. | object of type EventError ```js export interface EventError {
+onError | Main goal of this handler is to add additional behavior when the error appears. | object of type EventError (see [EventError](#EventError-interface)
+onAddToCart | when product is being added to cart event is triggered | object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties see (see [TipserProductModel](#TipserProductModel-interface)) 
+
+##### EventError interface
+
+```js 
+export interface EventError {
     type?: string;
     id?: string;
     message?: string;
     stack?: string;
 }```
-onAddToCart | when product is being added to cart event is triggered | object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties see (see [TipserProductModel](#TipserProductModel-interface)) 
 
 ##### TipserProductModel interface
 

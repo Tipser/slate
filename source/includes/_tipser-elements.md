@@ -103,10 +103,10 @@ property name | description |type | default value
 --------------|-------------|-----|---------------
 defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | true 
 eventsHandlers | gives possibility to add handlers to Tipser Elements events | object | {}
-useDefaultErrorHandler | when false and error happens, default message won't be displayed | boolean | true
+useDefaultErrorHandler | when set to false and error happens, default message won't be displayed | boolean | true
 
 #### Event Handlers
-Event handlers may be passed as a part of `config` option of `TipserElementsProvider`. There is a number of events exposed for developer. Each of the handler may have a different params as arguments of handler. 
+Event handlers may be passed as a part of `config` option of `TipserElementsProvider`. There is a number of events exposed for developer. 
 
 ```js
 

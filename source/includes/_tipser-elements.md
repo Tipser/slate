@@ -102,6 +102,68 @@ All properties are optional:
 property name | description |type | default value
 --------------|-------------|-----|---------------
 defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | true 
+eventsHandlers | gives possibility to add handlers to Tipser Elements events | object | {}
+useDefaultErrorHandler | when set to false and error happens, default message won't be displayed | boolean | true
+
+#### Event Handlers
+Event handlers may be passed as a part of `config` option of `TipserElementsProvider`. There is a number of events exposed for developer. 
+
+```js
+
+let tipserConfig = {
+    lang: 'en',
+    primaryColor: 'red',
+    // ----- EVENT HANDLING START
+    useDefaultErrorHandler: true,
+    eventsHandlers: {
+        onError: (error) => {
+            console.log(error)
+        },
+        onAddToCart: ({cartSize, product}) => {
+            console.log('Hurray, you have added item to cart. ', product);
+            console.log('Your cart size is now. ', cartSize);
+        }
+    }
+    // -- EVENT HANDLING END
+};
+
+// ... as in example above class App extends Component { ... }
+
+```
+
+Handler name  | description | params
+--------------|-------------|--------
+onError | Main goal of this handler is to add additional behavior when the error appears. | object of type EventError (see [EventError](#EventError-interface)
+onAddToCart | when product is being added to cart event is triggered | object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties see (see [TipserProductModel](#TipserProductModel-interface)) 
+
+##### EventError interface
+
+```js 
+export interface EventError {
+    type?: string;
+    id?: string;
+    message?: string;
+    stack?: string;
+}```
+
+##### TipserProductModel interface
+
+```js 
+export interface TipserProductModel {
+    id: string;
+    title: string;
+    description: string;
+    brand: string;
+    images: any[];
+    isInStock: boolean;
+    deliveryTime: string;
+    priceIncVat: PriceModel;
+    deliveryCost: PriceModel;
+    variants: TipserProductModel[];
+    discountPriceIncVat: PriceModel;
+    freeReturn: boolean;
+}
+```
 
 ### Content components
 Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 

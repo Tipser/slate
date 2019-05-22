@@ -62,26 +62,26 @@ Elements with attribute `data-tipser-pid` will be replaced with Tipser product c
 
 Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.
 
-### Embedding a shop widget on the page ###
+### Embedding a store widget on the page ###
 
 ```html
-<div id="tipser_shop"></div>
+<div id="tipser_store"></div>
 ```
 
 > [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
 
-Element with id `tipser_shop` will be replaced with Tipser shop widget for the user whose `posId` has been passed to `tipser.elements()` call (see: [Basic Usage](#basic-usage) ).
+Element with id `tipser_store` will be replaced with Tipser store widget for the user whose `posId` has been passed to `tipser.elements()` call (see: [Basic Usage](#basic-usage) ).
 
 [![](shop_component.png)](/images/shop_component.png)
 
-Note: the shop widget is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
-For the same reason, there can't be more than one shop widget on the page (the DOM replacement logic will replace only the last occurence of a component with `tipser_shop` id).
+Note: the store widget is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
+For the same reason, there can't be more than one store widget on the page (the DOM replacement logic will replace only the last occurence of a component with `tipser_store` id).
 
 ## Displaying CMS content on page ##
 
 ```js
 tipser.elements('myPosId')
-  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .shop-container");
+  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .store-container");
 ```
 
 > Make sure to replace the value for `myPosId` and parameters of `mountContent` function.
@@ -90,7 +90,7 @@ tipser.elements('myPosId')
 
 Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser's CMS (Contentful) to your page with `.mountContent` function.
 
-_Prerequisites:_ you need to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.
+_Prerequisites:_ you need to have a Contentful content created and configured (which is typically done by Tipser staff) and dedicate part of your page to inject that content.
 
 `mountContent` function accepts two parameters:
 

@@ -52,15 +52,25 @@ _Prerequisites:_ find Tipser ids of products that you want to sell or create you
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
-Elements with attribute `data-tipser-pid` will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.
+Elements with attribute `data-tipser-pid` will be replaced with Tipser product component, using the product with Tipser id passed in the attribute. By default a full inline product component is displayed.
+
+[![](full-product.png)](/images/full-product.png)
+
+```html
+<div data-tipser-pid="57233dac89862012f8ec1001" data-tipser-view="compact" />
+```
+To display a compact product view you need to add `data-tipser-view="compact"` attribute in addition to `data-tipser-pid`.
+
+[![](compact-product.png)](/images/compact-product.png)
 
 ### Embedding Tipser collectons on the page ###
 
 ```html
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f"
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="1.2" />
 ```
 
-Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.
+Elements with attribute `data-tipser-cid` will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute. To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `"0.8"` for smaller  and `"1.2"` for lager product tiles. The default value for imgSize parameter is `"1"`.
 
 ### Embedding a store widget on the page ###
 
@@ -107,6 +117,20 @@ tipser.elements('myPosId')
 To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
 
 To activate the cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to `mountCart` function, as in the example snippet.
+
+
+```css
+.tipser-shopping-cart {
+    position: fixed;
+    right: 0;
+    top: 121px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: -2px 2px 7px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+```
+The cart icon can be placed anywhere on your website. However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
 
 ## Advanced example: displaying several pieces of CMS content and cart icon ##
 

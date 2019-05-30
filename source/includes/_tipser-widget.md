@@ -212,13 +212,13 @@ There is `eventsHandler` config option available. This is the place where you ca
 
 Currently we are supporting `onError` and `onAddToCart` event handlers.
 
-`onError` is being triggered when some error appear (i.e. when adding product to the cart failed) and `onAddToCart` event is being triggered when the product has been added to the cart.
+`onError` is being triggered when an error appears (i.e. when adding product to the cart failed) and `onAddToCart` event is being triggered when the product has been added to the cart.
 
-The handler for `onError` gets error argument (see code example). Error argument is object type with properties : `type`, `id`, `message`, `stack`. Currently all errors have `TipserElementError` and message contains the information for the user what went wrong. `Stack` is a typical error stack of js error.
+The handler for `onError` gets error argument (see code example). Error argument is object type with properties : `type`, `id`, `message`, `stack`. Errors are objects with type `TipserElementError` and message contains the information for the user what went wrong. `stack` is a typical error stack of js error.
 
 The `onError` event handler is used with `useDefaultErrorHandler` config option. When that option is set to false (default to true) the error will not be shown on the screen.
 
-`onAddToCart` event handler gets object of `{cartSize, product}` argument. `cartSize` property contains the value of current cartSize after adding it to the cart. `product` is object as well and representing the product which has been added to cart. 
+`onAddToCart` event handler gets object of `{cartSize, product}` argument. `cartSize` property contains the value of current cartSize after adding it to the cart. `product` is an object as well and representing the product which has been added to cart. 
 
 
 ## All configuration options ##

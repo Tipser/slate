@@ -193,3 +193,43 @@ import { ShopComponent } from '@tipser/tipser-elements';
 
 Note: the shop component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
 For the same reason, it's not recommended to include more than one `<ShopComponent />` on a single page. 
+
+
+## Style Guidelines ##
+
+Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice feel & looks from the start, but also allows you to change them easily to fit your unique sense of style. 
+
+### Collection Element ###
+
+```css
+.te-product-card {
+    font-size: 14px;
+}
+```
+
+The collection consists of the products shown in Product Cards. The font-family used in the description section is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS following style:
+
+All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the `px` unit. If you wish to change single description element, please use its specific class names: 
+
+`.te-product-card-name` <br/>
+`.te-product-card-brand`<br/>
+`.te-product-card-price`<br/>
+and:<br/>
+`.te-product-card-sales-price`<br/>
+`.te-product-card-price-regular-price`<br/>
+for product with campaign rules.
+
+### Cart Icon ###
+
+```css
+.cart-icon {
+    position: fixed;
+    right: 0;
+    top: 121px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: -2px 2px 7px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+```
+The cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:

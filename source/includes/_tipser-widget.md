@@ -170,21 +170,26 @@ It is possible to use Tipser Elements in test (staging) environment to be able t
 where supported environments are `stage` and `prod`. This configuration option is optional and in case it is missing, `prod` environment will be used. 
 
 ## Adding event handlers ##
-Event handlers may be passed as a part of configuration. There is a number of events exposed for developer.
-
-There is `eventsHandler` config option available. This is the place where you can add your own handlers for events.
-
-Currently we are supporting `onError` and `onAddToCart` event handlers.
-
-`onError` is being triggered when some error appear (i.e. when adding product to the cart failed) and `onAddToCart` event is being triggered when the product has been added to the cart.
-
-The handler for `onError` gets error argument (see code example). Error argument is object type with properties : `type`, `id`, `message`, `stack`. Currently all errors have `TipserElementError` and message contains the information for the user what went wrong. `Stack` is a typical error stack of js error.
-
-The `onError` event handler is used with `useDefaultErrorHandler` config option. When that option is set to false (default to true) the error will not be shown on the screen.
-
-`onAddToCart` event handler gets object of `{cartSize, product}` argument. `cartSize` property contains the value of current cartSize after adding it to the cart. `product` is object as well and representing the product which has been added to cart. That object contains properties:
-
 ```js
+
+// how to use event handlers:
+ tipser.elements('5075d7715c3d090a90585e87', { //pos id (Tipser user id)
+    //The configuration of tipser widget comes here
+    lang: "en",
+    useDefaultErrorHandler: true, // default to true, false if you dont need error message
+    eventsHandlers: {
+      onError: (error) => {
+          console.log(error)
+      },
+      onAddToCart: (param) => {
+          console.log('Hurray, you have added item to cart. ', param.product);
+          console.log('Your cart size is now. ', param.cartSize);
+      }
+    }
+  })
+};
+
+// product contains properties:
 {
     id: string;
     title: string;
@@ -199,27 +204,22 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
     discountPriceIncVat: PriceModel;
     freeReturn: boolean;
 }
-```
 
-The code example how to use event handlers:
-
-```js
- tipser.elements('5075d7715c3d090a90585e87', { //pos id (Tipser user id)
-    //The configuration of tipser widget comes here
-    lang: "en",
-  useDefaultErrorHandler: true, // default to true, false if you dont need error message
-    eventsHandlers: {
-      onError: (error) => {
-          console.log(error)
-      },
-      onAddToCart: (param) => {
-          console.log('Hurray, you have added item to cart. ', param.product);
-          console.log('Your cart size is now. ', param.cartSize);
-      }
-    }
-  })
-};
 ```
+Event handlers may be passed as a part of configuration. There is a number of events exposed for developer.
+
+There is `eventsHandler` config option available. This is the place where you can add your own handlers for events.
+
+Currently we are supporting `onError` and `onAddToCart` event handlers.
+
+`onError` is being triggered when an error appears (i.e. when adding product to the cart failed) and `onAddToCart` event is being triggered when the product has been added to the cart.
+
+The handler for `onError` gets error argument (see code example). Error argument is object type with properties : `type`, `id`, `message`, `stack`. Errors are objects with type `TipserElementError` and message contains the information for the user what went wrong. `stack` is a typical error stack of js error.
+
+The `onError` event handler is used with `useDefaultErrorHandler` config option. When that option is set to false (default to true) the error will not be shown on the screen.
+
+`onAddToCart` event handler gets object of `{cartSize, product}` argument. `cartSize` property contains the value of current cartSize after adding it to the cart. `product` is an object as well and representing the product which has been added to cart. 
+
 
 ## All configuration options ##
 

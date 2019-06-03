@@ -14,6 +14,7 @@ includes:
   - tipser-elements.md
   - tipser-elements-analytics.md
   - tipser-widget.md
+  - amp_snippet.md
 
 search: true
 ---

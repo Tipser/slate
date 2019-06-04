@@ -194,12 +194,12 @@ import { ShopComponent } from '@tipser/tipser-elements';
 Note: the shop component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
 For the same reason, it's not recommended to include more than one `<ShopComponent />` on a single page. 
 
+ 
+## Customizing Elements Style ##
 
-## Style Guidelines ##
+Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. 
 
-Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice feel & looks from the start, but also allows you to change them easily to fit your unique sense of style. 
-
-### Collection Element ###
+### Product Card ###
 
 ```css
 .te-product-card {
@@ -207,7 +207,7 @@ Tipser Elements are the "building blocks" designed to fit your page as much as p
 }
 ```
 
-The collection consists of the products shown in Product Cards. The font-family used in the description section is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS following style:
+The Product Card is an item used for displaying single Collection or Store component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS following style:
 
 All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the `px` unit. If you wish to change single description element, please use its specific class names: 
 
@@ -217,7 +217,7 @@ All the description elements (product name, brand and price) will become bigger 
 and:<br/>
 `.te-product-card-sales-price`<br/>
 `.te-product-card-price-regular-price`<br/>
-for product with campaign rules.
+for products on sale.
 
 ### Cart Icon ###
 

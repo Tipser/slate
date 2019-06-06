@@ -1,13 +1,10 @@
 # Rest API
 
-Tipser provides a RESTful API that you can use to fully integrate your platform with Tipser.
+Tipser provides a RESTful API you can use to fully integrate your platform with Tipser.
 
 ##Endpoints
 
 ##Markets
-Available markets for the product endpoint 
-
-`/v4/markets`
 
 > Get available markets
 
@@ -35,6 +32,8 @@ GET https://t3-prod-api.tipser.com/v4/markets
 }
 ```
 
+Available markets for the product endpoint: `/v4/markets`
+
 These parameters control the market in the API and are used for some of the methods.
 
 Market controls the currency, and ship-to country. 
@@ -51,42 +50,6 @@ se | Sweden (default)
 These parameters control the market in the API and are used for some of the methods.
 
 ##Products
-All product related methods
-
-`/v4/products`
-
-###Fetching products using search
-Search over Tipser public product repository, with support for filtering by text, brands, prices with sorting and pagination.
-
-`GET https://t3-prod-api.tipser.com/v4/products`
-
-Query string parameters
-
-query | string | Search query
------ | ------ | -----------
-brands | string | Brand name
-merchants | string | Merchant name  
-limit | integer | Number of items to show
-skip | integer | Number or items to skip  
-sort | name/-name/price/-price	 
-priceFrom | integer	 
-priceTo | integer	 
-market | string | See above
-
-Example requests (try me):
-
-[https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock] (https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock)
-
-[https://t3-prod-api.tipser.com/v4/products?limit=3]
-(https://t3-prod-api.tipser.com/v4/products?limit=3)
-
-[https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3]
-(https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3)
-
-
-###Fetch product by id
-
-`GET https://t3-prod-api.tipser.com/v4/products/:productId(?pos=:posId)`
 
 > PRODUCT MODEL
 
@@ -177,6 +140,42 @@ Example requests (try me):
     freeReturn: boolean
 }
 ```
+
+All product related methods: `/v4/products`
+
+###Fetching products using search
+Search over Tipser public product repository, with support for filtering by text, brands, prices with sorting and pagination.
+
+`GET https://t3-prod-api.tipser.com/v4/products`
+
+Query string parameters
+
+query | string | Search query
+----- | ------ | -----------
+brands | string | Brand name
+merchants | string | Merchant name  
+limit | integer | Number of items to show
+skip | integer | Number or items to skip  
+sort | name/-name/price/-price	 
+priceFrom | integer	 
+priceTo | integer	 
+market | string | See above
+
+Example requests (try me):
+
+[https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock] (https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock)
+
+[https://t3-prod-api.tipser.com/v4/products?limit=3]
+(https://t3-prod-api.tipser.com/v4/products?limit=3)
+
+[https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3]
+(https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3)
+
+
+###Fetch product by id
+
+
+`GET https://t3-prod-api.tipser.com/v4/products/:productId(?pos=:posId)`
 
 Query string parameters
 **productId:** string

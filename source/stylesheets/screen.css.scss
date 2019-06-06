@@ -461,6 +461,13 @@ html, body {
     padding: 0;
   }
 
+  //as most of our snippets are either js or html, we decided that
+  //we will use plaintext as a format to be wrapped for a very long code snippets
+  //like AMP script (Piotr).
+  pre.plaintext>code {
+    white-space: normal;
+  }
+
   aside {
     padding-top: 1em;
     padding-bottom: 1em;

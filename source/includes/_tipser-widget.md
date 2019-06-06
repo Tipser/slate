@@ -120,7 +120,7 @@ To activate the cart, you need to dedicate an element on your page to host a sho
 
 
 ```css
-.tipser-shopping-cart {
+.cart-icon {
     position: fixed;
     right: 0;
     top: 121px;

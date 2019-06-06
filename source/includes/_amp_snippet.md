@@ -5,6 +5,7 @@ AMP snippet is a piece of code that allows to render Tipser collections on an AM
 Due to the limitations of AMP format, AMP snippet is limited in functionality compared to Tipser Widget.
 
 Significant limitations:
+
 - even if you need to display only one product, please create a Tipser collection with just one product
 - there is no support for an interactive shopping cart icon
 - the checkout process is finalized after a redirect to tipser.com page (no way to keep the user in the article)

@@ -1,13 +1,13 @@
 # Tipser Elements
-Tipser Elements is a React components library from Tipser enabling you to add shopable content to your site with minimal effort.  You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.
+Tipser Elements is a React components library from Tipser enabling you to add shoppable content to your site with minimal effort.  You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.
 
-The package allows you to use Tipser's product repository and create inline shops embedded into your pages as well as the entire websites.
+The package allows you to use Tipser's product repository and create inline shops embedded into your page as well as the entire websites.
 
 ## See it live! ##
 
-A working examples of page based on tipser-elements can be found here: https://tipser.github.io/tipser-elements-react-bootstrap/ .
+A working examples of page based on tipser-elements can be found on [Tipser Elements Bootstrap page](https://tipser.github.io/tipser-elements-react-bootstrap/).
 
-The code of that page is available as a GitHub project: https://github.com/Tipser/tipser-elements-react-bootstrap . Feel free to checkout it and play with it on your local machine! 
+The code of that page is available as a GitHub [Tipser Elements Bootstrap project](https://github.com/Tipser/tipser-elements-react-bootstrap). Feel free to checkout it and play with it on your local machine! 
 
 ## Quick Start with NPM version
 
@@ -15,7 +15,7 @@ Add the library to your project:
 
 `npm install --save @tipser/tipser-elements`
 
-Follow the instructions in Available Components section to add particular components to your app.
+Follow the instructions in the Available Components section to add particular components to your app.
 
 ## Quick start with scripted injectable version
 There is a bundled, out-of-the-box solution to be placed on your website called Tipser Widget. For more information and instructions how to use it, please refer to [Tipser Widget docs](#tipser-widget).
@@ -41,26 +41,6 @@ Start the application
 
 ### Example inserting elements in your site
 You can combine Tipser Elements with your own application:
-
-#### `TipserElementsProvider` 
-Entry point to Tipser Elements (creating a context for other Elements);
-
-prop name  | description | type  | required | default value 
------------|-------------|-------|----------|--------------
-posId | id of Point of sale | string | true | 
-config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false   | {}
- 
-#### `TipserElement` 
-Generic Element that can render any Contentful content that's fed as a prop to the element.
-
-#### `TipserProduct` 
-Element that renders the product given the Tipser product ID as the prop.
-
-#### `CartIcon` 
-Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
-
-
-#### Example of above components used together:
 
 ```js
 import React from 'react';
@@ -91,23 +71,40 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-> root is the id of the HTML element where the Tipser element goes
+> "root" is the id of the HTML element where the Tipser element goes
+
+#### `TipserElementsProvider` 
+Entry point to Tipser Elements (creating a context for other Elements);
+
+prop name  | description | type  | required | default value 
+-----------|-------------|-------|----------|--------------
+posId | id of Point of sale | string | true | 
+config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false   | {}
+ 
+#### `TipserElement` 
+Generic Element that can render any Contentful content that's fed as a prop to the element.
+
+#### `TipserProduct` 
+Element that renders the product given the Tipser product ID as the prop.
+
+#### `CartIcon` 
+Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
+
+
 
 ### All configuration options of Tipser Elements
 
-Configuration is an object, that should be inserted into `TipserElementsProvider` as `config` prop.
+Configuration is an object, which should be inserted into `TipserElementsProvider` as `config` prop.
 
 All properties are optional:
 
 property name | description |type | default value
 --------------|-------------|-----|---------------
-defaultAddedToCartPopup | controls whether default Added To Cart Popup is displayed | boolean | true 
-eventsHandlers | gives possibility to add handlers to Tipser Elements events | object | {}
-useDefaultErrorHandler | when set to false and error happens, default message won't be displayed | boolean | true
+`defaultAddedToCartPopup` | controls whether default Added To Cart Popup is displayed | boolean | true 
+`eventsHandlers` | gives possibility to add handlers to Tipser Elements events | object | {}
+`useDefaultErrorHandler` | when set to false and error happens, default message won't be displayed | boolean | true
 
-#### Event Handlers
-Event handlers may be passed as a part of `config` option of `TipserElementsProvider`. There is a number of events exposed for developer. 
-
+### Event Handlers
 ```js
 
 let tipserConfig = {
@@ -130,14 +127,15 @@ let tipserConfig = {
 // ... as in example above class App extends Component { ... }
 
 ```
+Event handlers may be passed as a part of `config` option of `TipserElementsProvider`. There is a number of events exposed for developer. 
+
 
 Handler name  | description | params
 --------------|-------------|--------
 onError | Main goal of this handler is to add additional behavior when the error appears. | object of type EventError (see [EventError](#event-error-interface)
 onAddToCart | when product is being added to cart event is triggered | object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties see (see [TipserProductModel](#tipser-product-model-interface)) 
 
-#### Event Error interface
-Param of `onError` handlers
+### Event Error interface
 
 ```js 
 export interface EventError {
@@ -147,10 +145,11 @@ export interface EventError {
     stack?: string;
 }
 ```
+Param of `onError` handlers
 
-#### Tipser Product Model interface
+<br><br><br><br>
 
-When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
+### Tipser Product Model interface
 
 ```js 
 export interface TipserProductModel {
@@ -168,38 +167,39 @@ export interface TipserProductModel {
     freeReturn: boolean;
 }
 ```
+When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 ### Content components
 Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 
 
-- **Article**
-- **Brand**
-- **CartIcon**
-- **Collection**
-- **Grid**
-- **Menu**
-- **Page**
-- **Product**
+`Article`<br> 
+`Brand`<br>
+`Collection`<br>
+`Grid`<br>
+`Menu`<br>
+`Page`<br>
+`Product`<br>
 
-### Shop component
+### Store
 
-Shop component is a HTML widget displaying a list of all Tipser public collections for the POS.   
+Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
 
-It can be used with `ShopComponent` react component.
+It can be used with `Store` react component.
 
 ```js
-import { ShopComponent } from '@tipser/tipser-elements';
+import { Store } from '@tipser/tipser-elements';
  ...
-<ShopComponent />
+<Store />
 ```
 
 [![](shop_component.png)](/images/shop_component.png)
 
-Note: the shop component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
-For the same reason, it's not recommended to include more than one `<ShopComponent />` on a single page. 
+Note: the `Store` component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
+For the same reason, it's not recommended to include more than one `<Store />` on a single page. 
 
  
-## Customizing Elements Style ##
+## Customizing Tipser Elements Styles ##
 
 Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. 
 
@@ -211,7 +211,7 @@ Tipser Elements are the "building blocks" designed to fit your page as much as p
 }
 ```
 
-The Product Card is an item used for displaying single Collection or Store component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS following style:
+The Product Card is an item used for displaying single `Collection` or `Store` component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS the following style:
 
 All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the `px` unit. If you wish to change single description element, please use its specific class names: 
 
@@ -223,7 +223,7 @@ and:<br/>
 `.te-product-card-price-regular-price`<br/>
 for products on sale.
 
-### Cart Icon ###
+### Cart ###
 
 ```css
 .cart-icon {
@@ -236,4 +236,4 @@ for products on sale.
     z-index: 10;
 }
 ```
-The cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
+The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:

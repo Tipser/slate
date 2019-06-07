@@ -36,11 +36,11 @@ Please refer to [Enhanced Ecommerce Data Types and Actions](https://developers.g
 
 ## Shop view
 
-This event is emitted every time Shop is rendered on a page.
+This event is emitted every time `Store` is rendered on a page.
 
 [![](shop_viewed.png)](/images/shop_viewed.png)
 
-_In the screenshot above tipser shop was rendered and "Shop view" event has been emitted._
+_In the screenshot above Store was rendered and "Shop view" event has been emitted._
 
 ### Prerequisites ###
  
@@ -62,16 +62,16 @@ Category    | Action        | Standard Enhanced Ecommerce event?
 
 ## Shop list clicked
 
-This event is emitted every time a list on a shop is clicked.
+This event is emitted every time a list in a Store is clicked.
 
 [![](shop_list_clicked.png)](/images/shop_viewed.png)
 
-_In the screenshot above one of the shop lists was clicked (marked with a red rectangle) and "Shop list clicked" event has been emitted._
+_In the screenshot above one of the Store lists was clicked (marked with a red rectangle) and "Shop list clicked" event has been emitted._
 
 ### Prerequisites ###
 
-Shop categories need to be defined as `Slottable Link` components (typically as a part of horizontal menu component) in Contentful space. In component hierarchy they need
- to be located anywhere under `Layout - Container` component whose field `IsShop` is set to `true` (otherwise they won't be recognized as a part of the shop).
+Store categories need to be defined as `Slottable Link` components (typically as a part of horizontal menu component) in Contentful space. In component hierarchy they need
+ to be located anywhere under `Layout - Container` component whose field `IsShop` is set to `true` (otherwise they won't be recognized as a part of the Store).
 
 ### GA event format ###
 
@@ -94,7 +94,7 @@ Products need to be defined as `Product` components in Contentful space.
 
 ### Additonal notes ###
 
-The event is emitted no matter if the product tile element is actually visible on the screen.
+The event is emitted no matter if the Product tile element is actually visible on the screen.
 It is possible that if the product tile element is positioned below the fold of the browser window, the event
 will be emitted for the product tile that was not seen by the user.
 
@@ -111,7 +111,7 @@ This event is emitted every time product tile is clicked and product dialog is d
 
 [![](product_details_viewed.png)](/images/product_details_viewed.png)
 
-_In the screenshot above user has clicked on one of the product tiles and product dialog has been displayed as a result. "Product details view" event has been emitted.
+_In the screenshot above user has clicked on one of the product tiles and product dialog has been displayed as a result. "Product details view" event has been emitted._
 
 ### Prerequisites ###
 
@@ -145,7 +145,7 @@ Category         | Action         | Standard Enhanced Ecommerce event?
 
 ## Remove from cart
 
-This event is emitted when product is removed from cart at checkout dialog.
+This event is emitted when product is removed from cart in checkout dialog.
 
 ### GA event format ###
 

@@ -73,9 +73,11 @@ html, body {
 
   // This is the logo at the top of the ToC
   .logo {
+    box-sizing: border-box;
     display: block;
     max-width: 100%;
     margin-bottom: $logo-margin;
+    padding: 15px;
   }
 
   &>.search {
@@ -364,7 +366,7 @@ html, body {
   h2 {
     @extend %header-font;
     font-size: 19px;
-    margin-top: 4em;
+    margin-top: 3em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
@@ -388,6 +390,15 @@ html, body {
 
   h4, h5, h6 {
     font-size: 10px;
+  }
+
+  a {
+    color: #3c78c8;
+    text-decoration: none;
+
+    &:hover {
+      color: #658ec1;
+    }
   }
 
   hr {
@@ -423,11 +434,11 @@ html, body {
     }
 
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: darken($main-bg,2.4%);
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: darken($main-bg,1.2%);
     }
   }
 
@@ -482,6 +493,7 @@ html, body {
 
     &.success {
       background-color: $aside-success-bg;
+      color: #fff;
     }
   }
 
@@ -620,3 +632,14 @@ html, body {
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+
+.highlight {
+  .err {
+    color: lightpink;
+  }
+  .o, .nt {
+    color: #b8a056;
+  }
+}
+
+

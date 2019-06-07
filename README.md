@@ -23,8 +23,9 @@ visit: https://github.com/lord/slate
 
 ### Getting Set Up
 
+run locally:
+
 ```shell
-# run this to run locally
 ./run.sh
 ```
 

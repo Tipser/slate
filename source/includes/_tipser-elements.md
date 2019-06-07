@@ -174,7 +174,7 @@ When onAddToCart is being dispatched the handlers are triggered with object with
 Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 
 
 `Article`<br> 
-`Brand*`<br>
+`Brand`<br>
 `Collection`<br>
 `Grid`<br>
 `Menu`<br>

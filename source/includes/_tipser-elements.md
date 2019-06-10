@@ -237,3 +237,13 @@ for products on sale.
 }
 ```
 The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
+<br><br><br><br><br>
+
+### Buttons ###
+```css
+.te-button {
+    background-color: #5F9F9F;
+    color: #333;
+}
+```
+All buttons' default background color is black. If you would like to change it, all you need to do is overwrite the class `.te-button` with the color more matching your design:

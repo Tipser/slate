@@ -237,3 +237,24 @@ for products on sale.
 }
 ```
 The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
+<br><br><br><br><br>
+
+### Primary color ###
+```css
+.te-primary-fill {
+    background-color: #5F9F9F;
+    /* if your primary color is bright,
+    you may consider changing also the text color: */
+    color: #fff;
+}
+
+.te-primary-border {
+    border-color: #5F9F9F;
+}
+```
+If you'd like to unify our design with your own color-theme, you can use our primary-color theme to change the color of `add-to-cart` buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
+[![](primary-color.png)](/images/primary-color.png)
+If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. By default the color we use is white.
+
+
+If you'd like to change other elements' color as well, please use our specific classes to override the styles.

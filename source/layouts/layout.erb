@@ -32,10 +32,11 @@ under the License.
     <title><%= current_page.data.title || "API Documentation" %></title>
 
     <style>
-      <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
+      <%= Rouge::Themes::Github.render(:scope => '.highlight') %>
     </style>
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :print, media: :print %>
+    <link rel="stylesheet" href="https://www.tipser.com/fonts.css" type="text/css"/>
     <% if current_page.data.search %>
       <%= javascript_include_tag  "all" %>
     <% else %>
@@ -64,12 +65,6 @@ under the License.
           <% end %>
         </div>
       <% end %>
-      <% if current_page.data.search %>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <% end %>
       <ul id="toc" class="toc-list-h1">
         <% toc_data(page_content).each do |h1| %>
           <li>
@@ -97,6 +92,13 @@ under the License.
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
+      <% if current_page.data.search %>
+      <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search documentation...">
+      </div>
+      <ul class="search-results"></ul>
+    <% end %>
+    
         <%= page_content %>
       </div>
       <div class="dark-box">

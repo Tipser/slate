@@ -1,20 +1,21 @@
 ---
-title: API Reference
+title: Client API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='tipser.com'>Visit Tipser page</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href="https://tipser.com">Tipser</a>
 
 includes:
-  - rest-api.md
-  - tipser-sdk.md
+  - overview.md
   - tipser-elements.md
+  - tipser-react-elements.md
+  - tipser-sdk.md
+  - amp.md
   - tipser-elements-analytics.md
-  - tipser-widget.md
-  - amp_snippet.md
+  - rest-api.md
+
 
 search: true
 ---

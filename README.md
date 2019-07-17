@@ -2,18 +2,6 @@ Tipser Docs
 ---
 See the live docs at https://tipser.github.io/docs/
 
-run this to run locally:
-```shell
-./run.sh
-```
-
-deploy changes with:
-
-```shell 
-./deploy.sh
-```
-
-
 Editing
 ------------------------------
 
@@ -25,21 +13,25 @@ You're going to need:
  - **Ruby, version 2.3.1 or newer**
  - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
-### Getting Set Up
+- Install Bundler dependencies
+```
+bundler install
+```
 
-1. Fork this repository on GitHub.
-2. Clone *your forked repository* (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/slate.git`
-3. `cd slate`
-4. Initialize and start Slate. You can either do this locally, or with Vagrant:
+## Running
 
 ```shell
-# either run this to run locally
-bundle install
-bundle exec middleman server
-
-# OR run this to run with vagrant
-vagrant up
+./run.sh
 ```
+
+Now you can navigate to http://localhost:4567!
+
+### Deploy
+
+```shell 
+./deploy.sh
+```
+
 
 You can now see the docs at http://localhost:4567. Whoa! That was fast!
 

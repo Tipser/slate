@@ -1,6 +1,6 @@
-#Tipser Script SDK
+#Tipser SDK
 
-The Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.
+Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.
 ## Installation
 
 ###Using npm or yarn

@@ -79,7 +79,7 @@ html, body {
     display: block;
     max-width: 100%;
     margin-bottom: $logo-margin;
-    padding: 30px;
+    padding: 35px 41px;
   }
 
 
@@ -103,14 +103,16 @@ html, body {
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    background-color: $nav-active-bg;
-    color: $nav-active-text;
+    // background-color: $nav-active-bg;
+    // color: $nav-active-text;
+    border-right: 3px #B8A056 solid;
+    font-weight: 400;
   }
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
-    background-color: $nav-active-parent-bg;
-    color: $nav-active-parent-text;
+    // background-color: $nav-active-parent-bg;
+    // color: $nav-active-parent-text;
   }
 
   .toc-list-h2 {
@@ -685,4 +687,17 @@ ul.search-results.visible {
 
 ul.search-results {
   display: none;
+}
+
+// nice effect to center the content
+@media (min-width: 1120px) {
+  .content {
+    margin-left: calc( 50% - 450px);
+  }
+
+  .toc-wrapper {
+    padding-left: calc(50% - 560px);
+    box-sizing: border-box;
+    width: calc(50% - 350px);
+  }
 }

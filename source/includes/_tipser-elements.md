@@ -13,194 +13,111 @@ Tipser Elements is a set of shoppable elements built on top of Tipser REST API a
 
 
 ## Quick start
-This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`.
+This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the **Tipser Tools** tutorial.
+
+If you're all set up, follow this three steps to install Tipser Elements on your site!
+
+***
 
 ### _Step 1:_ Initial setup of Tipser Elements
 
-To use Tipser Elements on your site, add following script on your pages.
+To use Tipser Elements on your site, add following script on your pages. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
 
 ```html
 <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
 ```
 <aside class="notice">
-The recommended place to any scripts is the end of the <code>body</code> tag of your page so that your page is rendering is not blocked by JavaScript parsing.
+Make sure, that Tipser Elements script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load any scripts at the end of the <code>body</code> tag of your page so that the rendering is not blocked by JavaScript parsing. 
 </aside>
 
 ***
 
 ### _Step 2:_ `Store` element
 
-Insert below HTML on your page in the place where you want the Tipser Store to be rendered.
+Insert below HTML on your page in the place where you want the `Store` element to be rendered. Typically, this can be a new blank subpage created in your CMS as the `Store` is best displayed in the full page mode.
 
 ```html
 <div id="tipser_store"></div>
 ```
 
+<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags into shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 ***
 
 ### _Step 3:_ Initialize Tipser Element
-Finally, initialize Tipser Elements that has been injected in the first step.
+Finally, initialize Tipser Elements that has been injected in the first step. 
 
 ```js
 var TipserElements = tipser.elements('posId')
 ```
 
-Make sure to replace `posId` with your actual <abbr title="Point of Sale/publisher id">POS ID</abbr>. When you run the page, you should see a store rendered in the place where the tag `<div id="tipser_store">` was initially. 
+Make sure that the `posId` is replaced with the actual id. 
 
+If everything was setup correctly, you should see an `Store` element with all your collections in the place where the tag `<div id="tipser_store">` was initially. 
 
 [![](tipser_elements_store.png)](/images/tipser_elements_store.png)
 
-
-### _Step 4:_ `Product` Element
-Once you have all set up and initialized, you can go ahead and add other Tipser Elements to your content, for example `Product`.
-
-```html
-<div data-tipser-pid="5ba2334a781baa0001ccdf61" />
-```
-
-Elements with attribute `data-tipser-pid` will be replaced with Product component, using the product with Tipser id passed in the attribute. By default a full inline product component is displayed.
-
-[![](full-product.png)](/images/full-product.png)
-
-To display `Product` in a compact view, add the `data-tipser-view="compact"` attribute to above tag.
-
-```html
-<div data-tipser-pid="57233dac89862012f8ec1001" data-tipser-view="compact" />
-```
-
-[![](compact-product.png)](/images/compact-product.png)
-
-### _Step 5:_ `Collection` Element
-
-```html
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="1.2" />
-```
-
-Elements with attribute `data-tipser-cid` will be replaced with Collection component, using the collection with Tipser id passed in the attribute. To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `"0.8"` for smaller  and `"1.2"` for lager product tiles. The default value for imgSize parameter is `"1"`.
-
-### Embedding Store on the page ###
-
-```html
-<div id="tipser_store"></div>
-```
-
 > [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
 
-Element with id `tipser_store` will be replaced with Store component for the user whose `posId` has been passed to `tipser.elements()` call (see: [Basic Usage](#basic-usage) ).
 
-[![](shop_component.png)](/images/shop_component.png)
+<aside class="success">Congratulations! You have successfully integrated and setup Tipser Elements on your side. Read below the full specification of Elements and their configurations.</aside>
 
-Note: the Store is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
-For the same reason, there can't be more than one Store on the page (the DOM replacement logic will replace only the last occurence of a component with `tipser_store` id).
+***
 
-## Displaying CMS content on page ##
+## Configuration
 
-```js
-tipser.elements('myPosId')
-  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .store-container");
-```
+Main Tipser Elements function - `tipser.elements` - accepts a second (optional) parameter which is an object of configuraton options. Below section describes most common configuration options. Complete index of all the supported configuration options can be found in the [API reference](#API-reference) section.
 
-> Make sure to replace the value for `myPosId` and parameters of `mountContent` function.
+***
 
-> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/RONrZv)
 
-Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser's CMS (Contentful) to your page with `.mountContent` function.
+### Language and locale
 
-_Prerequisites:_ you need to have a Contentful content created and configured (which is typically done by Tipser staff) and dedicate part of your page to inject that content.
-
-`mountContent` function accepts two parameters:
-
-`contentId`: the id of the content in the CMS <br>
-`target`: It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where the CMS content will be injected.
-
-## Displaying Cart ##
+`lang` configuration option specifies the language to be used. Supported languages are currently: `en`, `de`, `fr` and `sv`.
 
 ```js
-tipser.elements('myPosId')
-  .mountCart(".shopping-zone .cart-container");
-```
-
-To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
-
-To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to `mountCart` function, as in the example snippet.
-
-The cart icon can be placed anywhere on your website. If you want to keep it visible at all times please follow the [instructions](#cart).
-## Advanced example: displaying several pieces of CMS content and cart icon ##
-
-```js
-tipser.elements('myPosId')
-  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .content-container1")
-  .mountContent("3UvCQHKV7gmMdcegDHSr5C", ".shopping-zone .content-container2")
-  .mountCart(".shopping-zone .cart-container");
-```
-
-It is possible to combine multiple invocations of `mountContent()` with zero or one invocations of `mountCart()` as presented in the code snippet. That will lead to multiple pieces of content
-AND a cart icon being displayed on the page.
-
-## Specifying a locale ##
-
-```js
-  tipser.elements("myPosId", {
+  tipser.elements('posId', {
     lang: 'en'
   })
 ```
 
-The function `tipser.elements` accepts a second optional parameter which is an object of configuraton options.
+***
 
-`lang` configuration option specifies the language to be used. Supported languages are currently: `en`, `de`, `fr` and `sv`.
-
-A complete index of all the supported configuration options can be found in [All configuration options](#all-configuration-options) section.
-
-## Specifying an environment ##
+### Environment
 
 ```js
-  tipser.elements("myPosId", {
+  tipser.elements('posId', {
     env: 'stage'
   })
 ```
 
-It is possible to use Tipser Elements in test (staging) environment to be able to do test checkouts. The environment can be activated using the `env` configuration option, as in the snippet, 
-where supported environments are `stage` and `prod`. This configuration option is optional and in case it is missing, `prod` environment will be used. 
+It is possible to use Tipser Elements in a sandbox environment (also known as _staging_ or _test_ environment) to be able to do test checkouts without charging actual money. The environment can be activated using the `env` configuration option.
 
-## Adding event handlers ##
-```ts
+Supported environments are `stage` and `prod`. This configuration option is optional, default env is `prod`, which means actual production environment.
 
-// how to use event handlers:
- tipser.elements('5075d7715c3d090a90585e87', { //pos id (Tipser user id)
-    //The configuration of tipser widget comes here
-    lang: "en",
-    useDefaultErrorHandler: true, // default to true, false if you dont need error message
+***
+
+### Event handlers
+
+Event handlers may be passed as part of configuration. There is a number of event exposed by the Tipser Elements that can be listened to programatically.
+
+```js
+
+ tipser.elements('posId', { 
+    useDefaultErrorHandler: true, // default to true, false if you don't need error message
     eventsHandlers: {
-      onError: (error) => {
-          console.log(error)
+      onError: error => {
+          console.log(error);
       },
-      onAddToCart: (param) => {
-          console.log('Hurray, you have added item to cart. ', param.product);
-          console.log('Your cart size is now. ', param.cartSize);
+      onAddToCart: payload => {
+          console.log('Hurray, you have added item to cart. ', payload.product);
+          console.log('Your cart size is now. ', payload.cartSize);
       }
     }
   })
 };
-
-// product contains properties:
-{
-    id: string;
-    title: string;
-    description: string;
-    brand: string;
-    images: any[];
-    isInStock: boolean;
-    deliveryTime: string;
-    priceIncVat: PriceModel;
-    deliveryCost: PriceModel;
-    variants: TipserProductModel[];
-    discountPriceIncVat: PriceModel;
-    freeReturn: boolean;
-}
-
 ```
-Event handlers may be passed as part of configuration. There is a number of events exposed for developer.
+
+
 
 In `eventsHandler` config option you can add your own handlers for events `onError` and `onAddToCart`.
 
@@ -226,12 +143,80 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
 
 - `cartSize` property contains the value of current cartSize after adding it to the cart 
 
-- `product` is an object as well and representing the product which has been added to cart. 
+- `product` is an object as well and representing the product which has been added to cart. The model of the `product` field is as follows.
+  
+
+```ts
+{
+    id: string;
+    title: string;
+    description: string;
+    brand: string;
+    images: any[];
+    isInStock: boolean;
+    deliveryTime: string;
+    priceIncVat: PriceModel;
+    deliveryCost: PriceModel;
+    variants: TipserProductModel[];
+    discountPriceIncVat: PriceModel;
+    freeReturn: boolean;
+}
+```
 
 
-## All configuration options ##
+## `Store` Element
 
-Tipser Widget supports following configuration options.
+## `Product` Element
+Once you have all set up and initialized, you can go ahead and add other Tipser Elements to your content, for example `Product`.
+
+```html
+<div data-tipser-pid="5ba2334a781baa0001ccdf61" />
+```
+
+Elements with attribute `data-tipser-pid` will be replaced with Product component, using the product with Tipser id passed in the attribute. By default a full inline product component is displayed.
+
+[![](full-product.png)](/images/full-product.png)
+
+To display `Product` in a compact view, add the `data-tipser-view="compact"` attribute to above tag.
+
+```html
+<div data-tipser-pid="57233dac89862012f8ec1001" data-tipser-view="compact" />
+```
+
+[![](compact-product.png)](/images/compact-product.png)
+
+### _Step 5:_ `Collection` Element
+
+```html
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="1.2" />
+```
+
+Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `"0.8"` for smaller  and `"1.2"` for lager product tiles. The default value for imgSize parameter is `"1"`.
+
+> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
+
+***
+
+### _Step 6:_ Custom `Cart` on your page
+
+```js
+tipser.elements('myPosId')
+  .mountCart(".shopping-zone .cart-container");
+```
+
+To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
+
+To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to `mountCart` function, as in the example snippet.
+
+The cart icon can be placed anywhere on your website. If you want to keep it visible at all times please follow the [instructions](#cart).
+
+
+
+
+## API reference
+
+All configuration supported by Tipser Elements is listed below.
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
@@ -250,3 +235,36 @@ In addition to the options described above all the configuration options support
 A working examples of page based on Tipser Widget can be found on [Tipser Widget Bootstrap page](https://tipser.github.io/tipser-widget-bootstrap/).
 
 The code of that page is available as a GitHub [Tipser Widget Bootstrap project](https://github.com/Tipser/tipser-widget-bootstrap). Feel free to checkout it and play with it on your local machine!
+
+
+## _Bonus:_ Displaying CMS content on page
+
+```js
+tipser.elements('myPosId')
+  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .store-container");
+```
+
+> Make sure to replace the value for `myPosId` and parameters of `mountContent` function.
+
+> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/RONrZv)
+
+Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser's CMS (Contentful) to your page with `.mountContent` function.
+
+_Prerequisites:_ you need to have a Contentful content created and configured (which is typically done by Tipser staff) and dedicate part of your page to inject that content.
+
+`mountContent` function accepts two parameters:
+
+`contentId`: the id of the content in the CMS <br>
+`target`: It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where the CMS content will be injected.
+
+## _Bonus:_ Displaying several pieces of CMS content and cart icon
+
+```js
+tipser.elements('myPosId')
+  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .content-container1")
+  .mountContent("3UvCQHKV7gmMdcegDHSr5C", ".shopping-zone .content-container2")
+  .mountCart(".shopping-zone .cart-container");
+```
+
+It is possible to combine multiple invocations of `mountContent()` with zero or one invocations of `mountCart()` as presented in the code snippet. That will lead to multiple pieces of content
+AND a cart icon being displayed on the page.

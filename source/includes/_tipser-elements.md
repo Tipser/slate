@@ -65,7 +65,13 @@ If everything was setup correctly, you should see an `Store` element with all yo
 
 ## Configuration
 
-Main Tipser Elements function - `tipser.elements` - accepts a second (optional) parameter which is an object of configuraton options. Below section describes most common configuration options. Complete index of all the supported configuration options can be found in the [API reference](#API-reference) section.
+Main Tipser Elements function has two arguments.
+
+```ts
+tipser.elements(posId: string, config?: TipserElementsConfig)
+```
+- `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions.
+- `config` - allows you to specify how Tisper Elements will look and behave on your website. Below section describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found in the [API reference](#API-reference) section.
 
 ***
 
@@ -80,9 +86,13 @@ Main Tipser Elements function - `tipser.elements` - accepts a second (optional) 
   })
 ```
 
+It will affect all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It will not affect the currency in which the customer will pay for the product.
+
 ***
 
 ### Environment
+
+It is possible to use Tipser Elements in a sandbox environment (also known as _staging_ or _test_ environment) to be able to do test checkouts without charging actual money. The environment can be specified using the `env` configuration option.
 
 ```js
   tipser.elements('posId', {
@@ -90,64 +100,43 @@ Main Tipser Elements function - `tipser.elements` - accepts a second (optional) 
   })
 ```
 
-It is possible to use Tipser Elements in a sandbox environment (also known as _staging_ or _test_ environment) to be able to do test checkouts without charging actual money. The environment can be activated using the `env` configuration option.
 
-Supported environments are `stage` and `prod`. This configuration option is optional, default env is `prod`, which means actual production environment.
+Supported values are `stage` and `prod`. This configuration option is optional, default env is `prod`, which means actual production environment.
 
 ***
 
 ### Event handlers
 
-Event handlers may be passed as part of configuration. There is a number of event exposed by the Tipser Elements that can be listened to programatically.
+Event handlers can be passed as part of configuration. There is a number of event exposed by the Tipser Elements that can be listened to programatically, such as technical events, shopping behavior, errors and analytics. You may hook in your event listener into Tipser Elements via `eventsHandlers` option.
 
 ```js
-
  tipser.elements('posId', { 
-    useDefaultErrorHandler: true, // default to true, false if you don't need error message
     eventsHandlers: {
-      onError: error => {
-          console.log(error);
-      },
       onAddToCart: payload => {
           console.log('Hurray, you have added item to cart. ', payload.product);
           console.log('Your cart size is now. ', payload.cartSize);
       }
     }
   })
-};
 ```
 
+Whenever an event occurs, Tipser Elements will call your event listener, passing only one argument - `payload` - which will hold event data (different to each event type). Above example demonstrates how to listen to the add to cart event and log current cart size and newly added product. Currently supported handlers are:  `onAddToCart` and `onError`.
 
+***
 
-In `eventsHandler` config option you can add your own handlers for events `onError` and `onAddToCart`.
+#### addToCart
 
-`onError` is triggered when an error appears (i.e. when adding product to the cart failed);
+```
+onAddToCart: (cartSize: number, product: TipserProductModel)
+``` 
 
-`onAddToCart` event is triggered when the product has been added to the cart;
-
-<br>
-
-The handler for `onError` takes error argument (see code example) as an object type with properties :
-
-- `type`: `TipserElementError` object 
-
-- `id`: string
-
-- `message`: error message
-
-- `stack`: typical error stack of js error
-
-The `onError` event handler is used with `useDefaultErrorHandler` config option. When that option is set to false (default to true) the error will not be shown on the screen.
-<br><br>
-`onAddToCart` event handler takes an object of `{cartSize, product}` as argument:
-
-- `cartSize` property contains the value of current cartSize after adding it to the cart 
-
-- `product` is an object as well and representing the product which has been added to cart. The model of the `product` field is as follows.
+- `cartSize`- property contains the cart size **after a product has been added to the cart** 
+- `product` - is an object as well and representing the product which has been added to cart. The model of the `product` field is as follows.
   
+`TipserProductModel` interface is as follows:
 
 ```ts
-{
+interface TipserProductModel {
     id: string;
     title: string;
     description: string;
@@ -163,19 +152,63 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
 }
 ```
 
+***
+
+#### error
+
+By default, in case of an unexpected error happening (connection issues or unhandled runtime exceptions), an error popup will appear. If you want to disable the deafult error messages, set `useDefaultErrorHandler` option to `false`, and listen to error messages via `onError` event handler.
+
+```js
+ tipser.elements('posId', { 
+    useDefaultErrorHandler: true, 
+    eventsHandlers: {
+      onError: error => {
+          console.log(error);
+      }
+    }
+  })
+```
+
+The payload of `error` event is as follows:
+
+- `type`: `TipserElementError` object 
+
+- `id`: string
+
+- `message`: error message
+
+- `stack`: typical error stack of js error
+
+The `onError` event handler is used with `useDefaultErrorHandler` config option. When that option is set to false (default to true) the error will not be shown on the screen.
+
+<aside class="warning">This section requires simplification. It isn't clear how to use event handler with combination of this configuration</aside>
+
+***
 
 ## `Store` Element
 
+Store is the simplest to use yet, the most complete Element you can insert on your website. It requires collections to be created in your store, otherwise no content will be rendered. 
+
+Insert below HTML on your page in the place where you want the `Store` element to be rendered.
+
+```html
+<div id="tipser_store"></div>
+```
+
+<aside class="notify"><code>Store</code> Element is best inserted as a top level Element on a separate page and should contain the full content area for the best shopping experience.</aside>
+
 ## `Product` Element
-Once you have all set up and initialized, you can go ahead and add other Tipser Elements to your content, for example `Product`.
+In order to insert a `Product` Element in your content, insert below code in your content.
 
 ```html
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
-Elements with attribute `data-tipser-pid` will be replaced with Product component, using the product with Tipser id passed in the attribute. By default a full inline product component is displayed.
+Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. By default a full inline product component is displayed (with product details, unique selling points and variant selection)
 
 [![](full-product.png)](/images/full-product.png)
+
+***
 
 To display `Product` in a compact view, add the `data-tipser-view="compact"` attribute to above tag.
 
@@ -185,27 +218,36 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 
 [![](compact-product.png)](/images/compact-product.png)
 
-### _Step 5:_ `Collection` Element
+<aside class="success">All Elements are mobile first. This means, that even if you insert a regular `Product` Element, it will be rendered as a compact product on the mobile devices for better experience.</aside>
+
+***
+
+
+## `Collection` Element
+
+You can your store in collections. Each collection however can be rendered separately as a get the look widget or a simple product group, depending on your needs. It is all possible through `Collection` Element.
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="1.2" />
 ```
 
-Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `"0.8"` for smaller  and `"1.2"` for lager product tiles. The default value for imgSize parameter is `"1"`.
+Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `0.8` for smaller  and `1.2` for lager product tiles. The default value for imgSize parameter is `1`.
 
 > [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
 
 ***
 
-### _Step 6:_ Custom `Cart` on your page
-
-```js
-tipser.elements('myPosId')
-  .mountCart(".shopping-zone .cart-container");
-```
+## `Cart` Element
 
 To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
+
+```js
+tipser.elements('posId')
+      .mountCart('.my-cart-container');
+```
+
+
 
 To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to `mountCart` function, as in the example snippet.
 

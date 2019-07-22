@@ -41,8 +41,8 @@ Congratulations! Now Tipser is part of your website
 
 To initialize you need to create a tipser const.
 
-```javascript
-const tipser = TipserSDK(posId:string, options: object): TipserSDK;
+```typescript
+const tipser = TipserSDK(posId: string, options: TipserSdkConfig): TipserSDKInstance;
 ```
 *Arguments:*
 
@@ -57,7 +57,7 @@ Initialized Tipser SDK object that can be used to perform API calls further in t
 *Example:*
 
 ```javascript
-var tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
+const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
 ```
 The example connects Tipser SDK with Tipser shop and sets primary color to yellow.
 
@@ -66,7 +66,7 @@ The example connects Tipser SDK with Tipser shop and sets primary color to yello
 > Example:
 
 ```javascript
-var tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {env: "stage"});
+const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {env: "stage"});
 ```
 
 By default, Tipser SDK connects to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in TipserSDK options, which accepts the following values:
@@ -83,16 +83,16 @@ Sometimes Tipser dialogue styling and functionality needs to be customized. It i
 > Complete example of dialog customizations:
 
 ```javascript
-    var tipserOptions = {
-       modalUi: {
-          hideSearchIcon: true,
-          hideFavouritesIcon: true,
-          hideCartIcon: false,
-          hideMoreIcon: true,
-          hideSimilarProducts: false,
-          useCustomCss: true
-       }
-        });
+const tipserOptions = {
+    modalUi: {
+      hideSearchIcon: true,
+      hideFavouritesIcon: true,
+      hideCartIcon: false,
+      hideMoreIcon: true,
+      hideSimilarProducts: false,
+      useCustomCss: true
+    }
+};
 ```
 
 ###Hiding icons on menu bar

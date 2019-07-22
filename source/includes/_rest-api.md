@@ -14,7 +14,7 @@ GET https://t3-prod-api.tipser.com/v4/markets
 
 > Market model:
 
-```json
+```js
 {
   id: "59dde7e3b8f3f67f24d6f6c9",
   name: "CH_FR",
@@ -53,7 +53,7 @@ These parameters control the market in the API and are used for some of the meth
 
 > PRODUCT MODEL
 
-```json
+```js
 {
     id: string,
     title: string,

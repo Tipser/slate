@@ -2,7 +2,7 @@
 Tipser React Elements is a component library from Tipser enabling you to add shoppable content to your React APP with minimal effort. You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages. 
 
 <aside class="notice">
-Not using React? Or wanted to learn what Tipser Elements are generally? Go check <a href="#tipser-elements">Tipser Elements</a> docs. This section covers only <strong>React API</strong> for Elements. 
+Not using React? Looking for an overview on Tipser Elements? Go check <a href="#tipser-elements">Tipser Elements</a> docs. This section covers only <strong>React API</strong> for Elements. 
 </aside>
 
 ***
@@ -64,7 +64,7 @@ ReactDOM.render(
 Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document.
 
 
-<aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser Reac Elements, check below section.</aside>
+<aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>
 
 ***
 
@@ -261,20 +261,3 @@ If your primary color is a bright one, you might want to change also the text co
 
 
 If you'd like to change other elements' color as well, please use our specific classes to override the styles.
-
-## Quick React example
-Create a React app using e.g. [Create React App](https://facebook.github.io/create-react-app/docs/getting-started) (follow the instructions on their page). 
-
-`npx create-react-app my-tipser-elements-app`
-
-`cd my-tipser-elements-app`
-
-Add Tipser Elements to the project with npm: 
-
-`npm install @tipser/tipser-elements`
-
-Put your Elements code (e.g. copy the example below) in src/index.js file.
-
-Start the application
-
-`npm start`

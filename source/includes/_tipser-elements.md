@@ -102,14 +102,14 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
   })
 ```
 
-It will affect all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It will not affect the currency in which the customer will pay for the product.
+It affects all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It does not affect the currency in which the customer will pay for the product.
 
 
 ***
 
 ## `Store` Element
 
-Store is the simplest to use yet, the most complete Element you can insert on your website. It requires collections to be created in your store, otherwise no content will be rendered. 
+Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered if your shop is empty.
 
 Insert below HTML on your page in the place where you want the `Store` element to be rendered.
 

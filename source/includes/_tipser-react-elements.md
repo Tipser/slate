@@ -147,8 +147,6 @@ export interface EventError {
 ```
 Param of `onError` handlers
 
-<br><br><br><br>
-
 ### Tipser Product Model interface
 
 ```js 
@@ -168,7 +166,6 @@ export interface TipserProductModel {
 }
 ```
 When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
-<br><br><br><br><br><br><br><br><br><br><br><br>
 
 ### Content components
 Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 
@@ -205,13 +202,13 @@ Tipser Elements are the "building blocks" designed to fit your page as much as p
 
 ### Product Card ###
 
+The Product Card is an item used for displaying single `Collection` or `Store` component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS the following style:
+
 ```css
 .te-product-card {
     font-size: 14px;
 }
 ```
-
-The Product Card is an item used for displaying single `Collection` or `Store` component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS the following style:
 
 All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the `px` unit. If you wish to change single description element, please use its specific class names: 
 
@@ -223,7 +220,10 @@ and:<br/>
 `.te-product-card-price-regular-price`<br/>
 for products on sale.
 
+
 ### Cart ###
+
+The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
 
 ```css
 .cart-icon {
@@ -236,10 +236,13 @@ for products on sale.
     z-index: 10;
 }
 ```
-The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
-<br><br><br><br><br>
 
 ### Primary color ###
+
+If you'd like to unify our design with your own color-theme, you can use our primary-color theme to change the color of `add-to-cart` buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
+[![](primary-color.png)](/images/primary-color.png)
+If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
+
 ```css
 .te-primary-fill {
     background-color: #5F9F9F;
@@ -255,9 +258,4 @@ The Cart component with the cart icon can be placed anywhere on your website. (I
     color: #fff;
 }
 ```
-If you'd like to unify our design with your own color-theme, you can use our primary-color theme to change the color of `add-to-cart` buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
-[![](primary-color.png)](/images/primary-color.png)
-If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
-
-
 If you'd like to change other elements' color as well, please use our specific classes to override the styles.

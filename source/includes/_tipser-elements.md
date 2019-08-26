@@ -19,7 +19,7 @@ If you're all set up, follow this three steps to install Tipser Elements on your
 
 ***
 
-### Installation
+### Installation of Tipser Elements
 
 To use Tipser Elements on your site, add following script on your pages. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
 
@@ -87,25 +87,10 @@ Main Tipser Elements function has two arguments.
 tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 - `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. 
-- `config` - allows you to specify how Tipser Elements will look and behave on your site. Below section describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
+- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
 
 ***
 
-
-### Language and locale
-
-`lang` configuration option specifies the language to be used. Supported languages are currently: `en`, `de`, `fr` and `sv`.
-
-```js
-  tipser.elements('posId', {
-    lang: 'en'
-  })
-```
-
-It affects all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It does not affect the currency in which the customer will pay for the product.
-
-
-***
 
 ## `Store` Element
 

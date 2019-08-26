@@ -61,7 +61,7 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document.
+Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document. Also check our [configuration](#configuration-options) options.
 
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>

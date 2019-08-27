@@ -87,7 +87,7 @@ Main Tipser Elements function has two arguments.
 tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 - `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. 
-- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
+- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference-of-tipser-elements) section.
 
 ***
 
@@ -169,12 +169,14 @@ All configuration supported by Tipser Elements is listed below.
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
-lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'`, `'fr'` and `'sv'`. | `'de'` 
-env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. | `'stage'`
+lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'`, `'fr'` and `'sv'`. More info at [Language and locale](#language-and-locale)[Environment](#environment)| `'de'` 
+env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)| `'stage'`
 disableDomReplacement | `false` | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
 useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding event handlers](#adding-event-handlers)
 eventsHandlers | `object` | `null` | the object of event handlers | see [Adding event handlers](#adding-event-handlers)
+useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):  | `false`
+modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)| `{ hideSearchIcon : true}` 
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
 

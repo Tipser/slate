@@ -87,7 +87,7 @@ Main Tipser Elements function has two arguments.
 tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 - `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. 
-- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference-of-tipser-elements) section.
+- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
 
 ***
 
@@ -173,27 +173,12 @@ lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en
 env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)| `'stage'`
 disableDomReplacement | `false` | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
-useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding event handlers](#adding-event-handlers)
-eventsHandlers | `object` | `null` | the object of event handlers | see [Adding event handlers](#adding-event-handlers)
+useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding onError handler](#onerror)
+eventsHandlers | `{}` | the object of event handlers. See [Event handlers](#event-handlers)  | `object` | { onError: console.error.bind(console) }  
 useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):  | `false`
 modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)| `{ hideSearchIcon : true}` 
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
-
-***
-
-### Environment
-
-It is possible to use Tipser Elements in a sandbox environment (also known as _staging_ or _test_ environment) to be able to do test checkouts without charging actual money. The environment can be specified using the `env` configuration option.
-
-```js
-  tipser.elements('posId', {
-    env: 'stage'
-  })
-```
-
-
-Supported values are `stage` and `prod`. This configuration option is optional, default env is `prod`, which means actual production environment.
 
 ***
 
@@ -216,7 +201,7 @@ Whenever an event occurs, Tipser Elements will call your event listener, passing
 
 ***
 
-#### addToCart
+#### onAddToCart
 
 ```
 onAddToCart: (cartSize: number, product: TipserProductModel)
@@ -246,7 +231,7 @@ interface TipserProductModel {
 
 ***
 
-#### error
+#### onError
 
 By default, in case of an unexpected error happening (connection issues or unhandled runtime exceptions), an error popup will appear. If you want to disable the deafult error messages, set `useDefaultErrorHandler` option to `false`, and listen to error messages via `onError` event handler.
 

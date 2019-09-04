@@ -21,7 +21,7 @@ If you're all set up, follow this three steps to install Tipser Elements on your
 
 ### Installation of Tipser Elements
 
-To use Tipser Elements on your site, add following script on your pages. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
+To use Tipser Elements on your site, add following script to your page. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
 
 ```html
 <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
@@ -40,7 +40,7 @@ Insert below HTML on your page in the place where you want the `Store` element t
 <div id="tipser_store"></div>
 ```
 
-<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags into shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
+<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 ***
 
 ### Initialize Tipser Elements
@@ -50,7 +50,7 @@ Finally, initialize Tipser Elements.
 tipser.elements('posId')
 ```
 
-Make sure that the `posId` is replaced with the actual id. 
+Make sure that the `posId` is replaced with the actual id corresponding to your account. 
 
 Complete working example could look like:
 
@@ -68,7 +68,7 @@ Complete working example could look like:
 ```
 
 
-If everything was setup correctly, you should see the `Store` element with all your collections in the place where the tag `<div id="tipser_store">` was initially. 
+If everything was setup correctly, you should see the `Store` element populated with all your collections in place of `<div id="tipser_store">`. 
 
 [![](tipser_elements_store.png)](/images/tipser_elements_store.png)
 

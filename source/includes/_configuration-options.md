@@ -1,24 +1,21 @@
 #Configuration options
 
-To initialize Tipser Elements or Tipser SDK, you need to create a tipser const.
+Both Tipser Elements and Tipser SDK initialization functions accept configuration object as a second parameter. 
+
+
+Tipser Elements example:
 
 ```javascript
-const tipser = tipser.elements(posId: string, options: TipserSdkConfig);
+const tipserElements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
 ```
 
-Arguments:
-
-posId (string) - id of shop's account in Tipser (required)
-
-options (object) - an object of options (optional)
-
-Example:
+Tipser SDK Example:
 
 ```javascript
-const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
+const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
 ```
 
-The example connects Tipser SDK with Tipser shop and sets primary color to yellow.
+The example connects Tipser SDK and sets primary color to yellow.
 
 ***
 
@@ -87,20 +84,14 @@ Similarly, `hideSimilarProducts` parameter, if set to **true**, can be used to h
 
 ###Custom CSS
 
-If there is a need to use custom css stylesheet, it may be activated in two steps:
+If there is a need to use custom css stylesheet inside the Tipser dialog iframe, it may be activated in two steps:
 
 1. set `useCustomCss` parameter to **true**
     
 2. Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.
 
-***
+##Deep linking
 
-##Use Deep linking
+By default the `Store` component saves the active collection in the browser's URL hash part (everything after the `#` symbol in the URL). It means that your shopping page may be bookmarked by the user or shared with other users by sending a browser link (the same collection will be active in the `Store` when opening that link). 
 
-By default adding the hash to your shop's URL is turned on. It means you can link directly to the product page or collection on your site. If, for some reason, you wish to turn this behaviour off, just add this configuration option: 
-
-```javascript
-const tipserOptions = {
-    useDeepLinking: false
-};
-```
+If, you wish to turn this behaviour off (e.g. because it interferes with your the routing system of your site), set the `useDeepLinking` parameter to **false**.

@@ -17,6 +17,26 @@ const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"}
 
 The example connects Tipser SDK and sets primary color to yellow.
 
+All the available configuaration options are: 
+
+```javascript
+const configurationOptions = {
+  primaryColor: "yellow",
+  env: "stage",
+  lang: 'en',
+  modalUi: {
+    hideSearchIcon: true,
+    hideFavouritesIcon: true,
+    hideCartIcon: false,
+    hideMoreIcon: true,
+    hideSimilarProducts: false,
+    useCustomCss: true
+  },
+  useDeepLinking: false
+}
+```
+They will be described in the following sections.
+
 ***
 
 ## Environment

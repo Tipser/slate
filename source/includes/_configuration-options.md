@@ -45,7 +45,7 @@ They will be described in the following sections.
 const tipser = tipser.elements("59e86b79b8f3f60a94ecd26a", {env: "stage"});
 ```
 
-By default, Tipser ELements and SDK connect to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in Tipser options, which accept the following values:
+By default, Tipser Elements and SDK connect to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in Tipser options, which accept the following values:
 
 **prod** or production
 

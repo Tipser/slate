@@ -61,14 +61,14 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document.
+Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document. Also check our [configuration](#configuration-options) options.
 
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>
 
 ***
 
-## API reference
+## API reference of Tipser React Elements
 ### `TipserElementsProvider` 
 Entry point to Tipser Elements (creating a context for other Elements);
 
@@ -92,17 +92,21 @@ Element that displays the store consisting of all your collections.
 
 
 
-### All configuration options of Tipser Elements
+### All configuration options of Tipser React Elements
 
 Configuration is an object, which should be inserted into `TipserElementsProvider` as `config` prop.
 
 All properties are optional:
 
-property name | description |type | default value
---------------|-------------|-----|---------------
-`defaultAddedToCartPopup` | controls whether default Added To Cart Popup is displayed | boolean | true 
-`eventsHandlers` | gives possibility to add handlers to Tipser Elements events | object | {}
-`useDefaultErrorHandler` | when set to false and error happens, default message won't be displayed | boolean | true
+Parameter | Default | Description | Example
+--------- | ------- | ----------- | -------
+lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'`, `'fr'` and `'sv'`. More info at [Language and locale](#language-and-locale)[Environment](#environment)| `'de'` 
+env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)| `'stage'`
+defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
+useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding onError handler](#onerror)
+eventsHandlers | `{}` | the object of event handlers. See [Event handlers](#event-handlers)  | `object` | { onError: console.error.bind(console) }  
+useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):  | `false`
+modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)| `{ hideSearchIcon : true}`
 
 ### Event Handlers
 ```js

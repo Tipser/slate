@@ -19,9 +19,9 @@ If you're all set up, follow this three steps to install Tipser Elements on your
 
 ***
 
-### Installation
+### Installation of Tipser Elements
 
-To use Tipser Elements on your site, add following script on your pages. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
+To use Tipser Elements on your site, add following script to your page. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
 
 ```html
 <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
@@ -40,7 +40,7 @@ Insert below HTML on your page in the place where you want the `Store` element t
 <div id="tipser_store"></div>
 ```
 
-<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags into shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
+<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 ***
 
 ### Initialize Tipser Elements
@@ -50,7 +50,7 @@ Finally, initialize Tipser Elements.
 tipser.elements('posId')
 ```
 
-Make sure that the `posId` is replaced with the actual id. 
+Make sure that the `posId` is replaced with the actual id corresponding to your account. 
 
 Complete working example could look like:
 
@@ -68,7 +68,7 @@ Complete working example could look like:
 ```
 
 
-If everything was setup correctly, you should see the `Store` element with all your collections in the place where the tag `<div id="tipser_store">` was initially. 
+If everything was setup correctly, you should see the `Store` element populated with all your collections in place of `<div id="tipser_store">`. 
 
 [![](tipser_elements_store.png)](/images/tipser_elements_store.png)
 
@@ -87,25 +87,10 @@ Main Tipser Elements function has two arguments.
 tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 - `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. 
-- `config` - allows you to specify how Tipser Elements will look and behave on your site. Below section describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
+- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
 
 ***
 
-
-### Language and locale
-
-`lang` configuration option specifies the language to be used. Supported languages are currently: `en`, `de`, `fr` and `sv`.
-
-```js
-  tipser.elements('posId', {
-    lang: 'en'
-  })
-```
-
-It affects all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It does not affect the currency in which the customer will pay for the product.
-
-
-***
 
 ## `Store` Element
 
@@ -184,29 +169,16 @@ All configuration supported by Tipser Elements is listed below.
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
-lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'`, `'fr'` and `'sv'`. | `'de'` 
-env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. | `'stage'`
+lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'`, `'fr'` and `'sv'`. More info at [Language and locale](#language-and-locale)[Environment](#environment)| `'de'` 
+env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)| `'stage'`
 disableDomReplacement | `false` | Advanced setting. Set to true in case for some reason you don't wish any tag replacement to happen (see: [Replacing elements on your page](#replacing-elements-on-your-page) ). | true
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
-useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding event handlers](#adding-event-handlers)
-eventsHandlers | `object` | `null` | the object of event handlers | see [Adding event handlers](#adding-event-handlers)
+useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding onError handler](#onerror)
+eventsHandlers | `{}` | the object of event handlers. See [Event handlers](#event-handlers)  | `object` | { onError: console.error.bind(console) }  
+useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):  | `false`
+modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)| `{ hideSearchIcon : true}` 
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
-
-***
-
-### Environment
-
-It is possible to use Tipser Elements in a sandbox environment (also known as _staging_ or _test_ environment) to be able to do test checkouts without charging actual money. The environment can be specified using the `env` configuration option.
-
-```js
-  tipser.elements('posId', {
-    env: 'stage'
-  })
-```
-
-
-Supported values are `stage` and `prod`. This configuration option is optional, default env is `prod`, which means actual production environment.
 
 ***
 
@@ -229,7 +201,7 @@ Whenever an event occurs, Tipser Elements will call your event listener, passing
 
 ***
 
-#### addToCart
+#### onAddToCart
 
 ```
 onAddToCart: (cartSize: number, product: TipserProductModel)
@@ -259,7 +231,7 @@ interface TipserProductModel {
 
 ***
 
-#### error
+#### onError
 
 By default, in case of an unexpected error happening (connection issues or unhandled runtime exceptions), an error popup will appear. If you want to disable the deafult error messages, set `useDefaultErrorHandler` option to `false`, and listen to error messages via `onError` event handler.
 

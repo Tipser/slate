@@ -1,6 +1,6 @@
-#Tipser Elements Analytics
+#Google Analytics
 
-Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.
+Tipser sends a number of analytics events to Google Analytics as a result of user actions.
 
 ### GA account configuration ###
 
@@ -33,77 +33,6 @@ Some of the events emitted by Tipser Elements are standard Enhanced Ecommerce ev
 
 Please refer to [Enhanced Ecommerce Data Types and Actions](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data) and 
  [Measuring Ecommerce Activities](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) sections in the official GA docs.
-
-## Shop view
-
-This event is emitted every time `Store` is rendered on a page.
-
-[![](shop_viewed.png)](/images/shop_viewed.png)
-
-_In the screenshot above Store was rendered and "Shop view" event has been emitted._
-
-### Prerequisites ###
- 
-An element of type `Layout - Container` needs to be defined in Contentful space. 
-The field `IsShop` on that element needs to be set to `true`. 
-
-### Additonal notes ###
-
-The event is emitted no matter if the shop element is actually visible on the screen.
-It is possible that if the shop element is positioned below the fold of the browser window, the event
-will be emitted for the shop that was not seen by the user.
-
-### GA event format ###
-
-Category    | Action        | Standard Enhanced Ecommerce event?
----------   | -----------   | -----------
-`Shops`     | `shop-viewed` | No
-
-
-## Shop list clicked
-
-This event is emitted every time a list in a Store is clicked.
-
-[![](shop_list_clicked.png)](/images/shop_viewed.png)
-
-_In the screenshot above one of the Store lists was clicked (marked with a red rectangle) and "Shop list clicked" event has been emitted._
-
-### Prerequisites ###
-
-Store categories need to be defined as `Slottable Link` components (typically as a part of horizontal menu component) in Contentful space. In component hierarchy they need
- to be located anywhere under `Layout - Container` component whose field `IsShop` is set to `true` (otherwise they won't be recognized as a part of the Store).
-
-### GA event format ###
-
-Category    | Action         | Standard Enhanced Ecommerce event?
----------   | -----------    | -----------
-`Shops`     | `list-clicked` | No
-
-
-## Product tile view
-
-This event is emitted every time product tile is rendered on a page. One event is fired per every tile on the page.
-
-[![](inline_product_viewed.png)](/images/inline_product_viewed.png)
-
-_In the screenshot above some product tiles were rendered on a page and "Shop list clicked" event has been emitted for each of them._
-
-### Prerequisites ###
-
-Products need to be defined as `Product` components in Contentful space.
-
-### Additonal notes ###
-
-The event is emitted no matter if the Product tile element is actually visible on the screen.
-It is possible that if the product tile element is positioned below the fold of the browser window, the event
-will be emitted for the product tile that was not seen by the user.
-
-
-### GA event format ###
-
-Category         | Action       | Standard Enhanced Ecommerce event?
----------        | -----------  | -----------
-`E-commerce`     | `impression` | Yes (with one product attached)
 
 ## Product details view
 

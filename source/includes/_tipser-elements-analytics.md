@@ -41,7 +41,7 @@ document.addEventListener('tw-track', function (e) {
 ## List of supported interactions
 
 ### View collection
-When a collection is in a viewport.
+When a collection appears in the viewport.
 
 `detail` object structure
 
@@ -93,7 +93,7 @@ It is emitted every time product tile is clicked and product dialog is displayed
 _Quick links to object structures: [Product](#product-structure)_
 
 ### View the Store
-When the Tipser store is viewed.
+When the Tipser store appears in the viewport.
 
 `detail` object structure
 
@@ -158,7 +158,7 @@ When a product is added to a shopping cart.
 _Quick links to object structures: [ProductLegacy](#productlegacy-structure)_
 
 ### View cart - with purchase intent
-When viewing the cart, and getting payment in view.
+When cart appears in the viewport, and getting payment in view.
 
 `detail` object structure
 
@@ -174,7 +174,7 @@ When viewing the cart, and getting payment in view.
 _Quick links to object structures: [OrderedProductLegacy](#orderedproductlegacy-structure)_
 
 ### Product purchased
-When a product was bought (thank you page)
+When a product was bought (thank you page).
 
 
 `detail` object structure
@@ -195,8 +195,8 @@ When a product was bought (thank you page)
 _Quick links to object structures: [ProductLegacy](#productlegacy-structure)_
 
 
-### View cart (not implemented)
-When cart icon is in the viewport 
+### View cart
+When cart icon appears in the viewport.
 
 `detail` object structure
 

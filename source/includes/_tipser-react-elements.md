@@ -243,18 +243,9 @@ The Cart component with the cart icon can be placed anywhere on your website. (I
 
 ### Primary color ###
 
-If you'd like to unify our design with your own color-theme, you can use our primary-color theme to change the color of `add-to-cart` buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
-[![](primary-color.png)](/images/primary-color.png)
-If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
+If you'd like to unify our design with your own color-theme, you can use our primary-color [configuration option](#primary-color). If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
 
 ```css
-.te-primary-fill {
-    background-color: #5F9F9F;
-}
-
-.te-primary-border {
-    border-color: #5F9F9F;
-}
 
 /* if your primary color is bright,
     you may consider changing also the text color for elements like buttons: */

@@ -6,13 +6,13 @@ Both Tipser Elements and Tipser SDK initialization functions accept configuratio
 Tipser Elements example:
 
 ```javascript
-const tipserElements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
+const tipserElements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
 ```
 
 Tipser SDK Example:
 
 ```javascript
-const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
+const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
 ```
 
 The example connects Tipser SDK and sets primary color to yellow.
@@ -21,7 +21,7 @@ All the available configuaration options are:
 
 ```javascript
 const configurationOptions = {
-  primaryColor: "yellow",
+  primaryColor: "#222",
   env: "stage",
   lang: 'en',
   modalUi: {
@@ -32,10 +32,28 @@ const configurationOptions = {
     hideSimilarProducts: false,
     useCustomCss: true
   },
-  useDeepLinking: false
+  useDeepLinking: false,
+  customLabels: {
+    buy: 'custom button label'
+  }
 }
 ```
 They will be described in the following sections.
+
+***
+
+## Primary Color
+
+If you'd like to unify our design with your own color-theme, you can use our primary color configuration option to change the color of `buy` buttons in Product and indicator of items number in Cart. You only need to make sure to use the right hex color code.
+
+```javascript
+const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#5F9F9F"});
+```
+
+[![](primary-color.png)](/images/primary-color.png)
+
+* If your primary color is bright, you may consider changing also the text color for elements like buttons via CSS overrides of element's specific class [(examples)](#customizing-tipser-elements-styles). 
+
 
 ***
 
@@ -52,6 +70,8 @@ By default, Tipser Elements and SDK connect to production Tipser environment. Ye
 **stage** or staging
 
 **dev** or development
+
+***
 
 ## Language and locale
 
@@ -96,13 +116,13 @@ The following parameters under modalUi can be used to selectively hide tipser ic
 
 [![](widget1.png)](/images/widget1.png)
 
-###Hiding Similar Products Module
+### Hiding Similar Products Module
 
 Similarly, `hideSimilarProducts` parameter, if set to **true**, can be used to hide Similar Products Module on product page
 
 [![](widget2.png)](/images/widget2.png)
 
-###Custom CSS
+### Custom CSS
 
 If there is a need to use custom css stylesheet inside the Tipser dialog iframe, it may be activated in two steps:
 
@@ -110,8 +130,26 @@ If there is a need to use custom css stylesheet inside the Tipser dialog iframe,
     
 2. Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.
 
-##Deep linking
+***
+
+## Deep linking
 
 By default the `Store` component saves the active collection in the browser's URL hash part (everything after the `#` symbol in the URL). It means that your shopping page may be bookmarked by the user or shared with other users by sending a browser link (the same collection will be active in the `Store` when opening that link). 
 
 If, you wish to turn this behaviour off (e.g. because it interferes with your the routing system of your site), set the `useDeepLinking` parameter to **false**.
+
+***
+
+## Custom Labels
+
+If you want to override our default text with your own, you can do it via customLabels option. At the moment we allow to change the label of the `buy button` only. 
+
+```javascript
+const tipserOptions = {
+    customLabels: {
+      buy: 'buy now!'
+    }
+};
+```
+
+[![](custom-label.png)](/images/custom-label.png)

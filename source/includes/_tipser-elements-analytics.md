@@ -14,7 +14,7 @@ The event contains the object detail that contains the following items:
   action: string, # what action is taken on the target, mandatory
   target: string, # where this action is taken, mandatory
   description: string, # describing what is being logged
-  object: # details about the tracked object, e.g. collection ID, product ID, etc.
+  object: # details about the tracked object, e.g. product name, product price, etc.
   [    
     {  
       # some properties here               

@@ -15,6 +15,7 @@ includes:
   - configuration-options.md
   - amp.md
   - tipser-elements-analytics.md
+  - google-analytics.md
   - rest-api.md
 
 

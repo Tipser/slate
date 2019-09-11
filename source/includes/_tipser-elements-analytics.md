@@ -77,8 +77,8 @@ When a product in a collection is clicked.
 ```
 _Quick links to object structures: [Product](#product-structure)_
 
-### View product
-When a product in a collection is viewed.
+### View product details
+It is emitted every time product tile is clicked and product dialog is displayed.
 
 `detail` object structure
 

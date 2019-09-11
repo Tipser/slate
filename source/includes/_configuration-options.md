@@ -147,7 +147,7 @@ If you want to override our default text with your own, you can do it via custom
 ```javascript
 const tipserOptions = {
     customLabels: {
-      buy: 'custom button label'
+      buy: 'buy now!'
     }
 };
 ```

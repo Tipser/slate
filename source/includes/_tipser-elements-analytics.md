@@ -1,6 +1,6 @@
 # Tipser Elements Analytics
 
-Tipser has implemented an event for the Tipser Elements Analytics that users of the script can listen to in order to gather analytics about Tipser interactions and feed them into their own analytics engines.
+Tipser has implemented an event for the Tipser Elements Analytics that users of the script can listen to in order to gather analytics about Tipser interactions and feed them into their own analytics engines.  
 
 ## General overview of the Tipser Elements Analytics collector
 By listening to the event `tw-track` certain Tipser events can be gathered and pushed into an external analytics engine.
@@ -38,7 +38,7 @@ document.addEventListener('tw-track', function (e) {
 });
 ```
 
-## List of supported events
+## List of supported interactions
 
 ### View collection
 When a collection is in a viewport.

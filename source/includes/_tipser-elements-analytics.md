@@ -92,8 +92,8 @@ It is emitted every time product tile is clicked and product dialog is displayed
 ```
 _Quick links to object structures: [Product](#product-structure)_
 
-### View the shop
-When the Tipser shop is viewed.
+### View the Store
+When the Tipser store is viewed.
 
 `detail` object structure
 
@@ -104,7 +104,7 @@ When the Tipser shop is viewed.
   target: 'Shop',
   object: [
     { 
-      url_slug: string # shop url slug 
+      url_slug: string # store url slug 
     }
   ]
 }

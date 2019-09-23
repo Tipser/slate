@@ -204,7 +204,7 @@ For the same reason, it's not recommended to include more than one `<Store />` o
 
 Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. 
 
-### Product Card ###
+### Product Card Customization ###
 
 The Product Card is an item used for displaying single `Collection` or `Store` component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS the following style:
 
@@ -225,7 +225,7 @@ and:<br/>
 for products on sale.
 
 
-### Cart ###
+### Cart Customization ###
 
 The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
 
@@ -241,7 +241,7 @@ The Cart component with the cart icon can be placed anywhere on your website. (I
 }
 ```
 
-### Primary color ###
+### Adding Primary color ###
 
 If you'd like to unify our design with your own color-theme, you can use our primary-color [configuration option](#primary-color). If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
 

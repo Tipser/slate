@@ -6,7 +6,7 @@ To get Tipser Tools visit [www.tipser.com/pos/tools](https://www.tipser.com/pos/
 
 [![](tipser-tools.png)](/images/tipser-tools.png)
 
-Once you have the Tipser Tools on your bookmark bar, simply clik it to open on top of any other site. 
+Once you have the Tipser Tools on your bookmark bar, simply click it to open on top of any other site. 
 
 ***
 
@@ -15,7 +15,7 @@ The `Get the look` (GTL) enables the user to add a list of products ( or a colle
 
 [![](tipser-tools-insert.png)](/images/tipser-tools-insert.png)
 
-You be asked to pick products from all the merchandise offered by Tipser and click `generate snippet` button.
+You will be asked to pick products from all the inventory offered by Tipser and click the `generate snippet` button.
 
 [![](tipser-tools-products.png)](/images/tipser-tools-products.png)
 
@@ -23,7 +23,7 @@ When the snippet is generated simply click the `copy` button and insert the snip
 
 [![](tipser-tools-copy-snippet.png)](/images/tipser-tools-copy-snippet.png)
 
-The product list will appear where published, all products directly buyable.
+The product list will appear on your site exactly where you placed it, all products directly buyable.
 
 [![](product-list.png)](/images/product-list.png)
 

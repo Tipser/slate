@@ -17,6 +17,7 @@ includes:
   - tipser-elements-analytics.md
   - google-analytics.md
   - rest-api.md
+  - product-import.md
 
 
 search: true

@@ -6,6 +6,12 @@ To get Tipser Tools visit [www.tipser.com/pos/tools](https://www.tipser.com/pos/
 
 [![](tipser-tools.png)](/images/tipser-tools.png)
 
+Or, you create an empty bookmark in the bookmarks bar and insert the following script where the URL normally goes:
+
+```
+javascript:(function(){(typeof TipserBookmarklet!='undefined')?TipserBookmarklet.init():document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).src='//www.tipser.com/widget/bookmarklet.js?'+Math.random();}());
+```
+
 Once you have the Tipser Tools on your bookmark bar, simply click it to open on top of any other site. 
 
 ***

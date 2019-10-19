@@ -13,7 +13,7 @@ Tipser Elements is a set of shoppable elements built on top of Tipser REST API a
 
 
 ## Quick start
-This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the **Tipser Tools** tutorial.
+This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the [Tipser Tools](#tipser-tools) tutorial.
 
 If you're all set up, follow this three steps to install Tipser Elements on your site!
 
@@ -94,9 +94,13 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
 
 ## `Store` Element
 
+The Store displays all collections selected “visible” in one view and is best used to present a group of collections on a separate page. The shop should be placed in a page where sufficient space is available, however the script automatically blends in and adapts to the space given.
+
+Collections are created using the [Tipser Tools](#tipser-tools), or the Store Front Editor on [tipser.com](https://tipser.com). This works the same way as for Get The Look. 
+
 Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered if your shop is empty.
 
-Insert below HTML on your page in the place where you want the `Store` element to be rendered.
+Insert this HTML snippet on your page in the place where you want the `Store` element to be rendered.
 
 ```html
 <div id="tipser_store"></div>

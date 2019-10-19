@@ -104,14 +104,22 @@ Insert below HTML on your page in the place where you want the `Store` element t
 
 <aside class="notify"><code>Store</code> Element is best inserted as a top level Element on a separate page and should contain the full content area for the best shopping experience.</aside>
 
+*** 
+
 ## `Product` Element
-In order to insert a `Product` Element in your content, insert below code in your content.
+In order to insert a `Product` Element in your content, insert below code in your content:
 
 ```html
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
-Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. By default a full inline product component is displayed (with product details, unique selling points and variant selection)
+or a `Product List` also know as `Get the Look` or `GTL` widget:
+
+```html
+<div data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9" />
+```
+
+Element with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. By default a full inline product component is displayed (with product details, unique selling points and variant selection)
 
 [![](full-product.png)](/images/full-product.png)
 
@@ -125,25 +133,33 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 
 [![](compact-product.png)](/images/compact-product.png)
 
+
+In case of element with attribute `data-tipser-pids`, the list of products will be created in its place.
+
+[![](product-list.png)](/images/product-list.png)
+
 <aside class="success">All Elements are mobile first. This means, that even if you insert a regular `Product` Element, it will be rendered as a compact product on the mobile devices for better experience.</aside>
 
 ***
 
-
 ## `Collection` Element
 
-You can your store in collections. Each collection however can be rendered separately as a get the look widget or a simple product group, depending on your needs. It is all possible through `Collection` Element.
+Collections are created in your account on [tipser.com](https://tipser.com) site. Collections then become your store categories, with its title used for navigation in the store menu.
+
+The collection consists of products chosen by the user and displayed as simple product cards in rows. When clicked, the product card expands to a detailed product view.
+
+In the past the Collection was used as a "Get the Look" (GTL) widget on Editiors' sites. Currently we recommend to use [Porduct List](#product) instead.
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="1.2" />
 ```
 
-Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `0.8` for smaller  and `1.2` for lager product tiles. The default value for imgSize parameter is `1`.
+Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `0.8` for smaller  and `1.2` for lager product tiles. The default value for imgSize parameter is `1`.`
 
 > [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
 
 ***
+
 
 ## `Cart` Element
 

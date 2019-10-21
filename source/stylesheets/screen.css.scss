@@ -422,11 +422,11 @@ html, body {
     }
 
     tr:nth-child(odd)>td {
-      background-color: darken($main-bg,2.4%);
+      background-color: darken($main-bg,3.5%);
     }
 
     tr:nth-child(even)>td {
-      background-color: darken($main-bg,1.2%);
+      background-color: darken($main-bg,1%);
     }
   }
 

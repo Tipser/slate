@@ -1,47 +1,66 @@
-# Tipser Elements Analytics
+# Analytics
 
-Tipser has implemented an event for the Tipser Elements Analytics that users of the script can listen to in order to gather analytics about Tipser interactions and feed them into their own analytics engines.  
+You can connect to Tipser analytics by listening to the `tw-track` event on your page:
 
-## General overview of the Tipser Elements Analytics collector
-By listening to the event `tw-track` certain Tipser events can be gathered and pushed into an external analytics engine.
+```html
+<script>
+var tipserEventsCallback = function (e) {
+  //put here your own code handling the event, example below
+  var detail = e.detail; 
+  console.log('Tipser analytics event: ', e);
+  console.log('Action',detail.action);
+  console.log('Description',detail.description);
+  console.log('Target',detail.target);
+  console.log('Object',detail.object);
+}
+document.addEventListener('tw-track', tipserEventsCallback);
+</script>
+```
 
-The event contains the object detail that contains the following items:
+Example events intercepted this way are:
 
-`detail` object
+* the user viewed a product on your page
+* a product was added to cart
+* product checkout dialog was opened
+* transaction was finalized
+
+For complete list of supported events refer to the [List of supported interactions](#list-of-supported-interactions) section.
+
+What you do with those events is up to you. Typical usage examples are:
+
+* forwarding them to your analytics system (e.g. Google Analytics, as described [here](#typical-use-case-google-analytics))
+* logging them to the browser console for easier debugging
+
+## Events structure
+
+Each event passed to `tipserEventsCallback` function follows the following structure:
 
 ```yaml
 {
-  action: string, # what action is taken on the target, mandatory
-  target: string, # where this action is taken, mandatory
-  description: string, # describing what is being logged
-  object: # details about the tracked object, e.g. product name, product price, etc.
-  [    
-    {  
-      # some properties here               
-    },     
-    ..., # this array can contain more than 1 object
-  ]
+  detail: {
+    action: string, # what action is taken on the target, mandatory
+    target: string, # where this action is taken, mandatory
+    description: string, # describing what is being logged
+    object: # details about the tracked object, e.g. product name, product price, etc.
+    [    
+      {  
+        # some properties here               
+      },     
+      ..., # this array can contain more than 1 object
+    ]
+  } 
 }
 ```
 
+As you can see, all the useful data is contained in the top-level `detail` field of the event object.
 
-Example of an event listener:
+## Typical use case: Google Analytics
 
-```javascript
-document.addEventListener('tw-track', function (e) {
-  var detial = e.detail; 
-  console.log('tw-track');
-  console.log('tw-track action',detial.action);
-  console.log('tw-track description',detial.description);
-  console.log('tw-track target',detial.target);
-  console.log('tw-track object',detial.object);
-});
-```
-
-If you want to track `tw-track` events in your Google Analytics, you can use this code snippet:
+In case you want to tunnel Tipser Analytics events to your Google Analytics, you can use this code snippet:
 
 ```javascript
 document.addEventListener('tw-track', function(e) {
+    //ga() function coming from analytics.js library
     ga('send', {
         hitType: 'event',
         eventCategory: e.detail.description,
@@ -51,7 +70,9 @@ document.addEventListener('tw-track', function(e) {
 });
 ```
 
-Please make sure you have Google Analytics enabled in your project.
+The code above assumes that you use [analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs) GA client library on your page. For other libraries, like gtag.js, that code needs to be slightly adjusted.
+
+For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the [official documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs).
 
 ## List of supported interactions
 

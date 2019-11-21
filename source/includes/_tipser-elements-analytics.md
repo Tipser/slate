@@ -2,7 +2,8 @@
 
 You can connect to Tipser analytics by listening to the `tw-track` event on your page:
 
-```javascript
+```html
+<script>
 var tipserEventsCallback = function (e) {
   //put here your own code handling the event, example below
   var detail = e.detail; 
@@ -13,6 +14,7 @@ var tipserEventsCallback = function (e) {
   console.log('Object',detail.object);
 }
 document.addEventListener('tw-track', tipserEventsCallback);
+</script>
 ```
 
 Example events intercepted this way are:
@@ -22,7 +24,7 @@ Example events intercepted this way are:
 * product checkout dialog was opened
 * transaction was finalized
 
-For a more detailed list of supported events refer to the [List of supported interactions](#list-of-supported-interactions) section.
+For complete list of supported events refer to the [List of supported interactions](#list-of-supported-interactions) section.
 
 What you do with those events is up to you. Typical usage examples are:
 

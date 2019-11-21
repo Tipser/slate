@@ -38,6 +38,21 @@ document.addEventListener('tw-track', function (e) {
 });
 ```
 
+If you want to track `tw-track` events in your Google Analytics, you can use this code snippet:
+
+```javascript
+document.addEventListener('tw-track', function(e) {
+    ga('send', {
+        hitType: 'event',
+        eventCategory: e.detail.description,
+        eventAction: e.detail.action,
+        eventLabel: e.detail.target,
+    });
+});
+```
+
+Please make sure you have Google Analytics enabled in your project.
+
 ## List of supported interactions
 
 ### View collection

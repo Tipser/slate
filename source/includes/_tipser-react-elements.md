@@ -15,7 +15,7 @@ The code of that page is available as a GitHub [Tipser Elements Bootstrap projec
 
 ***
 
-## Quick Start
+## Quick React Start
 This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the **Tipser Tools** tutorial.
 
 If you're all set up, follow this three steps to rock on your app with Tipser React Elements!

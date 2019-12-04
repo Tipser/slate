@@ -228,6 +228,8 @@ body
 **Parameters**
 
 **posId:** string - required to get the commission
+**productId:** string - defines which product has to be added to cart
+**quantity:** number - sets the number product matching **productId**  that have to be added to cart
 
 ###Reading Shopping Cart
 

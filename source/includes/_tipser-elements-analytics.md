@@ -83,7 +83,7 @@ When a collection appears in the viewport.
 
  ```yaml
 {
-  description: ‘Viewport scrolled’,
+  description: ‘Collection viewed’,
   action: 'View',
   target: 'List',
   object:  {
@@ -140,28 +140,15 @@ When the Tipser store appears in the viewport.
   target: 'Shop',
   object: [
     { 
+      id: string, # collection id
+      items: Product[], # products
       url_slug: string # store url slug 
     }
   ]
 }
 ```
 
-### Click menu item in shop
-When a menu item is clicked in the shop.
-
-`detail` object structure
-
-```yaml
-{ 
-  description: 'List clicked',
-  action: 'Click,
-  target: 'List',
-  object:[
-    { 
-      id: string, # collection id
-    } 
-  ]
-```
+When a category is changed in the store, this event will be sent again with a different set of products and collection id.
 
 ### Click cart tab
 When the shopping cart tab is clicked.

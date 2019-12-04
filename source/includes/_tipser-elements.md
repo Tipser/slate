@@ -177,7 +177,7 @@ useDefaultErrorHandler | `true` | when set to false and error happens, default m
 eventsHandlers | `{}` | the object of event handlers. See [Event handlers](#event-handlers)  | `object` | { onError: console.error.bind(console) }  
 useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):  | `false`
 modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)| `{ hideSearchIcon : true}` 
-primaryColor | #333 | Hex colour code, affecting eg. buy-button colour and Cart indicator | #5F9F9F
+primaryColor | #333 | Hex color code, affecting eg. buy-button color and Cart indicator | #5F9F9F
 
 In addition to the options described above all the configuration options supported by Tipser Elements library are supported.
 

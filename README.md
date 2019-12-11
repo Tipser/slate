@@ -43,6 +43,7 @@ If you'd prefer to use Docker, instructions are available [in the wiki](https://
 
 For those who don't have JavaScript runtime or are experiencing JavaScript runtime issues with ExecJS, it is recommended to add the [rubyracer gem](https://github.com/cowboyd/therubyracer) to your gemfile and run `bundle` again.
 
+
 ## Installing Ruby on Ubuntu
 
 https://linuxize.com/post/how-to-install-ruby-on-ubuntu-18-04/#installing-ruby-using-rbenv
@@ -50,3 +51,5 @@ https://linuxize.com/post/how-to-install-ruby-on-ubuntu-18-04/#installing-ruby-u
 follow steps in **"Installing Ruby using Rbenv**
 
 -in step **04.** change the version of Ruby from 2.5.1 to **2.6.1**
+
+

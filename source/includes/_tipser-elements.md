@@ -13,7 +13,7 @@ Tipser Elements is a set of shoppable elements built on top of Tipser REST API a
 
 
 ## Quick start
-This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the **Tipser Tools** tutorial.
+This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the [Tipser Tools tutorial](#tipser-tools).
 
 If you're all set up, follow this three steps to install Tipser Elements on your site!
 

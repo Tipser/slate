@@ -40,7 +40,7 @@ import { Product, Cart, Store, TipserElementsProvider } from '@tipser/tipser-ele
 // simple configuration
 const config = {
     lang: 'en',
-    primaryColor: 'blue',    
+    primaryColor: '#0000FF',    
 };
 
 ReactDOM.render(
@@ -113,7 +113,7 @@ modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for di
 
 let tipserConfig = {
     lang: 'en',
-    primaryColor: 'red',
+    primaryColor: '#FF0000',
     // ----- EVENT HANDLING START
     useDefaultErrorHandler: true,
     eventsHandlers: {

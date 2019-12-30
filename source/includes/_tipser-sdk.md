@@ -57,7 +57,7 @@ Initialized Tipser SDK object that can be used to perform API calls further in t
 *Example:*
 
 ```javascript
-const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
+const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#FFFF00"});
 ```
 The example connects Tipser SDK with Tipser shop and sets primary color to yellow.
 

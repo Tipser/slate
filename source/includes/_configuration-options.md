@@ -15,15 +15,15 @@ Tipser SDK Example:
 const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
 ```
 
-The example connects Tipser SDK and sets primary color to yellow.
+The example connects Tipser SDK and sets primary color to `#0000FF`.
 
 All the available configuaration options are: 
 
 ```javascript
 const configurationOptions = {
-  primaryColor: "#222",
+  primaryColor: "#0000FF",
   env: "stage",
-  lang: 'en',
+  lang: 'en-US',
   modalUi: {
     hideSearchIcon: true,
     hideFavouritesIcon: true,
@@ -65,21 +65,19 @@ const tipser = tipser.elements("59e86b79b8f3f60a94ecd26a", {env: "stage"});
 
 By default, Tipser Elements and SDK connect to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in Tipser options, which accept the following values:
 
-**prod** or production
-
-**stage** or staging
-
-**dev** or development
+- **prod**
+- **stage**
+- **dev**
 
 ***
 
 ## Language and locale
 
-`lang` configuration option specifies the language to be used. Supported languages are currently: `en`, `de`, `fr` and `sv`.
+`lang` configuration option specifies the language to be used. Supported languages are currently: `en-US`, `de-DE`, `fr-FR` and `sv-SE`.
 
 ```js
   tipser.elements('posId', {
-    lang: 'en'
+    lang: 'en-US'
   })
 ```
 

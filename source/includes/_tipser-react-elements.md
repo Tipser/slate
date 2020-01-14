@@ -39,7 +39,7 @@ import { Product, Cart, Store, TipserElementsProvider } from '@tipser/tipser-ele
 
 // simple configuration
 const config = {
-    lang: 'en',
+    lang: 'en-US',
     primaryColor: '#0000FF',    
 };
 
@@ -100,7 +100,7 @@ All properties are optional:
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
-lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'`, `'fr'` and `'sv'`. More info at [Language and locale](#language-and-locale)[Environment](#environment)| `'de'` 
+lang | `'en-US'` | a locale to be used by the Tipser content. Possible values: `'en-US'`, `'de-DE'`, `'fr-FR'` and `'sv-SE'`. More info at [Language and locale](#language-and-locale)[Environment](#environment)| `'de-DE'` 
 env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)| `'stage'`
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
 useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding onError handler](#onerror)
@@ -204,7 +204,7 @@ For the same reason, it's not recommended to include more than one `<Store />` o
 
 Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. 
 
-### Product Card Customization ###
+### Product Card ###
 
 The Product Card is an item used for displaying single `Collection` or `Store` component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS the following style:
 
@@ -225,7 +225,7 @@ and:<br/>
 for products on sale.
 
 
-### Cart Customization ###
+### Cart ###
 
 The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
 

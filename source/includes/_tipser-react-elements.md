@@ -75,7 +75,8 @@ Entry point to Tipser Elements (creating a context for other Elements);
 prop name  | description | type  | required | default value 
 -----------|-------------|-------|----------|--------------
 posId | id of Point of sale | string | true | 
-config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false   | {}
+config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false | {}
+history | history object | {} | false | `window.history`
  
 #### `TipserElement` 
 Generic Element that can render any Contentful content that's fed as a prop to the element.

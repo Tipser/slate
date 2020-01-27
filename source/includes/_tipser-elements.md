@@ -15,13 +15,13 @@ Tipser Elements is a set of shoppable elements built on top of Tipser REST API a
 ## Quick start
 This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the [Tipser Tools tutorial](#tipser-tools).
 
-If you're all set up, follow this three steps to install Tipser Elements on your site!
+If you're all set up, follow these three steps to install Tipser Elements on your site!
 
 ***
 
 ### Installation of Tipser Elements
 
-To use Tipser Elements on your site, add following script to your page. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
+To use Tipser Elements on your site, add the following script to your page. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
 
 ```html
 <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
@@ -33,8 +33,7 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 ***
 
 ### Inserting Tipser Element
-
-Insert below HTML on your page in the place where you want the `Store` element to be rendered. Typically, this can be a new blank subpage created in your CMS as the `Store` is best displayed in the full page mode.
+Insert this HTML snippet on your page in the place where you want the `Store` element to be rendered. Typically, this will be a new blank subpage created in your CMS, as the `Store` is best displayed in the full page mode.
 
 ```html
 <div id="tipser_store"></div>

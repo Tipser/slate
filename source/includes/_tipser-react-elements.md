@@ -178,6 +178,7 @@ Components are the building blocks of Tipser Elements. Any components need to be
 `Collection`<br>
 `Product`<br>
 `Store`<br>
+`Cart`<br>
 
 For example Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
 

@@ -105,7 +105,7 @@ Insert below HTML on your page in the place where you want the `Store` element t
 <aside class="notify"><code>Store</code> Element is best inserted as a top level Element on a separate page and should contain the full content area for the best shopping experience.</aside>
 
 ## `Product` Element
-In order to insert a `Product` Element in your content, insert a code snippet like this one in your content:
+In order to insert a `Product` Element in your content, insert this code snippet in your content:
 
 ```html
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />

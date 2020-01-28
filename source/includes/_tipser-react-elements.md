@@ -172,20 +172,14 @@ export interface TipserProductModel {
 ```
 When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
 
-### Content components
-Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 
+### Components
+Components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. 
 
-`Article`<br> 
-`Brand`<br>
 `Collection`<br>
-`Grid`<br>
-`Menu`<br>
-`Page`<br>
 `Product`<br>
+`Store`<br>
 
-### Store
-
-Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
+For example Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
 
 It can be used with `Store` react component.
 
@@ -203,7 +197,7 @@ For the same reason, it's not recommended to include more than one `<Store />` o
  
 ## Customizing Tipser Elements Styles ##
 
-Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. 
+Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. For example, all elements' `font-family` and `font-size` attributes are set to inherit them from the host page. If you need to change some other styles, please overwrite the certain CSS classes.
 
 ### Product Card ###
 
@@ -254,4 +248,4 @@ If you'd like to unify our design with your own color-theme, you can use our pri
     color: #fff;
 }
 ```
-If you'd like to change other elements' color as well, please use our specific classes to override the styles.
+If you'd like to change other elements' color as well, please use specific classes to override the styles.

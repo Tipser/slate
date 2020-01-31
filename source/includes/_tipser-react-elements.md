@@ -9,9 +9,9 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 
 ### Live demo
 
-A working examples of page based on Tipser React Elements can be found on [Tipser Elements Bootstrap page](https://tipser.github.io/tipser-elements-react-bootstrap/).
+A working examples of page based on Tipser React Elements can be found on <a href="https://tipser.github.io/tipser-elements-react-bootstrap/" target="_blank">Tipser Elements Bootstrap page</a>.
 
-The code of that page is available as a GitHub [Tipser Elements Bootstrap project](https://github.com/Tipser/tipser-elements-react-bootstrap). Feel free to checkout it and play with it on your local environment! 
+The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-elements-react-bootstrap" target="_blank">Tipser Elements Bootstrap project</a>. Feel free to checkout it and play with it on your local environment! 
 
 ***
 
@@ -36,6 +36,7 @@ You can combine Tipser Elements with your own application.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Product, Cart, Store, TipserElementsProvider } from '@tipser/tipser-elements';
+import history from 'path/to/your/history'; // path to your history object that has been passed to react-router'
 
 // simple configuration
 const config = {
@@ -44,7 +45,7 @@ const config = {
 };
 
 ReactDOM.render(
-    <TipserElementsProvider posId="59e86b79b8f3f60a94ecd26a" config={config}>   
+    <TipserElementsProvider posId="59e86b79b8f3f60a94ecd26a" config={config} history={history}>   
         <header>
             <nav>
                 Welcome to my store! 
@@ -61,7 +62,7 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document. Also check our [configuration](#configuration-options) options.
+Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document, provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`. Also check our [configuration](#configuration-options) options.
 
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>
@@ -172,20 +173,15 @@ export interface TipserProductModel {
 ```
 When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
 
-### Content components
-Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 
+### Components
+Components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. 
 
-`Article`<br> 
-`Brand`<br>
 `Collection`<br>
-`Grid`<br>
-`Menu`<br>
-`Page`<br>
 `Product`<br>
+`Store`<br>
+`Cart`<br>
 
-### Store
-
-Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
+For example Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
 
 It can be used with `Store` react component.
 
@@ -203,7 +199,7 @@ For the same reason, it's not recommended to include more than one `<Store />` o
  
 ## Customizing Tipser Elements Styles ##
 
-Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. 
+Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. For example, all elements' `font-family` and `font-size` attributes are set to inherit them from the host page. If you need to change some other styles, please overwrite the certain CSS classes.
 
 ### Product Card ###
 
@@ -254,4 +250,4 @@ If you'd like to unify our design with your own color-theme, you can use our pri
     color: #fff;
 }
 ```
-If you'd like to change other elements' color as well, please use our specific classes to override the styles.
+If you'd like to change other elements' color as well, please use specific classes to override the styles.

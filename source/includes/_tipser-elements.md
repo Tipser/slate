@@ -27,7 +27,7 @@ To use Tipser Elements on your site, add the following script to your page. This
 <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
 ```
 <aside class="notice">
-Make sure, that Tipser Elements script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load any scripts at the end of the <code>body</code> tag of your page so that the rendering is not blocked by JavaScript parsing. 
+Make sure, that Tipser Elements script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load the scripts at the end of the <code>body</code> element on your page so that the rendering is not blocked by JavaScript parsing. 
 </aside>
 
 ***
@@ -60,7 +60,7 @@ Complete working example could look like:
     <div id="tipser_store"></div>
     <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
     <script>
-      tipser.elements('5075d7715c3d090a90585e87')
+      tipser.elements('59e86b79b8f3f60a94ecd26a')
     </script>
   </body>
 </html>
@@ -69,9 +69,9 @@ Complete working example could look like:
 
 If everything was setup correctly, you should see the `Store` element populated with all your collections in place of `<div id="tipser_store">`. 
 
-[![](tipser_elements_store.png)](/images/tipser_elements_store.png)
+[![](../images/tipser_elements_store.png)](/images/tipser_elements_store.png)
 
-> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
+> <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
 
 
 <aside class="success">Congratulations! You have successfully integrated and setup Tipser Elements on your site.</aside>
@@ -87,7 +87,6 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 - `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. 
 - `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
-- `history` - history object on which we can rely for client side routing, when not provided routing is based on `window.history`
 
 ***
 
@@ -105,13 +104,15 @@ Insert below HTML on your page in the place where you want the `Store` element t
 <aside class="notify"><code>Store</code> Element is best inserted as a top level Element on a separate page and should contain the full content area for the best shopping experience.</aside>
 
 ## `Product` Element
-In order to insert a `Product` Element in your content, insert below code in your content.
+In order to insert a `Product` Element in your content, insert this code snippet in your content:
 
 ```html
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
-Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. By default a full inline product component is displayed (with product details, unique selling points and variant selection)
+Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated with [tipser tools](#products-collections) automatically. 
+By default, a full inline product component is displayed (with product details, unique selling points and variant selection)
+
 
 [![](full-product.png)](/images/full-product.png)
 
@@ -132,16 +133,29 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 
 ## `Collection` Element
 
-You can your store in collections. Each collection however can be rendered separately as a get the look widget or a simple product group, depending on your needs. It is all possible through `Collection` Element.
+You can render your collections as `Store`. Each collection, however, can be rendered separately as a simple product group, depending on your needs. It is all possible through the `Collection` Element.
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="1.2" />
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="0.8" />
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-carousel />
+
 ```
 
-Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `0.8` for smaller  and `1.2` for lager product tiles. The default value for imgSize parameter is `1`.
+Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). 
 
-> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
+[![](collection.png)](/images/collcetion.png)
+
+To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `0.8` for smaller  and `1.2` for lager product tiles. The default value for imgSize parameter is `1`. When changing the value to `0.8` you get slightly smaller product-cards:
+
+[![](collection-imgSize.png)](/images/collcetion-imgSize.png)
+
+If you'd like the collection of more than several products to take less space, you can display it as one-row only carousel element. To do that, please use `data-tipser-carousel` attribute.
+
+[![](collection-carousel.png)](/images/collcetion-carousel.png)
+
+
+> <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
 
 ***
 
@@ -265,39 +279,7 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
 
 ## Starter projects
 
-A working examples of page based on Tipser Widget can be found on [Tipser Widget Bootstrap page](https://tipser.github.io/tipser-widget-bootstrap/).
+A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/" target="_blank">Tipser Widget Bootstrap page</a>.
 
-The code of that page is available as a GitHub [Tipser Widget Bootstrap project](https://github.com/Tipser/tipser-widget-bootstrap). Feel free to checkout it and play with it on your local machine!
+The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap" target="_blank">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!
 
-
-## _Bonus:_ Displaying CMS content on page
-
-```js
-tipser.elements('myPosId')
-  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .store-container");
-```
-
-> Make sure to replace the value for `myPosId` and parameters of `mountContent` function.
-
-> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/RONrZv)
-
-Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser's CMS (Contentful) to your page with `.mountContent` function.
-
-_Prerequisites:_ you need to have a Contentful content created and configured (which is typically done by Tipser staff) and dedicate part of your page to inject that content.
-
-`mountContent` function accepts two parameters:
-
-`contentId`: the id of the content in the CMS <br>
-`target`: It is a [CSS selector](https://www.w3schools.com/cssref/css_selectors.asp) pointing to the element on your page where the CMS content will be injected.
-
-## _Bonus:_ Displaying several pieces of CMS content and cart icon
-
-```js
-tipser.elements('myPosId')
-  .mountContent("3UvCQHKV7gmMdcegDHSr5B", ".shopping-zone .content-container1")
-  .mountContent("3UvCQHKV7gmMdcegDHSr5C", ".shopping-zone .content-container2")
-  .mountCart(".shopping-zone .cart-container");
-```
-
-It is possible to combine multiple invocations of `mountContent()` with zero or one invocations of `mountCart()` as presented in the code snippet. That will lead to multiple pieces of content
-AND a cart icon being displayed on the page.

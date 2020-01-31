@@ -2,7 +2,7 @@
 
 Tipser enables commerce on almost any site. An easy way to enable shopping on your site is to install the Tipser script and use the Tipser Tools to insert product listings and buy buttons directly into your site. The installation of the script on your site typically takes less than 5 minutes, and can be done even by non-technical people. 
 
-To get Tipser Tools you can either download our [chrome extension](https://chrome.google.com/webstore/detail/tipser-tools/fpneiedhldkngjdocijjpdcdggipbjbf) or visit [www.tipser.com/pos/tools](https://www.tipser.com/pos/tools), log into your POS account and follow the instructions there.
+To get Tipser Tools you can either download our <a href="https://chrome.google.com/webstore/detail/tipser-tools/fpneiedhldkngjdocijjpdcdggipbjbf" target="_blank">chrome extension</a> or visit <a href="https://www.tipser.com/pos/tools" target="_blank">www.tipser.com/pos/tools</a>, log into your POS account and follow the instructions there.
 
 [![](tipser-tools.png)](/images/tipser-tools.png)
 

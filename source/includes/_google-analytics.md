@@ -4,7 +4,7 @@ Tipser sends a number of analytics events to Google Analytics as a result of use
 
 ### GA account configuration ###
 
-Most of analytics events emitted by Tipser Elements assume [Enhanced Ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) plugin to be enabled on
+Most of analytics events emitted by Tipser Elements assume <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce" target="_blank">Enhanced Ecommerce</a>" plugin to be enabled on
 a receiver's Google Analytics account. So if you want to get most of Tipser Analytics, it is strongly recommended to enable Enhanced Ecommerce in your GA settings, as shown in a screenshots below.
 
 [![](enhanced_analytics_settings.png)](/images/enhanced_analytics_settings.png) 
@@ -15,7 +15,7 @@ The settings for "Enable Enhanced Ecommerce Reporting" and "Checkout Labeling" s
 
 ### Custom dimensions ###
 
-Additionally, all the events documented here contain the following [Custom Dimensions](https://support.google.com/analytics/answer/2709828?hl=en). If you would like to analyze those dimensions, please
+Additionally, all the events documented here contain the following <a href="https://support.google.com/analytics/answer/2709828?hl=en" target="_blank">Custom Dimensions</a>. If you would like to analyze those dimensions, please
 make sure to configure the same Custom Dimensions, as described [here](google.com/analytics/answer/2709829?hl=en).
 
 Name                  | Index                   | Description
@@ -31,8 +31,8 @@ purposes, you may be receiving unexpected values for those Custom Dimensions.
 
 Some of the events emitted by Tipser Elements are standard Enhanced Ecommerce events which come with product data attached (as documented at "GA event format" section for each event).
 
-Please refer to [Enhanced Ecommerce Data Types and Actions](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data) and 
- [Measuring Ecommerce Activities](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities) sections in the official GA docs.
+Please refer to <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data" target="_blank">Enhanced Ecommerce Data Types and Actions</a> and 
+ <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities" target="_blank">Measuring Ecommerce Activities</a> sections in the official GA docs.
 
 ## Product details view
 

@@ -133,7 +133,7 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 
 ## `Collection` Element
  
-`Collection` is rendered as a simple product group.
+`Collection` is a group of simple product tiles. Clicking on any title displays a product dialog with more product details and add to cart button. Products displayed in a collection are defined in the [tipser tools](#tipser-tools).
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
@@ -152,7 +152,7 @@ To make the collection items smaller / larger use the `data-tipser-imgsize` attr
 
 If you'd like the collection of more than several products to take less space, you can display it as one-row only carousel element. To do that, please use `data-tipser-carousel` attribute.
 
-[![](collection-carousel.png)](/images/collection-carousel.png)
+[![](collection-carousel.png)](/images/colltion-carousel.png)
 
 
 > <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>

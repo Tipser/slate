@@ -9,9 +9,9 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 
 ### Live demo
 
-A working examples of page based on Tipser React Elements can be found on [Tipser Elements Bootstrap page](https://tipser.github.io/tipser-elements-react-bootstrap/).
+A working examples of page based on Tipser React Elements can be found on <a href="https://tipser.github.io/tipser-elements-react-bootstrap/" target="_blank">Tipser Elements Bootstrap page</a>.
 
-The code of that page is available as a GitHub [Tipser Elements Bootstrap project](https://github.com/Tipser/tipser-elements-react-bootstrap). Feel free to checkout it and play with it on your local environment! 
+The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-elements-react-bootstrap" target="_blank">Tipser Elements Bootstrap project</a>. Feel free to checkout it and play with it on your local environment! 
 
 ***
 
@@ -36,6 +36,7 @@ You can combine Tipser Elements with your own application.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Product, Cart, Store, TipserElementsProvider } from '@tipser/tipser-elements';
+import history from 'path/to/your/history'; // path to your history object that has been passed to react-router'
 
 // simple configuration
 const config = {
@@ -44,7 +45,7 @@ const config = {
 };
 
 ReactDOM.render(
-    <TipserElementsProvider posId="59e86b79b8f3f60a94ecd26a" config={config}>   
+    <TipserElementsProvider posId="59e86b79b8f3f60a94ecd26a" config={config} history={history}>   
         <header>
             <nav>
                 Welcome to my store! 
@@ -61,7 +62,7 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document. Also check our [configuration](#configuration-options) options.
+Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document, provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`. Also check our [configuration](#configuration-options) options.
 
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>

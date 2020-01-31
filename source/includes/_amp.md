@@ -34,7 +34,7 @@ Add the following Tipser styles to the `<head>` element of your page. They are n
 
 ## Insert collection
 
-This step assumes that your are familiar with [Tipser Bookmarklet](https://developers.tipser.com/tipser-tools). Feel free to write to support@tipser.com to get a more personalized introduction.
+This step assumes that your are familiar with [Tipser Tools](#tipser-tools). Feel free to write to support@tipser.com to get a more personalized introduction.
 
 1. Log-in to Tipser Bookmarklet
 2. Click "Insert collections" button

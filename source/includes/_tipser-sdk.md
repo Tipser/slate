@@ -15,7 +15,7 @@ You can add the Tipser SDK to your project by adding it through npm or yarn.
 `npm install --save @tipser/tipser-sdk`
 
 
-[Package instructions](https://www.npmjs.com/package/@tipser/tipser-sdk)
+<a href="https://www.npmjs.com/package/@tipser/tipser-sdk" target="_blank">Package instructions</a>
 
 ###Using a script tag on your page
 

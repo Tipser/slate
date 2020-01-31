@@ -27,7 +27,7 @@ To use Tipser Elements on your site, add the following script to your page. This
 <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
 ```
 <aside class="notice">
-Make sure, that Tipser Elements script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load any scripts at the end of the <code>body</code> tag of your page so that the rendering is not blocked by JavaScript parsing. 
+Make sure, that Tipser Elements script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load the scripts at the end of the <code>body</code> element on your page so that the rendering is not blocked by JavaScript parsing. 
 </aside>
 
 ***
@@ -60,7 +60,7 @@ Complete working example could look like:
     <div id="tipser_store"></div>
     <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
     <script>
-      tipser.elements('5075d7715c3d090a90585e87')
+      tipser.elements('59e86b79b8f3f60a94ecd26a')
     </script>
   </body>
 </html>
@@ -69,9 +69,9 @@ Complete working example could look like:
 
 If everything was setup correctly, you should see the `Store` element populated with all your collections in place of `<div id="tipser_store">`. 
 
-[![](tipser_elements_store.png)](/images/tipser_elements_store.png)
+[![](../images/tipser_elements_store.png)](/images/tipser_elements_store.png)
 
-> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
+> <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
 
 
 <aside class="success">Congratulations! You have successfully integrated and setup Tipser Elements on your site.</aside>
@@ -87,7 +87,6 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 - `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. 
 - `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
-- `history` - history object on which we can rely for client side routing, when not provided routing is based on `window.history`
 
 ***
 
@@ -156,7 +155,7 @@ If you'd like the collection of more than several products to take less space, y
 [![](collection-carousel.png)](/images/collcetion-carousel.png)
 
 
-> [Open this snippet on Code Pen](https://codepen.io/tipser-tech/pen/YMMKMp)
+> <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
 
 ***
 
@@ -280,7 +279,7 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
 
 ## Starter projects
 
-A working examples of page based on Tipser Widget can be found on [Tipser Widget Bootstrap page](https://tipser.github.io/tipser-widget-bootstrap/).
+A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/" target="_blank">Tipser Widget Bootstrap page</a>.
 
-The code of that page is available as a GitHub [Tipser Widget Bootstrap project](https://github.com/Tipser/tipser-widget-bootstrap). Feel free to checkout it and play with it on your local machine!
+The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap" target="_blank">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!
 

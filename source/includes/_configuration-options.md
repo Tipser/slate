@@ -32,6 +32,9 @@ const configurationOptions = {
     hideSimilarProducts: false,
     useCustomCss: true
   },
+  addToCartSettings: {
+      directToChekoutMode: false,
+  },
   useDeepLinking: false,
   customLabels: {
     buy: 'custom button label'
@@ -119,6 +122,10 @@ The following parameters under modalUi can be used to selectively hide tipser ic
 Similarly, `hideSimilarProducts` parameter, if set to **true**, can be used to hide Similar Products Module on product page
 
 [![](widget2.png)](/images/widget2.png)
+
+### Add To Cart Settings
+
+When the`directToChekoutMode` option is set to `true`, after clicking the `buy button` in Product component you go directly to checkout, without using the Cart component.
 
 ### Custom CSS
 

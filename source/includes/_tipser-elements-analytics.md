@@ -70,9 +70,9 @@ document.addEventListener('tw-track', function(e) {
 });
 ```
 
-The code above assumes that you use [analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs) GA client library on your page. For other libraries, like gtag.js, that code needs to be slightly adjusted.
+The code above assumes that you use <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">analytics.js</a> GA client library on your page. For other libraries, like gtag.js, that code needs to be slightly adjusted.
 
-For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the [official documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs).
+For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.
 
 ## List of supported interactions
 

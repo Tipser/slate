@@ -125,7 +125,7 @@ Similarly, `hideSimilarProducts` parameter, if set to **true**, can be used to h
 
 ### Add To Cart Settings
 
-When the`directToChekoutMode` option is set to `true`, after clicking the `buy button` in Product component you go directly to checkout, without using the Cart component.
+When the`directToChekoutMode` option is set to `true`, after clicking the `buy button` in Product component you go directly to checkout, without displaying the product dialog.
 
 ### Custom CSS
 

@@ -104,13 +104,13 @@ Insert below HTML on your page in the place where you want the `Store` element t
 <aside class="notify"><code>Store</code> Element is best inserted as a top level Element on a separate page and should contain the full content area for the best shopping experience.</aside>
 
 ## `Product` Element
-In order to insert a `Product` Element in your content, insert this code snippet in your content:
+In order to insert a `Product` Element in your content, insert the following code snippet in your content:
 
 ```html
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
-Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated with [tipser tools](#products-collections) automatically. 
+Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated with [tipser tools](#tipser-tools) automatically. 
 By default, a full inline product component is displayed (with product details, unique selling points and variant selection)
 
 
@@ -132,8 +132,8 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 
 
 ## `Collection` Element
-
-You can render your collections as `Store`. Each collection, however, can be rendered separately as a simple product group, depending on your needs. It is all possible through the `Collection` Element.
+ 
+`Collection` is a group of simple product tiles. Clicking on any title displays a product dialog with more product details and add to cart button. Products displayed in a collection are defined in the [tipser tools](#tipser-tools).
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
@@ -144,15 +144,15 @@ You can render your collections as `Store`. Each collection, however, can be ren
 
 Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`). 
 
-[![](collection.png)](/images/collcetion.png)
+[![](collection.png)](/images/collection.png)
 
 To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `0.8` for smaller  and `1.2` for lager product tiles. The default value for imgSize parameter is `1`. When changing the value to `0.8` you get slightly smaller product-cards:
 
-[![](collection-imgSize.png)](/images/collcetion-imgSize.png)
+[![](collection-imgSize.png)](/images/collection-imgSize.png)
 
 If you'd like the collection of more than several products to take less space, you can display it as one-row only carousel element. To do that, please use `data-tipser-carousel` attribute.
 
-[![](collection-carousel.png)](/images/collcetion-carousel.png)
+[![](collection-carousel.png)](/images/colltion-carousel.png)
 
 
 > <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>

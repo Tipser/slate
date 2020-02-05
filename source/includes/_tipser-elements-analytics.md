@@ -60,7 +60,7 @@ In case you want to tunnel Tipser Analytics events to your Google Analytics, you
 
 ```javascript
 document.addEventListener('tw-track', function(e) {
-    //ga() function coming from analytics.js library
+    // ga() function coming from analytics.js library
     ga('send', {
         hitType: 'event',
         eventCategory: e.detail.description,
@@ -73,6 +73,25 @@ document.addEventListener('tw-track', function(e) {
 The code above assumes that you use <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">analytics.js</a> GA client library on your page. For other libraries, like gtag.js, that code needs to be slightly adjusted.
 
 For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.
+
+## Typical use case: Facebook Pixel
+
+Facebook Pixel is also an option to tunnel Tipser Analytics events, here's a snippet:
+
+```javascript
+document.addEventListener('tw-track', function(e) {
+    // fbq() function coming from Facebook Pixel analytics script
+    fbq('trackCustom', e.detail.action, {
+        content_name: e.detail.target, 
+        content_category: e.detail.description,
+        content_type: e.detail.action,
+    });
+});
+```
+
+The code above assumes that you use <a href="https://developers.facebook.com/docs/facebook-pixel/implementation" target="_blank">pixel.js</a> facebook client library on your page.
+
+For the instructions how to setup pixel.js script on your site and connect it to your Facebook for Developers account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.
 
 ## List of supported interactions
 

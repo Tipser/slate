@@ -163,13 +163,11 @@ market | string | See above
 
 Example requests (try me):
 
-[https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock] (https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock)
+<a href="https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock" target="_blank">https://t3-prod-api.tipser.com/v4/products?query=vita+skor&brands=Birkenstock</a>
 
-[https://t3-prod-api.tipser.com/v4/products?limit=3]
-(https://t3-prod-api.tipser.com/v4/products?limit=3)
+<a href="https://t3-prod-api.tipser.com/v4/products?limit=3" target="_blank">https://t3-prod-api.tipser.com/v4/products?limit=3</a>
 
-[https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3]
-(https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3)
+<a href="https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3" target="_blank">https://t3-prod-api.tipser.com/v4/products?limit=3&skip=3</a>
 
 
 ###Fetch product by id
@@ -181,11 +179,9 @@ Query string parameters
 **productId:** string
 **pos:** string (optional) - posId needed to ie. show pos-specific discounts etc.
 
-[https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663]
-(https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663)
+<a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663" target="_blank">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663</a>
 
-[https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8]
-(https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8)
+<a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8" target="_blank">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8</a>
 
 
 ##Essential product model attribute
@@ -210,3 +206,33 @@ Get translated category names for a product
 To get the translated category names, used in the product model, you can use the API endpoint:
 
 `GET https://t3-dev-api.tipser.com/v4/categories?market=se`
+
+##Add to cart
+
+```shell
+POST https://t3-prod-api.tipser.com/v4/shoppingcart/items
+headers
+Authorization: Bearer [token]
+body
+{
+  posId: "YOUR_POS_ID",
+  productId: "583d0d22101bf54d383a1f19".
+  quantity: 1
+}
+```
+
+###Parameters:
+
+**posId:** string - required to get the commission
+
+**productId:** string - defines which product is being added to cart
+
+**quantity:** number - sets the number of product matching **productId** that is being added to cart
+
+###Reading Shopping Cart
+
+```shell
+GET https://t3-prod-api.tipser.com/v4/shoppingcart
+headers
+Authorization: Bearer [token]
+```

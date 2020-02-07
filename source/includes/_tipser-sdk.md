@@ -15,7 +15,7 @@ You can add the Tipser SDK to your project by adding it through npm or yarn.
 `npm install --save @tipser/tipser-sdk`
 
 
-[Package instructions](https://www.npmjs.com/package/@tipser/tipser-sdk)
+<a href="https://www.npmjs.com/package/@tipser/tipser-sdk" target="_blank">Package instructions</a>
 
 ###Using a script tag on your page
 
@@ -57,7 +57,7 @@ Initialized Tipser SDK object that can be used to perform API calls further in t
 *Example:*
 
 ```javascript
-const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "yellow"});
+const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#FFFF00"});
 ```
 The example connects Tipser SDK with Tipser shop and sets primary color to yellow.
 

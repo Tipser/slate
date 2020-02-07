@@ -9,14 +9,14 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 
 ### Live demo
 
-A working examples of page based on Tipser React Elements can be found on [Tipser Elements Bootstrap page](https://tipser.github.io/tipser-elements-react-bootstrap/).
+A working examples of page based on Tipser React Elements can be found on <a href="https://tipser.github.io/tipser-elements-react-bootstrap/" target="_blank">Tipser Elements Bootstrap page</a>.
 
-The code of that page is available as a GitHub [Tipser Elements Bootstrap project](https://github.com/Tipser/tipser-elements-react-bootstrap). Feel free to checkout it and play with it on your local environment! 
+The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-elements-react-bootstrap" target="_blank">Tipser Elements Bootstrap project</a>. Feel free to checkout it and play with it on your local environment! 
 
 ***
 
-## Quick Start
-This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the **Tipser Tools** tutorial.
+## Quick React Start
+This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the [Tipser Tools tutorial](#tipser-tools).
 
 If you're all set up, follow this three steps to rock on your app with Tipser React Elements!
 
@@ -36,15 +36,16 @@ You can combine Tipser Elements with your own application.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Product, Cart, Store, TipserElementsProvider } from '@tipser/tipser-elements';
+import history from 'path/to/your/history'; // path to your history object that has been passed to react-router'
 
 // simple configuration
 const config = {
-    lang: 'en',
-    primaryColor: 'blue',    
+    lang: 'en-US',
+    primaryColor: '#0000FF',    
 };
 
 ReactDOM.render(
-    <TipserElementsProvider posId="59e86b79b8f3f60a94ecd26a" config={config}>   
+    <TipserElementsProvider posId="59e86b79b8f3f60a94ecd26a" config={config} history={history}>   
         <header>
             <nav>
                 Welcome to my store! 
@@ -61,7 +62,7 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document. Also check our [configuration](#configuration-options) options.
+Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document, provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`. Also check our [configuration](#configuration-options) options.
 
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>
@@ -75,7 +76,8 @@ Entry point to Tipser Elements (creating a context for other Elements);
 prop name  | description | type  | required | default value 
 -----------|-------------|-------|----------|--------------
 posId | id of Point of sale | string | true | 
-config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false   | {}
+config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false | {}
+history | history object | {} | false | `window.history`
  
 #### `TipserElement` 
 Generic Element that can render any Contentful content that's fed as a prop to the element.
@@ -100,7 +102,7 @@ All properties are optional:
 
 Parameter | Default | Description | Example
 --------- | ------- | ----------- | -------
-lang | `'en'` | a locale to be used by the Tipser content. Possible values: `'en'`, `'de'`, `'fr'` and `'sv'`. More info at [Language and locale](#language-and-locale)[Environment](#environment)| `'de'` 
+lang | `'en-US'` | a locale to be used by the Tipser content. Possible values: `'en-US'`, `'de-DE'`, `'fr-FR'` and `'sv-SE'`. More info at [Language and locale](#language-and-locale)[Environment](#environment)| `'de-DE'` 
 env | `'prod'` | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)| `'stage'`
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
 useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding onError handler](#onerror)
@@ -113,7 +115,7 @@ modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for di
 
 let tipserConfig = {
     lang: 'en',
-    primaryColor: 'red',
+    primaryColor: '#FF0000',
     // ----- EVENT HANDLING START
     useDefaultErrorHandler: true,
     eventsHandlers: {
@@ -171,20 +173,15 @@ export interface TipserProductModel {
 ```
 When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
 
-### Content components
-Content components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. Container components such as **Grid** may contain other components. 
+### Components
+Components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component. 
 
-`Article`<br> 
-`Brand`<br>
 `Collection`<br>
-`Grid`<br>
-`Menu`<br>
-`Page`<br>
 `Product`<br>
+`Store`<br>
+`Cart`<br>
 
-### Store
-
-Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
+For example Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
 
 It can be used with `Store` react component.
 
@@ -202,7 +199,7 @@ For the same reason, it's not recommended to include more than one `<Store />` o
  
 ## Customizing Tipser Elements Styles ##
 
-Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. 
+Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. For example, all elements' `font-family` and `font-size` attributes are set to inherit them from the host page. If you need to change some other styles, please overwrite the certain CSS classes.
 
 ### Product Card ###
 
@@ -241,7 +238,7 @@ The Cart component with the cart icon can be placed anywhere on your website. (I
 }
 ```
 
-### Primary color ###
+### Adding Primary color ###
 
 If you'd like to unify our design with your own color-theme, you can use our primary-color [configuration option](#primary-color). If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
 
@@ -253,4 +250,4 @@ If you'd like to unify our design with your own color-theme, you can use our pri
     color: #fff;
 }
 ```
-If you'd like to change other elements' color as well, please use our specific classes to override the styles.
+If you'd like to change other elements' color as well, please use specific classes to override the styles.

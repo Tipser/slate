@@ -88,6 +88,15 @@ document.addEventListener('tw-track', function(e) {
     });
 });
 ```
+Example above doesn't translate tipser events to pixel events, you will have to make corelation in pixel dashboard or you can use function that translates those for you. 
+
+1. Go <a href="https://gist.github.com/sirpeas/b434ca8972228f0b453a82a57558325a">here</a> and copy script.
+2. Paste it above addEventListener for tw-track event.
+3. Use it like on belowed example
+
+```javascript
+document.addEventListener('tw-track', callPixelEvent);
+```
 
 The code above assumes that you use <a href="https://developers.facebook.com/docs/facebook-pixel/implementation" target="_blank">pixel.js</a> facebook client library on your page.
 

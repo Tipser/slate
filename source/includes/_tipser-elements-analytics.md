@@ -90,7 +90,7 @@ document.addEventListener('tw-track', function(e) {
 ```
 Example above doesn't translate tipser events to pixel events, you will have to make corelation in pixel dashboard or you can use function that translates those for you. 
 
-1. Go <a href="https://gist.github.com/sirpeas/b434ca8972228f0b453a82a57558325a" target="_blank">here</a> and copy the script.
+1. Go <a href="https://gist.github.com/sirpeas/1aadb088dc2c81687036354e2549c3cd" target="_blank">here</a> and copy the script.
 2. Paste it above addEventListener for tw-track event.
 3. Use it like on belowed example
 

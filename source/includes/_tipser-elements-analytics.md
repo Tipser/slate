@@ -56,7 +56,7 @@ As you can see, all the useful data is contained in the top-level `detail` field
 
 ## Typical use case: Google Analytics
 
-In case you want to tunnel Tipser Analytics events to your Google Analytics, you can use this code snippet:
+In case you want to forward Tipser Analytics events to your Google Analytics, you can use this code snippet:
 
 ```javascript
 document.addEventListener('tw-track', function(e) {
@@ -76,7 +76,7 @@ For the instructions how to setup analytics.js script on your site and connect i
 
 ## Typical use case: Facebook Pixel
 
-Facebook Pixel is also an option to tunnel Tipser Analytics events, here's a snippet:
+In case you want to forward Tipser Analytics events to your Facebook Pixel account, you can use the following code snippet:
 
 ```javascript
 document.addEventListener('tw-track', function(e) {
@@ -88,11 +88,11 @@ document.addEventListener('tw-track', function(e) {
     });
 });
 ```
-Example above doesn't translate tipser events to pixel events, you will have to make corelation in pixel dashboard or you can use function that translates those for you. 
+The example above doesn't translate Tipser events to standard Pixel events, you will have to make a correlation in the Pixel dashboard or you can write a custom mapping function. 
 
 1. Go <a href="https://gist.github.com/sirpeas/114bba643e920b0f53dff9487670f509" target="_blank">here</a> and copy the script.
-2. Paste it above addEventListener for tw-track event.
-3. Use it like on belowed example
+2. Paste it above `addEventListener` for tw-track event.
+3. Use it the same way as in the example below
 
 ```javascript
 document.addEventListener('tw-track', callPixelEvent);

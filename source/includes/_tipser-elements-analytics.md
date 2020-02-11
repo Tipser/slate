@@ -90,9 +90,81 @@ document.addEventListener('tw-track', function(e) {
 ```
 The example above doesn't translate Tipser events to standard Pixel events, you will have to make a correlation in the Pixel dashboard or you can write a custom mapping function. 
 
-1. Go <a href="https://gist.github.com/sirpeas/114bba643e920b0f53dff9487670f509" target="_blank">here</a> and copy the script.
+
+1. Expand and copy the snippet script.
 2. Paste it above `addEventListener` for tw-track event.
 3. Use it the same way as in the example below
+<details>
+  <summary>Snippet</summary>
+  <p>
+
+    ```javascript
+    const callPixelEvent = function(e) {
+      const action = e.detail.action;
+      const target = e.detail.target;
+      const object = e.detail.object;
+
+      switch (true) {
+        case action === 'Click' && target === 'Product tile': {
+          const product = object[0];
+          fbq('track', 'ViewContent', {
+            currency: (product.salesPrice || product.listPrice || product.priceIncVat).currency,
+            value: (product.salesPrice || product.listPrice || product.priceIncVat).value,
+            content_name: product.name || product.title,
+            content_ids: [product.id],
+          });
+          break;
+        }
+        case action === 'Cart' && target === 'Product': {
+          const product = object[0];
+          if ((product.name || product.title) && (product.salesPrice || product.listPrice || product.priceIncVat)) {
+            fbq('track', 'AddToCart', {
+              currency: (product.salesPrice || product.listPrice || product.priceIncVat).currency,
+              value: (product.salesPrice || product.listPrice || product.priceIncVat).value,
+              content_name: product.name || product.title,
+              content_ids: [product.id],
+            });
+          } else {
+            fbq('track', 'AddToCart', {
+              content_ids: [product.id],
+            });
+          }
+          break;
+        }
+        case action === 'Cart' && target === 'Payment': {
+          const products = object;
+          fbq('track', 'InitiateCheckout', {
+            content_ids: products.map((p) => p.id),
+            contents: products.map((p) => p.name).join(', '),
+            currency: (products[0].salesPrice || products[0].listPrice || products[0].priceIncVat).currency,
+            num_items: products.reduce((totalQuantity, product) => product.quantity + totalQuantity, 0),
+            value: products.reduce((totalPrice, product) => product.quantity * (product.salesPrice || product.listPrice).value + totalPrice, 0),
+          });
+          break;
+        }
+        case action === 'Purchase' && target === 'Order': {
+          const products = object.map((order) => order.Products).flat();
+          fbq('track', 'Purchase', {
+            value: products.reduce(
+              (totalPrice, product) => totalPrice + (product.salesPrice || product.listPrice || product.priceIncVat).value,
+              0
+            ),
+            currency: (products[0].salesPrice || products[0].listPrice || products[0].priceIncVat).currency,
+            content_ids: products.map((product) => product.id),
+            contents: products,
+            content_type: 'product',
+          });
+          break;
+        }
+        default:
+          break;
+      }
+    };
+  ```
+
+  </p>
+
+</details>
 
 ```javascript
 document.addEventListener('tw-track', callPixelEvent);
@@ -123,7 +195,7 @@ When a collection appears in the viewport.
     product: Product     
   }[]
 }
-```  
+```
 _Quick links to object structures: [Product](#product-structure)_ 
 
 ### Click product in collection

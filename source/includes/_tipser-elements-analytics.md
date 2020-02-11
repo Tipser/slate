@@ -56,11 +56,11 @@ As you can see, all the useful data is contained in the top-level `detail` field
 
 ## Typical use case: Google Analytics
 
-In case you want to tunnel Tipser Analytics events to your Google Analytics, you can use this code snippet:
+In case you want to forward Tipser Analytics events to your Google Analytics, you can use this code snippet:
 
 ```javascript
 document.addEventListener('tw-track', function(e) {
-    //ga() function coming from analytics.js library
+    // ga() function coming from analytics.js library
     ga('send', {
         hitType: 'event',
         eventCategory: e.detail.description,
@@ -73,6 +73,106 @@ document.addEventListener('tw-track', function(e) {
 The code above assumes that you use <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">analytics.js</a> GA client library on your page. For other libraries, like gtag.js, that code needs to be slightly adjusted.
 
 For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.
+
+## Typical use case: Facebook Pixel
+
+In case you want to forward Tipser Analytics events to your Facebook Pixel account, you can use the following code snippet:
+
+```javascript
+document.addEventListener('tw-track', function(e) {
+    // fbq() function coming from Facebook Pixel analytics script
+    fbq('trackCustom', e.detail.action, {
+        content_name: e.detail.target, 
+        content_category: e.detail.description,
+        content_type: e.detail.action,
+    });
+});
+```
+The example above doesn't translate Tipser events to standard Pixel events, you will have to make a correlation in the Pixel dashboard or you can write a custom mapping function. 
+
+
+1. Expand and copy the snippet script.
+2. Paste it above `addEventListener` for tw-track event.
+3. Use it the same way as in the example below
+<details>
+  <summary>Snippet</summary>
+  <p>
+
+    ```javascript
+    const callPixelEvent = function(e) {
+      const action = e.detail.action;
+      const target = e.detail.target;
+      const object = e.detail.object;
+
+      switch (true) {
+        case action === 'Click' && target === 'Product tile': {
+          const product = object[0];
+          fbq('track', 'ViewContent', {
+            currency: (product.salesPrice || product.listPrice || product.priceIncVat).currency,
+            value: (product.salesPrice || product.listPrice || product.priceIncVat).value,
+            content_name: product.name || product.title,
+            content_ids: [product.id],
+          });
+          break;
+        }
+        case action === 'Cart' && target === 'Product': {
+          const product = object[0];
+          if ((product.name || product.title) && (product.salesPrice || product.listPrice || product.priceIncVat)) {
+            fbq('track', 'AddToCart', {
+              currency: (product.salesPrice || product.listPrice || product.priceIncVat).currency,
+              value: (product.salesPrice || product.listPrice || product.priceIncVat).value,
+              content_name: product.name || product.title,
+              content_ids: [product.id],
+            });
+          } else {
+            fbq('track', 'AddToCart', {
+              content_ids: [product.id],
+            });
+          }
+          break;
+        }
+        case action === 'Cart' && target === 'Payment': {
+          const products = object;
+          fbq('track', 'InitiateCheckout', {
+            content_ids: products.map((p) => p.id),
+            contents: products.map((p) => p.name).join(', '),
+            currency: (products[0].salesPrice || products[0].listPrice || products[0].priceIncVat).currency,
+            num_items: products.reduce((totalQuantity, product) => product.quantity + totalQuantity, 0),
+            value: products.reduce((totalPrice, product) => product.quantity * (product.salesPrice || product.listPrice).value + totalPrice, 0),
+          });
+          break;
+        }
+        case action === 'Purchase' && target === 'Order': {
+          const products = object.map((order) => order.Products).flat();
+          fbq('track', 'Purchase', {
+            value: products.reduce(
+              (totalPrice, product) => totalPrice + (product.salesPrice || product.listPrice || product.priceIncVat).value,
+              0
+            ),
+            currency: (products[0].salesPrice || products[0].listPrice || products[0].priceIncVat).currency,
+            content_ids: products.map((product) => product.id),
+            contents: products,
+            content_type: 'product',
+          });
+          break;
+        }
+        default:
+          break;
+      }
+    };
+  ```
+
+  </p>
+
+</details>
+
+```javascript
+document.addEventListener('tw-track', callPixelEvent);
+```
+
+The code above assumes that you use <a href="https://developers.facebook.com/docs/facebook-pixel/implementation" target="_blank">pixel.js</a> facebook client library on your page.
+
+For the instructions how to setup pixel.js script on your site and connect it to your Facebook for Developers account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.
 
 ## List of supported interactions
 
@@ -95,7 +195,7 @@ When a collection appears in the viewport.
     product: Product     
   }[]
 }
-```  
+```
 _Quick links to object structures: [Product](#product-structure)_ 
 
 ### Click product in collection

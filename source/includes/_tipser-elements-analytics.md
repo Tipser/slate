@@ -327,7 +327,7 @@ When cart icon appears in the viewport.
 {
   description: ‘View cart’,
   action: 'View',
-  target: 'Cart',
+  target: 'Cart-tab',
   object: []
 }
 ```

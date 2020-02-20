@@ -8,6 +8,11 @@
   status = 302
 
 [[redirects]]
+  from = "/kek"
+  to = "http://tipser.com"
+  status = 302
+
+[[redirects]]
   from = "/docs"
   to = "index.html"
   status = 200

@@ -1,0 +1,13 @@
+[build]
+  command = "middleman build --clean"
+  publish = "build"
+
+[[redirects]]
+  from = "/"
+  to = "http://developers.tipser.com"
+  status = 302
+
+[[redirects]]
+  from = "/docs"
+  to = "index.html"
+  status = 200

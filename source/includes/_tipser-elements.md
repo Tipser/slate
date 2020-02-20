@@ -137,7 +137,7 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="0.8" />
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="small" />
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-carousel />
 
 ```
@@ -146,7 +146,7 @@ Elements with attribute `data-tipser-cid` will be replaced with `Collection` ele
 
 [![](collection.png)](/images/collection.png)
 
-To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `0.8` for smaller  and `1.2` for lager product tiles. The default value for imgSize parameter is `1`. When changing the value to `0.8` you get slightly smaller product-cards:
+To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `small` for smaller  and `large` for lager product tiles. The default value for imgSize parameter is `medium`. When changing the value to `small` you get slightly smaller product-cards:
 
 [![](collection-imgSize.png)](/images/collection-imgSize.png)
 

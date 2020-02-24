@@ -93,15 +93,21 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
 
 ## `Store` Element
 
-Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered if your shop is empty.
+The Store is the best way to present a group of collections on a separate page. It is best to place it on a page where sufficient space is available, however, the script automatically blends in and adapts to the given space.
 
-Insert below HTML on your page in the place where you want the `Store` element to be rendered.
+Collections are created using the [Tipser Tools](#tipser-tools), or on "Manage store" dashboard on [tipser.com](https://tipser.com) (when logged in to a publisher account).
+
+Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered.
+
+Insert the following HTML snippet in your code in the place where you want the `Store` element to be rendered.
 
 ```html
 <div id="tipser_store"></div>
 ```
 
-<aside class="notify"><code>Store</code> Element is best inserted as a top level Element on a separate page and should contain the full content area for the best shopping experience.</aside>
+<aside class="notify"><code>Store</code> Element is best inserted as a top-level Element on a separate page and should take the full content area for the best shopping experience.</aside>
+
+*** 
 
 ## `Product` Element
 In order to insert a `Product` Element in your content, insert the following code snippet in your content:
@@ -110,8 +116,14 @@ In order to insert a `Product` Element in your content, insert the following cod
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
+or a `Product List`:
+
+```html
+<div data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9" />
+```
+
 Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated with [tipser tools](#tipser-tools) automatically. 
-By default, a full inline product component is displayed (with product details, unique selling points and variant selection)
+By default, a full inline product component is displayed (with product details and variant selection).
 
 
 [![](full-product.png)](/images/full-product.png)
@@ -126,7 +138,12 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 
 [![](compact-product.png)](/images/compact-product.png)
 
-<aside class="success">All Elements are mobile first. This means, that even if you insert a regular `Product` Element, it will be rendered as a compact product on the mobile devices for better experience.</aside>
+
+To display a list of products, add `data-tipser-pids` attribute too the snippet.
+
+[![](product-list.png)](/images/product-list.png)
+
+<aside class="success">All Elements are mobile first. This means that even if you insert a regular `Product` Element, it will be rendered like a compact product on the mobile devices for better experience.</aside>
 
 ***
 
@@ -161,18 +178,16 @@ If you'd like the collection of more than several products to take less space, y
 
 ## `Cart` Element
 
-To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.
+To keep the user informed about the state of their shopping cart and make it possible to finalize the checkout process at any time, you can attach a live shopping cart icon on your page.
 
 ```js
 tipser.elements('posId')
       .mountCart('.my-cart-container');
 ```
 
+To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to the `mountCart` function, as in the example snippet.
 
-
-To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to `mountCart` function, as in the example snippet.
-
-The cart icon can be placed anywhere on your website. If you want to keep it visible at all times please follow the [instructions](#cart).
+The cart icon can be placed anywhere on your website. If you want to keep it visible at all times, please follow the [instructions](#cart).
 
 
 

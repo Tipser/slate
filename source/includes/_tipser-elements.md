@@ -1,6 +1,6 @@
 #Tipser Elements
 
-Tipser Elements is a set of shoppable elements built on top of Tipser REST API and Tipser SDK:
+Tipser Elements is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and Tipser SDK:
 
 * **Product** - product display with variant selector and add to cart button
 * **Collection** - a group of products
@@ -86,7 +86,7 @@ Main Tipser Elements function has two arguments.
 tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 - `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. 
-- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the [API reference](#api-reference) section.
+- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
 
 ***
 

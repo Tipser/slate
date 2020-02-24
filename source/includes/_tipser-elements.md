@@ -95,7 +95,7 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
 
 The Store is the best way to present a group of collections on a separate page. It is best to place it on a page where sufficient space is available, however, the script automatically blends in and adapts to the given space.
 
-Collections are created using the [Tipser Tools](#tipser-tools), or the Store Front Editor on [tipser.com](https://tipser.com).
+Collections are created using the [Tipser Tools](#tipser-tools), or on "Manage store" dashboard on [tipser.com](https://tipser.com) (when logged in to a publisher account).
 
 Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered.
 

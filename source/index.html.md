@@ -14,9 +14,9 @@ includes:
   - tipser-sdk.md
   - tipser-tools.md
   - configuration-options.md
-  - amp.md
   - tipser-elements-analytics.md
   - rest-api.md
+  - amp.md
 
 
 search: true

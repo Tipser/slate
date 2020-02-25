@@ -1,6 +1,6 @@
 #Tipser Elements
 
-Tipser Elements is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and Tipser SDK:
+Tipser Elements is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and Tipser [SDK](#tipser-sdk):
 
 * **Product** - product display with variant selector and add to cart button
 * **Collection** - a group of products

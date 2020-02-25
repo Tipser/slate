@@ -3,11 +3,27 @@
   publish = "build"
 
 [[redirects]]
-  from = "/"
-  to = "http://developers.tipser.com"
+ from = "/docs"
+ to = "index.html"
+ status = 200
+
+[[redirects]]
+  from = "http://tipser.dev"
+  to = "https://developers.tipser.com"
   status = 302
 
 [[redirects]]
-  from = "/docs"
-  to = "index.html"
-  status = 200
+  from = "https://tipser.dev"
+  to = "https://developers.tipser.com"
+  status = 302
+
+[[redirects]]
+  from = "http://tipser.dev/*"
+  to = "https://developers.tipser.com/:splat"
+  status = 302
+
+[[redirects]]
+  from = "https://tipser.dev/*"
+  to = "https://developers.tipser.com/:splat"
+  status = 302
+

@@ -192,7 +192,9 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 
 ## Versioning
   
-Tipser Elements is following <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. This means that an increase in the major number in our version indicates potential <b>breaking changes</b>. Please be aware of that! For the react version, it is recommended to auto-update to the latest version with the same major number (see the caret (^) character in `package.json` file described <a href="https://stackoverflow.com/a/22345808" target="_blank">here</a>). Be aware, that tipser-elements (non-react) is always updating to the newest version published, even if the increased major version is introduced.
+Tipser Elements follows <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. This means that an increase in the major number in our version indicates potential <b>breaking changes</b>. Please be aware of that! For the react version, it is recommended to auto-update to the latest version with the same major number (see the caret (^) character in `package.json` file described <a href="https://stackoverflow.com/a/22345808" target="_blank">here</a>). 
+
+<aside class="warning">Be aware, that tipser-elements (non-react) is always updating to the newest version published, even if the increased major version is introduced.</aside>
 
 
 ## API reference

@@ -22,7 +22,7 @@ import { TipserContext } from `@tipser/tipser-elements`;
 
 const DialogOpener = () => {
   const context = useContext(TipserContext());
-  conts sdk = context.data.tipserSdk;
+  const sdk = context.data.tipserSdk;
   
   useEffect(() => { sdk.openProductDialog(productId); }, []);
 }

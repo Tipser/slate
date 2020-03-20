@@ -76,7 +76,7 @@ Entry point to Tipser Elements (creating a context for other Elements);
 prop name  | description | type  | required | default value 
 -----------|-------------|-------|----------|--------------
 posId | id of Point of sale | string | true | 
-config | configuration object (see [definition here](#all-configuration-options-of-tipser-elements)) | {} | false | {}
+config | configuration object (see [definition here](#all-configuration-options-of-tipser-react-elements)) | {} | false | {}
 history | history object | {} | false | `window.history`
  
 #### `TipserElement` 
@@ -107,7 +107,7 @@ env | `'prod'` | Tipser environment to be used by the Tipser content. Possible v
 defaultAddedToCartPopup | `true` | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.  | `true` or `false` 
 useDefaultErrorHandler | `true` | when set to false and error happens, default message won't be displayed | see [Adding onError handler](#onerror)
 eventsHandlers | `{}` | the object of event handlers. See [Event handlers](#event-handlers)  | `object` | { onError: console.error.bind(console) }  
-useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):  | `false`
+useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#deep-linking):  | `false`
 modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)| `{ hideSearchIcon : true}`
 
 ### Event Handlers

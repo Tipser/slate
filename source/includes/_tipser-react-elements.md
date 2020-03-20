@@ -251,3 +251,61 @@ If you'd like to unify our design with your own color-theme, you can use our pri
 }
 ```
 If you'd like to change other elements' color as well, please use specific classes to override the styles.
+
+## Server side rendering
+
+If you want to render Tipser-Elements' components on the server side, you can do it in three steps:
+1. At the beginning you have to know ids of products and collections that you want to render on specific url.
+2. Before rendering you have to prepare the state which contains the data necessary to render specific components. 
+It is easy to build this state - our lib includes tool to do it!
+3. The state you have to apply to `TipserElementsProvider` as `initialState` prop
+4. You have to transfer the state on the frontend side and apply as `initialState` to `TipserElementsProvider` on the frontend side.
+
+### Building the state
+
+We assume that you know ids of products, collections and you know if you want to render Shop component on the specific url.
+Let's say that we following four variables are defined: `POS_ID`, `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE`.  
+Please note that `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE` should depend on URL - different pages can have different products/collections.
+To build the state you should use our `StateBuilder` class. You can do it in following way:
+```typescript
+import { StateBuilder } from '@tipser/tipser-elements';
+
+const stateBuilder = new StateBuilder(POS_ID);
+```
+Now you can use it in your request handler: 
+
+```typescript
+stateBuilder.buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE): Promise<TipserState>
+```
+
+Full example:
+```typescript
+stateBuilder.buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE).then(initialState => {
+    renderToString(
+        <TipserElementsProvider posId={POS_ID} initialState={initialState}>
+            <YourAppHere />
+        </TipserElementsProvider>
+    );
+
+});
+```
+
+The state you should transfer to the frontend app. You can use the pattern that is known from Redux based apps.
+Everything what you need is to add following script to your html response:
+
+```html
+<script>window.TIPSER_STATE = ${JSON.stringify(initialState)}</script>
+```
+
+then on the frontend side you are able to reuse it:
+
+```typescript
+hydrate(
+    <TipserElementsProvider posId={POS_ID} initialState={window.TIPSER_STATE}>
+        <YourAppHere />
+    </TipserElementsProvider>,
+    document.getElementById('root')
+);
+```
+
+That's all!

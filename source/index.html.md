@@ -11,6 +11,7 @@ includes:
   - overview.md
   - tipser-elements.md
   - tipser-react-elements.md
+  - advanced-usage.md
   - tipser-sdk.md
   - tipser-tools.md
   - configuration-options.md

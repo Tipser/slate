@@ -4,6 +4,14 @@
 
 Tipser product dialog can be openend programatically by using the underlying [Tipser SDK](#tipser-sdk) instance.
 
+<aside class="notice">
+The open a dialog for a product you will need to know its Tipser <code>productId</code>. There are two easy ways to get it:
+<ol>
+<li>Find a product in Tipser Tools and generate a snippet for it</li>
+<li>Find a product at <a href="https://www.tipser.com/shop">https://www.tipser.com/shop</a> and copy the last part of product page URL</li>
+</ol>
+</aside>
+
 __If you use Tipser Elements:__
 
 ```javascript

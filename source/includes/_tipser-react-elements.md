@@ -290,7 +290,7 @@ stateBuilder.buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE).then(initi
 });
 ```
 
-The state you should transfer to the frontend app. You can use the pattern that is known from Redux based apps.
+The state should be transferred to the frontend app. You can use the pattern that is known from Redux based apps.
 Everything what you need is to add following script to your html response:
 
 ```html

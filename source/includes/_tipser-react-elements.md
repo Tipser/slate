@@ -280,14 +280,15 @@ stateBuilder.buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE): Promise<T
 
 Full example:
 ```typescript
-stateBuilder.buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE).then(initialState => {
+stateBuilder
+  .buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE)
+  .then(initialState => {
     renderToString(
-        <TipserElementsProvider posId={POS_ID} initialState={initialState}>
-            <YourAppHere />
-        </TipserElementsProvider>
+      <TipserElementsProvider posId={POS_ID} initialState={initialState}>
+        <YourAppHere />
+      </TipserElementsProvider>
     );
-
-});
+  });
 ```
 
 The state should be transferred to the frontend app. You can use the pattern that is known from Redux based apps.

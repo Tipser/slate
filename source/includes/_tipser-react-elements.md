@@ -257,7 +257,7 @@ If you'd like to change other elements' color as well, please use specific class
 If you want to render Tipser-Elements' components on the server side, you can do it in three steps:
 1. At the beginning you have to know ids of products and collections that you want to render on specific url.
 2. Before rendering you have to prepare the state which contains the data necessary to render specific components. 
-It is easy to build this state - our lib includes tool to do it!
+It is easy to build this state - our lib includes the tool to do it!
 3. The state you have to apply to `TipserElementsProvider` as `initialState` prop
 4. You have to transfer the state on the frontend side and apply as `initialState` to `TipserElementsProvider` on the frontend side.
 
@@ -266,7 +266,7 @@ It is easy to build this state - our lib includes tool to do it!
 We assume that you know ids of products, collections and you know if you want to render Shop component on the specific url.
 Let's say that following four variables are defined: `POS_ID`, `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE`.  
 Please note that `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE` should depend on URL - different pages can have different products/collections.
-To build the state you should use our `StateBuilder` class. You can do it in following way:
+To build the state you should use our `StateBuilder` class. You can do it in the following way:
 ```typescript
 import { StateBuilder } from '@tipser/tipser-elements';
 
@@ -309,4 +309,4 @@ hydrate(
 );
 ```
 
-That's all!
+That's all! The complete example you can find [here](https://github.com/Tipser/tipser-elements-ssr-bootstrap).

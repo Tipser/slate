@@ -264,7 +264,7 @@ It is easy to build this state - our lib includes tool to do it!
 ### Building the state
 
 We assume that you know ids of products, collections and you know if you want to render Shop component on the specific url.
-Let's say that we following four variables are defined: `POS_ID`, `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE`.  
+Let's say that following four variables are defined: `POS_ID`, `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE`.  
 Please note that `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE` should depend on URL - different pages can have different products/collections.
 To build the state you should use our `StateBuilder` class. You can do it in following way:
 ```typescript

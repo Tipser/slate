@@ -309,4 +309,4 @@ hydrate(
 );
 ```
 
-That's all! The complete example you can find [here](https://github.com/Tipser/tipser-elements-ssr-bootstrap).
+That's all! The complete example is available [here](https://github.com/Tipser/tipser-elements-ssr-bootstrap).

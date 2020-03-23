@@ -292,7 +292,7 @@ stateBuilder
 ```
 
 The state should be transferred to the frontend app. You can use the pattern that is known from Redux based apps.
-Everything what you need is to add following script to your html response:
+All you need to do is including the following line in your html response:
 
 ```html
 <script>window.TIPSER_STATE = ${JSON.stringify(initialState)}</script>

@@ -161,3 +161,39 @@ hydrate(
 ```
 
 That's all! The complete example is available [here](https://github.com/Tipser/tipser-elements-ssr-bootstrap).
+
+## Embedding Elements in native apps
+
+Tipser Elements is a web-based library and currently there is no native version for Android or iOS available.
+
+However it is possible to embed Elements in a native app with some amount of custom code. We recommend using one of the patterns described below.
+
+### Pattern 1: Full embedded integration
+
+For each of e-commerce subpages/articles in your app do the following:
+
+1. Create a dedicated WebView screen for that page and link it to your application (make sure the user has a way to go back to the native part of application) 
+2. Build and host a web page based on Elements, following the instructions from [Tipser Elements](#tipser-elements) or [Tipser Elements React](#tipser-react-elements)
+3. Point your WebView to the corresponding web page
+
+*Disabling dialogs with redirects*
+
+The default behavior of opening product dialogs when a product tile is clicked may not be desired in your mobile app. If that's the case, you can replace that behavior with
+redirecting to a product page by setting the configuration option: `disableDialog` to `true`. One of the benefits is that the back button will work in the way expected by users
+(getting moving back from product page to the e-commerce page).
+
+### Pattern 2: Checkout-only integration
+
+If you prefer even more native experience, you may use [Tipser Rest API](https://developers.tipser.com/rest-api) to fetch the product and shopping cart and build
+your own native implementation of product view, product tiles and cart icon components. Your implementation will need to use [Tipser SDK](#tipser-sdk) to add products to cart:
+
+```javascript
+tipserSdk.addToCart(tipserProductId);
+``` 
+
+Unfortunately, currently the checkout view still must be web based, so you
+still need a WebView screen to host the checkout page. To satisfy that requirement, you will need to host a web page which loads [Tipser SDK](#tipser-sdk) and calls the following line:
+
+```javascript
+tipserSdk.openPurchaseDialog()
+``` 

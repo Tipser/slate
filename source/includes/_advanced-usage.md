@@ -48,6 +48,8 @@ Your React components hierarchy should look as following:
 ```
 
 ## Buyable banners
+
+ [![](buyable-banners.gif)](buyable-banners.gif)
  
  Tipser dialog can be opened from a banner nested in your page. To enable it, make sure that the banner executes the following line of javascript when clicked:
    

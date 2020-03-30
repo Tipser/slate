@@ -63,7 +63,9 @@ Your React components hierarchy should look as following:
     window.top.postMessage({command: 'tipser.api.directToCheckout', productId: tipserProductId}, '*')
   
   ```
-   
+  
+[![](buyable-banners.gif)](/images/buyable-banners.gif)   
+
    Check [this](#getting-tipser-product-id) section to learn how to obtain the `tipserProductId`.
    
    <a href="https://bbc-bootstrap.netlify.com/" target="_blank">Live demo</a>

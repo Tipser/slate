@@ -64,4 +64,16 @@ Your React components hierarchy should look as following:
   
   ```
    
-   Check [this](#getting-tipser-product-id) section to learn how to obtain the `tipserPtoductId`.
+   Check [this](#getting-tipser-product-id) section to learn how to obtain the `tipserProductId`.
+   
+   <a href="https://bbc-bootstrap.netlify.com/" target="_blank">Live demo</a>
+   
+   <aside class="notice">
+   In case your banner is not nested in an iframe but is simply a part of your site, POST messages should be sent to `window object` instead of `window.top`, e.g:
+
+   </aside>
+   
+   ```javascript
+   window.postMessage({command: 'tipser.api.displayProduct', productId: '5b59bfa4ca60310e30c9ac37'}, '*')
+   
+  ```

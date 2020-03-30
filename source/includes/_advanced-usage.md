@@ -51,31 +51,36 @@ Your React components hierarchy should look as following:
 
  [![](buyable-banners.gif)](buyable-banners.gif)
  
- Tipser dialog can be opened from a banner nested in your page. To enable it, make sure that the banner executes the following line of javascript when clicked:
+ Tipser dialogs can be opened by the banners on your site. That way you can use your banners for E-commerce. 
+ 
+ To connect your banner to Tipser, you need to do the following two steps:
+ 
+ 1. follow the instructions from [Initializing Tipser Elements](#initializing-tipser-elements)
+ 2. Add the line of javascript posted below to you banner. It should be invoked when the banner is clicked. 
    
-   __To display product dialog:__
-   
-   ```javascript
-   window.top.postMessage({command: 'tipser.api.displayProduct', productId: tipserProductId}, '*')
-   ```
+ __To display product dialog:__
+ 
+ ```javascript
+ window.top.postMessage({command: 'tipser.api.displayProduct', productId: tipserProductId}, '*')
+ ```
 
-  __To open the checkout view for a product directly:__
-  
-  ```javascript
-    window.top.postMessage({command: 'tipser.api.directToCheckout', productId: tipserProductId}, '*')
-  
-  ```
-   
-   Check [this](#getting-tipser-product-id) section to learn how to obtain the `tipserProductId`.
-   
-   <a href="https://bbc-bootstrap.netlify.com/" target="_blank">Live demo</a>
-   
-   <aside class="notice">
-   In case your banner is not nested in an iframe but is simply a part of your site, POST messages should be sent to `window object` instead of `window.top`, e.g:
+__To open the checkout view for a product directly:__
 
-   </aside>
-   
-   ```javascript
-   window.postMessage({command: 'tipser.api.displayProduct', productId: '5b59bfa4ca60310e30c9ac37'}, '*')
-   
-  ```
+```javascript
+  window.top.postMessage({command: 'tipser.api.directToCheckout', productId: tipserProductId}, '*')
+
+```
+ 
+ Check [this](#getting-tipser-product-id) section to learn how to obtain the `tipserProductId`.
+ 
+ <a href="https://bbc-bootstrap.netlify.com/" target="_blank">Live demo</a>
+ 
+ <aside class="notice">
+ In case your banner is not nested in an iframe but is simply a part of your site, POST messages should be sent to `window object` instead of `window.top`, e.g:
+
+ </aside>
+ 
+ ```javascript
+ window.postMessage({command: 'tipser.api.displayProduct', productId: '5b59bfa4ca60310e30c9ac37'}, '*')
+ 
+```

@@ -13,6 +13,7 @@ To open a dialog for a product you will need to know its Tipser <code>productId<
 ## Adding POS data
 
 If you need to associate some custom data to orders made from Tipser on your site (e.g. session id or user id on your site), pass it in the posData field to the Elements configuration.
+You will be later able to get that data back when requesting the orders from the Tipser orders API.
 
 ```javascript
 const tipserOptions = {

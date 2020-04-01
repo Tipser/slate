@@ -165,12 +165,5 @@ const tipserOptions = {
 
 ## POS data
 
-Here you can add an object containing relevant data, that will be attached to a product order.
-
-```javascript
-const tipserOptions = {
-    posData: {
-      userNumber: '123'
-    }
-};
+Go to [this](#adding-pos-data) section to see the usage.
 ```

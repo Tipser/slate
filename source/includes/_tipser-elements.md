@@ -42,14 +42,21 @@ Insert this HTML snippet on your page in the place where you want the `Store` el
 <aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 ***
 
-### Initialize Tipser Elements
-Finally, initialize Tipser Elements.
+## Initializing Tipser Elements
+
+Initializing Tipser Elements is a line of JavaScript code.
 
 ```js
 tipser.elements('posId')
 ```
 
-Make sure that the `posId` is replaced with the actual id corresponding to your account. 
+Make sure that the `posId` is replaced with the actual id corresponding to your account.
+
+If you need to pass custom settings (see: [configuration](#configuration-options)), you can pass an `options` object as second argument.
+
+```js
+tipser.elements('posId', options)
+```
 
 Complete working example could look like:
 
@@ -60,7 +67,7 @@ Complete working example could look like:
     <div id="tipser_store"></div>
     <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
     <script>
-      tipser.elements('59e86b79b8f3f60a94ecd26a')
+      tipser.elements('posId')
     </script>
   </body>
 </html>

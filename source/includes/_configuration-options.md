@@ -1,4 +1,5 @@
-#Configuration options
+#
+
 
 Both Tipser Elements and Tipser SDK initialization functions accept configuration object as a second parameter. 
 

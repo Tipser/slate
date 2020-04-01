@@ -38,6 +38,9 @@ const configurationOptions = {
   useDeepLinking: false,
   customLabels: {
     buy: 'custom button label'
+  },
+  posData: {
+    key: "value"
   }
 }
 ```
@@ -158,3 +161,16 @@ const tipserOptions = {
 ```
 
 [![](custom-label.png)](/images/custom-label.png)
+
+
+## POS data
+
+Here you can add an object containing relevant data, that will be attached to a product order.
+
+```javascript
+const tipserOptions = {
+    posData: {
+      userNumber: '123'
+    }
+};
+```

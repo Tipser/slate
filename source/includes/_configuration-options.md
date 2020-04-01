@@ -39,6 +39,9 @@ const configurationOptions = {
   useDeepLinking: false,
   customLabels: {
     buy: 'custom button label'
+  },
+  posData: {
+    key: "value"
   }
 }
 ```
@@ -159,3 +162,9 @@ const tipserOptions = {
 ```
 
 [![](custom-label.png)](/images/custom-label.png)
+
+
+## POS data
+
+Go to [this](#adding-pos-data) section to see the usage.
+```

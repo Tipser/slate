@@ -162,38 +162,47 @@ hydrate(
 
 That's all! The complete example is available [here](https://github.com/Tipser/tipser-elements-ssr-bootstrap).
 
-## Embedding Elements in native apps
+## Native apps
 
-Tipser Elements is a web-based library and currently there is no native version for Android or iOS available.
+Tipser Elements is a web-based library and currently we don't provide a native version for Android or iOS (let us know if you'd like us to build it for you!)
 
-However it is possible to embed Elements in a native app with some amount of custom code. We recommend using one of the patterns described below.
+However it is possible to embed Elements in a native app if you are using WebViews. We recommend you to follow one of the patterns described below.
 
-### Pattern 1: Full embedded integration
+### Pattern 1: Full web integration
 
-For each of e-commerce subpages/articles in your app do the following:
+In case your articles are managed by a Web CMS and are displayed in WebView you can simply install and use Tipser Elements in your web articles. Just follow the instructions from [Tipser Elements](#tipser-elements) or [Tipser Elements React](#tipser-react-elements) sections, depending on your technology of choice.
 
-1. Create a dedicated WebView screen for that page and link it to your application (make sure the user has a way to go back to the native part of application) 
-2. Build and host a web page based on Elements, following the instructions from [Tipser Elements](#tipser-elements) or [Tipser Elements React](#tipser-react-elements)
-3. Point your WebView to the corresponding web page
+The only customization that we recommend is using `disableDialog` option, as described below.
 
-*Disabling dialogs with redirects*
+*Replacing dialogs with redirects*
 
-The default behavior of opening product dialogs when a product tile is clicked may not be desired in your mobile app. If that's the case, you can replace that behavior with
-redirecting to a product page by setting the configuration option: `disableDialog` to `true`. One of the benefits is that the back button will work in the way expected by users
-(getting moving back from product page to the e-commerce page).
+By default, when a product tile is clicked, it opens a full screen product dialog. It may not be desired behavior in your mobile app. Set the configuration option: `disableDialog` to `true` to replace the dialog with a _redirect_ to the product page. That way pressing the back button will bring the user back to your article.                                                                                                                                                                                                 
 
-### Pattern 2: Checkout-only integration
+### Pattern 2: API integration
 
-If you prefer even more native experience, you may use [Tipser Rest API](https://developers.tipser.com/rest-api) to fetch the product and shopping cart and build
-your own native implementation of product view, product tiles and cart icon components. Your implementation will need to use [Tipser SDK](#tipser-sdk) to add products to cart:
+If you want to deliver native experience to your users, you can build your custom native e-commerce components (product tiles, shopping cart icon, etc) and use [Tipser Rest API](https://developers.tipser.com/rest-api) to populate them. With this pattern, only the checkout part needs to be displayed in a WebView.
 
-```javascript
-tipserSdk.addToCart(tipserProductId);
-``` 
+Below is a basic example of a native view with a single product that opens Tipser checkout view when clicked.
 
-Unfortunately, currently the checkout view still must be web based, so you
-still need a WebView screen to host the checkout page. To satisfy that requirement, you will need to host a web page which loads [Tipser SDK](#tipser-sdk) and calls the following line:
+Step 1: Rendering a product on your page
 
-```javascript
-tipserSdk.openPurchaseDialog()
-``` 
+1. Use the Tipser product API to get the product that you want to sell, e.g: `https://t3-stage-api.tipser.com/v3/products/5d932be284da04000116ae3c?pos=59e86b79b8f3f60a94ecd26a` 
+(please, replace the example product id with the desired product and the pos parameter with your own POS id)
+2. Render your custom product component based on the response data
+
+<aside class="notice">
+Here we describe displaying a single product. If you'd be interested to render multiple products, it's best to use the collections API.
+</aside>
+
+
+Step2: Opening the checkout view
+
+1. Create a WebView screen in your app project
+2. When your product is clicked, open the WebView with the URL like: `https://www.tipser.com/direct-checkout?productId=productId&posId=59e86b79b8f3f60a94ecd26a` 
+(again, please make sure to replace the `posId` with your POS id and `productId` with the Tipser id of the product that was clicked)
+
+<aside class="notice">
+If your use case is not covered in this section, please discuss it with your Tipser integration support person.   
+</aside>
+
+

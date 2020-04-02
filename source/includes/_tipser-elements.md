@@ -218,7 +218,7 @@ eventsHandlers | `{}` | the object of event handlers. See [Event handlers](#even
 useDeepLinking | `true` | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):  | `false`
 modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)| `{ hideSearchIcon : true}` 
 primaryColor | #333 | Hex color code, affecting eg. buy-button color and Cart indicator | #5F9F9F
-disableDialog | false | If set to `true`, a redirect to the product page is done instead of opening product dialogs  (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section) | `false`
+disableDialog | false | If set to `true`, a redirect to the product page is done instead of opening the product dialog (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section) | `false`
 
 ***
 

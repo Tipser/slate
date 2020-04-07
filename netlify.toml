@@ -11,11 +11,13 @@
   from = "http://tipser.dev"
   to = "https://developers.tipser.com"
   status = 302
+  force = true
 
 [[redirects]]
   from = "https://tipser.dev"
   to = "https://developers.tipser.com"
   status = 302
+  force = true
 
 [[redirects]]
   from = "http://tipser.dev/*"

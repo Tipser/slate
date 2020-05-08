@@ -31,7 +31,7 @@ Congratulations! Now Tipser is part of your website
 
 ##Initialization
 
-To initialize you need to create a tipser const.
+To initialize you need to create a `tipser` const.
 
 ```typescript
 const tipser = TipserSDK(posId: string, options: TipserSdkConfig): TipserSDKInstance;
@@ -51,13 +51,13 @@ Initialized Tipser SDK object that can be used to perform API calls further in t
 ```javascript
 const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#FFFF00"});
 ```
-The example connects Tipser SDK with Tipser shop and sets primary color to yellow.
+The example connects Tipser SDK with Tipser shop and sets the primary color to yellow.
 
-For configuration options see [configuration](#configuration-options) chapter of our documentation.
+For configuration options see the [configuration](#configuration-options) chapter of our documentation.
 
 ##Customization of Tipser environment
 
-By default, Tipser SDK connects to production Tipser environment. Yet, if testing environment is preferred (e.g. in order to do **test purchase**), then it can be customized with env parameter in TipserSDK options, which accepts the following values:
+By default, Tipser SDK connects to the production Tipser environment. Yet, if the testing environment is preferred (e.g. in order to do **test purchase**), then it can be customized with env parameter in TipserSDK options, which accepts the following values:
 
 `prod` or production
 
@@ -78,7 +78,7 @@ var tipser = TipserSDK("5aa12d639d25800ff0e56fc5", {env: "stage"});
 ##posData
 
 `posData` string passed in the `options` is returned with other order fields from Tipser commissions API. 
-<aside class="warning">Warning: maximal number of characters in **posData** is limited to 4000 characters and will be truncated if longer string is passed.</aside>
+<aside class="warning">Warning: the maximal number of characters in **posData** is limited to 4000 characters and will be truncated if a longer string is passed.</aside>
 
 ##Getting cart size:
 
@@ -216,7 +216,7 @@ addDialogClosedListener(listener: (event) => void)
 removeDialogClosedListener(listener: (event) => void)
 ```
   
-The listener callback is called when every type of Tipser Dialog is closed (including "Thank You page" dialog - in this case both dialogClosed and thankYouPageClosed listeners will be called).
+The listener callback is called when every type of Tipser Dialog is closed (including "Thank You page" dialog - in this case, both dialogClosed and thankYouPageClosed listeners will be called).
   
 ##Listening to thank you page closed event
   

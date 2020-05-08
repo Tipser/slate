@@ -31,7 +31,7 @@ Congratulations! Now Tipser is part of your website
 
 ##Initialization
 
-To initialize you need to create a `tipser` const.
+To initialize you need to create an instance of Tipser SDK:
 
 ```typescript
 const tipser = TipserSDK(posId: string, options: TipserSdkConfig): TipserSDKInstance;
@@ -51,7 +51,7 @@ Initialized Tipser SDK object that can be used to perform API calls further in t
 ```javascript
 const tipser = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#FFFF00"});
 ```
-The example connects Tipser SDK with Tipser shop and sets the primary color to yellow.
+The example starts Tipser SDK instance in which Tipser shop has the primary color set to yellow.
 
 For configuration options see the [configuration](#configuration-options) chapter of our documentation.
 
@@ -75,31 +75,15 @@ var tipser = TipserSDK("5aa12d639d25800ff0e56fc5", {env: "stage"});
 
 ##The script API
 
-##posData
+`productId`: string passed in product-related API calls. It consists of the **masterProductId** and, if the product has variants, the **variantId**, concatenated with an **underscore "_"**. Then the **productId** should look like this: 
+
+```
+<masterProductId>_<variantId>
+```
 
 `posData` string passed in the `options` is returned with other order fields from Tipser commissions API. 
 <aside class="warning">Warning: the maximal number of characters in **posData** is limited to 4000 characters and will be truncated if a longer string is passed.</aside>
 
-##Getting cart size:
-
-```javascript
-getCurrentCartSize(): Promise<number>;
-```
-
-Returns current Tipser cart size (including items added to cart from other shops). That value can change over time, so it may be necessary to call it repeatedly (polling) to have up-to-date cart size all the time.
-
-*Returns*:
-
-A Promise returning current Tipser cart size.
-
-*Example:*
-
-```javascript
-tipser.getCurrentCartSize().then((cartSize) => {
-   console.log("Tipser cart size is: ", cartSize);
-   useCartSize(cartSize);
-});
-```
 
 ##Adding product to cart
 
@@ -109,13 +93,9 @@ addToCart(productId: string, options: {posData?: string}): Promise<void>
 
 Adds a product with a given productId (specific to Tipser) to a cart.
 
-`productId`: is the variant **productId**, constructed from the **masterProductId** and the **variantId**, concatenated with an **underscore "_"**. The productId should look like this: 
+`productId`: string, with the stucture described [here](#the-script-api).
 
-```
-<masterProductId>_<variantId>
-```
-
-`options`: currently the only supported option is [posData](#posdata), which is a string to be attached to a product order. 
+`options`: currently the only supported option is [posData](#the-script-api), which is a string to be attached to a product order. 
 
 *Returns*:
 
@@ -153,6 +133,28 @@ openPurchaseDialog(): void
 Opens Tipser purchase (checkout) dialog with products that are currently in the shopping cart.
 
 
+##Getting cart size:
+
+```javascript
+getCurrentCartSize(): Promise<number>;
+```
+
+Returns current Tipser cart size (including items added to cart from other shops). That value can change over time, so it may be necessary to call it repeatedly (polling) to have up-to-date cart size all the time.
+
+*Returns*:
+
+A Promise returning current Tipser cart size.
+
+*Example:*
+
+```javascript
+tipser.getCurrentCartSize().then((cartSize) => {
+   console.log("Tipser cart size is: ", cartSize);
+   useCartSize(cartSize);
+});
+```
+
+
 ##Direct to Checkout
 
 By using the method `Direct To Checkout`, you add a product to the cart, at the same time as you open the checkout dialogue window.
@@ -163,11 +165,7 @@ By using the method `Direct To Checkout`, you add a product to the cart, at the 
  
 Adds the product with a given id to the shopping cart and then opens Tipser purchase (checkout) dialog with products that are currently in the shopping cart (including the newly added product).
 
-`productId`: is the variant productId, constructed from the **masterProductId** and the **variantId**, concatenated with an **underscore "_"**. The **productId** should look like this: 
-
-```
-<masterProductId>_<variantId>
-```
+`productId`: string, with the stucture described [here](#the-script-api).
 
 
 `options`: currently the only supported option is [posData](#posdata), which is a string to be attached to a product order.

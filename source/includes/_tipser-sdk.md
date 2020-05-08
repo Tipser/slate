@@ -22,7 +22,7 @@ You can add the Tipser SDK to your project by adding it through npm or yarn.
 > Add a script to your page:
 
 ```javascript
-<script src="https://tipser.com/widget/sdk.js"></script>
+<script src="https://cdn.tipser.com/tipser-sdk/latest.js"></script>
 ```
 
 > You may also want to use the test version of the Tipser SDK (to simulate the payment without actual money transfer)

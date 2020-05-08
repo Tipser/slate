@@ -72,6 +72,7 @@ By default, Tipser SDK connects to production Tipser environment. Yet, if testin
 var tipser = TipserSDK("5aa12d639d25800ff0e56fc5", {env: "stage"});
 ```
 
+
 ##The script API
 
 ##posData

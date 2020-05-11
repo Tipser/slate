@@ -109,7 +109,7 @@ tipser.addToCart("5a98be67c0bdfb0c30865609_5a98be67c0bdfb0c30866509")
   .catch((err) => console.log("failed to add to cart", err))
 ```
 
-##Opening product dialogue
+##Opening product dialog
 
 ```javascript
 openProductDialog(productId: string): void
@@ -139,7 +139,7 @@ Opens Tipser purchase (checkout) dialog with products that are currently in the 
 getCurrentCartSize(): Promise<number>;
 ```
 
-Returns current Tipser cart size (including items added to cart from other shops). That value can change over time, so it may be necessary to call it repeatedly (polling) to have up-to-date cart size all the time.
+Returns current Tipser cart size (including items added to cart from other shops). That value can change over time, so it may be necessary to call it repeatedly (e.g. on every page load or polling with a certain interval).
 
 *Returns*:
 
@@ -157,7 +157,7 @@ tipser.getCurrentCartSize().then((cartSize) => {
 
 ##Direct to Checkout
 
-By using the method `Direct To Checkout`, you add a product to the cart, at the same time as you open the checkout dialogue window.
+By using the method `Direct To Checkout`, you add a product to the cart, at the same time as you open the checkout dialog window.
 
 ```javascript
  openDirectToCheckoutDialog(productId: string, options: {posData?: string}): void
@@ -207,7 +207,7 @@ removeTrackEventListener(listener: (event) => void)
 
 The listener callback is called every time payment analytics event (like product dialog opened or product added to cart) is fired by Tipser code.
 
-##Listening to dialogue closed event
+##Listening to dialog closed event
 
 ```javascript
 addDialogClosedListener(listener: (event) => void)

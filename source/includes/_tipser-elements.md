@@ -123,12 +123,6 @@ In order to insert a `Product` Element in your content, insert the following cod
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
-or a `Product List`:
-
-```html
-<div data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9" />
-```
-
 Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated with [tipser tools](#tipser-tools) automatically. 
 By default, a full inline product component is displayed (with product details and variant selection).
 
@@ -146,7 +140,12 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 [![](compact-product.png)](/images/compact-product.png)
 
 
-To display a list of products, add `data-tipser-pids` attribute too the snippet.
+To display a list of products (rendered as small product tiles), add `data-tipser-pids` attribute to the snippet together with the `productId`s of the products you would like to display.
+
+```html
+<div data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9" />
+```
+
 
 [![](product-list.png)](/images/product-list.png)
 

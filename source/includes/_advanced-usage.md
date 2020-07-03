@@ -118,11 +118,13 @@ We assume that you know ids of products, collections and you know if you want to
 Let's say that following four variables are defined: `POS_ID`, `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE`.  
 Please note that `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE` should depend on URL - different pages can have different products/collections.
 To build the state you should use our `StateBuilder` class. You can do it in the following way:
+
 ```typescript
 import { StateBuilder } from '@tipser/tipser-elements';
 
 const stateBuilder = new StateBuilder(POS_ID);
 ```
+
 Now you can use it in your request handler: 
 
 ```typescript
@@ -130,6 +132,7 @@ stateBuilder.buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE): Promise<T
 ```
 
 Full example:
+
 ```typescript
 stateBuilder
   .buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE)

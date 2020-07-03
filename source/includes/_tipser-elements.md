@@ -140,7 +140,7 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 [![](compact-product.png)](/images/compact-product.png)
 
 
-To display a list of products, add `data-tipser-pids` attribute to the snippet together with the `productId`s of the products you would like to display as a list.
+To display a list of products (rendered as small product tiles), add `data-tipser-pids` attribute to the snippet together with the `productId`s of the products you would like to display.
 
 ```html
 <div data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9" />

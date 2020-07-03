@@ -208,4 +208,16 @@ Step2: Opening the checkout view
 If your use case is not covered in this section, please discuss it with your Tipser integration support person.   
 </aside>
 
+## Merchant signup on your site
+
+It is possible to let merchants sign-up to Tipser directly from your site.
+
+To make it possible, you need to have Tipser Elements installed on your page and you need to prepare a dedicated subpage for merchants, with a "Sign up" button that invokes the following code:
+
+```javascript
+const elements = tipser.elements(posId, config);
+elements.sdkInstance.openDialog(`https://merchant-signup.netlify.app/#/start/${posId}`);
+```
+
+
 

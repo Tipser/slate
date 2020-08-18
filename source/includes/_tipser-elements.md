@@ -299,7 +299,61 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
 
 <aside class="warning">This section requires simplification. It isn't clear how to use event handler with combination of this configuration</aside>
 
+## Customizing Tipser Elements Styles ##
+
+Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. For example, all elements' `font-family` and `font-size` attributes are set to inherit them from the host page. If you need to change some other styles, please overwrite the certain CSS classes.
+
+### Product Card ###
+
+The Product Card is an item used for displaying single `Collection` or `Store` component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS the following style:
    
+   ```css
+   .te-product-card {
+       font-size: 14px;
+   }
+   ```
+   
+   All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the `px` unit. If you wish to change single description element, please use its specific class names: 
+   
+   `.te-product-card-name` <br/>
+   `.te-product-card-brand`<br/>
+   `.te-product-card-price`<br/>
+   and:<br/>
+   `.te-product-card-sales-price`<br/>
+   `.te-product-card-price-regular-price`<br/>
+   for products on sale.
+   
+
+### Cart ###
+
+The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
+
+```css
+.cart-icon {
+    position: fixed;
+    right: 0;
+    top: 121px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: -2px 2px 7px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+```
+
+### Adding Primary color ###
+
+If you'd like to unify our design with your own color-theme, you can use our primary-color [configuration option](#primary-color). If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
+
+```css
+
+/* if your primary color is bright,
+    you may consider changing also the text color for elements like buttons: */
+.te-button-text {
+    color: #333;
+}
+```
+If you'd like to change other elements' color as well, please use specific classes to override the styles.
+
 
 ## Starter projects
 

@@ -219,9 +219,9 @@ The component will be rendered on Your site as shown below:
  
  
 ## Modular Checkout
-Use this more advanced way of displaying Checkout, if you want to have more control over its parts.
+More advanced way of embedding Tipser Checkout on your page, to be used if you need more control over the Checkout experience.
 
-The `Checkout` consists of several react components:
+The `Checkout` consists of several React components:
 
 ```html
 <Checkout>
@@ -234,7 +234,7 @@ The `Checkout` consists of several react components:
 </Checkout>
 ```
 
-To make them all connected, you need to place them in a wrapper component `<Checkout/>` and pass all the data via props `{...checkout}`:
+To connect them together, you need to place them in a wrapper component `<Checkout/>` and pass all the data via props `{...checkout}`:
 
 ```jsx
 import React from 'react';
@@ -277,4 +277,34 @@ const CheckoutPage2 = ({ checkout }) => (
 );
 ```
 
-The order in which the components appear is arbitrary and depends entirely on your needs and UX design.
+Feel free to position the checkout components in any order that suits your UX needs.
+
+* **Cart Products**
+A list of products with such details as price, quantity and delivery cost. 
+
+[![](cart_products.png)](/images/cart_products.png)
+
+* **Customer Address Delivery**
+Component with cutomer's adderss delivery details. It is obligatory with Stripe as payment service provider. When it's filled with information in the right format, it enables the 
+Checkout Payment component.
+[![](customer_address_delivery.png)](/images/customer_address_delivery.png)
+
+
+* **Cart Promo Code**
+Enables the user to use promotion code for discounts and other campaign benefits.
+
+[![](cart_promotion_code.png)](/images/cart_promotion_code.png)
+
+* **Cart Summary**
+Financial details of the transaction including taxes, discounts, delivery cost, etc.
+
+[![](cart_summary.png)](/images/cart_summary.png)
+
+* **Checkout Payment**
+Component connected to payment service provider. 
+[![](checkout_payment.png)](/images/checkout_payment.png)
+
+* **Customer Address Billing**
+Component with cutomer's billing details. 
+
+[![](customer_address_billing.png)](/images/customer_address_billing.png)

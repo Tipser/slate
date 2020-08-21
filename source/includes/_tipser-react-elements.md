@@ -181,8 +181,10 @@ Components are the building blocks of Tipser Elements. Any components need to be
 `Product`<br>
 `Store`<br>
 `Cart`<br>
+`Checkout`<br>
 
-For example Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
+## Store 
+Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
 
 It can be used with `Store` react component.
 
@@ -197,58 +199,112 @@ import { Store } from '@tipser/tipser-elements';
 Note: the `Store` component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
 For the same reason, it's not recommended to include more than one `<Store />` on a single page. 
 
+## Checkout
+Is an HTML widget displaying a whole Checkout component allowing a user to make a purchase on the POS site, using Tipser infrastructure. The Checkout component can be used in two ways: 
+
+Stand-alone `Checkout` react component displayed on one site;
+
+Modular Checkout component displaying parts of it as different react Components in a custom order on different subsites;
+
+### Stand-alone Checkout
+To display `Checkout` as **stand-alone component**, all you need to do is to place it in  your code like any other Tipser Elements React components:
+
+```js
+import { Checkout } from '@tipser/tipser-elements';
+ ...
+<Checkout />
+```
+The component will be rendered on Your site as shown below:
+[![](checkout_component.png)](/images/checkout_component.png)
  
-## Customizing Tipser Elements Styles ##
+ 
+## Modular Checkout
+More advanced way of embedding Tipser Checkout on your page, to be used if you need more control over the Checkout experience.
 
-Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. For example, all elements' `font-family` and `font-size` attributes are set to inherit them from the host page. If you need to change some other styles, please overwrite the certain CSS classes.
+The `Checkout` consists of several React components:
 
-### Product Card ###
-
-The Product Card is an item used for displaying single `Collection` or `Store` component, among others. The font-family used in the description section of the Product Card is inherited from your website's styles, and the font-size is expressed in the relative `em` units controlled in `.te-product-card` class. The default value used there is `12px`, which you can easily change by adding to your CSS the following style:
-
-```css
-.te-product-card {
-    font-size: 14px;
-}
+```html
+<Checkout>
+  <CartProducts />
+  <CustomerAddressDelivery />
+  <CartPromoCode />
+  <CartSummary />
+  <CheckoutPayment />
+  <CustomerAddressBilling />
+</Checkout>
 ```
 
-All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the `px` unit. If you wish to change single description element, please use its specific class names: 
+To connect them together, you need to place them in a wrapper component `<Checkout/>` and pass all the data via props `{...checkout}`:
 
-`.te-product-card-name` <br/>
-`.te-product-card-brand`<br/>
-`.te-product-card-price`<br/>
-and:<br/>
-`.te-product-card-sales-price`<br/>
-`.te-product-card-price-regular-price`<br/>
-for products on sale.
+```jsx
+import React from 'react';
+import { Checkout, CheckoutData } from '@tipser/tipser-elements/dist/all';
+import { Route, Switch, withRouter } from 'react-router';
 
+export const CheckoutMultipage = withRouter(({ match }) => (
+  <div>
+    <div className="te-multipage-label">Checkout multipage</div>
+    <Checkout>
+      {(checkout: CheckoutData) => (
+        <Switch>
+          <Route path={`${match.url}/step-1`}>
+            <CheckoutPage1 checkout={checkout} />
+          </Route>
+          <Route path={`${match.url}/step-2`}>
+            <CheckoutPage2 checkout={checkout} />
+          </Route>
+        </Switch>
+      )}
+    </Checkout>
+  </div>
+));
 
-### Cart ###
+const CheckoutPage1 = ({ checkout }) => (
+  <>
+    <h2>Step 1</h2>
+    <CartProducts {...checkout} />
+    <CustomerAddressDelivery {...checkout} />
+    <CartSummary {...checkout} />
+  </>
+);
 
-The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
-
-```css
-.cart-icon {
-    position: fixed;
-    right: 0;
-    top: 121px;
-    background: #fff;
-    padding: 10px;
-    box-shadow: -2px 2px 7px rgba(0,0,0,0.3);
-    z-index: 10;
-}
+const CheckoutPage2 = ({ checkout }) => (
+  <>
+    <h2>Step 2</h2>
+    <CartPromoCode {...checkout} />
+    <CheckoutPayment {...checkout} />
+  </>
+);
 ```
 
-### Adding Primary color ###
+Feel free to position the checkout components in any order that suits your UX needs.
 
-If you'd like to unify our design with your own color-theme, you can use our primary-color [configuration option](#primary-color). If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.
+* **Cart Products**
+A list of products with such details as price, quantity and delivery cost. 
 
-```css
+[![](cart_products.png)](/images/cart_products.png)
 
-/* if your primary color is bright,
-    you may consider changing also the text color for elements like buttons: */
-.te-button-text {
-    color: #fff;
-}
-```
-If you'd like to change other elements' color as well, please use specific classes to override the styles.
+* **Customer Address Delivery**
+Component with cutomer's adderss delivery details. It is obligatory with Stripe as payment service provider. When it's filled with information in the right format, it enables the 
+Checkout Payment component.
+[![](customer_address_delivery.png)](/images/customer_address_delivery.png)
+
+
+* **Cart Promo Code**
+Enables the user to use promotion code for discounts and other campaign benefits.
+
+[![](cart_promotion_code.png)](/images/cart_promotion_code.png)
+
+* **Cart Summary**
+Financial details of the transaction including taxes, discounts, delivery cost, etc.
+
+[![](cart_summary.png)](/images/cart_summary.png)
+
+* **Checkout Payment**
+Component connected to payment service provider. 
+[![](checkout_payment.png)](/images/checkout_payment.png)
+
+* **Customer Address Billing**
+Component with cutomer's billing details. 
+
+[![](customer_address_billing.png)](/images/customer_address_billing.png)

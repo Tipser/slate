@@ -204,7 +204,7 @@ Is an HTML widget displaying a whole Checkout component allowing a user to make 
 
 Stand-alone `Checkout` react component displayed on one site;
 
-Modular Checkout component displaying parts of it as different react Components in POS controlled order on different subsites;
+Modular Checkout component displaying parts of it as different react Components in a custom order on different subsites;
 
 ### Stand-alone Checkout
 To display `Checkout` as **stand-alone component**, all you need to do is to place it in  your code like any other Tipser Elements React components:

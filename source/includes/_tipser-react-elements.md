@@ -37,6 +37,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Product, Cart, Store, TipserElementsProvider } from '@tipser/tipser-elements';
 import history from 'path/to/your/history'; // path to your history object that has been passed to react-router'
+// import CSS files for Tipser Elements
+import '@tipser/tipser-elements/dist/index.css'; 
 
 // simple configuration
 const config = {
@@ -62,7 +64,7 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document, provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`. Also check our [configuration](#configuration-options) options.
+Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document, provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history` and import CSS files. Also check our [configuration](#configuration-options) options.
 
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>

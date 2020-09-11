@@ -64,7 +64,16 @@ ReactDOM.render(
     </TipserElementsProvider>, 
     document.getElementById('root'));
 ```
-Make sure your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document, provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history` and import CSS files. Also check our [configuration](#configuration-options) options.
+Please make sure: 
+
+- your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document 
+
+- to provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`
+
+- import CSS files. 
+
+Also, check our [configuration](#configuration-options) options.
+
 
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>

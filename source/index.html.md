@@ -13,7 +13,6 @@ includes:
   - tipser-react-elements.md
   - advanced-usage.md
   - tipser-sdk.md
-  - tipser-tools.md
   - configuration-options.md
   - tipser-elements-analytics.md
   - rest-api.md

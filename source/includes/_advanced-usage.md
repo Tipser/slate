@@ -194,7 +194,7 @@ const toRender = (
         </SsrTipserElementsProvider>
     </TipserElementsProvider>
 );
-
+//first render
 renderToString(toRender);
 ```
 
@@ -210,10 +210,11 @@ const toRender = (
         </SsrTipserElementsProvider>
     </TipserElementsProvider>
 );
-
+//first render
 renderToString(toRender);
 
 componentsStateSsrManager.buildState().then(() => {
+    //second render
     const markup = renderToString(toRender);
     ...
 });

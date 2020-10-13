@@ -219,7 +219,7 @@ componentsStateSsrManager.buildState().then(() => {
 });
 ```
 
-In this case, you no longer need to manually pass the state to the `SsrTipserElementsProvider`, it is done automatically. The last step is to transfer the state to the browser in a similar way as it was done in the basic version, but this time the state should be extracted from c`omponentsStateSsrManager` using the `getState` method:
+In this case, you no longer need to manually pass the state to the `SsrTipserElementsProvider`, it is done automatically. The last step is to transfer the state to the browser in a similar way as it was done in the basic version, but this time the state should be extracted from `componentsStateSsrManager` using the `getState` method:
 
 ```typescript
 <script>window.TIPSER_STATE = ${JSON.stringify(componentsStateSsrManager.getState())}</script>

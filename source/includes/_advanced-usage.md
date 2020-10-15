@@ -157,13 +157,13 @@ stateBuilder.buildState({
     ...
  });
 ```
-The status should then be transferred to the browser. For this purpose, it can be assigned to the global window object and placed in the returned html document:
+The `initialState` should then be transferred to the browser. For this purpose, it can be assigned to the global window object and placed in the returned html document:
 
 ```html
 <script>window.TIPSER_STATE = ${JSON.stringify(initialState)}</script>
 ```
 
-On the client side, use `window.TIPSER_STATE` as the initial State `SsrTipserElementsProvider`:
+On the client side, use `window.TIPSER_STATE` as the `initialState` of `SsrTipserElementsProvider`:
 
 ```typescript
 <TipserElementsProvider posId={POS_ID}>

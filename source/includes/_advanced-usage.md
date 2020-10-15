@@ -104,20 +104,24 @@ __To open the checkout view for a product directly:__
 
 ## Server side rendering
 
-If you want to render Tipser-Elements' components on the server side, you can do it in three steps:
+To render Tipser Elements components on the server side, you can choose between two methods:
 
-1. At the beginning you have to know ids of products and collections that you want to render on specific url.
-2. Before rendering you have to prepare the state which contains the data necessary to render specific components. 
-It is easy to build this state - our lib includes the tool to do it!
-3. The state you have to apply to `TipserElementsProvider` as `initialState` prop
-4. You have to transfer the state on the frontend side and apply as `initialState` to `TipserElementsProvider` on the frontend side.
+1. Basic, in which you need to provide the `id`s of the Tipser Elements components that are used on the website.
+2. Smart, where you don't need to know the `id`s, but there would be two subsequent renders. In the first one, 'dry run', we collect information about components used on the website and the proper rendering, that uses the previously collected data.
 
-### Building the state
+Server-side rendering takes place in several steps:
 
-We assume that you know ids of products, collections and you know if you want to render Shop component on the specific url.
-Let's say that following four variables are defined: `POS_ID`, `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE`.  
-Please note that `PRODUCT_IDS`, `COLLECTION_IDS` and `IS_SHOP_ON_PAGE` should depend on URL - different pages can have different products/collections.
-To build the state you should use our `StateBuilder` class. You can do it in the following way:
+- building a state containing the data needed for rendering
+
+- passing the state to the `SsrTipserElementsProvider`
+
+- rendering the application
+
+- sending the same state to the browser and passing it back to the `SsrTipserElementsProvider` on the client side.
+
+
+### Basic method
+In the basic method, you should use the `StateBuilder` class to build the state. Start with creating its instances (which can be global):
 
 ```typescript
 import { StateBuilder } from '@tipser/tipser-elements';
@@ -125,45 +129,112 @@ import { StateBuilder } from '@tipser/tipser-elements';
 const stateBuilder = new StateBuilder(POS_ID);
 ```
 
-Now you can use it in your request handler: 
+Then, while handling a specific request, use the `stateBuilder.buildState` method, passing an object containing information about which elements are placed on the website, i.e. what products (PRODUCT_IDS), collections (COLLECTION_IDS) and whether there is the shop component (IS_SHOP_ON_PAGE).
 
 ```typescript
-stateBuilder.buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE): Promise<TipserState>
+stateBuilder.buildState({
+    productIds: PRODUCT_IDS,
+    collectionIds: COLLECTION_IDS,
+    shouldFetchStore: IS_SHOP_ON_PAGE,
+})
 ```
 
-Full example:
+This method returns a promise in which the ready state will be available, which should then be passed to `SsrTipserElementsProvider`:
 
 ```typescript
-stateBuilder
-  .buildState(PRODUCT_IDS, COLLECTION_IDS, IS_SHOP_ON_PAGE)
-  .then(initialState => {
-    renderToString(
-      <TipserElementsProvider posId={POS_ID} initialState={initialState}>
-        <YourAppHere />
-      </TipserElementsProvider>
+stateBuilder.buildState({
+    productIds: dataToFetch.productIds,
+    collectionIds: dataToFetch.collectionIds,
+    shouldFetchStore: dataToFetch.shouldFetchStore
+}).then((initialState) => {
+    const markup = renderToString(
+        <TipserElementsProvider posId={POS_ID}>
+            <SsrTipserElementsProvider initialState={initialState}>
+                <App/>
+            </SsrTipserElementsProvider>
+        </TipserElementsProvider>
     );
-  });
+    ...
+ });
 ```
-
-The state should be transferred to the frontend app. You can use the pattern that is known from Redux based apps.
-All you need to do is including the following line in your html response:
+The `initialState` should then be transferred to the browser. For this purpose, it can be assigned to the global window object and placed in the returned html document:
 
 ```html
 <script>window.TIPSER_STATE = ${JSON.stringify(initialState)}</script>
 ```
 
-then on the frontend side you are able to reuse it:
+On the client side, use `window.TIPSER_STATE` as the `initialState` of `SsrTipserElementsProvider`:
 
 ```typescript
-hydrate(
-    <TipserElementsProvider posId={POS_ID} initialState={window.TIPSER_STATE}>
-        <YourAppHere />
-    </TipserElementsProvider>,
-    document.getElementById('root')
-);
+<TipserElementsProvider posId={POS_ID}>
+    <SsrTipserElementsProvider initialState={window.TIPSER_STATE}>
+        <App/>
+    </SsrTipserElementsProvider>
+</TipserElementsProvider>
 ```
 
 That's all! The complete example is available [here](https://github.com/Tipser/tipser-elements-ssr-bootstrap).
+
+### Smart method
+In the smart version, the `ComponentsStateSsrManager` class should be used to build the state. For this purpose, you should create an instance of this class, which cannot be global, i.e. a new instance should be created for each request:
+
+```typescript
+const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID);
+```
+
+Then perform the first rendering that will collect information about the components on the page:
+
+```typescript
+const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID, 'prod')
+
+const toRender = (
+    <TipserElementsProvider posId={POS_ID}>
+        <SsrTipserElementsProvider componentsStateManager={componentsStateSsrManager}>
+            <App/>
+        </SsrTipserElementsProvider>
+    </TipserElementsProvider>
+);
+//first render
+renderToString(toRender);
+```
+
+Next, use the `buildState` method available on the components instance of `StateSsrManager`, which returns a promise:
+
+```typescript
+const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID)
+
+const toRender = (
+    <TipserElementsProvider posId={POS_ID}>
+        <SsrTipserElementsProvider componentsStateManager={componentsStateSsrManager}>
+            <App/>
+        </SsrTipserElementsProvider>
+    </TipserElementsProvider>
+);
+//first render
+renderToString(toRender);
+
+componentsStateSsrManager.buildState().then(() => {
+    //second render
+    const markup = renderToString(toRender);
+    ...
+});
+```
+
+In this case, you no longer need to manually pass the state to the `SsrTipserElementsProvider`, it is done automatically. The last step is to transfer the state to the browser in a similar way as it was done in the basic version, but this time the state should be extracted from `componentsStateSsrManager` using the `getState` method:
+
+```typescript
+<script>window.TIPSER_STATE = ${JSON.stringify(componentsStateSsrManager.getState())}</script>
+```
+
+The state should be passed to the `SsrTipserElementsProvider` on the browser side:
+
+```typescript
+<TipserElementsProvider posId={POS_ID}>
+    <SsrTipserElementsProvider initialState={window.TIPSER_STATE}>
+        <App/>
+    </SsrTipserElementsProvider>
+</TipserElementsProvider>,
+```
 
 ## Native apps
 

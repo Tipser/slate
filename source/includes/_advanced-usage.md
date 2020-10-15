@@ -198,7 +198,7 @@ const toRender = (
 renderToString(toRender);
 ```
 
-Next, use the `buildState` method available on the components instance of `StateSsrManager`, which, similarly to i, returns a promise:
+Next, use the `buildState` method available on the components instance of `StateSsrManager`, which returns a promise:
 
 ```typescript
 const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID)

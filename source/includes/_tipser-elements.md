@@ -13,7 +13,7 @@ Tipser Elements is a set of shoppable elements built on top of Tipser <a href="h
 
 
 ## Quick start
-This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop. For a guide how to manage your collections, check the [Tipser Tools tutorial](#tipser-tools).
+This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
 
 If you're all set up, follow these three steps to install Tipser Elements on your site!
 
@@ -102,7 +102,7 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
 
 The Store is the best way to present a group of collections on a separate page. It is best to place it on a page where sufficient space is available, however, the script automatically blends in and adapts to the given space.
 
-Collections are created using the [Tipser Tools](#tipser-tools), or on "Manage store" dashboard on [tipser.com](https://tipser.com) (when logged in to a publisher account).
+Collections are created using the <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a> (when logged in to a publisher account).
 
 Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered.
 
@@ -123,7 +123,7 @@ In order to insert a `Product` Element in your content, insert the following cod
 <div data-tipser-pid="5ba2334a781baa0001ccdf61" />
 ```
 
-Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated with [tipser tools](#tipser-tools) automatically. 
+Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>. 
 By default, a full inline product component is displayed (with product details and variant selection).
 
 
@@ -156,7 +156,7 @@ To display a list of products (rendered as small product tiles), add `data-tipse
 
 ## `Collection` Element
  
-`Collection` is a group of simple product tiles. Clicking on any title displays a product dialog with more product details and add to cart button. Products displayed in a collection are defined in the [tipser tools](#tipser-tools).
+`Collection` is a group of simple product tiles. Clicking on any title displays a product dialog with more product details and add to cart button. Products displayed in a collection are defined in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
 ```html
 <p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />

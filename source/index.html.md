@@ -16,7 +16,7 @@ includes:
   - configuration-options.md
   - tipser-elements-analytics.md
   - rest-api.md
-  - amp.md
+
 
 
 search: true

@@ -3,11 +3,7 @@
 ## Getting Tipser Product Id
 
 <aside class="notice">
-To open a dialog for a product you will need to know its Tipser <code>productId</code>. There are two easy ways to get it:
-<ol>
-<li>Find a product in Tipser Tools and generate a snippet for it</li>
-<li>Find a product at <a href="https://www.tipser.com/shop">https://www.tipser.com/shop</a> and copy the last part of product page URL</li>
-</ol>
+To open a dialog for a product you will need to know its Tipser <code>productId</code>. To get it, just find a product on <a href="https://app.tipser.com/">app.tipser.com</a>click on the "<>" sign and copy it's productId.
 </aside>
 
 ## Adding POS data

@@ -38,10 +38,19 @@ const configurationOptions = {
   },
   useDeepLinking: false,
   customLabels: {
-    buy: 'custom button label'
+    buy: "buy now!",
+    unavailable: "not available",
+    add_to_cart: "add to shopping bag",
+    choose_variant: "available variants",
+    out_of_stock: "magazine supplies finished",
   },
   posData: {
     key: "value"
+  },
+  customUrls: {
+    productBaseUrl: "/product/",
+    checkoutConfirmationUrl: "/checkout-confirmation",
+    checkoutUrl: "/checkout",
   }
 }
 ```
@@ -127,10 +136,6 @@ Similarly, `hideSimilarProducts` parameter, if set to **true**, can be used to h
 
 [![](widget2.png)](/images/widget2.png)
 
-### Add To Cart Settings
-
-When the`directToCheckoutMode` option is set to `true`, after clicking the `buy button` in Product component you go directly to checkout, without displaying the product dialog.
-
 ### Custom CSS
 
 If there is a need to use custom css stylesheet inside the Tipser dialog iframe, it may be activated in two steps:
@@ -141,30 +146,58 @@ If there is a need to use custom css stylesheet inside the Tipser dialog iframe,
 
 ***
 
+
+### Add To Cart Settings
+
+When the`directToCheckoutMode` option is set to `true`, after clicking the `buy button` in Product component you go directly to checkout, without displaying the product dialog.
+
+***
+
 ## Deep linking
 
 By default the `Store` component saves the active collection in the browser's URL hash part (everything after the `#` symbol in the URL). It means that your shopping page may be bookmarked by the user or shared with other users by sending a browser link (the same collection will be active in the `Store` when opening that link). 
 
-If, you wish to turn this behaviour off (e.g. because it interferes with your the routing system of your site), set the `useDeepLinking` parameter to **false**.
+If, you wish to turn this behaviour off (e.g. because it interferes with the routing system of your site), set the `useDeepLinking` parameter to **false**.
 
 ***
 
 ## Custom Labels
 
-If you want to override our default text with your own, you can do it via customLabels option. At the moment we allow to change the label of the `buy button` only. 
+If you want to override our default text with your own, you can do it via `customLabels` option. At the moment we allow to change following labels for buttons and product information: 
 
 ```javascript
 const tipserOptions = {
     customLabels: {
-      buy: 'buy now!'
+      buy: "buy now!",
+      unavailable: "not available",
+      add_to_cart: "add to shopping bag",
+      choose_variant: "available variants",
+      out_of_stock: "magazine supplies finished",
     }
 };
 ```
 
+*Example:*
 [![](custom-label.png)](/images/custom-label.png)
 
+***
 
 ## POS data
 
 Go to [this](#adding-pos-data) section to see the usage.
+
+***
+
+## Custom Urls
+
+To fully embed the Tipser `Product Page` or the `Checkout` on your site, please use these configuration options to determine the relative path directing to them.
+
+```javascript
+const tipserOptions = {
+    customUrls: {
+       productBaseUrl: "/product/",
+       checkoutUrl: "/checkout",
+       checkoutConfirmationUrl: "/checkout-confirmation",
+    }
+}
 ```

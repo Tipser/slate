@@ -219,6 +219,7 @@ modalUi | `{}` | Customization of Tipser Dialog. More info at [Parameters for di
 primaryColor | #333 | Hex color code, affecting eg. buy-button color and Cart indicator | #5F9F9F
 disableDialog | false | If set to `true`, a redirect to the product page is done instead of opening the product dialog (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section) | `false`
 
+
 ***
 
 ### Event handlers
@@ -298,6 +299,10 @@ The payload of `error` event is as follows:
 The `onError` event handler is used with `useDefaultErrorHandler` config option. When that option is set to false (default to true) the error will not be shown on the screen.
 
 <aside class="warning">This section requires simplification. It isn't clear how to use event handler with combination of this configuration</aside>
+
+#### onStockCountChange
+
+This handler takes care of the edge case, when while in the checkout process and before payment, an item in the cart, which has a low stock count, becomes unavailable (stockCount = 0). By default, in such a situation, we display an overlay with an information about the stock count change and the button for reloading the checkout. If. however, you wish to customize this behaviour in your code, you can use a callback `onStockCountChange(items: CartItemModel[]) => void`, with `CartItemModel` as type. If usage of this event handler is detected by Tipser Elements in your code, the default behaviour will not occur. 
 
 ## Customizing Tipser Elements Styles ##
 

@@ -185,7 +185,7 @@ const tipserOptions = {
 
 ## Open Old Dialog
 
-If you set this option to `false`, you will have an early access the new Product Dialog (after clicking product tile eg. in a collection), which is based entirely on Tipser Elements and not opened in an iframe. Therefore, it is much easier to style via CSS overwrite. New product dialog will allow some new features and User Experience compared to the one used previously. Consequently, the old product dialog will be deprecated soon, which will be communicated ahead to every POS through an appropriate channels.
+If you set this option to `false`, you will have an early access the new Product Dialog (after clicking product tile eg. in a collection), which is based entirely on Tipser Elements and not opened in an iframe. Therefore, it is much easier to style via CSS overwrite. New product dialog will allow some new features and better User Experience compared to the one used previously. Consequently, the old product dialog will be deprecated soon, which will be communicated ahead to every POS through an appropriate channels.
 
 
 ## POS data

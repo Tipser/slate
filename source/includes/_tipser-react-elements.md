@@ -96,7 +96,7 @@ Generic Element that can render any Contentful content that's fed as a prop to t
 #### `Product` 
 Element that renders the product title based on Tipser product ID passed to the `productId` prop. 
 
-The `Product` element supports two display modes (controller by `viewMode` prop):
+The `Product` element supports two display modes (controlled by `viewMode` prop):
 
 - Large product title with variant selector and "add to cart" button, if `viewMode="full"` (default)
 - Small product title which when clicked opens a product dialog, if `viewMode="compact"`

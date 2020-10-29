@@ -150,7 +150,7 @@ If there is a need to use custom css stylesheet inside the Tipser dialog iframe,
 
 ### Add To Cart Settings
 
-When the`directToCheckoutMode` option is set to `true`, after clicking the `buy button` in Product component you go directly to checkout, without displaying the product dialog.
+When the`directToCheckoutMode` option is set to `true`, after clicking the `buy button` the user goes directly to checkout.
 
 ***
 

@@ -218,9 +218,9 @@ For the same reason, it's not recommended to include more than one `<Store />` o
 ## Checkout
 Is an HTML widget displaying a whole Checkout component allowing a user to make a purchase on the POS site, using Tipser infrastructure. The Checkout component can be used in two ways: 
 
-Stand-alone `Checkout` react component displayed on one site;
+* Stand-alone `Checkout` react component displayed on one site;
 
-Modular Checkout component displaying parts of it as different react Components in a custom order on different subsites;
+* Modular Checkout component displaying parts of it as different react Components in a custom order on different subsites;
 
 ### Stand-alone Checkout
 To display `Checkout` as **stand-alone component**, all you need to do is to place it in  your code like any other Tipser Elements React components:
@@ -298,29 +298,23 @@ Feel free to position the checkout components in any order that suits your UX ne
 * **Cart Products**
 A list of products with such details as price, quantity and delivery cost. 
 
-[![](cart_products.png)](/images/cart_products.png)
-
 * **Customer Address Delivery**
-Component with cutomer's adderss delivery details. It is obligatory with Stripe as payment service provider. When it's filled with information in the right format, it enables the 
-Checkout Payment component.
-[![](customer_address_delivery.png)](/images/customer_address_delivery.png)
-
+Component with cutomer's adderss delivery details. It is obligatory with Stripe as payment service provider. When it's filled with information in the right format, it enables the Checkout Payment component.
 
 * **Cart Promo Code**
 Enables the user to use promotion code for discounts and other campaign benefits.
 
-[![](cart_promotion_code.png)](/images/cart_promotion_code.png)
-
 * **Cart Summary**
 Financial details of the transaction including taxes, discounts, delivery cost, etc.
 
-[![](cart_summary.png)](/images/cart_summary.png)
-
 * **Checkout Payment**
 Component connected to payment service provider. 
-[![](checkout_payment.png)](/images/checkout_payment.png)
 
 * **Customer Address Billing**
 Component with cutomer's billing details. 
 
-[![](customer_address_billing.png)](/images/customer_address_billing.png)
+* **Legal Component** 
+Displays any necessary legal information required by law, provided by POS and stored in the POS' Tipser account. 
+
+* **Order Confirmation** 
+Final step in the checkout - confirms the purchase and displays the delivery details, purchased items and payment summary.

@@ -302,7 +302,7 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
 
 #### onStockCountChange
 
-This handler takes care of the edge case, when while in the checkout process and before payment, an item in the cart, which has a low stock count, becomes unavailable (stockCount = 0). By default, in such a situation, we display an overlay with an information about the stock count change and the button for reloading the checkout. If. however, you wish to customize this behaviour in your code, you can use a callback `onStockCountChange(items: CartItemModel[]) => void`, with `CartItemModel` as type. If usage of this event handler is detected by Tipser Elements in your code, the default behaviour will not occur. 
+This handler takes care of the edge case, when while in the checkout process and before payment, the stock count of an item in the cart becomes lower than the number of items in the cart. By default, in such a situation, we display an overlay with an information about the stock count change and the button for reloading the checkout. If. however, you wish to customize this behaviour in your code, you can use a callback `onStockCountChange(items: CartItemModel[]) => void`, with `CartItemModel` as type. If usage of this event handler is detected by Tipser Elements in your code, the default behaviour will not occur. 
 
 ## Customizing Tipser Elements Styles ##
 

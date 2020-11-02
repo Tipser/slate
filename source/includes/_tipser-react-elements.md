@@ -70,7 +70,7 @@ Please make sure:
 
 - to provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`
 
-- import CSS files. 
+- import CSS files (`import '@tipser/tipser-elements/dist/index.css'`). 
 
 Also, check our [configuration](#configuration-options) options.
 
@@ -92,24 +92,6 @@ history | history object | {} | false | `window.history`
  
 #### `TipserElement` 
 Generic Element that can render any Contentful content that's fed as a prop to the element.
-
-#### `Product` 
-Element that renders the product title based on Tipser product ID passed to the `productId` prop. 
-
-The `Product` element supports two display modes (controlled by `viewMode` prop):
-
-- Large product title with variant selector and "add to cart" button, if `viewMode="full"` (default)
-- Small product title which when clicked opens a product dialog, if `viewMode="compact"`
-
-#### `Cart` 
-Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
-
-
-#### `Store` 
-Element that displays the store consisting of all your collections.
-
-The `Store` element accepts additional `inlineMenu` prop, which renders mobile menu items inline, as opposed to the default dropdown one.
-
 
 ### All configuration options of Tipser React Elements
 
@@ -196,14 +178,55 @@ Components are the building blocks of Tipser Elements. Any components need to be
 
 `Collection`<br>
 `Product`<br>
-`Store`<br>
+`ProductList`<br>
 `Cart`<br>
+`Store`<br>
 `Checkout`<br>
 
-## Store 
-Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   
+## `Collection`
+Element that renders a collection of product tiles based on [collectionId](#getting-tipser-product-id-and-collection-id) prop. 
 
-It can be used with `Store` react component.
+If the collection has many elements and you want to display it in one row as a collection, you need to add `carousel` prop. You can also use 'imgSize' prop to control the size of displayed product tiles. [Learn more](#collection-element).
+
+**example: **
+```jsx
+<Collection collectionId={'5b2788909d25801adcb23f4f'} carousel imgSize={'small'} />
+```
+
+## `Product` 
+Element that renders the product title based on Tipser [productId](#getting-tipser-product-id-and-collection-id) passed to the `productId` prop. 
+
+The `Product` element supports two display modes (controlled by `viewMode` prop):
+
+- Large product title with variant selector and "add to cart" button, if `viewMode="full"` (default)
+- Small product title which when clicked opens a product dialog, if `viewMode="compact"`
+
+**example: **
+```jsx
+<Product productId="5c751cf82d3f3b0001bcec8c" viewMode={'compact'} />
+```
+
+[Learn more](#product-element).
+
+## `Product List`
+It is an element that is displayed in the same way a `Collection` is, but instead of the collection Id, you need to pass the array of `productId`s and optional `carousel` and `imgSize`. 
+
+**example:**
+```jsx
+<ProductList productIds={['5911c26c8aa0ce3d70cd607b', '5c878cc5a6e96d00012e1771', '5c878cc5a6e96d00012e1775']} />
+```
+
+[Learn more](#product-element).
+
+## `Cart` 
+Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
+
+## `Store` 
+Element that displays the store consisting of all your collections.
+
+The `Store` element accepts additional `inlineMenu` prop, which renders mobile menu items inline, as opposed to the default dropdown one.
+
+It can be used as `Store` react component.
 
 ```js
 import { Store } from '@tipser/tipser-elements';
@@ -216,8 +239,9 @@ import { Store } from '@tipser/tipser-elements';
 Note: the `Store` component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
 For the same reason, it's not recommended to include more than one `<Store />` on a single page. 
 
-## Checkout
-Is an HTML widget displaying a whole Checkout component allowing a user to make a purchase on the POS site, using Tipser infrastructure. The Checkout component can be used in two ways: 
+## `Checkout`
+Element that displays the checkout component with all necessary elements to make the purchase take place.
+It is a HTML widget displaying a whole Checkout component allowing a user to make a purchase on the POS site, using Tipser infrastructure. The Checkout component can be used in two ways: 
 
 * Stand-alone `Checkout` react component displayed on one site;
 
@@ -235,7 +259,7 @@ The component will be rendered on Your site as shown below:
 [![](checkout_component.png)](/images/checkout_component.png)
  
  
-## Modular Checkout
+### Modular Checkout
 More advanced way of embedding Tipser Checkout on your page, to be used if you need more control over the Checkout experience.
 
 The `Checkout` consists of several React components:

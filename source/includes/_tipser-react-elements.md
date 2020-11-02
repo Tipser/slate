@@ -188,7 +188,7 @@ Element that renders a collection of product tiles based on [collectionId](#gett
 
 If the collection has many elements and you want to display it in one row as a collection, you need to add `carousel` prop. You can also use 'imgSize' prop to control the size of displayed product tiles. [Learn more](#collection-element).
 
-**example: **
+_example:_
 
 ```jsx
 <Collection collectionId={'5b2788909d25801adcb23f4f'} carousel imgSize={'small'} />
@@ -213,7 +213,7 @@ prop name  | description | type  | required | default value
 productId | [where to find](#getting-tipser-product-id-and-collection-id) | string | true | none 
 viewMode | enables full or compact product display | string ('full', 'compact') | false | 'full'
 
-**example: **
+_example:_
 
 ```jsx
 <Product productId="5c751cf82d3f3b0001bcec8c" viewMode={'compact'} />
@@ -224,7 +224,7 @@ viewMode | enables full or compact product display | string ('full', 'compact') 
 ## `Product List`
 It is an element that is displayed in the same way as the `Collection`, but instead of the collection Id, you need to pass the array of `productId`s. and optional `carousel` and `imgSize`. 
 
-**example:**
+_example:_
 
 ```jsx
 <ProductList productIds={['5911c26c8aa0ce3d70cd607b', '5c878cc5a6e96d00012e1771', '5c878cc5a6e96d00012e1775']} />
@@ -287,12 +287,12 @@ The `Checkout` consists of several React components:
 ```jsx
 <Checkout>
     {(checkout: CheckoutData) => (
-      <CartProducts />
-      <CustomerAddressDelivery />
-      <CartPromoCode />
-      <CartSummary />
-      <CheckoutPayment />
-      <CustomerAddressBilling />
+      <CartProducts {...checkout} />
+      <CustomerAddressDelivery {...checkout} />
+      <CartPromoCode {...checkout} />
+      <CartSummary {...checkout} />
+      <CheckoutPayment {...checkout} />
+      <CustomerAddressBilling {...checkout} />
     )}
 </Checkout>
 ```

@@ -206,7 +206,8 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 
 ## `Checkout` Element
 
-The embeded Checkout component allows all the shopping experience to take place on your site. It is best to place it on a dedicated page, where sufficient space is available for this component to be shown.
+The embedded Checkout component provides checkout experience on your site.
+Note: this component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
 
 ```html
 <div id="tipser_checkout" />

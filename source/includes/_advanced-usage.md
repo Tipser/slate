@@ -1,9 +1,10 @@
 #Advanced usage
 
-## Getting Tipser Product Id
+## Getting Tipser Product Id and Collection Id
 
 <aside class="notice">
-To open a dialog for a product you will need to know its Tipser <code>productId</code>. To get it, just find a product on <a href="https://app.tipser.com/">app.tipser.com</a>click on the "<>" sign and copy it's productId.
+To run Tipser Elements components you will need to pass <code>productId</code> or <code>collectionId</code>. To get <code>productId</code>, just find a product in "Insert Products" section on <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>, click on the "<>" sign and copy it's <code>productId</code>.
+To curate a collection click "+" sign on a product tile and type the name of the collection. Then click "add". Your product is added to the collection. When all the products are added to the collection, click "<" on the right side of the site and then "<>" to copy the the <code>collectionId</code>. 
 </aside>
 
 ## Adding POS data
@@ -82,7 +83,7 @@ __To open the checkout view for a product directly:__
 
 ```
  
- Check [this](#getting-tipser-product-id) section to learn how to obtain the `tipserProductId`.
+ Check [this](#getting-tipser-product-id-and-collection-id) section to learn how to obtain the `tipserProductId`.
  
  <a href="https://bbc-bootstrap.netlify.com/" target="_blank">Live demo</a>
  

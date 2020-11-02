@@ -202,6 +202,18 @@ To activate the Cart, you need to dedicate an element on your page to host a sho
 
 The cart icon can be placed anywhere on your website. If you want to keep it visible at all times, please follow the [instructions](#cart).
 
+***
+
+## `Checkout` Element
+
+The embedded Checkout component provides checkout experience on your site.
+Note: this component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
+
+```html
+<div id="tipser_checkout" />
+``` 
+
+To redirect all the interactions from product and collection elements to your checkout dedicated page, please define the [checkoutUrl and checkoutConfirmationUrl](#custom-urls) from the `customUrls` config options. 
 
 ## Versioning
   

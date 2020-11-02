@@ -209,7 +209,7 @@ The `Product` element supports two display modes (controlled by `viewMode` prop)
 [Learn more](#product-element).
 
 ## `Product List`
-It is an element that is displayed in the same way a `Collection` is, but instead of the collection Id, you need to pass the array of `productId`s and optional `carousel` and `imgSize`. 
+It is an element that is displayed in the same way as the `Collection`, but instead of the collection Id, you need to pass the array of `productId`s and optional `carousel` and `imgSize`. 
 
 **example:**
 ```jsx

@@ -108,6 +108,7 @@ Element that displays the number of items in your cart and gives the user a way 
 #### `Store` 
 Element that displays the store consisting of all your collections.
 
+The `Store` element accepts additional `inlineMenu` prop, which renders mobile menu items inline, as opposed to the default dropdown one.
 
 
 ### All configuration options of Tipser React Elements

@@ -189,9 +189,16 @@ Element that renders a collection of product tiles based on [collectionId](#gett
 If the collection has many elements and you want to display it in one row as a collection, you need to add `carousel` prop. You can also use 'imgSize' prop to control the size of displayed product tiles. [Learn more](#collection-element).
 
 **example: **
+
 ```jsx
 <Collection collectionId={'5b2788909d25801adcb23f4f'} carousel imgSize={'small'} />
 ```
+
+prop name  | description | type  | required | default value 
+-----------|-------------|-------|----------|--------------
+collectionId | [where to find](#getting-tipser-product-id-and-collection-id) | string | true | none 
+carousel | enables carousel display | boolean | false | false
+imgSize | changes the size of single product tile | string ('small', 'medium' or 'large') | false | none
 
 ## `Product` 
 Element that renders the product title based on Tipser [productId](#getting-tipser-product-id-and-collection-id) passed to the `productId` prop. 
@@ -201,7 +208,13 @@ The `Product` element supports two display modes (controlled by `viewMode` prop)
 - Large product title with variant selector and "add to cart" button, if `viewMode="full"` (default)
 - Small product title which when clicked opens a product dialog, if `viewMode="compact"`
 
+prop name  | description | type  | required | default value 
+-----------|-------------|-------|----------|--------------
+productId | [where to find](#getting-tipser-product-id-and-collection-id) | string | true | none 
+viewMode | enables full or compact product display | string ('full', 'compact') | false | 'full'
+
 **example: **
+
 ```jsx
 <Product productId="5c751cf82d3f3b0001bcec8c" viewMode={'compact'} />
 ```
@@ -209,12 +222,20 @@ The `Product` element supports two display modes (controlled by `viewMode` prop)
 [Learn more](#product-element).
 
 ## `Product List`
-It is an element that is displayed in the same way as the `Collection`, but instead of the collection Id, you need to pass the array of `productId`s and optional `carousel` and `imgSize`. 
+It is an element that is displayed in the same way as the `Collection`, but instead of the collection Id, you need to pass the array of `productId`s. and optional `carousel` and `imgSize`. 
 
 **example:**
+
 ```jsx
 <ProductList productIds={['5911c26c8aa0ce3d70cd607b', '5c878cc5a6e96d00012e1771', '5c878cc5a6e96d00012e1775']} />
 ```
+
+prop name  | description | type  | required | default value 
+-----------|-------------|-------|----------|--------------
+productIds | array of single productIds | array of strings | true | none 
+carousel | enables carousel display | boolean | false | false
+imgSize | changes the size of single product tile | string ('small', 'medium' or 'large') | false | none
+
 
 [Learn more](#product-element).
 
@@ -234,7 +255,6 @@ import { Store } from '@tipser/tipser-elements';
 <Store />
 ```
 
-[![](shop_component.png)](/images/shop_component.png)
 
 Note: the `Store` component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework. 
 For the same reason, it's not recommended to include more than one `<Store />` on a single page. 
@@ -250,7 +270,7 @@ It is a HTML widget displaying a whole Checkout component allowing a user to mak
 ### Stand-alone Checkout
 To display `Checkout` as **stand-alone component**, all you need to do is to place it in  your code like any other Tipser Elements React components:
 
-```js
+```jsx
 import { Checkout } from '@tipser/tipser-elements';
  ...
 <Checkout />
@@ -264,14 +284,16 @@ More advanced way of embedding Tipser Checkout on your page, to be used if you n
 
 The `Checkout` consists of several React components:
 
-```html
+```jsx
 <Checkout>
-  <CartProducts />
-  <CustomerAddressDelivery />
-  <CartPromoCode />
-  <CartSummary />
-  <CheckoutPayment />
-  <CustomerAddressBilling />
+    {(checkout: CheckoutData) => (
+      <CartProducts />
+      <CustomerAddressDelivery />
+      <CartPromoCode />
+      <CartSummary />
+      <CheckoutPayment />
+      <CustomerAddressBilling />
+    )}
 </Checkout>
 ```
 

@@ -98,7 +98,7 @@ const tipserConfig = { posData: "release_2.1.5" };
 ```
 
 
-Option 2: After Elements/SDK initialization with `setPosData(posData: string)` function (useful for the data, that is not yet available at the time of initialization):
+Option 2: After Elements/SDK initialization with `setPosData(posData: string)` function (useful for the data that is not yet available at the time of initialization):
 
 ```javascript
 tipserSdk.setPosData(JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"}));
@@ -118,7 +118,7 @@ const addToCartOptions = {
 tipserSdk.addToCart(productId, addToCartOptions);
 ``` 
 
-<aside class="warning">Warning: for performance reasons, the number of characters in <code>posData</code> is limited to 4000. If a longer string is passed, it will be truncated.</aside>
+<aside class="warning">Warning: for performance reasons, the number of characters in <code>posData</code> is limited to 4000. Longer strings will be truncated down to 4000 characters.</aside>
 
 ##Adding product to cart
 

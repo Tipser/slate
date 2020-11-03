@@ -84,7 +84,7 @@ var tipser = TipserSDK("5aa12d639d25800ff0e56fc5", {env: "stage"});
 ##Pos data
 
 In order to associate a piece of data with an order item in Tipser, you can use a concept called `posData`. A `posData` is an arbitrary string that can be used to store additional information (e.g. session id, user id in your system, etc) attached to order in Tipser's database.
-After the transaction is finalized, the string passed as `posData` will be available back in the response from the [Commissions API](https://developers.tipser.com/rest-api/purchase-data) that can be consumed by your backend code (e.g. reporting systems). 
+After the transaction is finalized, the string passed as `posData` will be available back in the response from the <a href="https://developers.tipser.com/rest-api/purchase-data" target="_blank">Commissions API</a> that can be consumed by your backend code (e.g. reporting systems). 
 
 <aside class="notice">Because <code>posData</code> is treated as a string in the Tipser system, then if you need to store a structured data (a common use case), please call <code>JSON.stringify()</code> function on a JS object before passing it to Tipser (see: the examples below) and parse it back to JS object when receiving it back.</aside>
 

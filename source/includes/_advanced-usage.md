@@ -20,7 +20,7 @@ const tipserOptions = {
 };
 ```
 
-## Opening product dialog programatically
+## Accessing Tipser SDK from Elements
 
 Tipser product dialog can be openend programatically by using the underlying [Tipser SDK](#tipser-sdk) instance.
 
@@ -38,11 +38,10 @@ __If you use Tipser React Elements:__
 
 
 ```javascript
-import { TipserContext } from `@tipser/tipser-elements`;
+import { useTipserSdk } from `@tipser/tipser-elements`;
 
 const DialogOpener = () => {
-  const context = useContext(TipserContext());
-  const sdk = context.data.tipserSdk;
+  const sdk = useTipserSdk();
   
   useEffect(() => { sdk.openProductDialog(productId); }, []);
 }

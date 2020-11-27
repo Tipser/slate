@@ -272,26 +272,32 @@ For a more customazible and featured <code>Product</code> component you can use
 <ul>
 <p>The main differences between standard <code>Product</code> component and a default <code>Modular Product</code> component is more functionalities such as:</p>
 
-<li><p><code><a href="google.com">Color relations:</a></code></p>
+<li><p><code><a href="google.com">Color Relations Module:</a></code></p>
   <div>
     <img src="/images/modular-product/color_relations.png" alt="Color Relations" width="250"/>
   </div>
 </li>
   
-<li><p><code><a href="google.com">Style-With:</a></code></p>
+<li><p><code><a href="google.com">Style-With Module:</a></code></p>
 <div>
 <img src="/images/modular-product/style_with_products.png" alt="Style With Component" />
 </div>
 </li>
-<li><p><code><a href="google.com">Description:</a></code></p>
+<li><p><code><a href="google.com">Description Module:</a></code></p>
 <div>
 <img src="/images/modular-product/description.png" alt="Description Component" />
 </div>
 </li>
-<li><p><code><a href="google.com">Similar-Products:</a></code></p>
+<li><p><code><a href="google.com">Similar-Products Module:</a></code></p>
 <div>
 <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" />
 </div>
+</li>
+<li><p><code><a href="google.com">Product-Container Module:</a></code></p>
+<div>
+<img src="/images/modular-product/product_container.png" alt="Similar Products Component" />
+</div>
+
 </li>
 </ul>
 
@@ -302,35 +308,114 @@ For a more customazible and featured <code>Product</code> component you can use
 </div>
 
 </div>
+<aside style=margin-top:0 class="notice">As you will see in the <code>Modular Product Overwiew</code> the <code>Product-Container</code> module can be split into smaller modules.</aside>
 
-2). Customazible and modular:
+2).Fully customazible and modular:
+
+<code>Product Context</code> overwiew:
+
+For a better understanding of what <code>Modular Product</code> is, lets list all the available modules:
 
 <img src="/images/modular-product/modular_product_modules.png" alt="Modular Product Default" />
 
-Modular Product is splitted into two
+For those users that want to remove or rearrange some of the modules positions, <code>Modular Product</code> allow you do that with slighly different syntax:
 
 ```jsx
 <ProductContext productId="5c751cf82d3f3b0001bcec8c">
   {(productContext) => (
-    <div className="te-dialog-product-container">
-      <div className="te-dialog-product te-desktop">
+      <>
         <ProductImage {...productContext} />
-        <div className="te-dialog-product-details te-desktop">
+        <>
           <ProductTitle {...productContext} />
           <ProductPrice {...productContext} />
           <ColorRelations {...productContext} />
           <ProductVariantSelector {...productContext} />
           <ProductAvailabilityInfo {...productContext} />
           <ProductBuyButton {...productContext} />
-        </div>
-      </div>
+        </>
+      </>
       <ProductDescription {...productContext} />
       <SimilarProducts {...productContext} />
       <StyleWithProducts {...productContext} />
-    </div>
+
   )}
 </ProductContext>
 ```
+
+<aside style=margin-top:0 class="notice">Notice that in this syntax there is no <code>Product-Container</code> module. All of his children live as a separate module.</aside>
+
+Or if you want just to change four main modules you can do it with:
+
+```jsx
+<ProductContext productId="5c751cf82d3f3b0001bcec8c">
+  {(productContext) => (
+    <>
+      <ProductContainer {...productContext} />
+      <StyleWithProducts {...productContext} />
+      <ProductDescription {...productContext} />
+      <SimilarProducts {...productContext} />
+    </>
+  )}
+</ProductContext>
+```
+
+<code>Modular Product</code> modules description
+
+<h4><code>Product Container</code></h4>
+
+<img src="/images/modular-product/product_container.png" alt="Similar Products Component" width="250"/>
+
+Component that is displaying all the necessary informations about a product and the only one that have sub-modules you can fully remove or rearrange:
+
+<h4><code>Product Title</code></h4>
+  Module for displaying the name and the brand of a given product
+
+  <img src="/images/modular-product/product_title.png" alt="Similar Products Component" width="305"/>
+
+<h4><code>Product Price</code></h4>
+  Module for displaying the price of a given product
+
+  <img src="/images/modular-product/product_price.png" alt="Similar Products Component" width="305"/>
+
+<h4><code>Color Relations</code></h4>
+  Module for displaying other colors of a given product
+
+  <img src="/images/modular-product/color_relations.png" alt="Similar Products Component" width="305"/>
+
+<h4><code>Variant Selector</code></h4>
+  Module for displaying variant dropdown
+
+  <img src="/images/modular-product/product_variant_selector.png" alt="Similar Products Component" />
+
+<h4><code>Availability Info</code></h4>
+  Module for displaying product availability such as:
+  <ul>
+  <li>product availability</li>
+  <li>delivery cost</li>
+  <li>delivery time</li>
+  </ul>
+    <img src="/images/modular-product/product_availability_info.png" alt="Similar Products Component" width="305"/>
+   
+<h4><code>Add To Cart button</code></h4>
+  Module for adding to cart product
+
+  <img src="/images/modular-product/product_buy_button.png" alt="Similar Products Component" width="305"/>
+
+  <h4><code>Description</code></h4>
+  Module displaying product description
+
+  <img src="/images/modular-product/description.png" alt="Similar Products Component" width="610"/>
+
+ <h4><code>Style With</code></h4>
+  Editable list for a products that can be shown on a main page
+
+  <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
+
+   <h4><code>Similar Products</code></h4>
+  List of a product (BE ?)
+
+  <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
+
 
 ## `Product List`
 

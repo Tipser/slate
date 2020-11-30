@@ -272,28 +272,28 @@ For a more customazible and featured <code>Product</code> component you can use
 <ul>
 <p>The main differences between standard <code>Product</code> component and a default <code>Modular Product</code> component is more functionalities such as:</p>
 
-<li><p><code><a href="google.com">Color Relations Module:</a></code></p>
+<li><p><code><a href="#color-relations">Color relations:</a></code></p>
   <div>
     <img src="/images/modular-product/color_relations.png" alt="Color Relations" width="250"/>
   </div>
 </li>
   
-<li><p><code><a href="google.com">Style-With Module:</a></code></p>
+<li><p><code><a href="#style-with">Style-With:</a></code></p>
 <div>
 <img src="/images/modular-product/style_with_products.png" alt="Style With Component" />
 </div>
 </li>
-<li><p><code><a href="google.com">Description Module:</a></code></p>
+<li><p><code><a href="#product-description">Description Module:</a></code></p>
 <div>
 <img src="/images/modular-product/description.png" alt="Description Component" />
 </div>
 </li>
-<li><p><code><a href="google.com">Similar-Products Module:</a></code></p>
+<li><p><code><a href="#similar-products">Similar-Products:</a></code></p>
 <div>
 <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" />
 </div>
 </li>
-<li><p><code><a href="google.com">Product-Container Module:</a></code></p>
+<li><p><code><a href="#product-container">Product-Container:</a></code></p>
 <div>
 <img src="/images/modular-product/product_container.png" alt="Similar Products Component" />
 </div>
@@ -308,14 +308,13 @@ For a more customazible and featured <code>Product</code> component you can use
 </div>
 
 </div>
-<aside style=margin-top:0 class="notice">As you will see in the <code>Modular Product Overwiew</code> the <code>Product-Container</code> module can be split into smaller modules.</aside>
+<aside style=margin-top:0 class="notice">As you will see in the <a href="#modular-product-overview"><code>Modular Product Overwiew</code></a> the <a href="#product-container"><code>Product-Container</code></a> module can be split into smaller modules.</aside>
 
 2).Fully customazible and modular:
 
-<code>Product Context</code> overwiew:
-
 For a better understanding of what <code>Modular Product</code> is, lets list all the available modules:
 
+<p id="modular-product-overview"><code>Modular Product overview:</code></p>
 <img src="/images/modular-product/modular_product_modules.png" alt="Modular Product Default" />
 
 For those users that want to remove or rearrange some of the modules positions, <code>Modular Product</code> allow you do that with slighly different syntax:
@@ -342,7 +341,7 @@ For those users that want to remove or rearrange some of the modules positions, 
 </ProductContext>
 ```
 
-<aside style=margin-top:0 class="notice">Notice that in this syntax there is no <code>Product-Container</code> module. All of his children live as a separate module.</aside>
+<aside style=margin-top:0 class="notice">Notice that in this syntax there is no <a href="#product-container"></a><code>Product-Container</code> module. All of his children live as a separate modules.</aside>
 
 Or if you want just to change four main modules you can do it with:
 
@@ -359,31 +358,47 @@ Or if you want just to change four main modules you can do it with:
 </ProductContext>
 ```
 
-<code>Modular Product</code> modules description
+<code>Modules Description:</code>
 
-<h4><code>Product Container</code></h4>
+<h4 id="product-container"><code>Product Container</code></h4>
 
 <img src="/images/modular-product/product_container.png" alt="Similar Products Component" width="250"/>
 
 Component that is displaying all the necessary informations about a product and the only one that have sub-modules you can fully remove or rearrange:
 
+<h4><code>ProductImage</code></h4>
+  Wyświetla zdjęcie produktu oraz thumbnailsy (dla wersji desktopowej)
+
+<div style=display:flex;>
+  <div style=display:flex;flex-direction:column;>
+    <p>Wersja desktopowa:</p>
+    <img src="/images/modular-product/product_image.png" alt="Product Image" width="305"/>
+  </div>
+
+  <div style=display:flex;flex-direction:column;margin-left:20px;>
+    <p>Wersja mobile:</p>
+    <img src="/images/modular-product/product_image_mobile.png" alt="Product Image" width="265"/>
+  </div>
+</div>
+
 <h4><code>Product Title</code></h4>
-  Module for displaying the name and the brand of a given product
+  Displays the name and the brand of the product
 
   <img src="/images/modular-product/product_title.png" alt="Similar Products Component" width="305"/>
 
 <h4><code>Product Price</code></h4>
-  Module for displaying the price of a given product
+  Displays price, discount price and unit price ( eg. 2$/100ml, if applicable ) for the product
 
   <img src="/images/modular-product/product_price.png" alt="Similar Products Component" width="305"/>
 
-<h4><code>Color Relations</code></h4>
-  Module for displaying other colors of a given product
+<h4 id="color-relations"><code>Color Relations</code></h4>
+  Module for displaying and picking other color variants
 
   <img src="/images/modular-product/color_relations.png" alt="Similar Products Component" width="305"/>
 
 <h4><code>Variant Selector</code></h4>
-  Module for displaying variant dropdown
+  Module for selecting the variant. Only available variants are selectable
+  When a variant is selected all the information (price, description, etc) will be updated for the selected variant
 
   <img src="/images/modular-product/product_variant_selector.png" alt="Similar Products Component" />
 
@@ -397,25 +412,25 @@ Component that is displaying all the necessary informations about a product and 
     <img src="/images/modular-product/product_availability_info.png" alt="Similar Products Component" width="305"/>
    
 <h4><code>Add To Cart button</code></h4>
-  Module for adding to cart product
+  Module for adding to cart product. Kiedy dany posiada warianty, kliknięcie buttona add-to-cart powoduje rozwinięcie się dropdowna z wariantami.
 
   <img src="/images/modular-product/product_buy_button.png" alt="Similar Products Component" width="305"/>
 
-  <h4><code>Description</code></h4>
+  <h4 id="product-description"><code>Description</code></h4>
   Module displaying product description
 
   <img src="/images/modular-product/description.png" alt="Similar Products Component" width="610"/>
 
- <h4><code>Style With</code></h4>
-  Editable list for a products that can be shown on a main page
+ <h4 id="style-with"><code>Style With</code></h4>
+  Editable list for a products that can be shown on a main page.
+  List of products go well together with the currnwet product, hand-picked by tipser editors team.
 
   <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
 
-   <h4><code>Similar Products</code></h4>
-  List of a product (BE ?)
+   <h4 id="similar-products"><code>Similar Products</code></h4>
+  Lista produktów z BE, nieedytowalna ,machine learning
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
-
 
 ## `Product List`
 

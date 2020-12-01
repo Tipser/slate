@@ -83,42 +83,8 @@ var tipser = TipserSDK("5aa12d639d25800ff0e56fc5", {env: "stage"});
 
 ##Pos data
 
-In order to associate a piece of data with an order item in Tipser, you can use a concept called `posData`. A `posData` is an arbitrary string that can be used to store additional information (e.g. session id, user id in your system, etc) attached to order in Tipser's database.
-After the transaction is finalized, the string passed as `posData` will be available back in the response from the <a href="https://developers.tipser.com/rest-api/purchase-data" target="_blank">Commissions API</a> that can be consumed by your backend code (e.g. reporting systems). 
-
-<aside class="notice">Because <code>posData</code> is treated as a string in the Tipser system, then if you need to store a structured data (a common use case), please call <code>JSON.stringify()</code> function on a JS object before passing it to Tipser (see: the examples below) and parse it back to JS object when receiving it back.</aside>
-
-There are three ways to enable `posData`:
-
-
-Option 1: As a global configuration setting that is passed to Elements/SDK initialization (good for static data, like the release number):
-
-```javascript
-const tipserConfig = { posData: "release_2.1.5" };
-```
-
-
-Option 2: After Elements/SDK initialization with `setPosData(posData: string)` function (useful for the data that is not yet available at the time of initialization):
-
-```javascript
-tipserSdk.setPosData(JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"}));
-``` 
-
-This will apply for the next and all the subsequent products added to cart (unless overriden by calling another `setPosData` or in the way described in Option 3)
-
-<aside class="notice">The timing of calling <code>setPosData</code> is relevant. The <code>posData</code> is being sent in the Tipser backend with the add to cart API request. This means that to have any effect, <code>setPosData</code> needs to be called <strong>before</strong> the product is added to cart (either from the API or by user's action).</aside>
-
-
-Option 3: In the second parameter of `addToCart` or `openDirectToCheckoutDialog` function (convenient if each product added to cart needs to have a different value of `posData`):
-
-```javascript
-const addToCartOptions = {
-  posData: JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"})
-};
-tipserSdk.addToCart(productId, addToCartOptions);
-``` 
-
-<aside class="warning">Warning: for performance reasons, the number of characters in <code>posData</code> is limited to 4000. Longer strings will be truncated down to 4000 characters.</aside>
+A configuration option `posData`, `setPosData()` function and the `options` parameter in `addToCart()` and `openDirectToCheckoutDialog()` can be used to configure publisher's data to be associated with Tipser transaction. 
+Please refer to [Publisher data](#publisher-data) section for a complete explanation.
 
 ##Adding product to cart
 
@@ -130,7 +96,7 @@ Adds a product with a given productId (specific to Tipser) to a cart.
 
 `productId`: string, with the stucture described [here](#the-script-api).
 
-`options`: currently the only supported option is [posData](#the-script-api), which is a string to be attached to a product order. 
+`options`: currently the only supported option is [posData](#publisher-data), which is a string to be attached to a product order.
 
 *Returns*:
 
@@ -203,7 +169,7 @@ Adds the product with a given id to the shopping cart and then opens Tipser purc
 `productId`: string, with the stucture described [here](#the-script-api).
 
 
-`options`: currently the only supported option is [posData](#posdata), which is a string to be attached to a product order.
+`options`: currently the only supported option is [posData](#publisher-data), which is a string to be attached to a product order.
 
 ##Opening search dialog
 

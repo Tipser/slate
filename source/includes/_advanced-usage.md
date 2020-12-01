@@ -1,28 +1,56 @@
 #Advanced usage
 
-## Getting Tipser Product Id and Collection Id
+## Getting Tipser ids
 
 <aside class="notice">
-To run Tipser Elements components you will need to pass <code>productId</code> or <code>collectionId</code>. To get <code>productId</code>, just find a product in "Insert Products" section on <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>, click on the "<>" sign and copy it's <code>productId</code>.
+To run Tipser Elements components you will need to pass <code>productId</code> or <code>collectionId</code>. To get <code>productId</code>, log in to <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a> using your publisher's account, find a product in "Insert Products" section, click on the "<>" sign and copy it's <code>productId</code>.
 To curate a collection click "+" sign on a product tile and type the name of the collection. Then click "add". Your product is added to the collection. When all the products are added to the collection, click "<" on the right side of the site and then "<>" to copy the the <code>collectionId</code>. 
 </aside>
 
-## Adding POS data
+## Publisher data
 
-If you need to associate some custom data to orders made from Tipser on your site (e.g. session id or user id on your site), pass it in the posData field to the Elements configuration.
-You will be later able to get that data back when requesting the orders from the Tipser orders API.
+In order to associate a piece of data owned by the publisher with an order item in Tipser, you can use a concept called `posData`. A `posData` is an arbitrary string that can be used to store additional information (e.g. session id, user id in your system, etc) attached to order in Tipser's database.
+After the transaction is finalized, the string passed as `posData` will be available back in the response from the <a href="https://developers.tipser.com/rest-api/purchase-data" target="_blank">Commissions API</a> that can be consumed by your backend code (e.g. reporting systems). 
+
+<aside class="notice">Because <code>posData</code> is treated as a string in the Tipser system, then if you need to store a structured data (a common use case), please call <code>JSON.stringify()</code> function on a JS object before passing it to Tipser (see: the examples below) and parse it back to JS object when receiving it back.</aside>
+
+There are three ways to enable `posData`:
+
+
+Option 1: As a global configuration setting that is passed to Elements/SDK initialization (good for static data, like the release number):
 
 ```javascript
-const tipserOptions = {
-    posData: {
-      userId: '123'
-    }
-};
+const tipserConfig = { posData: "release_2.1.5" };
 ```
 
-## Accessing Tipser SDK from Elements
 
-Tipser product dialog can be openend programatically by using the underlying [Tipser SDK](#tipser-sdk) instance.
+Option 2: After Elements/SDK initialization with `setPosData(posData: string)` function of Tipser SDK (useful for the data that is not yet available at the time of initialization):
+
+```javascript
+tipserSdk.setPosData(JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"}));
+``` 
+
+This will apply for the next and all the subsequent products added to cart (unless overriden by calling another `setPosData` or in the way described in Option 3)
+
+<aside class="notice">The timing of calling <code>setPosData</code> is relevant. The <code>posData</code> is being sent in the Tipser backend with the add to cart API request. This means that to have any effect, <code>setPosData</code> needs to be called <strong>before</strong> the product is added to cart (either from the API or by user's action).</aside>
+
+
+Option 3: In the second parameter of `addToCart` or `openDirectToCheckoutDialog` function (convenient if each product added to cart needs to have a different value of `posData`):
+
+```javascript
+const addToCartOptions = {
+  posData: JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"})
+};
+tipserSdk.addToCart(productId, addToCartOptions);
+``` 
+
+<aside class="warning">Warning: for performance reasons, the number of characters in <code>posData</code> is limited to 4000. Longer strings will be truncated down to 4000 characters.</aside>
+
+
+
+## Accessing Tipser SDK
+
+Low level operations, like programatically opening Tipser dialogs can be done by using the underlying [Tipser SDK](#tipser-sdk) instance, which is a part of the Tipser Elements library.
 
 __If you use Tipser Elements:__
 
@@ -47,7 +75,7 @@ const DialogOpener = () => {
 }
 ```
 
-Your React components hierarchy should look as following: 
+This will only work if the `DialogOpener` component is under `TipserElementsProvider` in React components hierarchy: 
 
 ```html
 <TipserElementsProvider>

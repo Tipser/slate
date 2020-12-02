@@ -1,11 +1,16 @@
 [build]
-  command = "middleman build --clean"
+  command = "middleman build --clean && showdown makehtml -i changelog/tipser-elements/CHANGELOG.md -o build/changelog.html"
   publish = "build"
 
 [[redirects]]
  from = "/docs"
  to = "index.html"
  status = 200
+
+ [[redirects]]
+  from = "/changelog"
+  to = "changelog.html"
+  status = 200
 
 [[redirects]]
   from = "http://tipser.dev"

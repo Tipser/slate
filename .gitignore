@@ -23,3 +23,8 @@ _yardoc
 doc/
 .idea/
 vendor/
+
+# Node.js
+node_modules/
+# Optional npm cache directory
+.npm

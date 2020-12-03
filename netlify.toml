@@ -1,5 +1,5 @@
 [build]
-  command = "middleman build --clean && showdown makehtml -i changelog/tipser-elements/CHANGELOG.md -o build/changelog.html"
+  command = "middleman build --clean && ./changelog/scripts/generate_changelog_html.sh"
   publish = "build"
 
 [[redirects]]

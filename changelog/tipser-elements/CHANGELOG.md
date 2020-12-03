@@ -14,4 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.1.53] - 2020-11-19
 
 ### Fixed
-- Fixed missing "Out of stock" information and not blocking add to cart button in some corner cases 
+- Fixed missing "Out of stock" information and not blocking add to cart button in some corner cases
+
+### Fixed
+- test fixes

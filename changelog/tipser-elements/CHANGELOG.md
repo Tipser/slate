@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - DynamicCollection element that renders product tiles returned by search results
 
 ### Changed
-- Replaced all the clickable <div> elements in the HTML with <button> elements (moving towards more semantic HTML)
+- Replaced all the clickable `div` elements in the HTML with `button` elements (moving towards more semantic HTML)
 
 ### Fixed
 - Removed horizontal scrollbar from the new modal (activated by `openOldDialog:false` setting)

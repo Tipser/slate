@@ -1,5 +1,5 @@
 [build]
-  command = "middleman build --clean && ./changelog/scripts/generate_changelog_html.sh"
+  command = "middleman build --clean && npm run build-changelog"
   publish = "build"
 
 [[redirects]]

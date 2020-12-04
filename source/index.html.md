@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href="https://tipser.com">Tipser</a>
+  - <a href="/changelog">Changelog</a>
 
 includes:
   - overview.md

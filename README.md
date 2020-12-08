@@ -1,6 +1,6 @@
 Tipser Docs
 ---
-See the live docs at https://tipser.github.io/docs/
+See the live docs at https://tipser.dev/docs
 
 Editing
 ------------------------------

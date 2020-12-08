@@ -417,18 +417,18 @@ Component that is displaying all the necessary informations about a product and 
   <img src="/images/modular-product/product_buy_button.png" alt="Similar Products Component" width="305"/>
 
   <h4 id="product-description"><code>Description</code></h4>
-  Module displaying product description
+  Module displaying product description.
 
   <img src="/images/modular-product/description.png" alt="Similar Products Component" width="610"/>
 
  <h4 id="style-with"><code>Style With</code></h4>
   Editable list for a products that can be shown on a main page.
-  List of products go well together with the currnwet product, hand-picked by tipser editors team.
+  List of products go well together with the current product, hand-picked by yourself.
 
   <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
 
    <h4 id="similar-products"><code>Similar Products</code></h4>
-  Lista produktów z BE, nieedytowalna ,machine learning
+  Lista produktów wybierana przez algorytm tipsera.
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
 

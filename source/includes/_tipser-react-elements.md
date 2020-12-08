@@ -30,7 +30,15 @@ Add the library to your project:
 ***
 
 ###  Import Tipser React Elements
-You can combine Tipser Elements with your own application.
+
+The following lines of code import Tipser Elements to your project:
+
+```jsx
+import { Product, TipserElementsProvider } from '@tipser/tipser-elements'; // Imports all the needed React components
+import '@tipser/tipser-elements/dist/index.css'; // Imports the base set of CSS styles (can be overriden)
+```
+
+Below is a full example illustrating how can you combine Tipser Elements with your own application:
 
 ```jsx
 import React from 'react';
@@ -68,7 +76,7 @@ Please make sure:
 
 - your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document 
 
-- to provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`
+- to provide `history` object to be used by Elements for client side redirects (otherwise all our links/redirects will trigger full page reloads)
 
 - import CSS files (`import '@tipser/tipser-elements/dist/index.css'`). 
 

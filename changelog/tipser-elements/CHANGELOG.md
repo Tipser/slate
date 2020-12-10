@@ -4,10 +4,19 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.1.62] - UNRELEASED
+## [2.1.63] - 2020-12-10
+
+### Fixed
+- Added some missing swedish translations to the new product dialog
+
+## [2.1.62] - 2020-12-10
 ### Changed
-- semantic HTML tags applied in relavant places
+- replaced some divs and spans with semantic HTML tags
 - default `useCustomCSS` config option set to `true`
+- [Elements CMS] updated the Contentful client library to the newest version 
+
+### Fixed
+- fixed a visual glitch with slightly larger delivery cost font size on the new product dialog (compared to other fields) 
 
 ## [2.1.61] - 2020-12-09
 ### Added

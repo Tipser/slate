@@ -4,16 +4,22 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.1.61] - UNRELEASED
+## [2.1.62] - UNRELEASED
+### Changed
+- semantic HTML tags applied in relavant places
+- default `useCustomCSS` config option set to `true`
+
+## [2.1.61] - 2020-12-09
 ### Added
 - Don't display `Details` link button when there is no `StyleWith` component
-### Fixed
-- Scroll to top of the modal when click on `Similar Product`
-### Added
 - Support for `className` attribute in `Product`, `Collection`, `Store` and `CartIcon` components
 - `CartIcon` component is now using the top-level class name `te-cart-icon` (consistent with each other class names)
 
+### Changed
+- Clicking outside of the new product dialog causes it to close
+
 ### Fixed
+- Scroll to top of the modal when click on `Similar Product`
 - Inconsistent way of displaying currency in the cart preview overlay
 
 ### Deprecated

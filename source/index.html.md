@@ -12,6 +12,7 @@ includes:
   - tipser-elements.md
   - tipser-react-elements.md
   - advanced-usage.md
+  - embedded-mode.md
   - tipser-sdk.md
   - configuration-options.md
   - tipser-elements-analytics.md

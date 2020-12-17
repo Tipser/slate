@@ -3,7 +3,12 @@ All notable changes to Tipser Elements project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-## [2.1.64] - unreleased
+## [2.1.65] - 2020-12-17
+
+### Changed
+- DynamicCollection component now returns product narrowed down to POS whitelisting settings
+
+## [2.1.64] - 2020-12-17
 ### Added
 - Sending the "checkout viewed" event to whisperer and GA when the user opens the new checkout view
 ### Fixed

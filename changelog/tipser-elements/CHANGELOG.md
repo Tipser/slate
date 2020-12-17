@@ -3,6 +3,15 @@ All notable changes to Tipser Elements project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [2.1.64] - unreleased
+### Added
+- Sending the "checkout viewed" event to whisperer and GA when the user opens the new checkout view
+### Fixed
+- Overlay with "Update my Cart" button in modal.
+- Fixed the problem with product image not appearing on mobile
+- Closing modal by Esc
+### Changed
+- Replace lottie animations to CSS animations
 
 ## [2.1.63] - 2020-12-10
 
@@ -13,10 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - replaced some divs and spans with semantic HTML tags
 - default `useCustomCSS` config option set to `true`
-- [Elements CMS] updated the Contentful client library to the newest version 
+- [Elements CMS] updated the Contentful client library to the newest version
 
 ### Fixed
-- fixed a visual glitch with slightly larger delivery cost font size on the new product dialog (compared to other fields) 
+- fixed a visual glitch with slightly larger delivery cost font size on the new product dialog (compared to other fields)
 
 ## [2.1.61] - 2020-12-09
 ### Added

@@ -34,7 +34,14 @@ Add the library to your project:
 
 ### Import Tipser React Elements
 
-You can combine Tipser Elements with your own application.
+The following lines of code import Tipser Elements to your project:
+
+```jsx
+import { Product, TipserElementsProvider } from "@tipser/tipser-elements"; // Imports all the needed React components
+import "@tipser/tipser-elements/dist/index.css"; // Imports the base set of CSS styles (can be overriden)
+```
+
+Below is a full example illustrating how can you combine Tipser Elements with your own application:
 
 ```jsx
 import React from "react";

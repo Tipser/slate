@@ -34,16 +34,7 @@ Add the library to your project:
 
 ### Import Tipser React Elements
 
-### Import Tipser React Elements
-
-The following lines of code import Tipser Elements to your project:
-
-```jsx
-import { Product, TipserElementsProvider } from "@tipser/tipser-elements"; // Imports all the needed React components
-import "@tipser/tipser-elements/dist/index.css"; // Imports the base set of CSS styles (can be overriden)
-```
-
-Below is a full example illustrating how can you combine Tipser Elements with your own application:
+You can combine Tipser Elements with your own application.
 
 ```jsx
 import React from "react";
@@ -92,7 +83,7 @@ Please make sure:
 
 - your HTML document contains an element of id `root` (`<div id="root"/>`) so that React can mount the app to your HTML document
 
-- to provide `history` object to be used by Elements for client side redirects (otherwise all our links/redirects will trigger full page reloads)
+- to provide `history` object on which we can rely for client side routing, when not provided routing is based on `window.history`
 
 - import CSS files (`import '@tipser/tipser-elements/dist/index.css'`).
 
@@ -234,17 +225,36 @@ _example:_
 
 ## `Product`
 
-Element that renders the product title based on Tipser [productId](#getting-tipser-product-id-and-collection-id) passed to the `productId` prop.
+Displays a tile or a listing for the product specified by the [productId](#getting-tipser-product-id-and-collection-id) prop. Comes in three different flavours, described below.
 
-The `Product` element supports two display modes (controlled by `viewMode` prop):
+**Product tile** - a small, rectangular product preview with the title, the price and the buy button. When clicked (over the buy button or anywhere else), it opens a dialog with product details.
 
-- Large product title with variant selector and "add to cart" button, if `viewMode="full"` (default)
-- Small product title which when clicked opens a product dialog, if `viewMode="compact"`
+Activated by `viewMode="compact"`.
 
-| prop name | description                                                   | type                       | required | default value |
-| --------- | ------------------------------------------------------------- | -------------------------- | -------- | ------------- |
-| productId | [where to find](#getting-tipser-product-id-and-collection-id) | string                     | true     | none          |
-| viewMode  | enables full or compact product display                       | string ('full', 'compact') | false    | 'full'        |
+_Example:_
+
+[![](product-view-modes/product-tile.png)](/images/product-view-modes/product-tile.png)
+
+**Full product view** - a larger, more detailed and better exposed product view, typically occupying the full width of the article. Allows the user to add the product to cart without opening the product dialog (which means less steps needed by the user to purchase the product). With
+
+Activated by `viewMode="full"` (or skipping the `viewMode` prop, as this is the default value).
+
+_Example:_
+
+[![](product-view-modes/product-listing.png)](/images/product-view-modes/product-listing.png)
+
+**Product page view** - the largest version of the product view including additional sections, like similar products or "goes well with". This view mode is recommended on dedicated product pages.
+
+Activated by `viewMode="page"`.
+
+_Example:_
+
+[![](product-view-modes/product-page.png)](/images/product-view-modes/product-page.png)
+
+| prop name | description                                                   | type                               | required | default value |
+| --------- | ------------------------------------------------------------- | ---------------------------------- | -------- | ------------- |
+| productId | [where to find](#getting-tipser-product-id-and-collection-id) | string                             | true     | none          |
+| viewMode  | enables full or compact product display                       | string ('full', 'compact','page' ) | false    | 'full'        |
 
 _example:_
 
@@ -256,13 +266,14 @@ _example:_
 
 ## `Modular Product`
 
-For a more customazible and featured <code>Product</code> component you can use
-<code>Modular Product</code> which comes with two main ways of using it:
+<code>ModularProduct</code> is a more customisable and feature-rich version <code>Product</code> component.
 
-1). The default pre-defined:
+There are two ways of using it:
+
+1). The default layout:
 
 ```jsx
-<ProductContext productId="5c751cf82d3f3b0001bcec8c" />
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c" />
 ```
 
 <div style="display:flex">
@@ -270,7 +281,7 @@ For a more customazible and featured <code>Product</code> component you can use
 <div style="width:50%">
       
 <ul>
-<p>The main differences between standard <code>Product</code> component and a default <code>Modular Product</code> component is more functionalities such as:</p>
+<p>The main differences between standard full-list <code>Product</code> component and a default <code>Modular Product</code> component is that it includes additional sections, such as:</p>
 
 <li><p><code><a href="#color-relations">Color relations:</a></code></p>
   <div>
@@ -278,22 +289,22 @@ For a more customazible and featured <code>Product</code> component you can use
   </div>
 </li>
   
-<li><p><code><a href="#style-with">Style-With:</a></code></p>
+<li><p><code><a href="#style-with">Style with:</a></code></p>
 <div>
 <img src="/images/modular-product/style_with_products.png" alt="Style With Component" />
 </div>
 </li>
-<li><p><code><a href="#product-description">Description Module:</a></code></p>
+<li><p><code><a href="#product-description">Description:</a></code></p>
 <div>
 <img src="/images/modular-product/description.png" alt="Description Component" />
 </div>
 </li>
-<li><p><code><a href="#similar-products">Similar-Products:</a></code></p>
+<li><p><code><a href="#similar-products">Similar products:</a></code></p>
 <div>
 <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" />
 </div>
 </li>
-<li><p><code><a href="#product-container">Product-Container:</a></code></p>
+<li><p><code><a href="#product-container">Product container:</a></code></p>
 <div>
 <img src="/images/modular-product/product_container.png" alt="Similar Products Component" />
 </div>
@@ -308,133 +319,131 @@ For a more customazible and featured <code>Product</code> component you can use
 </div>
 
 </div>
-<aside style=margin-top:0 class="notice">As you will see in the <a href="#modular-product-overview"><code>Modular Product Overwiew</code></a> the <a href="#product-container"><code>Product-Container</code></a> module can be split into smaller modules.</aside>
+<aside style=margin-top:0 class="notice">As you will see in the <a href="#modular-product-overview"><code>Modular Product Overwiew</code></a> the <a href="#product-container"><code>Product container</code></a> module can be split into smaller modules.</aside>
 
-2).Fully customazible and modular:
+2. Fully customizable:
 
-For a better understanding of what <code>Modular Product</code> is, lets list all the available modules:
+In this way of using ModularProduct component, you can mix and match the elements that are included in your product view.
+In other words, you can build you own version of product view from the existing components like from Lego pieces. And you can even mix in your own components in between.
 
-<p id="modular-product-overview"><code>Modular Product overview:</code></p>
+Below is the list of all of the available modules:
+
 <img src="/images/modular-product/modular_product_modules.png" alt="Modular Product Default" />
 
-For those users that want to remove or rearrange some of the modules positions, <code>Modular Product</code> allow you do that with slighly different syntax:
+You can build your product view as in the following example.
+
+<aside class="notice">
+It's important that all the lower-level modules are located under <code>ModularProduct</code> in the elements hierarchy. If this rule is not respected, the Elements code will throw an error message informing about the problem.
+</aside>
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <div className="top-container">
+    <div className="left-column">
+      <ProductImage />
+    </div>
+    <div className="right-column">
+      <ProductTitle />
+      <ProductPrice />
+      <ColorRelations />
+      <ProductVariantSelector />
+      <ProductAvailabilityInfo />
+      <ProductBuyButton />
+    </div>
+  </div>
+  <div className="bottom-container">
+    <ProductDescription />
+    <SimilarProducts />
+    <StyleWithProducts />
+  </div>
+</ModularProduct>
+```
+
+In case you don't want to mess with the main part of the product view,
+and just want to control the four main sections, you can use the `ProductContainer` component.
 
 ```jsx
 <ProductContext productId="5c751cf82d3f3b0001bcec8c">
-  {(productContext) => (
-      <>
-        <ProductImage {...productContext} />
-        <>
-          <ProductTitle {...productContext} />
-          <ProductPrice {...productContext} />
-          <ColorRelations {...productContext} />
-          <ProductVariantSelector {...productContext} />
-          <ProductAvailabilityInfo {...productContext} />
-          <ProductBuyButton {...productContext} />
-        </>
-      </>
-      <ProductDescription {...productContext} />
-      <SimilarProducts {...productContext} />
-      <StyleWithProducts {...productContext} />
-
-  )}
+  <ProductContainer />
+  <StyleWithProducts />
+  <ProductDescription />
+  <SimilarProducts />
 </ProductContext>
 ```
 
-<aside style=margin-top:0 class="notice">Notice that in this syntax there is no <a href="#product-container"></a><code>Product-Container</code> module. All of his children live as a separate modules.</aside>
+<h4 id="product-container"><code>ProductContainer</code></h4>
 
-Or if you want just to change four main modules you can do it with:
+<img src="/images/modular-product/product_container.png" alt="Product container" width="250"/>
 
-```jsx
-<ProductContext productId="5c751cf82d3f3b0001bcec8c">
-  {(productContext) => (
-    <>
-      <ProductContainer {...productContext} />
-      <StyleWithProducts {...productContext} />
-      <ProductDescription {...productContext} />
-      <SimilarProducts {...productContext} />
-    </>
-  )}
-</ProductContext>
-```
-
-<code>Modules Description:</code>
-
-<h4 id="product-container"><code>Product Container</code></h4>
-
-<img src="/images/modular-product/product_container.png" alt="Similar Products Component" width="250"/>
-
-Component that is displaying all the necessary informations about a product and the only one that have sub-modules you can fully remove or rearrange:
+The default implementation of the main part of the product view, consisting of `ProductImage`, `ProductTitle`, `ColorRelations`, `ProductVariantSelector`, `ProductAvailabilityInfo` and `ProductBuyButton`.
 
 <h4><code>ProductImage</code></h4>
-  Wyświetla zdjęcie produktu oraz thumbnailsy (dla wersji desktopowej)
+Displays the full-size version of the currently selected product image and thumbnails of the remaining images.
 
 <div style=display:flex;>
   <div style=display:flex;flex-direction:column;>
-    <p>Wersja desktopowa:</p>
+    <p>Desktop version</p>
     <img src="/images/modular-product/product_image.png" alt="Product Image" width="305"/>
   </div>
 
   <div style=display:flex;flex-direction:column;margin-left:20px;>
-    <p>Wersja mobile:</p>
+    <p>Mobile version</p>
     <img src="/images/modular-product/product_image_mobile.png" alt="Product Image" width="265"/>
   </div>
 </div>
 
-<h4><code>Product Title</code></h4>
+<h4><code>ProductTitle</code></h4>
   Displays the name and the brand of the product
 
   <img src="/images/modular-product/product_title.png" alt="Similar Products Component" width="305"/>
 
 <h4><code>Product Price</code></h4>
-  Displays price, discount price and unit price ( eg. 2$/100ml, if applicable ) for the product
+  Displays the price, discount price and unit price ( eg. 2$/100ml, if applicable ) for the product.
 
   <img src="/images/modular-product/product_price.png" alt="Similar Products Component" width="305"/>
 
 <h4 id="color-relations"><code>Color Relations</code></h4>
-  Module for displaying and picking other color variants
+  Displays the list of color variants of the product and switches the product view to any of them, when clicked.
 
   <img src="/images/modular-product/color_relations.png" alt="Similar Products Component" width="305"/>
 
 <h4><code>Variant Selector</code></h4>
-  Module for selecting the variant. Only available variants are selectable
-  When a variant is selected all the information (price, description, etc) will be updated for the selected variant
+  A dropdown listing all variants of the product. When a variant is selected from the list, all the displayed product information will be updated accordingly (only available variants are selectable).
 
   <img src="/images/modular-product/product_variant_selector.png" alt="Similar Products Component" />
 
 <h4><code>Availability Info</code></h4>
-  Module for displaying product availability such as:
+  Displays information related to product availability and delivery, such as:
   <ul>
   <li>product availability</li>
   <li>delivery cost</li>
   <li>delivery time</li>
   </ul>
-    <img src="/images/modular-product/product_availability_info.png" alt="Similar Products Component" width="305"/>
+    <img src="/images/modular-product/product_availability_info.png" alt="Product availability component" width="305"/>
    
 <h4><code>Add To Cart button</code></h4>
-  Module for adding to cart product. Kiedy dany posiada warianty, kliknięcie buttona add-to-cart powoduje rozwinięcie się dropdowna z wariantami.
+  A button adding the product to the shopping cart. In case the variant has not been yet selected, clicking the button will expand the variant selector instead.
 
-  <img src="/images/modular-product/product_buy_button.png" alt="Similar Products Component" width="305"/>
+  <img src="/images/modular-product/product_buy_button.png" alt="Product buy button component" width="305"/>
 
   <h4 id="product-description"><code>Description</code></h4>
-  Module displaying product description.
+  Displays the product text description.
 
-  <img src="/images/modular-product/description.png" alt="Similar Products Component" width="610"/>
+  <img src="/images/modular-product/description.png" alt="Product description Component" width="610"/>
 
  <h4 id="style-with"><code>Style With</code></h4>
-  Editable list for a products that can be shown on a main page.
-  List of products go well together with the current product, hand-picked by yourself.
+  A hand-picked list of other products that go well together with the current product.
 
   <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
 
    <h4 id="similar-products"><code>Similar Products</code></h4>
-  Lista produktów wybierana przez algorytm tipsera.
+  An automatically generated list of similar products (basing on text similarity, image similarity, more from the same brand, etc).
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
 
 ## `Product List`
 
-It is an element that is displayed in the same way as the `Collection`, but instead of the collection Id, you need to pass the array of `productId`s. and optional `carousel` and `imgSize`.
+A list of products, looking the same as `Collection` component, but instead of the `collectionId`, you need to pass the array of `productId`s. and optional `carousel` and `imgSize` attributes.
 
 _example:_
 

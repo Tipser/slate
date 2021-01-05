@@ -4,6 +4,17 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.67] - 2021-01-05
+### Added
+- New language in config: `deDE_formal`
+- Error validation for US delivery address in checkout
+- Simplified React syntax for modular product
+- Html syntax for modular checkout
+### Fixed
+- Cart component now supports className property
+### Changed
+- Cart component styles: cart size indicator scales when the size of cart icon is changed
+
 ## [2.1.66] - 2020-12-21
 ### Fixed
 - Klarna component shows the correct price after the user modifies the order on the checkout page

@@ -90,8 +90,8 @@ By default, Tipser Elements and SDK connect to production Tipser environment. Ye
 
 ## Language and locale
 
-`lang` configuration option specifies the language to be used. Supported languages are currently: `en-US`, `de-DE`, `fr-FR` and `sv-SE`.
-
+`lang` configuration option specifies the language to be used. Supported languages are currently: `en-US`, `en-GB`, `de-DE`, `de-DE-formal`, `fr-FR`, `fi-FI` and `sv-SE`.
+                                                                                                                                        
 ```js
   tipser.elements('posId', {
     lang: 'en-US'

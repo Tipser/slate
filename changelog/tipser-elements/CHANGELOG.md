@@ -4,9 +4,13 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.68] - 2021-01-08
+### Added
+- Support for `customLabels` configuration options for modular components
+
 ## [2.1.67] - 2021-01-05
 ### Added
-- New language in config: `deDE_formal`
+- New language in config: `de-DE-formal`
 - Error validation for US delivery address in checkout
 - Simplified React syntax for modular product
 - Html syntax for modular checkout
@@ -14,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cart component now supports className property
 ### Changed
 - Cart component styles: cart size indicator scales when the size of cart icon is changed
+- Cart component class names changed: `.te-cart-icon` to `.te-cart`, `.tipser-icon-cart` to `.te-cart-icon`.
 
 ## [2.1.66] - 2020-12-21
 ### Fixed

@@ -240,7 +240,7 @@ Activated by `viewMode="compact"`.
 
 _Example:_
 
-[![](product-view-modes/product-tile.png)](/images/product-view-modes/product-tile.png)
+[![](compact-product.png)](/images/compact-product.png)
 
 **Full product view** - a larger, more detailed and better exposed product view, typically occupying the full width of the article. Allows the user to add the product to cart without opening the product dialog (which means less steps needed by the user to purchase the product). With
 
@@ -248,7 +248,7 @@ Activated by `viewMode="full"` (or skipping the `viewMode` prop, as this is the 
 
 _Example:_
 
-[![](product-view-modes/product-listing.png)](/images/product-view-modes/product-listing.png)
+[![](full-product.png)](/images/full-product.png)
 
 **Product page view** - the largest version of the product view including additional sections, like similar products or "goes well with". This view mode is recommended on dedicated product pages.
 
@@ -256,7 +256,7 @@ Activated by `viewMode="page"`.
 
 _Example:_
 
-[![](product-view-modes/product-page.png)](/images/product-view-modes/product-page.png)
+[![](modular-product/modular_product_default.png)](/images/modular-product/modular_product_default.png)
 
 | prop name | description                                                   | type                               | required | default value |
 | --------- | ------------------------------------------------------------- | ---------------------------------- | -------- | ------------- |

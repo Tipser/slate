@@ -4,9 +4,23 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.69] - 2021-01-14
+### Added
+- Stripe checkout is respecting customUrls.checkoutConfirmationUrl config
+- Tipser Elements Script: data-tipser-modular-product-id component is emitting two custom HTML events: `product-context-ready` and `product-variant-changed`
+
+### Changed
+- Stripe checkout: the buy button becoming disabled after it has been first clicked (to avoid multiple clicks) 
+
+### Fixed
+- Checkout confirmation page won't crash if re-visited after user's shopping cart has expired
+
 ## [2.1.68] - 2021-01-08
 ### Added
 - Support for `customLabels` configuration options for modular components
+
+### Changed
+- Trying to use Tipser components without a wrapping TipserElementsProvider will now throw an error with a much cleaner error message
 
 ## [2.1.67] - 2021-01-05
 ### Added
@@ -34,11 +48,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Sending the "checkout viewed" event to whisperer and GA when the user opens the new checkout view
 ### Fixed
-- Overlay with "Update my Cart" button in modal.
-- Fixed the problem with product image not appearing on mobile
-- Closing modal by Esc
+- Overlay with "Update my Cart" button in the modal (when the product quantity / availability changes during the checkout)
+- Fixed the problem with the main product image occasionally not appearing on mobile
+- Closing modal by pressing Esc button is now possible again
 ### Changed
-- Replace lottie animations to CSS animations
+- Reduced bundle size by about 50 kBs (gzipped) by switching the implementation of checkout animations from JS to CSS
 
 ## [2.1.63] - 2020-12-10
 

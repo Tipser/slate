@@ -4,13 +4,25 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2021-01-18
+### Breaking changes
+- `ModularProduct` component with empty children is no longer supported. Use `ProductPage` component instead!
+- Renamed modular checkout components to have common prefix (e.g. CustomerAddressDelivery renamed to CheckoutCustomerAddressDelivery )
+- Split checkout into two components: Checkout and ModularCheckout
+
+### Added
+- Support for `className` prop for modular checkout components
+- Support for `className` prop for modular product components
+- Simplified modular checkout syntax (replaced <CustomerAddressDelivery {...checkoutContext} /> syntax with just <CustomerAddressDelivery />)
+- Added helper components to distinguish checkout statuses (ModularCheckout.New, ModularCheckout.Processing and ModularCheckout.Confirmed)
+
 ## [2.1.69] - 2021-01-14
 ### Added
 - Stripe checkout is respecting customUrls.checkoutConfirmationUrl config
 - Tipser Elements Script: data-tipser-modular-product-id component is emitting two custom HTML events: `product-context-ready` and `product-variant-changed`
 
 ### Changed
-- Stripe checkout: the buy button becoming disabled after it has been first clicked (to avoid multiple clicks) 
+- Stripe checkout: the buy button becoming disabled after it has been first clicked (to avoid multiple clicks)
 
 ### Fixed
 - Checkout confirmation page won't crash if re-visited after user's shopping cart has expired

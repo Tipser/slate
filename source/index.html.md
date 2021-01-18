@@ -9,8 +9,8 @@ toc_footers:
 
 includes:
   - overview.md
-  - tipser-elements-script.md
-  - tipser-react-elements.md
+  - tipser-script.md
+  - tipser-elements.md
   - advanced-usage.md
   - embedded-mode.md
   - tipser-sdk.md

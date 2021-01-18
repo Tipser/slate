@@ -1,6 +1,6 @@
-# Tipser React Elements
+# Tipser Elements
 
-Tipser React Elements is a component library from Tipser enabling you to add shoppable content to your React APP with minimal effort. You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.
+Tipser Elements is a component library from Tipser enabling you to add shoppable content to your React APP with minimal effort. You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.
 
 <aside class="notice">
 Not using React? Looking for an overview on Tipser Elements? Go check <a href="#tipser-elements">Tipser Elements</a> docs. This section covers only <strong>React API</strong> for Elements. 
@@ -10,7 +10,7 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 
 ### Live demo
 
-A working examples of page based on Tipser React Elements can be found on <a href="https://tipser.github.io/tipser-elements-react-bootstrap/" target="_blank">Tipser Elements Bootstrap page</a>.
+A working examples of page based on Tipser Elements can be found on <a href="https://tipser.github.io/tipser-elements-react-bootstrap/" target="_blank">Tipser Elements Bootstrap page</a>.
 
 The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-elements-react-bootstrap" target="_blank">Tipser Elements Bootstrap project</a>. Feel free to checkout it and play with it on your local environment!
 
@@ -426,7 +426,7 @@ Properties:
 | ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
 | className  | custom CSS class name to apply          | string                                | false    | none          |
 
-### `ModularCheckout`
+## `ModularCheckout`
 
 For more flexibility use `ModularCheckout` component.
 

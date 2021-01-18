@@ -250,18 +250,10 @@ _Example:_
 
 [![](full-product.png)](/images/full-product.png)
 
-**Product page view** - the largest version of the product view including additional sections, like similar products or "goes well with". This view mode is recommended on dedicated product pages.
-
-Activated by `viewMode="page"`.
-
-_Example:_
-
-[![](modular-product/modular_product_default.png)](/images/modular-product/modular_product_default.png)
-
 | prop name | description                                                   | type                               | required | default value |
 | --------- | ------------------------------------------------------------- | ---------------------------------- | -------- | ------------- |
 | productId | [where to find](#getting-tipser-product-id-and-collection-id) | string                             | true     | none          |
-| viewMode  | enables full or compact product display                       | string ('full', 'compact','page' ) | false    | 'full'        |
+| viewMode  | enables full or compact product display                       | string ('full', 'compact')         | false    | 'full'        |
 
 _example:_
 
@@ -271,66 +263,33 @@ _example:_
 
 [Learn more](#product-element).
 
-## `Modular Product`
+## `ProductPage`
 
-<code>ModularProduct</code> is a more customisable and feature-rich version <code>Product</code> component.
+A full-sized product component to be used on a dedicated page.
 
-There are two ways of using it:
+_Example:_
 
-1). The default layout:
+[![](modular-product/modular_product_default.png)](/images/modular-product/modular_product_default.png)
+
+<aside class="notice">
+This component renders the same product view that is displayed inside the product modal.
+</aside> 
 
 ```jsx
-<ModularProduct productId="5c751cf82d3f3b0001bcec8c" />
+<ProductPage productId="5c751cf82d3f3b0001bcec8c">
 ```
 
-<div style="display:flex">
+Properties:
 
-<div style="width:50%">
-      
-<ul>
-<p>The main differences between standard full-list <code>Product</code> component and a default <code>Modular Product</code> component is that it includes additional sections, such as:</p>
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| productId  | the Tipser id of the product to render  | string                                | true     |
 
-<li><p><code><a href="#color-relations">Color relations:</a></code></p>
-  <div>
-    <img src="/images/modular-product/color_relations.png" alt="Color Relations" width="250"/>
-  </div>
-</li>
-  
-<li><p><code><a href="#style-with">Style with:</a></code></p>
-<div>
-<img src="/images/modular-product/style_with_products.png" alt="Style With Component" />
-</div>
-</li>
-<li><p><code><a href="#product-description">Description:</a></code></p>
-<div>
-<img src="/images/modular-product/description.png" alt="Description Component" />
-</div>
-</li>
-<li><p><code><a href="#similar-products">Similar products:</a></code></p>
-<div>
-<img src="/images/modular-product/similar_products.png" alt="Similar Products Component" />
-</div>
-</li>
-<li><p><code><a href="#product-container">Product container:</a></code></p>
-<div>
-<img src="/images/modular-product/product_container.png" alt="Similar Products Component" />
-</div>
+## `Modular Product`
 
-</li>
-</ul>
+This is a more customisable and feature-rich version <code>Product</code> component.
 
-</div>
-
-<div style="display:flex;justify-content:center;width:50%;align-items: flex-start;">
-<img src="/images/modular-product/modular_product_default.png" alt="Modular Product Default" width="250"/>
-</div>
-
-</div>
-<aside style=margin-top:0 class="notice">As you will see in the <a href="#modular-product-overview"><code>Modular Product Overwiew</code></a> the <a href="#product-container"><code>Product container</code></a> module can be split into smaller modules.</aside>
-
-2. Fully customizable:
-
-In this way of using ModularProduct component, you can mix and match the elements that are included in your product view.
+`ModularProduct` component allows you to mix and match the elements that are included in your product view.
 In other words, you can build you own version of product view from the existing components like from Lego pieces. And you can even mix in your own components in between.
 
 Below is the list of all of the available modules:
@@ -448,6 +407,131 @@ Displays the full-size version of the currently selected product image and thumb
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
 
+## `Checkout`
+
+A predefined checkout component with all necessary elements (product list, user address form, payment widget, etc) to make the purchase possible.
+
+```jsx
+import { Checkout } from '@tipser/tipser-elements';
+ ...
+<Checkout />
+```
+
+The above code will render more or less the following output:
+[![](checkout_component.png)](/images/checkout_component.png)
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | false    | none          |
+
+### `ModularCheckout`
+
+For more flexibility use `ModularCheckout` component.
+
+```jsx
+import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery, CheckoutPayment } from '@tipser/tipser-elements';
+
+<ModularCheckout>
+  <ModularCheckout.New>
+	  <CheckoutCartProducts />
+    <CheckoutCustomerAddressDelivery />
+    <CheckoutPayment />
+  </ModularCheckout.New>
+
+  <ModularCheckout.Processing>
+     <CheckoutOrderProcessing />
+  </ModularCheckout.Processing>
+ 
+  <ModularCheckout.Confirmation>
+		<CheckoutOrderConfirmation />
+  </ModularCheckout.Confirmation>
+</ModularCheckout>
+```
+
+`ModularCheckout` is the main element providing the product context for all of the checkout modules nested under it.  
+
+A list of supported modules that can be nested under `ModularCheckout`:
+
+* `CheckoutCartProducts` - a list of items in the current checkout
+* `CheckoutCustomerAddressDelivery` - a form accepting user’s delivery address
+* `CheckoutCustomerAddressBilling` - a form accepting user’s billing address
+* `CheckoutCartSummary` a summary of the total costs resulting from the checkout
+* `CheckoutPayment` - a payment section, accepting user's payment input (e.g. credit card number)
+* `CheckoutCartPromoCode` - a widget for entering promotion codes
+* `CheckoutLegal` - a text explaining legal terms of the purchase
+* `CheckoutOrderProcessing ` - a loading animation for checkout processing
+* `CheckoutOrderConfirmation`- a confirmation page displaying a summary of the completed order
+
+The elements `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmation`  are helper elements that are used
+to conditionally render their children only for a given checkout status. If none of these elements, will be used, all the elements passed to `ModularCheckout`
+will be rendered for every checkout status.
+
+For example:
+
+```jsx
+<ModularCheckout.Confirmation>
+    <CheckoutOrderConfirmation />
+</ModularCheckout.Confirmation>
+```
+
+This will guarantee that the `CheckoutOrderConfirmation` module is only displayed if the current checkout status is `confirmed`, that is,
+that is, that the payment has been successfully processed.
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| productId  | the Tipser id of the product to render  | string                                | true     | none          |
+
+### Multi-step `ModularCheckout`
+
+It is possible to spread the modular checkout over several pages. The only requirement is to keep the `Checkout` element as a parent for all of the routes
+that are using any of the checkout modules described before. 
+
+The example below illustrates how to do it with the `react-router` library.
+
+```jsx
+import React from "react";
+import { Checkout } from "@tipser/tipser-elements";
+import { Route, Switch, withRouter } from "react-router";
+
+export const CheckoutMultipage = withRouter(({ match }) => (
+  <div>
+    <div className="te-multipage-label">Checkout multipage</div>
+    <ModularCheckout>
+        <Switch>
+          <Route path={`${match.url}/step-1`}>
+            <CheckoutPage1 />
+          </Route>
+          <Route path={`${match.url}/step-2`}>
+            <CheckoutPage2 />
+          </Route>
+        </Switch>
+    </ModularCheckout>
+  </div>
+));
+
+const CheckoutPage1 = () => (
+  <>
+    <h2>Step 1</h2>
+    <CartProducts />
+    <CustomerAddressDelivery />
+    <CartSummary />
+  </>
+);
+
+const CheckoutPage2 = ({ checkout }) => (
+  <>
+    <h2>Step 2</h2>
+    <CartPromoCode />
+    <CheckoutPayment />
+  </>
+);
+```
+
+
 ## `Product List`
 
 A list of products, looking the same as `Collection` component, but instead of the `collectionId`, you need to pass the array of `productId`s. and optional `carousel` and `imgSize` attributes.
@@ -492,125 +576,3 @@ import { Store } from '@tipser/tipser-elements';
 
 Note: the `Store` component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework.
 For the same reason, it's not recommended to include more than one `<Store />` on a single page.
-
-## `Checkout`
-
-Element that displays the checkout component with all necessary elements to make the purchase take place.
-It is a HTML widget displaying a whole Checkout component allowing a user to make a purchase on the POS site, using Tipser infrastructure. The Checkout component can be used in two ways:
-
-- Stand-alone `Checkout` react component displayed on one site;
-
-- Modular Checkout component displaying parts of it as different react Components in a custom order on different subsites;
-
-### Stand-alone Checkout
-
-To display `Checkout` as **stand-alone component**, all you need to do is to place it in your code like any other Tipser Elements React components:
-
-```jsx
-import { Checkout } from '@tipser/tipser-elements';
- ...
-<Checkout />
-```
-
-The component will be rendered on Your site as shown below:
-[![](checkout_component.png)](/images/checkout_component.png)
-
-### Modular Checkout
-
-More advanced way of embedding Tipser Checkout on your page, to be used if you need more control over the Checkout experience.
-
-The `Checkout` consists of several React components:
-
-```jsx
-<Checkout>
-    {(checkout: CheckoutData) => (
-      <CartProducts {...checkout} />
-      <CustomerAddressDelivery {...checkout} />
-      <CartPromoCode {...checkout} />
-      <CartSummary {...checkout} />
-      <CheckoutPayment {...checkout} />
-      <CustomerAddressBilling {...checkout} />
-    )}
-</Checkout>
-```
-
-To connect them together, you need to place them in a wrapper component `<Checkout/>` and pass all the data via props `{...checkout}`:
-
-```jsx
-import React from "react";
-import { Checkout, CheckoutData } from "@tipser/tipser-elements/dist/all";
-import { Route, Switch, withRouter } from "react-router";
-
-export const CheckoutMultipage = withRouter(({ match }) => (
-  <div>
-    <div className="te-multipage-label">Checkout multipage</div>
-    <Checkout>
-      {(checkout: CheckoutData) => (
-        <Switch>
-          <Route path={`${match.url}/step-1`}>
-            <CheckoutPage1 checkout={checkout} />
-          </Route>
-          <Route path={`${match.url}/step-2`}>
-            <CheckoutPage2 checkout={checkout} />
-          </Route>
-        </Switch>
-      )}
-    </Checkout>
-  </div>
-));
-
-const CheckoutPage1 = ({ checkout }) => (
-  <>
-    <h2>Step 1</h2>
-    <CartProducts {...checkout} />
-    <CustomerAddressDelivery {...checkout} />
-    <CartSummary {...checkout} />
-  </>
-);
-
-const CheckoutPage2 = ({ checkout }) => (
-  <>
-    <h2>Step 2</h2>
-    <CartPromoCode {...checkout} />
-    <CheckoutPayment {...checkout} />
-  </>
-);
-```
-
-Feel free to position the checkout components in any order that suits your UX needs.
-
-- **Cart Products**
-  A list of products with such details as price, quantity and delivery cost.
-
-- **Customer Address Delivery**
-  Component with cutomer's adderss delivery details. It is obligatory with Stripe as payment service provider. When it's filled with information in the right format, it enables the Checkout Payment component.
-
-- **Cart Promo Code**
-  Enables the user to use promotion code for discounts and other campaign benefits.
-
-- **Cart Summary**
-  Financial details of the transaction including taxes, discounts, delivery cost, etc.
-
-- **Checkout Payment**
-  Component connected to payment service provider.
-
-- **Customer Address Billing**
-  Component with cutomer's billing details.
-
-- **Legal Component**
-  Displays any necessary legal information required by law, provided by POS and stored in the POS' Tipser account.
-
-- **Order Confirmation**
-  Final step in the checkout - confirms the purchase and displays the delivery details, purchased items and payment summary.
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```

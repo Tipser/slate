@@ -1,25 +1,25 @@
-#Tipser Elements
+#Tipser Elements Script
 
-Tipser Elements is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and Tipser [SDK](#tipser-sdk):
+Tipser Elements Script is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and Tipser [SDK](#tipser-sdk):
 
 * **Product** - product display with variant selector and add to cart button
 * **Collection** - a group of products
 * **Store** - shop with collections, products and menu navigation
 * **Cart** - cart icon with an easy access to the cart and checkout
 
-![Tipser Elements](https://images.ctfassets.net/i8t5uby4h6ds/5PibEm4ryfOXZHxZtZDEXd/f604521da24ce17b93bfd3c24a87e619/collection-small.png)
+![Tipser Elements Script](https://images.ctfassets.net/i8t5uby4h6ds/5PibEm4ryfOXZHxZtZDEXd/f604521da24ce17b93bfd3c24a87e619/collection-small.png)
 
 ***
 
 
 ## Quick start
-This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
+This quick guide explains how to intialize and render Tipser Elements Script on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
 
 If you're all set up, follow these three steps to install Tipser Elements on your site!
 
 ***
 
-### Installation of Tipser Elements
+### Installation of Tipser Elements Script
 
 To use Tipser Elements on your site, add the following script to your page. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
 
@@ -206,14 +206,46 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 
 ## `Checkout` Element
 
-The embedded Checkout component provides checkout experience on your site.
-Note: this component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
+A Checkout component providing the checkout experience on your site.
 
 ```html
 <div id="tipser_checkout" />
 ``` 
 
-To redirect all the interactions from product and collection elements to your checkout dedicated page, please define the [checkoutUrl and checkoutConfirmationUrl](#custom-urls) from the `customUrls` config options. 
+<aside class="notice">
+This component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
+</aside>
+
+To lead the user from product and collection elements to your dedicated checkout page, please define the [checkoutUrl and checkoutConfirmationUrl](#custom-urls) from the `customUrls` config options.
+
+***
+
+## Modular Checkout
+
+If you need more flexibility, you can use an element with `data-tipser-modular-checkout` attribute. The children of this element will define a set of
+checkout modules to be displayed. 
+
+For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
+are being purchased by the user. 
+
+A working example of the checkout view consisting of: items list, delivery address form and the payment form.
+
+```html
+<div data-tipser-modular-checkout>
+     <div data-tipser-modular-checkout-cart-products />
+     <div data-tipser-modular-checkout-customer-address-delivery />
+     <div data-tipser-modular-checkout-payment />
+</div>
+```
+
+A list of supported modules that can be nested under `data-tipser-modular-checkout`:
+
+* `data-tipser-modular-checkout-cart-products` - a list of items in the current checkout
+* `data-tipser-modular-checkout-customer-address-delivery` - a form accepting user’s delivery address
+* `data-tipser-modular-checkout-customer-address-billing` - a form accepting user’s billing address
+* `data-tipser-modular-checkout-cart-summary` a summary of the total costs resulting from the checkout
+* `data-tipser-modular-checkout-payment` - a payment section, accepting user's payment input (e.g. credit card number)
+* `data-tipser-modular-checkout-cart-promo-code` - a widget for entering promotion codes
 
 ## Versioning
   

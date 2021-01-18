@@ -431,7 +431,7 @@ Properties:
 For more flexibility use `ModularCheckout` component.
 
 ```jsx
-import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery, CheckoutPayment } from '@tipser/tipser-elements';
+import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery, CheckoutPayment, CheckoutOrderProcessing, CheckoutOrderConfirmation } from '@tipser/tipser-elements';
 
 <ModularCheckout>
   <ModularCheckout.New>
@@ -444,9 +444,9 @@ import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery,
      <CheckoutOrderProcessing />
   </ModularCheckout.Processing>
  
-  <ModularCheckout.Confirmation>
+  <ModularCheckout.Confirmed>
 		<CheckoutOrderConfirmation />
-  </ModularCheckout.Confirmation>
+  </ModularCheckout.Confirmed>
 </ModularCheckout>
 ```
 
@@ -464,16 +464,16 @@ A list of supported modules that can be nested under `ModularCheckout`:
 * `CheckoutOrderProcessing ` - a loading animation for checkout processing
 * `CheckoutOrderConfirmation`- a confirmation page displaying a summary of the completed order
 
-The elements `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmation`  are helper elements that are used
+The elements `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmed`  are helper elements that are used
 to conditionally render their children only for a given checkout status. If none of these elements, will be used, all the elements passed to `ModularCheckout`
 will be rendered for every checkout status.
 
 For example:
 
 ```jsx
-<ModularCheckout.Confirmation>
+<ModularCheckout.Confirmed>
     <CheckoutOrderConfirmation />
-</ModularCheckout.Confirmation>
+</ModularCheckout.Confirmed>
 ```
 
 This will guarantee that the `CheckoutOrderConfirmation` module is only displayed if the current checkout status is `confirmed`, that is,
@@ -481,9 +481,7 @@ that is, that the payment has been successfully processed.
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| productId  | the Tipser id of the product to render  | string                                | true     | none          |
+No properties supported.
 
 ### Multi-step `ModularCheckout`
 

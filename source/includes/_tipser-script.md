@@ -246,8 +246,8 @@ A list of supported modules that can be nested under `data-tipser-modular-checko
 * `data-tipser-modular-checkout-cart-summary` a summary of the total costs resulting from the checkout
 * `data-tipser-modular-checkout-payment` - a payment section, accepting user's payment input (e.g. credit card number)
 * `data-tipser-modular-checkout-cart-promo-code` - a widget for entering promotion codes
-* `data-tipser-modular-checkout-confirmation` - a confirmation page displaying a summary of the completed order
-* `data-tipser-modular-checkout-processing` - a loading animation for checkout processing
+* `data-tipser-modular-checkout-order-confirmation` - a confirmation page displaying a summary of the completed order
+* `data-tipser-modular-checkout-order-processing` - a loading animation for checkout processing
 * `data-tipser-modular-checkout-legal` - a text explaining legal terms of the purchase
 
 ## Versioning

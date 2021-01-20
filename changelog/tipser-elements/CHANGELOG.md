@@ -4,6 +4,18 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2021-01-20
+
+## Fixed
+- Checkout used from Tipser Script works correctly
+- Klarna payment in modal works correctly
+- Missing billing address form on page does not block the payment form
+- Incorrect data in billing address form blocks the payment form
+- The checkbox to use delivery address as billing address is not visible in case of modular checkout
+
+## Added
+- `<CheckoutOrderConfirmation>`, `<CheckoutOrderProcessing` and `CheckoutLegal` components are supported by Tipser Script
+
 ## [2.2.0] - 2021-01-18
 ### Breaking changes
 - `ModularProduct` component with empty children is no longer supported. Use `ProductPage` component instead!
@@ -15,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for `className` prop for modular product components
 - Simplified modular checkout syntax (replaced <CustomerAddressDelivery {...checkoutContext} /> syntax with just <CustomerAddressDelivery />)
 - Added helper components to distinguish checkout statuses (ModularCheckout.New, ModularCheckout.Processing and ModularCheckout.Confirmed)
+
+# Known issues
+- Checkout does not work in case of Tipser Script (React version is not affected)
+- Klarna payment in modal doesn't work
 
 ## [2.1.69] - 2021-01-14
 ### Added

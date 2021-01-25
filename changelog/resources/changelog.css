@@ -164,6 +164,6 @@ body {
   margin-bottom: 0;
 }
 
-.right-content h3, .right-content ul {
+.right-content h3, .right-content h2, .right-content ul {
   transform: translateY(-12px);
 }

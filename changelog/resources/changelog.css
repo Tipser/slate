@@ -113,6 +113,7 @@ body {
   border-left: 2px solid #E5E5E5;
   position: relative;
   padding-bottom: 25px;
+  transform: translateY(12px);
 }
 
 .right-content::before {
@@ -129,6 +130,7 @@ body {
 
 .section:last-child .right-content {
   border-left: 2px solid transparent;
+  margin-bottom: 12px;
 }
 
 .change-title {
@@ -160,4 +162,8 @@ body {
 
 .section:last-child .change-description:last-child {
   margin-bottom: 0;
+}
+
+.right-content h3, .right-content ul {
+  transform: translateY(-12px);
 }

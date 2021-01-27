@@ -1,6 +1,6 @@
 #Tipser Script
 
-Tipser Script is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and Tipser [SDK](#tipser-sdk):
+Tipser Script is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and [Tipser Elements](#tipser-elements):
 
 * **Product** - product display with variant selector and add to cart button
 * **Collection** - a group of products

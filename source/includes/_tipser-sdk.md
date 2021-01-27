@@ -1,6 +1,6 @@
 #Tipser SDK
 
-<aside class="warning">Please note, that Tipser SDK is deprecated. The following documentation is for users who are currently in transition to Tipser Elements. If you need help with choosing the right Tipser solution to fit your technology stack, please contact us at <a href="mailto:tech@tipser.com">tech@tipser.com</a></aside>
+<aside class="warning">Please note, that Tipser SDK is deprecated. Until Q2 2021 we plan to stop bug fixing and in Q3 2021 we'll stop supporting it altogether. The following documentation is for users who are currently in transition to Tipser Elements. If you need help with choosing the right Tipser solution to fit your technology stack, please contact us at <a href="mailto:tech@tipser.com">tech@tipser.com</a></aside>
 
 Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.
 ## Installation

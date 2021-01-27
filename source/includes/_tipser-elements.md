@@ -3,7 +3,7 @@
 Tipser Elements is a component library from Tipser enabling you to add shoppable content to your React APP with minimal effort. You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.
 
 <aside class="notice">
-Not using React? Looking for an overview on Tipser Elements? Go check <a href="#tipser-elements">Tipser Elements</a> docs. This section covers only <strong>React API</strong> for Elements. 
+Not using React? Looking for an overview on Tipser Elements? Go check <a href="#tipser-script">Tipser Script</a> docs. This section covers only <strong>React API</strong> for Elements. 
 </aside>
 
 ---

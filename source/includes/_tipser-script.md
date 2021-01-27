@@ -4,9 +4,6 @@ Tipser Script is a set of shoppable elements built on top of Tipser <a href="htt
 
 A few basic examples:
 
-Collection (activated by data-tipser-cid attribute) - a group of product tiles
-Store 
-
 * **Product** (activated by `data-tipser-pid` attribute) - a buyable product view
 * **Collection** (activated by `data-tipser-cid` attribute) - a group of product tiles
 * **Store** (activated by `tipser_store` value of the id attribute) - a shop view displaying the inventory of buyable products, grouped by categories

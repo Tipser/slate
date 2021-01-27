@@ -50,6 +50,9 @@ tipserSdk.addToCart(productId, addToCartOptions);
 
 ## Accessing Tipser SDK
 
+<aside class="warning">Please note, that Tipser SDK is deprecated. Until Q2 2021 we plan to stop bug fixing and in Q3 2021 we'll stop supporting it altogether. The following documentation is for users who are currently in transition to Tipser Elements. If you need help with choosing the right Tipser solution to fit your technology stack, please contact us at <a href="mailto:tech@tipser.com">tech@tipser.com</a></aside>
+
+
 Low level operations, like programatically opening Tipser dialogs can be done by using the underlying [Tipser SDK](#tipser-sdk) instance, which is a part of the Tipser Elements library.
 
 __If you use Tipser Elements:__

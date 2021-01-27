@@ -1,11 +1,16 @@
 #Tipser Script
 
-Tipser Script is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and [Tipser Elements](#tipser-elements):
+Tipser Script is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and [Tipser Elements](#tipser-elements). It introduces support for several special attributes in your HTML code, and a runtime HTML scanner that will replace nodes marked with these attributes with the corresponding E-commerce elements.
 
-* **Product** - product display with variant selector and add to cart button
-* **Collection** - a group of products
-* **Store** - shop with collections, products and menu navigation
-* **Cart** - cart icon with an easy access to the cart and checkout
+A few basic examples:
+
+Collection (activated by data-tipser-cid attribute) - a group of product tiles
+Store 
+
+* **Product** (activated by `data-tipser-pid` attribute) - a buyable product view
+* **Collection** (activated by `data-tipser-cid` attribute) - a group of product tiles
+* **Store** (activated by `tipser_store` value of the id attribute) - a shop view displaying the inventory of buyable products, grouped by categories
+* **Cart** - cart icon with easy access to the cart and checkout
 
 ![Tipser Elements Script](https://images.ctfassets.net/i8t5uby4h6ds/5PibEm4ryfOXZHxZtZDEXd/f604521da24ce17b93bfd3c24a87e619/collection-small.png)
 
@@ -13,7 +18,7 @@ Tipser Script is a set of shoppable elements built on top of Tipser <a href="htt
 
 
 ## Quick start
-This quick guide explains how to intialize and render Tipser Elements Script on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
+This quick guide explains how to initialize and render Tipser Elements Script on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
 
 If you're all set up, follow these three steps to install Tipser Elements on your site!
 

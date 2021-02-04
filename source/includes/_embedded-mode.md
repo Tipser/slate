@@ -21,21 +21,22 @@ import { Router, Switch, Route } from 'react-router-dom';
 <Router>
     <Switch>
         <Route exact path="/product/:productId">
-          <ProductPage />
+          <ProductPageRoute />
         </Route>
     </Switch>
 </Router>
 ```
 
-**Step 2:** When the product page is visited, read the product id ("12345678" in the earlier example) from the URL and pass it to Tipser’s `ProductContext` component.
+**Step 2:** When the product page is visited, read the product id ("12345678" in the earlier example) from the URL and pass it to Tipser’s `ProductPage` component.
 
 ```jsx
 import { useParams } from 'react-router';
+import { ProductPage } from '@tipser/tipser-elements';
 
-const ProductPage = () => {
+const ProductPageRoute = () => {
   const { productId } = useParams();
   return (
-    <ProductContext productId={productId} />
+    <ProductPage productId={productId} />
   );
 };
 ```

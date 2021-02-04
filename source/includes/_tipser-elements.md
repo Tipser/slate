@@ -329,12 +329,12 @@ In case you don't want to mess with the main part of the product view,
 and just want to control the four main sections, you can use the `ProductContainer` component.
 
 ```jsx
-<ProductContext productId="5c751cf82d3f3b0001bcec8c">
+<ProductPage productId="5c751cf82d3f3b0001bcec8c">
   <ProductContainer />
   <StyleWithProducts />
   <ProductDescription />
   <SimilarProducts />
-</ProductContext>
+</ProductPage>
 ```
 
 <h4 id="product-container"><code>ProductContainer</code></h4>
@@ -441,11 +441,15 @@ import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery,
   </ModularCheckout.New>
 
   <ModularCheckout.Processing>
-     <CheckoutOrderProcessing />
+    <CheckoutOrderProcessing />
   </ModularCheckout.Processing>
  
+  <ModularCheckout.Empty>
+    <div>Your cart is empty!</div>
+  </ModularCheckout.Empty>
+
   <ModularCheckout.Confirmed>
-		<CheckoutOrderConfirmation />
+    <CheckoutOrderConfirmation />
   </ModularCheckout.Confirmed>
 </ModularCheckout>
 ```
@@ -464,7 +468,7 @@ A list of supported modules that can be nested under `ModularCheckout`:
 * `CheckoutOrderProcessing ` - a loading animation for checkout processing
 * `CheckoutOrderConfirmation`- a confirmation page displaying a summary of the completed order
 
-The elements `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmed`  are helper elements that are used
+The elements `ModularCheckout.New`, `ModularCheckout.Processing`, `ModularCheckout.Empty` and `ModularCheckout.Confirmed`  are helper elements that are used
 to conditionally render their children only for a given checkout status. If none of these elements, will be used, all the elements passed to `ModularCheckout`
 will be rendered for every checkout status.
 
@@ -476,7 +480,7 @@ For example:
 </ModularCheckout.Confirmed>
 ```
 
-This will guarantee that the `CheckoutOrderConfirmation` module is only displayed if the current checkout status is `confirmed`, that is,
+This will guarantee that the `CheckoutOrderConfirmation` module is only displayed if the current checkout status is `confirmed`,
 that is, that the payment has been successfully processed.
 
 Properties:

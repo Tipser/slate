@@ -4,15 +4,37 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.6] - 2021-02-04
+
+### Added
+- `CheckoutCartProducts` now lets the user to enter product quantity larger than 10.
+- "Same billing and delivery address" checkout available for `ModularCheckout` (visible by default, if `CheckoutCustomerAddressBilling` component is available under `CheckoutCustomerAddressBilling`, but can be hidden with `hideUseAsBillingAddressCheckbox` property on `CheckoutCustomerAddressBilling` element)
+- Accepted cart icons in Stripe payment form.
+- New prop for `CheckoutCustomerAddressDelivery` and `CheckoutCustomerAddressBilling` called `submitBehavior` (accepted values: `"none"`, `"collapse"`) controlling if the form should collapse after submission
+- New prop for `CheckoutCustomerAddressBilling` called (accepted values: `"none"`, `"validDeliveryAddress"`) controlling if this element should appear right away (if the value is `"none"`) or only after the delivery address form is filled with valid data
+- New prop for `CheckoutPayment` called `dependsOn` (accepted values: `"none"`, `"validAddress"`) controlling if this element should appear right away (if the value is `"none"`) or only after the address form(s) is filled with valid data
+- Padlock icon and loading indicator over the buy button in the `CheckoutPaymentStripe` element
+- `useInternalFunctions` hook that allows to use `addToCart`, `addToCartAndGoToCheckout`, `goToProduct` and `goToCheckout` in imperative way
+- Tipser Script: `ProductPage` component available from the HTML syntax via the `data-tipser-product-page` attribute
+- Tipser Script: all React attributes of `ModularCheckout` and `ModularProduct` modules have a html counterpart. For example, `CheckoutCustomerAddressDelivery` element has a React property called `hideSubmitButton`, which can be controlled by `data-tipser-hide-submit-button` attribute in HTML
+- TipserScript: customer's own "submit" button can be used to submit the billing and delivery address forms in `ModularCheckout`, using the `checkout-context-ready` and `checkout-context-change` HTML events 
+
+### Changed
+- URL hash property from `Store` component will be collection name instead of collection id.
+- CSS class names and styles structure in modular product component.
+
+### Fixed
+- Add to cart request failure will not cause the white screen anymore.
+
 ## [2.2.5] - 2021-01-25
 
-## Fixed
+### Fixed
 - Close button on the dropdown with cart summary
 
 ## [2.2.4] - 2021-01-22
 
 ### Added
-- `ModularCheckout.EmptyCheckout` section in ModularCheckout that is displayed when there is no product in the checkout
+- `ModularCheckout.Empty` section in ModularCheckout that is displayed when there is no product in the checkout
 
 ### Fixed
 - Checkout: when the last product is removed from the cart, Checkout component will display a list of similar products
@@ -21,7 +43,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Tipser Script: Payment status change event that can be used to render modular checkout parts conditionally
-- `ModularCheckout.EmptyCheckout` section in ModularCheckout that is displayed when there is no product in the checkout
 
 ### Fixed
 - Checkout: when the last product is removed from the cart, Checkout component will display a list of similar products

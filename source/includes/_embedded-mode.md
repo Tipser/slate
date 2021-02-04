@@ -31,11 +31,12 @@ import { Router, Switch, Route } from 'react-router-dom';
 
 ```jsx
 import { useParams } from 'react-router';
+import { ProductPage } from '@tipser/tipser-elements';
 
-const ProductPage = () => {
+const ProductPageRoute = () => {
   const { productId } = useParams();
   return (
-    <ProductContext productId={productId} />
+    <ProductPage productId={productId} />
   );
 };
 ```

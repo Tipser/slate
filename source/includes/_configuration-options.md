@@ -25,7 +25,7 @@ const configurationOptions = {
   primaryColor: "#0000FF",
   env: "stage",
   lang: 'en-US',
-  openOldDialog: true,
+  openOldDialog: false,
   addToCartSettings: {
       directToCheckoutMode: false,
   },

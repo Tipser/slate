@@ -21,7 +21,7 @@ import { Router, Switch, Route } from 'react-router-dom';
 <Router>
     <Switch>
         <Route exact path="/product/:productId">
-          <ProductPage />
+          <ProductPageRoute />
         </Route>
     </Switch>
 </Router>

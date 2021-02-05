@@ -166,6 +166,12 @@ To display a list of products (rendered as small product tiles), add `data-tipse
 
 A full-sized product component to be used on a dedicated page.
 
+```html
+<div data-tipser-product-page="5bc6e1c7df2ac60001158814"></div>
+```
+
+Element with attribute `data-tipser-product-page` will be replaced with `Product Page` Element. Product ID is taken from the value of the attribute. The `productId` for a certain product can be generated in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
+
 _Example:_
 
 [![](modular-product/modular_product_default.png)](/images/modular-product/modular_product_default.png)
@@ -174,11 +180,6 @@ _Example:_
 This component renders the same product view that is displayed inside the product modal.
 </aside> 
 
-```html
-<div data-tipser-product-page="5bc6e1c7df2ac60001158814"></div>
-```
-
-Element with attribute `data-tipser-product-page` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The `productId` for a certain product can be generated in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
 ***
 

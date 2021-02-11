@@ -74,6 +74,12 @@ The code above assumes that you use <a href="https://developers.google.com/analy
 
 For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.
 
+The above example is just a very trivial example of integrating Tipser events with GA. For a more thorough implementation involving Enhanced Ecommerce extension, please refer to [this gist](https://gist.github.com/piotr-sobczyk/c652fd03488e4bd4003d66c763b5127d).
+
+To make it work, please make sure that Enhanced Ecommerce extension is enabled in you GA settings:
+
+[![](enhanced_ecommerce_config.png)](/images/enhanced_ecommerce_config.png)
+
 ## Typical use case: Facebook Pixel
 
 In case you want to forward Tipser Analytics events to your Facebook Pixel account, you can use the following code snippet:

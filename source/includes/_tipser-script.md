@@ -162,6 +162,37 @@ To display a list of products (rendered as small product tiles), add `data-tipse
 
 ***
 
+## `Modular product` element
+
+A modular product is a product that can be constructed from lower level components.
+
+Below is an example HTML snippet that renders a modular product with an image, title, price and variant selector and buy button.
+
+```html
+<div id="modular-product-root" data-tipser-modular-product-id="5bc6e1c7df2ac60001158814">
+	<div data-tipser-modular-product-title>
+	<div data-tipser-modular-product-price />
+	<div data-tipser-modular-product-variant-selector />
+    <div data-tipser-modular-product-buy-button />
+</div>
+```
+
+The complete list of HTML attributes related to modular checkout:
+
+- data-tipser-modular-product-id="..." - the top level element providing the context (all the other elements need to be nested below it)
+- data-tipser-modular-product-title
+- data-tipser-modular-product-buy-button
+- data-tipser-modular-product-price
+- data-tipser-modular-product-image
+- data-tipser-modular-product-availability-info
+- data-tipser-modular-product-variant-selector
+- data-tipser-modular-product-description
+- data-tipser-modular-product-similar-products
+- data-tipser-modular-product-style-with-products
+- data-tipser-modular-product-color-relations
+
+***
+
 ## `ProductPage`
 
 A full-sized product component to be used on a dedicated page.
@@ -179,7 +210,6 @@ _Example:_
 <aside class="notice">
 This component renders the same product view that is displayed inside the product modal.
 </aside> 
-
 
 ***
 

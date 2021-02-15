@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.2.7] - 2021-02-15
 
+### Added
+
+- Modular Checkout: `hidePayButton` prop in `CheckoutPayment` component
+- Modular Checkout: `checkoutContext.payment.paymentForm.submit()` function is now available allowing to implement custom pay button for Stripe payments
+
+## [2.2.7] - 2021-02-15
+
 ### Fixed
 - Product dialog styles for tablet
 - TipserScript: Order of context events. The first `checkout-context-change` will be sent after `checkout-context-ready` event.

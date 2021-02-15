@@ -4,6 +4,17 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.7] - unreleased
+
+### Fixed
+- Product dialog styles for tablet
+- TipserScript: Order of context events. The first `checkout-context-change` will be sent after `checkout-context-ready` event.
+- Problems with validation in checkout addresses if the fields were auto-completed by the browser
+- Analytics: when the user changes the quantity of the items in the cart, sending "add to cart" or "remove to cart" with a proper `quantity` field
+- Modular checkout: submit function exposed from the checkout context now triggers form revalidation.
+- Modular checkout: delivery address do not send billing address when the checkbox (billing address same as delivery) is hidden.
+- Analytics: "Product purchased" is now being sent to the publisher's code via `tw-track` event
+
 ## [2.2.6] - 2021-02-04
 
 ### Added
@@ -17,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `useInternalFunctions` hook that allows to use `addToCart`, `addToCartAndGoToCheckout`, `goToProduct` and `goToCheckout` in imperative way
 - Tipser Script: `ProductPage` component available from the HTML syntax via the `data-tipser-product-page` attribute
 - Tipser Script: all React attributes of `ModularCheckout` and `ModularProduct` modules have a html counterpart. For example, `CheckoutCustomerAddressDelivery` element has a React property called `hideSubmitButton`, which can be controlled by `data-tipser-hide-submit-button` attribute in HTML
-- TipserScript: customer's own "submit" button can be used to submit the billing and delivery address forms in `ModularCheckout`, using the `checkout-context-ready` and `checkout-context-change` HTML events 
+- TipserScript: customer's own "submit" button can be used to submit the billing and delivery address forms in `ModularCheckout`, using the `checkout-context-ready` and `checkout-context-change` HTML events
 
 ### Changed
 - URL hash property from `Store` component will be collection name instead of collection id.

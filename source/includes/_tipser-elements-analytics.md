@@ -76,7 +76,13 @@ For the instructions how to setup analytics.js script on your site and connect i
 
 The above example is just a very trivial example of integrating Tipser events with GA. For a more thorough implementation involving Enhanced Ecommerce extension, please refer to [this gist](https://gist.github.com/piotr-sobczyk/c652fd03488e4bd4003d66c763b5127d).
 
-To make it work, please make sure that Enhanced Ecommerce extension is enabled in you GA settings:
+To make it work, please make sure that you add `e-commerce plugin` from Google Analytics, by adding this line at the end of the snippet copied from your GA account: 
+
+```js
+ga('require', 'ec');
+```
+
+and making sure codeEnhanced Ecommerce extension is enabled in you GA settings:
 
 [![](enhanced_ecommerce_config.png)](/images/enhanced_ecommerce_config.png)
 

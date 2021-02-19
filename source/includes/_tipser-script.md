@@ -129,7 +129,7 @@ The optional menu renders inline menu items, and is applied by adding `data-tips
 In order to insert a `Product` Element in your content, insert the following code snippet in your content:
 
 ```html
-<div data-tipser-pid="5ba2334a781baa0001ccdf61" />
+<div data-tipser-pid="5ba2334a781baa0001ccdf61"></div>
 ```
 
 Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>. 
@@ -143,7 +143,7 @@ By default, a full inline product component is displayed (with product details a
 To display `Product` in a compact view, add the `data-tipser-view="compact"` attribute to above tag.
 
 ```html
-<div data-tipser-pid="57233dac89862012f8ec1001" data-tipser-view="compact" />
+<div data-tipser-pid="57233dac89862012f8ec1001" data-tipser-view="compact"></div>
 ```
 
 [![](compact-product.png)](/images/compact-product.png)
@@ -152,7 +152,7 @@ To display `Product` in a compact view, add the `data-tipser-view="compact"` att
 To display a list of products (rendered as small product tiles), add `data-tipser-pids` attribute to the snippet together with the `productId`s of the products you would like to display.
 
 ```html
-<div data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9" />
+<div data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9"</div>
 ```
 
 
@@ -170,10 +170,10 @@ Below is an example HTML snippet that renders a modular product with an image, t
 
 ```html
 <div id="modular-product-root" data-tipser-modular-product-id="5bc6e1c7df2ac60001158814">
-	<div data-tipser-modular-product-title>
-	<div data-tipser-modular-product-price />
-	<div data-tipser-modular-product-variant-selector />
-    <div data-tipser-modular-product-buy-button />
+	<div data-tipser-modular-product-title></div>
+	<div data-tipser-modular-product-price></div>
+	<div data-tipser-modular-product-variant-selector></div>
+    <div data-tipser-modular-product-buy-button></div>
 </div>
 ```
 
@@ -218,9 +218,9 @@ This component renders the same product view that is displayed inside the produc
 `Collection` is a group of simple product tiles. Clicking on any title displays a product dialog with more product details and add to cart button. Products displayed in a collection are defined in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
 ```html
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" />
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="small" />
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-carousel />
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f"></p>
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-imgsize="small"></p>
+<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f" data-tipser-carousel></p>
 
 ```
 
@@ -261,7 +261,7 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 A Checkout component providing the checkout experience on your site.
 
 ```html
-<div id="tipser_checkout" />
+<div id="tipser_checkout"></div>
 ``` 
 
 <aside class="notice">
@@ -284,9 +284,9 @@ A working example of the checkout view consisting of: items list, delivery addre
 
 ```html
 <div data-tipser-modular-checkout>
-     <div data-tipser-modular-checkout-cart-products />
-     <div data-tipser-modular-checkout-customer-address-delivery />
-     <div data-tipser-modular-checkout-payment />
+     <div data-tipser-modular-checkout-cart-products></div>
+     <div data-tipser-modular-checkout-customer-address-delivery></div>
+     <div data-tipser-modular-checkout-payment></div>
 </div>
 ```
 

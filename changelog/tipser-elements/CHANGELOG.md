@@ -4,8 +4,15 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.9] - 2021-02-19
 
-## [2.2.8] - unreleased
+### Added
+- Exposed more internal functions: `getCartItems` and `removeFromCart`
+
+### Changed
+- Internal functions `addToCart` and `addToCartAndGoToCheckout` are not returning promises
+
+## [2.2.8] - 2021-02-17
 
 ### Added
 - configuration option `prePopulatedAddress` that makes it possible to prepopulate user's address forms,

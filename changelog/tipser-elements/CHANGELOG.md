@@ -4,6 +4,46 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.13] - 2021-02-24
+
+### Fixed
+- Resolved the problem with creating Klarna checkout on some specific publisher URLs
+
+## [2.2.12] - 2021-02-22
+
+### Added
+- `ModularProduct` and `ModularCheckout`: Exported `useProductContext` and `useCheckoutContext` for external users
+
+### Fixed
+- Analytic events "product clicked" and "product detail viewed" are now sent every time when product dialog is displayed
+
+## [2.2.11] - 2021-02-22
+
+### Fixed
+- Brought back the `checkout` event in the `Checkout` and `ModularCheckout` components
+
+## [2.2.10] - 2021-02-19
+
+### Added
+- Exposed more internal functions: `getCartItems` and `removeFromCart`
+
+### Changed
+- Internal functions `addToCart` and `addToCartAndGoToCheckout` are not returning promises
+
+## [2.2.8] - 2021-02-17
+
+### Added
+- configuration option `prePopulatedAddress` that makes it possible to prepopulate user's address forms,
+- `updateConfig` function on Tipser Script instance object to update the configuration dynamically.
+- Tipser Script: added `checkout-delivery-address-change` and `checkout-billing-address-change` HTML
+
+## [2.2.7] - 2021-02-15
+
+### Added
+
+- Modular Checkout: `hidePayButton` prop in `CheckoutPayment` component
+- Modular Checkout: `checkoutContext.payment.paymentForm.submit()` function is now available allowing to implement custom pay button for Stripe payments
+
 ## [2.2.7] - 2021-02-15
 
 ### Fixed

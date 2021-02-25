@@ -314,7 +314,7 @@ To make it possible, you need to have Tipser Elements installed on your page and
 
 ```javascript
 const elements = tipser.elements(posId, config);
-elements.sdkInstance.openDialog(`https://merchant-signup.netlify.app/#/start/${posId}`);
+elements.sdkInstance.openDialog(`https://merchsignup.netlify.app/#/start/${posId}`);
 ```
 
 

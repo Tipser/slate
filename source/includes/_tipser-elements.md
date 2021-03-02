@@ -250,10 +250,10 @@ _Example:_
 
 [![](full-product.png)](/images/full-product.png)
 
-| prop name | description                                                   | type                               | required | default value |
-| --------- | ------------------------------------------------------------- | ---------------------------------- | -------- | ------------- |
-| productId | [where to find](#getting-tipser-product-id-and-collection-id) | string                             | true     | none          |
-| viewMode  | enables full or compact product display                       | string ('full', 'compact')         | false    | 'full'        |
+| prop name | description                                                   | type                       | required | default value |
+| --------- | ------------------------------------------------------------- | -------------------------- | -------- | ------------- |
+| productId | [where to find](#getting-tipser-product-id-and-collection-id) | string                     | true     | none          |
+| viewMode  | enables full or compact product display                       | string ('full', 'compact') | false    | 'full'        |
 
 _example:_
 
@@ -273,7 +273,7 @@ _Example:_
 
 <aside class="notice">
 This component renders the same product view that is displayed inside the product modal.
-</aside> 
+</aside>
 
 ```jsx
 <ProductPage productId="5c751cf82d3f3b0001bcec8c">
@@ -281,9 +281,9 @@ This component renders the same product view that is displayed inside the produc
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| productId  | the Tipser id of the product to render  | string                                | true     |
+| prop name | description                            | type   | required | default value |
+| --------- | -------------------------------------- | ------ | -------- | ------------- |
+| productId | the Tipser id of the product to render | string | true     |
 
 ## `Modular Product`
 
@@ -306,6 +306,7 @@ It's important that all the lower-level modules are located under <code>ModularP
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
   <div className="top-container">
     <div className="left-column">
+      <ProductThumbnails direction="vertical">
       <ProductImage />
     </div>
     <div className="right-column">
@@ -329,12 +330,12 @@ In case you don't want to mess with the main part of the product view,
 and just want to control the four main sections, you can use the `ProductContainer` component.
 
 ```jsx
-<ProductPage productId="5c751cf82d3f3b0001bcec8c">
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
   <ProductContainer />
-  <StyleWithProducts />
+  <ProductStyleWithProducts />
   <ProductDescription />
-  <SimilarProducts />
-</ProductPage>
+  <ProductSimilarProducts />
+</ModularProduct>
 ```
 
 <h4 id="product-container"><code>ProductContainer</code></h4>
@@ -344,17 +345,66 @@ and just want to control the four main sections, you can use the `ProductContain
 The default implementation of the main part of the product view, consisting of `ProductImage`, `ProductTitle`, `ColorRelations`, `ProductVariantSelector`, `ProductAvailabilityInfo` and `ProductBuyButton`.
 
 <h4><code>ProductImage</code></h4>
-Displays the full-size version of the currently selected product image and thumbnails of the remaining images.
+Displays the full-size version of the currently selected product image.
 
 <div style=display:flex;>
   <div style=display:flex;flex-direction:column;>
-    <p>Desktop version</p>
-    <img src="/images/modular-product/product_image.png" alt="Product Image" width="305"/>
+    <img src="/images/modular-product/product_image_props.png" alt="Product Image" width="305"/>
   </div>
 
   <div style=display:flex;flex-direction:column;margin-left:20px;>
-    <p>Mobile version</p>
-    <img src="/images/modular-product/product_image_mobile.png" alt="Product Image" width="265"/>
+    <p>Available props:</p>
+     <span style="color:#008080">enableSwipe?: boolean;</span>
+     <span>- enables swiping functionality (recommended for touch devices)</span>
+     </br>
+    <span style="color:#008080">swipeAnimation?: boolean;</span>
+     <span>- add animation when changing image from thumbnails</span>
+     </br>
+    <span style="color:#008080">enableArrows?: boolean;</span>
+     <span>- show left and right arrows for changing images</span>
+     </br>
+      <span style="color:#008080">enableDots?: boolean;</span>
+     <span>- show slider bullet dots</span>
+     </br>
+  </div>
+</div>
+
+<aside class="notice">
+ProductImage component will always take the 100% width and height of its parent container.
+</aside>
+
+<h4><code>ProductThumbnails</code></h4>
+Displays the product thumbnails.
+
+<div style=display:flex;>
+  <div style=display:flex;flex-direction:column;>
+    <img src="/images/modular-product/product_thumb_horizontal.png" alt="Product Thumbnails horizontal" width="365"/>
+  </div>
+
+  <div style=display:flex;flex-direction:column;margin-left:20px;>
+    <p>Available props:</p>
+      <span style="color:#008080">imageFit?: 'contain' | 'cover';</span>
+     <span>- changes the background-size property of the image</span>
+     </br>
+     <span style="color:#008080">direction?: 'horizontal' | 'vertical';</span>
+     <span>- changes the orientation of the thumbnails container</span>
+     </br>
+
+  </div>
+</div>
+
+<aside class="notice">
+In the <b>horizontal</b> mode thumbnails will always take 100% of the width and height to its parent container and automatically adjust the number of displaying thumbnails depending on the width, height and ratio of its parent container.
+</aside>
+
+<div style=display:flex;>
+  <div style=display:flex;flex-direction:column;width:250px;>
+    <img src="/images/modular-product/product_thumb_vertical.png" alt="Product Thumbnails vertical" height="364"/>
+  </div>
+
+  <div style=display:flex;flex-direction:column;margin-left:20px;>
+   <aside class="notice">In the <b>vertical</b> mode a single thumbnail will always have a fixed width of 100px, so to change the number of the thumbnails you should change only the height of its parent container.</aside>
+
   </div>
 </div>
 
@@ -422,20 +472,27 @@ The above code will render more or less the following output:
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | false    | none          |
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
 
 ## Modular Checkout Element
 
 For more flexibility use `ModularCheckout` component.
 
 ```jsx
-import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery, CheckoutPayment, CheckoutOrderProcessing, CheckoutOrderConfirmation } from '@tipser/tipser-elements';
+import {
+  ModularCheckout,
+  CheckoutCartProducts,
+  CheckoutCustomerAddressDelivery,
+  CheckoutPayment,
+  CheckoutOrderProcessing,
+  CheckoutOrderConfirmation,
+} from "@tipser/tipser-elements";
 
 <ModularCheckout>
   <ModularCheckout.New>
-	  <CheckoutCartProducts />
+    <CheckoutCartProducts />
     <CheckoutCustomerAddressDelivery />
     <CheckoutPayment />
   </ModularCheckout.New>
@@ -443,7 +500,7 @@ import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery,
   <ModularCheckout.Processing>
     <CheckoutOrderProcessing />
   </ModularCheckout.Processing>
- 
+
   <ModularCheckout.Empty>
     <div>Your cart is empty!</div>
   </ModularCheckout.Empty>
@@ -451,112 +508,121 @@ import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery,
   <ModularCheckout.Confirmed>
     <CheckoutOrderConfirmation />
   </ModularCheckout.Confirmed>
-</ModularCheckout>
+</ModularCheckout>;
 ```
 
-`ModularCheckout` is the main element providing the product context for all of the checkout modules nested under it.  
+`ModularCheckout` is the main element providing the product context for all of the checkout modules nested under it.
 
 A list of supported modules that can be nested under `ModularCheckout`:
 
 ### Checkout Cart Products
+
 `<CheckoutCartProducts />`
 A list of items in the current checkout
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | false    | none          |
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
 
 ### Checkout Customer Address Delivery
+
 `<CheckoutCustomerAddressDelivery />`
 A form accepting user’s delivery address
 
 Properties:
 
-| prop name  | description                             | type                     | values             | required | default value |
-| ---------- | --------------------------------------- | ----------------------|--------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | |false    | none          |
-| hideUseAsBillingAddressCheckbox |hides the checkbox allowing to copy delivery address as billing address | boolean | | false | false|
-| submitBehavior | the behaviour of the form after submitting it | enum | 'collapse', 'none' |false |'none' |
-| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean || false | false|
+| prop name                       | description                                                                          | type    | values             | required | default value |
+| ------------------------------- | ------------------------------------------------------------------------------------ | ------- | ------------------ | -------- | ------------- |
+| className                       | custom CSS class name to apply                                                       | string  |                    | false    | none          |
+| hideUseAsBillingAddressCheckbox | hides the checkbox allowing to copy delivery address as billing address              | boolean |                    | false    | false         |
+| submitBehavior                  | the behaviour of the form after submitting it                                        | enum    | 'collapse', 'none' | false    | 'none'        |
+| hideSubmitButton                | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
 
 ### Checkout Customer Address Billing
+
 `<CheckoutCustomerAddressBilling />`
 A form accepting user’s billing address
 
 Properties:
 
-| prop name  | description                             | type                     | values             | required | default value |
-| ---------- | --------------------------------------- | ----------------------|--------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | |false    | none          |
-| submitBehavior | the behaviour of the form after submitting it | enum | 'collapse', 'none' |false |none |
-| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean || false | false|
-| submitBehavior | the behavior of the form after submitting it|string|'collapse', 'none'|false|'collapse'|
+| prop name        | description                                                                          | type    | values             | required | default value |
+| ---------------- | ------------------------------------------------------------------------------------ | ------- | ------------------ | -------- | ------------- |
+| className        | custom CSS class name to apply                                                       | string  |                    | false    | none          |
+| submitBehavior   | the behaviour of the form after submitting it                                        | enum    | 'collapse', 'none' | false    | none          |
+| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
+| submitBehavior   | the behavior of the form after submitting it                                         | string  | 'collapse', 'none' | false    | 'collapse'    |
 
 ### Checkout Cart Summary
-`<CheckoutCartSummary />` 
+
+`<CheckoutCartSummary />`
 A summary of the total costs resulting from the checkout
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | false    | none          |
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
 
 ### Checkout Payment
+
 `<CheckoutPayment />`
 A payment section, accepting user's payment input (e.g. credit card number)
 
 Properties:
 
-| prop name  | description                             | type                    |values              | required | default value |
-| ---------- | --------------------------------------- | -----------------------|-------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                             |   | false    | none          |
-|hidePayButton| hides the "pay" button in Stripe payment provider form | boolean | | false | false
-|dependsOn | lets you render the component depending on the delivery form being valid| string | 'none', 'validDeliveryAddress' |false |'none'
+| prop name     | description                                                              | type    | values                         | required | default value |
+| ------------- | ------------------------------------------------------------------------ | ------- | ------------------------------ | -------- | ------------- |
+| className     | custom CSS class name to apply                                           | string  |                                | false    | none          |
+| hidePayButton | hides the "pay" button in Stripe payment provider form                   | boolean |                                | false    | false         |
+| dependsOn     | lets you render the component depending on the delivery form being valid | string  | 'none', 'validDeliveryAddress' | false    | 'none'        |
 
 ### CheckoutCartPromoCode
+
 `<CheckoutCartPromoCode />`
 A widget for entering promotion codes
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | false    | none          |
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
 
 ### Checkout Legal
+
 `<CheckoutLegal />`
 A text explaining legal terms of the purchase
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | false    | none          |
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
 
 ### Checkout Order Processing
+
 `<CheckoutOrderProcessing />`
 A loading animation for checkout processing
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | false    | none          |
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
 
 ### Checkout Order Confirmation
+
 `<CheckoutOrderConfirmation />`
 A confirmation page displaying a summary of the completed order
 
 Properties:
 
-| prop name  | description                             | type                                  | required | default value |
-| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
-| className  | custom CSS class name to apply          | string                                | false    | none          |
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
 
-The elements `ModularCheckout.New`, `ModularCheckout.Processing`, `ModularCheckout.Empty` and `ModularCheckout.Confirmed`  are helper elements that are used
+The elements `ModularCheckout.New`, `ModularCheckout.Processing`, `ModularCheckout.Empty` and `ModularCheckout.Confirmed` are helper elements that are used
 to conditionally render their children only for a given checkout status. If none of these elements, will be used, all the elements passed to `ModularCheckout`
 will be rendered for every checkout status.
 
@@ -564,7 +630,7 @@ For example:
 
 ```jsx
 <ModularCheckout.Confirmed>
-    <CheckoutOrderConfirmation />
+  <CheckoutOrderConfirmation />
 </ModularCheckout.Confirmed>
 ```
 
@@ -578,7 +644,7 @@ No properties supported.
 ### Multi-step `ModularCheckout`
 
 It is possible to spread the modular checkout over several pages. The only requirement is to keep the `Checkout` element as a parent for all of the routes
-that are using any of the checkout modules described before. 
+that are using any of the checkout modules described before.
 
 The example below illustrates how to do it with the `react-router` library.
 
@@ -591,14 +657,14 @@ export const CheckoutMultipage = withRouter(({ match }) => (
   <div>
     <div className="te-multipage-label">Checkout multipage</div>
     <ModularCheckout>
-        <Switch>
-          <Route path={`${match.url}/step-1`}>
-            <CheckoutPage1 />
-          </Route>
-          <Route path={`${match.url}/step-2`}>
-            <CheckoutPage2 />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route path={`${match.url}/step-1`}>
+          <CheckoutPage1 />
+        </Route>
+        <Route path={`${match.url}/step-2`}>
+          <CheckoutPage2 />
+        </Route>
+      </Switch>
     </ModularCheckout>
   </div>
 ));
@@ -620,7 +686,6 @@ const CheckoutPage2 = ({ checkout }) => (
   </>
 );
 ```
-
 
 ## `Product List`
 

@@ -209,7 +209,7 @@ const tipserOptions = {
         firstName: 'Jane',
         lastName: 'Doe',
         email: 'youremail@email.com',
-        zipCode: '12345',
+        zipCode: '',
         city: 'Ankeborgen',
         street: 'Stårgatan 1',
         country: 'Sweden',
@@ -272,11 +272,7 @@ To update any of the configuration options dynamically, please use the `updateCo
 
 ```javascript
 window.elements = tipser.updateConfig({
-  prePopulatedAddress: {
-    delivery: {
-      email: 'youremail@email.com',
-    },
-  },
+  primaryColor: "#333333",
 })
 ```
 

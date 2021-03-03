@@ -41,9 +41,32 @@ const configurationOptions = {
     key: "value"
   },
   customUrls: {
-    productBaseUrl: "/product/",
+    productBaseUrl: (productId) => `/product-page?productId=${productId}`,
     checkoutConfirmationUrl: "/checkout-confirmation",
     checkoutUrl: "/checkout",
+  },
+  prePopulatedAddress: {
+      delivery: {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'youremail@email.com',
+        zipCode: '12345',
+        city: 'Ankeborg',
+        street: 'Stårgatan 1',
+        country: 'Sweden',
+        state: '',
+        phoneNumber: '0765260000'
+      },
+      billing: {
+        firstName: 'Jane',
+        lastName: 'Doe',
+        email: 'billing@w.pl',
+        zipCode: '12345',
+        city: 'Ankeborgen',
+        street: 'Stårgatan 1',
+        country: 'Sweden',
+        state: '',
+      },
   },
   modalUi: {
     hideSearchIcon: true,
@@ -53,7 +76,6 @@ const configurationOptions = {
     hideSimilarProducts: false,
     useCustomCss: true
   },
-
 }
 ```
 They will be described in the following sections.
@@ -85,7 +107,6 @@ By default, Tipser Elements connect to production Tipser environment. Yet if tes
 
 - **prod**
 - **stage**
-- **dev**
 
 ***
 
@@ -158,13 +179,47 @@ To fully embed the Tipser `Product Page` or the `Checkout` on your site, please 
 ```javascript
 const tipserOptions = {
     customUrls: {
-       productBaseUrl: "/product/",
+       productBaseUrl: (productId) => `/product-page?productId=${productId}`,
        checkoutUrl: "/checkout",
        checkoutConfirmationUrl: "/checkout-confirmation",
     }
 }
 ```
 ***
+
+## Prepopulated address data
+
+If you would like to use your logged-in User's data to prepopulate address data of the payment provider, you can pass it on via Tipser config `prePopulatedAddress` option.
+
+```javascript
+const tipserOptions = {
+    prePopulatedAddress: {
+      delivery: {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'youremail@email.com',
+        zipCode: '12345',
+        city: 'Ankeborg',
+        street: 'Stårgatan 1',
+        country: 'Sweden',
+        state: '',
+        phoneNumber: '0765260000'
+      },
+      billing: {
+        firstName: 'Jane',
+        lastName: 'Doe',
+        email: 'youremail@email.com',
+        zipCode: '',
+        city: 'Ankeborgen',
+        street: 'Stårgatan 1',
+        country: 'Sweden',
+        state: '',
+      },
+    },
+}
+```
+
+To add the address data dynamically, please use the [`updateConfig`](#updateconfig())function.
 
 ##Parameters for old dialog customization
 Sometimes Tipser dialogue styling and functionality needs to be customized. It is possible with modalUi parameters group.
@@ -208,3 +263,16 @@ If there is a need to use custom css stylesheet inside the Tipser dialog iframe,
 1. set `useCustomCss` parameter to **true**
     
 2. Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.
+
+### updateConfig()
+
+To update any of the configuration options dynamically, please use the `updateConfig()` function. 
+
+* In Tipser Script:
+
+```javascript
+window.elements = tipser.updateConfig({
+  primaryColor: "#333333",
+})
+```
+

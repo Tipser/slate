@@ -347,27 +347,23 @@ The default implementation of the main part of the product view, consisting of `
 <h4><code>ProductImage</code></h4>
 Displays the full-size version of the currently selected product image.
 
-<div style=display:flex;>
-  <div style=display:flex;flex-direction:column;>
-    <img src="/images/modular-product/product_image_props.png" alt="Product Image" width="305"/>
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <div>
+    <ProductImage enableDots enableArrows />
   </div>
+</ModularProduct>
+```
 
-  <div style=display:flex;flex-direction:column;margin-left:20px;>
-    <p>Available props:</p>
-     <span style="color:#008080">enableSwipe?: boolean;</span>
-     <span>- enables swiping functionality (recommended for touch devices)</span>
-     </br>
-    <span style="color:#008080">swipeAnimation?: boolean;</span>
-     <span>- add animation when changing image from thumbnails</span>
-     </br>
-    <span style="color:#008080">enableArrows?: boolean;</span>
-     <span>- show left and right arrows for changing images</span>
-     </br>
-      <span style="color:#008080">enableDots?: boolean;</span>
-     <span>- show slider bullet dots</span>
-     </br>
-  </div>
-</div>
+  <img src="/images/modular-product/product_image_props.png" alt="Product Image" width="305"/>
+
+| Props          | Type    | Description                                                 | Default |
+| -------------- | ------- | ----------------------------------------------------------- | ------- |
+| enableSwipe    | boolean | enables swipe functionality (recommended for touch devices) | false   |
+| swipeAnimation | boolean | add animation when changing image from thumbnails           | false   |
+| enableArrows   | boolean | show left and right arrows for changing images              | false   |
+| enableDots     | boolean | show slider bullet dots                                     | false   |
+| className      | string  | custom CSS class name to apply                              | none    |
 
 <aside class="notice">
 ProductImage component will always take the 100% width and height of its parent container.
@@ -376,37 +372,29 @@ ProductImage component will always take the 100% width and height of its parent 
 <h4><code>ProductThumbnails</code></h4>
 Displays the product thumbnails.
 
-<div style=display:flex;>
-  <div style=display:flex;flex-direction:column;>
-    <img src="/images/modular-product/product_thumb_horizontal.png" alt="Product Thumbnails horizontal" width="365"/>
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <div>
+    <ProductThumbnails />
   </div>
+</ModularProduct>
+```
 
-  <div style=display:flex;flex-direction:column;margin-left:20px;>
-    <p>Available props:</p>
-      <span style="color:#008080">imageFit?: 'contain' | 'cover';</span>
-     <span>- changes the background-size property of the image</span>
-     </br>
-     <span style="color:#008080">direction?: 'horizontal' | 'vertical';</span>
-     <span>- changes the orientation of the thumbnails container</span>
-     </br>
-
-  </div>
-</div>
+  <img src="/images/modular-product/product_thumb_horizontal.png" alt="Product Thumbnails horizontal" width="365"/>
 
 <aside class="notice">
 In the <b>horizontal</b> mode thumbnails will always take 100% of the width and height to its parent container and automatically adjust the number of displaying thumbnails depending on the width, height and ratio of its parent container.
 </aside>
 
-<div style=display:flex;>
-  <div style=display:flex;flex-direction:column;width:250px;>
-    <img src="/images/modular-product/product_thumb_vertical.png" alt="Product Thumbnails vertical" height="364"/>
-  </div>
+| Props                  | Possible values                | Description                                         | Default      |
+| ---------------------- | ------------------------------ | --------------------------------------------------- | ------------ |
+| imageFit               | "contain" &#124; "cover"       | changes the background-size property                | "cover"      |
+| direction              | "vertical" &#124; "horizontal" | changes the orientation of the thumbnails container | "horizontal" |
+| data-tipser-class-name |                                | custom CSS class name to apply                      | none         |
 
-  <div style=display:flex;flex-direction:column;margin-left:20px;>
-   <aside class="notice">In the <b>vertical</b> mode a single thumbnail will always have a fixed width of 100px, so to change the number of the thumbnails you should change only the height of its parent container.</aside>
+<img src="/images/modular-product/product_thumb_vertical.png" alt="Product Thumbnails vertical" height="364"/>
 
-  </div>
-</div>
+<aside class="notice">In the <b>vertical</b> mode a single thumbnail will always have a fixed width of 100px, so to change the number of the thumbnails you should change only the height of its parent container.</aside>
 
 <h4><code>ProductTitle</code></h4>
   Displays the name and the brand of the product

@@ -176,6 +176,7 @@ Below is an example HTML snippet that renders a modular product with an image, t
   id="modular-product-root"
   data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
 >
+  <div data-tipser-modular-product-image></div>
   <div data-tipser-modular-product-title></div>
   <div data-tipser-modular-product-price></div>
   <div data-tipser-modular-product-variant-selector></div>
@@ -198,19 +199,23 @@ The complete list of HTML attributes related to modular product:
 - data-tipser-modular-product-style-with-products
 - data-tipser-modular-product-color-relations
 
-### `data-tipser-modular-product-image props:`
+### `data-tipser-modular-product-image attributes:`
 
-- `data-tipser-enable-swipe`: enables swipe functionality (recommended for touch devices)
-- `data-tipser-swipe-animation`: add animation when changing image from thumbnails
-- `data-tipser-enable-dots`: show left and right arrows for changing images
-- `data-tipser-enable-arrows`: show slider bullet dots
+| Attribute                   | Type    | Description                                                 | Default |
+| --------------------------- | ------- | ----------------------------------------------------------- | ------- |
+| data-tipser-enable-swipe    | boolean | enables swipe functionality (recommended for touch devices) | false   |
+| data-tipser-swipe-animation | boolean | add animation when changing image from thumbnails           | false   |
+| data-tipser-enable-arrows   | boolean | show left and right arrows for changing images              | false   |
+| data-tipser-enable-dots     | boolean | show slider bullet dots                                     | false   |
+| data-tipser-class-name      | string  | custom CSS class name to apply                              | none    |
 
-### `data-tipser-modular-product-thumbnails props:`
+### `data-tipser-modular-product-thumbnails attributes:`
 
-- `data-tipser-image-fit="contain"`: changes background-size from `cover` to `contain`
-- `data-tipser-direction="vertical" `: changes the orientation of thumbnails container from `horizontal` to `vertical`
-
----
+| Attribute              | Possible values                | Description                                         | Default      |
+| ---------------------- | ------------------------------ | --------------------------------------------------- | ------------ |
+| data-tipser-image-fit  | "contain" &#124; "cover"       | changes the background-size property                | "cover"      |
+| data-tipser-direction  | "vertical" &#124; "horizontal" | changes the orientation of the thumbnails container | "horizontal" |
+| data-tipser-class-name |                                | custom CSS class name to apply                      | none         |
 
 ## `ProductPage`
 

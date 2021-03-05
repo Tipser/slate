@@ -4,6 +4,21 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.14] - 2021-03-05
+
+### Added
+- `ProductThumbnails` component for displaying thumbnails in `ModularProduct`
+- `ProductTile` component as the new official way to render a product tile
+
+### Changed
+- `ProductImage` component contains only main product image with new props (enableDots, enableSwipe, swipeAnimation, enableArrows)
+
+### Deprecated
+- `<Product viewMode="compact" />` syntax as a way to render a product tile
+
+### Fixed
+- Label of the add to cart button is changed to "added to cart" (for a few seconds) when a product is added to cart
+
 ## [2.2.13] - 2021-02-24
 
 ### Fixed
@@ -30,14 +45,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Internal functions `addToCart` and `addToCartAndGoToCheckout` are not returning promises
 
-## [2.2.8] - 2021-02-17
+## [2.2.9] - 2021-02-17
 
 ### Added
 - configuration option `prePopulatedAddress` that makes it possible to prepopulate user's address forms,
 - `updateConfig` function on Tipser Script instance object to update the configuration dynamically.
 - Tipser Script: added `checkout-delivery-address-change` and `checkout-billing-address-change` HTML
 
-## [2.2.7] - 2021-02-15
+## [2.2.8] - 2021-02-15
 
 ### Added
 

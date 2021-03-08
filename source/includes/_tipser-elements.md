@@ -407,7 +407,7 @@ Displays the full-size version of the currently selected product image and thumb
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
 
-## `Checkout`
+## Checkout Element
 
 A predefined checkout component with all necessary elements (product list, user address form, payment widget, etc) to make the purchase possible.
 
@@ -426,7 +426,7 @@ Properties:
 | ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
 | className  | custom CSS class name to apply          | string                                | false    | none          |
 
-## `ModularCheckout`
+## Modular Checkout Element
 
 For more flexibility use `ModularCheckout` component.
 
@@ -458,15 +458,103 @@ import { ModularCheckout, CheckoutCartProducts, CheckoutCustomerAddressDelivery,
 
 A list of supported modules that can be nested under `ModularCheckout`:
 
-* `CheckoutCartProducts` - a list of items in the current checkout
-* `CheckoutCustomerAddressDelivery` - a form accepting user’s delivery address
-* `CheckoutCustomerAddressBilling` - a form accepting user’s billing address
-* `CheckoutCartSummary` a summary of the total costs resulting from the checkout
-* `CheckoutPayment` - a payment section, accepting user's payment input (e.g. credit card number)
-* `CheckoutCartPromoCode` - a widget for entering promotion codes
-* `CheckoutLegal` - a text explaining legal terms of the purchase
-* `CheckoutOrderProcessing ` - a loading animation for checkout processing
-* `CheckoutOrderConfirmation`- a confirmation page displaying a summary of the completed order
+### Checkout Cart Products
+`<CheckoutCartProducts />`
+A list of items in the current checkout
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | false    | none          |
+
+### Checkout Customer Address Delivery
+`<CheckoutCustomerAddressDelivery />`
+A form accepting user’s delivery address
+
+Properties:
+
+| prop name  | description                             | type                     | values             | required | default value |
+| ---------- | --------------------------------------- | ----------------------|--------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | |false    | none          |
+| hideUseAsBillingAddressCheckbox |hides the checkbox allowing to copy delivery address as billing address | boolean | | false | false|
+| submitBehavior | the behaviour of the form after submitting it | enum | 'collapse', 'none' |false |'none' |
+| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean || false | false|
+
+### Checkout Customer Address Billing
+`<CheckoutCustomerAddressBilling />`
+A form accepting user’s billing address
+
+Properties:
+
+| prop name  | description                             | type                     | values             | required | default value |
+| ---------- | --------------------------------------- | ----------------------|--------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | |false    | none          |
+| submitBehavior | the behaviour of the form after submitting it | enum | 'collapse', 'none' |false |none |
+| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean || false | false|
+| submitBehavior | the behavior of the form after submitting it|string|'collapse', 'none'|false|'collapse'|
+
+### Checkout Cart Summary
+`<CheckoutCartSummary />` 
+A summary of the total costs resulting from the checkout
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | false    | none          |
+
+### Checkout Payment
+`<CheckoutPayment />`
+A payment section, accepting user's payment input (e.g. credit card number)
+
+Properties:
+
+| prop name  | description                             | type                    |values              | required | default value |
+| ---------- | --------------------------------------- | -----------------------|-------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                             |   | false    | none          |
+|hidePayButton| hides the "pay" button in Stripe payment provider form | boolean | | false | false
+|dependsOn | lets you render the component depending on the delivery form being valid| string | 'none', 'validDeliveryAddress' |false |'none'
+
+### CheckoutCartPromoCode
+`<CheckoutCartPromoCode />`
+A widget for entering promotion codes
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | false    | none          |
+
+### Checkout Legal
+`<CheckoutLegal />`
+A text explaining legal terms of the purchase
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | false    | none          |
+
+### Checkout Order Processing
+`<CheckoutOrderProcessing />`
+A loading animation for checkout processing
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | false    | none          |
+
+### Checkout Order Confirmation
+`<CheckoutOrderConfirmation />`
+A confirmation page displaying a summary of the completed order
+
+Properties:
+
+| prop name  | description                             | type                                  | required | default value |
+| ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
+| className  | custom CSS class name to apply          | string                                | false    | none          |
 
 The elements `ModularCheckout.New`, `ModularCheckout.Processing`, `ModularCheckout.Empty` and `ModularCheckout.Confirmed`  are helper elements that are used
 to conditionally render their children only for a given checkout status. If none of these elements, will be used, all the elements passed to `ModularCheckout`

@@ -346,7 +346,7 @@ The default implementation of the main part of the product view, consisting of `
 
 ### Product Image
 
-Displays the full-size version of the currently selected product image.
+Displays the full-size version of the active product image. With some configuration options it can be also use to change the active product image.
 
 ```jsx
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
@@ -358,7 +358,7 @@ Displays the full-size version of the currently selected product image.
 
   <img src="/images/modular-product/product_image_props.png" alt="Product Image" width="305"/>
 
-| Props          | Type    | Description                                                 | Default |
+| prop name      | type    | description                                                 | default |
 | -------------- | ------- | ----------------------------------------------------------- | ------- |
 | enableSwipe    | boolean | enables swipe functionality (recommended for touch devices) | false   |
 | swipeAnimation | boolean | add animation when changing image from thumbnails           | false   |
@@ -367,7 +367,7 @@ Displays the full-size version of the currently selected product image.
 | className      | string  | custom CSS class name to apply                              | none    |
 
 <aside class="notice">
-ProductImage component will always take the 100% width and height of its parent container.
+ProductImage component will always expand to the 100% width and height of its parent container.
 </aside>
 
 ### Product Thumbnails
@@ -385,14 +385,14 @@ Displays the product thumbnails.
   <img src="/images/modular-product/product_thumb_horizontal.png" alt="Product Thumbnails horizontal" width="365"/>
 
 <aside class="notice">
-In the <b>horizontal</b> mode thumbnails will always take 100% of the width and height to its parent container and automatically adjust the number of displaying thumbnails depending on the width, height and ratio of its parent container.
+In the <b>horizontal</b> mode thumbnails will always expand to 100% of the width and height to its parent container and automatically adjust the number of displaying thumbnails depending on the width, height and ratio of its parent container.
 </aside>
 
-| Props                  | Possible values                | Description                                         | Default      |
-| ---------------------- | ------------------------------ | --------------------------------------------------- | ------------ |
-| imageFit               | 'contain' &#124; 'cover'       | changes the background-size property                | 'cover'      |
-| direction              | 'vertical' &#124; 'horizontal' | changes the orientation of the thumbnails container | 'horizontal' |
-| data-tipser-class-name |                                | custom CSS class name to apply                      | none         |
+| prop name | type                           | description                                         | default      |
+| --------- | ------------------------------ | --------------------------------------------------- | ------------ |
+| imageFit  | 'contain' &#124; 'cover'       | changes the background-size property                | 'cover'      |
+| direction | 'vertical' &#124; 'horizontal' | changes the orientation of the thumbnails container | 'horizontal' |
+| className | string                         | custom CSS class name to apply                      | none         |
 
 <img src="/images/modular-product/product_thumb_vertical.png" alt="Product Thumbnails vertical" height="364"/>
 

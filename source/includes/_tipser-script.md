@@ -290,17 +290,95 @@ A working example of the checkout view consisting of: items list, delivery addre
 </div>
 ```
 
-A list of supported modules that can be nested under `data-tipser-modular-checkout`:
+Following modules can be nested under within `<div data-tipser-modular-checkout></div>`:
 
-* `data-tipser-modular-checkout-cart-products` - a list of items in the current checkout
-* `data-tipser-modular-checkout-customer-address-delivery` - a form accepting user’s delivery address
-* `data-tipser-modular-checkout-customer-address-billing` - a form accepting user’s billing address
-* `data-tipser-modular-checkout-cart-summary` a summary of the total costs resulting from the checkout
-* `data-tipser-modular-checkout-payment` - a payment section, accepting user's payment input (e.g. credit card number)
-* `data-tipser-modular-checkout-cart-promo-code` - a widget for entering promotion codes
-* `data-tipser-modular-checkout-order-confirmation` - a confirmation page displaying a summary of the completed order
-* `data-tipser-modular-checkout-order-processing` - a loading animation for checkout processing
-* `data-tipser-modular-checkout-legal` - a text explaining legal terms of the purchase
+### Checkout Cart Porducts
+This section displays a list of items in the current checkout.
+
+```html
+<div data-tipser-modular-checkout-cart-products></div>
+```
+
+### Checkout Customer Delivery Address form
+This form accepts User's delivery address details.
+
+```html
+<div data-tipser-modular-checkout-customer-address-delivery></div>
+```
+
+It also accepts attributes that change the appearance and/or functionality of the component:
+
+| attr name| description | type   | values | default value    |
+| --------- | ------------------------------------------------------------------------------------------------- | ------ | -------- | ---------------- |
+|<code style="font-size: 10px">data-tipser-hide-submit-button</code>| hides the "submit" button that collapses the form after filling it with correct data | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | | 
+|<code style="font-size: 10px">data-tipser-submit-behaviour</code>| the behaviour of the form after submitting it|string|collapse, none|collapse
+|<code style="font-size: 10px">data-tipser-hide-use-as-billing-address-checkbox</code>|hides the checkbox allowing to copy delivery address as billing address|boolean|true, false| false
+
+### Checkout Customer Billing Address form 
+This form accepts User's billing address details.
+
+```html
+<div data-tipser-modular-checkout-customer-address-billing></div>
+```
+
+It also accepts attributes that change the appearance and/or functionality of the component:
+
+| attr name | description | type   | values | default value    |
+| --------- | ------------------------------------------------------------------------------------------------- | ------ | -------- | ---------------- |
+|<code style="font-size: 10px">data-tipser-hide-submit-button</code>| hides the "submit" button that collapses the form after filling it with correct data | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | | 
+|<code style="font-size: 10px">data-tipser-submit-behavior</code>| the behavior of the form after submitting it|string|collapse, none|collapse
+|<code style="font-size: 10px">data-tipser-depends-on</code> | lets you render the component depending on the delivery form being valid| string | none, validDeliveryAddress |
+
+### Checkout Cart Summary
+
+A section with a summary of the total costs resulting from the checkout.
+
+```html
+<div data-tipser-modular-checkout-cart-summary></div>
+```
+
+### Checkout Payment
+A payment section, accepting user's payment input (e.g. credit card number).
+
+```html
+<div data-tipser-modular-checkout-payment></div>
+```
+
+It also accepts attributes that change the functionality of the component:
+
+| attr name | description | type   | values | default value    |
+| --------- | ------------------------------------------------------------------------------------------------- | ------ | -------- | ---------------- |
+|<code style="font-size: 10px">data-tipser-hide-pay-button</code>| hides the "pay" button in Stripe payment provider form | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | | 
+|<code style="font-size: 10px">data-tipser-depends-on</code> | lets you render the component depending on the delivery form being valid| string | none, validDeliveryAddress |
+
+### Checkout Promotion Code
+An element for entering promotion codes
+
+```html
+<div data-tipser-modular-checkout-cart-promo-code></div>
+```
+
+### Order Confirmation Page
+A confirmation page displaying a summary of the completed order.
+
+```html
+<div data-tipser-modular-checkout-order-confirmation></div>
+```
+
+### Checkout Order Processing
+A loading animation for checkout processing.
+
+```html
+<div data-tipser-modular-checkout-order-processing></div>
+```
+
+### Checkout Legal Terms
+An element with text explaining legal terms of the purchase.
+
+```html
+<div data-tipser-modular-checkout-legal></div>
+```
+***
 
 ## Versioning
   

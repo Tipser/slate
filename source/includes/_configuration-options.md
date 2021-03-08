@@ -74,7 +74,6 @@ const configurationOptions = {
     hideCartIcon: false,
     hideMoreIcon: true,
     hideSimilarProducts: false,
-    useCustomCss: true
   },
 }
 ```
@@ -255,14 +254,6 @@ The following parameters under modalUi can be used to selectively hide tipser ic
 Similarly, `hideSimilarProducts` parameter, if set to **true**, can be used to hide Similar Products Module on product page
 
 [![](widget2.png)](/images/widget2.png)
-
-### Custom CSS
-
-If there is a need to use custom css stylesheet inside the Tipser dialog iframe, it may be activated in two steps:
-
-1. set `useCustomCss` parameter to **true**
-    
-2. Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.
 
 ### updateConfig()
 

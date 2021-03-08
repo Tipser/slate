@@ -263,9 +263,13 @@ _example:_
 
 [Learn more](#product-element).
 
-## `ProductPage`
+## ProductPage
 
 A full-sized product component to be used on a dedicated page.
+
+```jsx
+<ProductPage productId="5c751cf82d3f3b0001bcec8c">
+```
 
 _Example:_
 
@@ -275,19 +279,39 @@ _Example:_
 This component renders the same product view that is displayed inside the product modal.
 </aside>
 
-```jsx
-<ProductPage productId="5c751cf82d3f3b0001bcec8c">
-```
-
 Properties:
 
 | prop name | description                            | type   | required | default value |
 | --------- | -------------------------------------- | ------ | -------- | ------------- |
 | productId | the Tipser id of the product to render | string | true     |
 
-## `Modular Product`
+## Modular Product
 
 This is a more customisable and feature-rich version <code>Product</code> component.
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <div className="top-container">
+    <div className="left-column">
+      <ProductThumbnails direction="vertical">
+      <ProductImage />
+    </div>
+    <div className="right-column">
+      <ProductTitle />
+      <ProductPrice />
+      <ProductColorRelations />
+      <ProductVariantSelector />
+      <ProductAvailabilityInfo />
+      <ProductBuyButton />
+    </div>
+  </div>
+  <div className="bottom-container">
+    <ProductDescription />
+    <ProductSimilarProducts />
+    <ProductStyleWithProducts />
+  </div>
+</ModularProduct>
+```
 
 `ModularProduct` component allows you to mix and match the elements that are included in your product view.
 In other words, you can build you own version of product view from the existing components like from Lego pieces. And you can even mix in your own components in between.
@@ -302,32 +326,10 @@ You can build your product view as in the following example.
 It's important that all the lower-level modules are located under <code>ModularProduct</code> in the elements hierarchy. If this rule is not respected, the Elements code will throw an error message informing about the problem.
 </aside>
 
-```jsx
-<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
-  <div className="top-container">
-    <div className="left-column">
-      <ProductThumbnails direction="vertical">
-      <ProductImage />
-    </div>
-    <div className="right-column">
-      <ProductTitle />
-      <ProductPrice />
-      <ColorRelations />
-      <ProductVariantSelector />
-      <ProductAvailabilityInfo />
-      <ProductBuyButton />
-    </div>
-  </div>
-  <div className="bottom-container">
-    <ProductDescription />
-    <SimilarProducts />
-    <StyleWithProducts />
-  </div>
-</ModularProduct>
-```
-
 In case you don't want to mess with the main part of the product view,
 and just want to control the four main sections, you can use the `ProductContainer` component.
+
+### Product Container
 
 ```jsx
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
@@ -338,13 +340,12 @@ and just want to control the four main sections, you can use the `ProductContain
 </ModularProduct>
 ```
 
-<h4 id="product-container"><code>ProductContainer</code></h4>
-
 <img src="/images/modular-product/product_container.png" alt="Product container" width="250"/>
 
 The default implementation of the main part of the product view, consisting of `ProductImage`, `ProductTitle`, `ColorRelations`, `ProductVariantSelector`, `ProductAvailabilityInfo` and `ProductBuyButton`.
 
-<h4><code>ProductImage</code></h4>
+### Product Image
+
 Displays the full-size version of the currently selected product image.
 
 ```jsx
@@ -369,7 +370,8 @@ Displays the full-size version of the currently selected product image.
 ProductImage component will always take the 100% width and height of its parent container.
 </aside>
 
-<h4><code>ProductThumbnails</code></h4>
+### Product Thumbnails
+
 Displays the product thumbnails.
 
 ```jsx
@@ -388,60 +390,125 @@ In the <b>horizontal</b> mode thumbnails will always take 100% of the width and 
 
 | Props                  | Possible values                | Description                                         | Default      |
 | ---------------------- | ------------------------------ | --------------------------------------------------- | ------------ |
-| imageFit               | "contain" &#124; "cover"       | changes the background-size property                | "cover"      |
-| direction              | "vertical" &#124; "horizontal" | changes the orientation of the thumbnails container | "horizontal" |
+| imageFit               | 'contain' &#124; 'cover'       | changes the background-size property                | 'cover'      |
+| direction              | 'vertical' &#124; 'horizontal' | changes the orientation of the thumbnails container | 'horizontal' |
 | data-tipser-class-name |                                | custom CSS class name to apply                      | none         |
 
 <img src="/images/modular-product/product_thumb_vertical.png" alt="Product Thumbnails vertical" height="364"/>
 
 <aside class="notice">In the <b>vertical</b> mode a single thumbnail will always have a fixed width of 100px, so to change the number of the thumbnails you should change only the height of its parent container.</aside>
 
-<h4><code>ProductTitle</code></h4>
-  Displays the name and the brand of the product
+### Product Title
+
+Displays the name and the brand of the product
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductTitle />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/product_title.png" alt="Similar Products Component" width="305"/>
 
-<h4><code>Product Price</code></h4>
-  Displays the price, discount price and unit price ( eg. 2$/100ml, if applicable ) for the product.
+### Product Price
+
+Displays the price, discount price and unit price ( eg. 2$/100ml, if applicable ) for the product.
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductPrice />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/product_price.png" alt="Similar Products Component" width="305"/>
 
-<h4 id="color-relations"><code>Color Relations</code></h4>
-  Displays the list of color variants of the product and switches the product view to any of them, when clicked.
+### Color Relations
+
+Displays the list of color variants of the product and switches the product view to any of them, when clicked.
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductColorRelations />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/color_relations.png" alt="Similar Products Component" width="305"/>
 
-<h4><code>Variant Selector</code></h4>
-  A dropdown listing all variants of the product. When a variant is selected from the list, all the displayed product information will be updated accordingly (only available variants are selectable).
+### Variant Selector
+
+A dropdown listing all variants of the product. When a variant is selected from the list, all the displayed product information will be updated accordingly (only available variants are selectable).
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductVariantSelector />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/product_variant_selector.png" alt="Similar Products Component" />
 
-<h4><code>Availability Info</code></h4>
-  Displays information related to product availability and delivery, such as:
+### Availability Info
+
+Displays information related to product availability and delivery, such as:
+
   <ul>
   <li>product availability</li>
   <li>delivery cost</li>
   <li>delivery time</li>
   </ul>
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductAvailabilityInfo />
+</ModularProduct>
+```
+
     <img src="/images/modular-product/product_availability_info.png" alt="Product availability component" width="305"/>
-   
-<h4><code>Add To Cart button</code></h4>
-  A button adding the product to the shopping cart. In case the variant has not been yet selected, clicking the button will expand the variant selector instead.
+
+### Add To Cart button
+
+A button adding the product to the shopping cart. In case the variant has not been yet selected, clicking the button will expand the variant selector instead.
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductBuyButton />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/product_buy_button.png" alt="Product buy button component" width="305"/>
 
-  <h4 id="product-description"><code>Description</code></h4>
-  Displays the product text description.
+### Description
+
+Displays the product text description.
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductDescription />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/description.png" alt="Product description Component" width="610"/>
 
- <h4 id="style-with"><code>Style With</code></h4>
-  A hand-picked list of other products that go well together with the current product.
+### Style With Products
+
+A hand-picked list of other products that go well together with the current product.
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductStyleWithProducts />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
 
-   <h4 id="similar-products"><code>Similar Products</code></h4>
-  An automatically generated list of similar products (basing on text similarity, image similarity, more from the same brand, etc).
+### Similar Products
+
+An automatically generated list of similar products (basing on text similarity, image similarity, more from the same brand, etc).
+
+```jsx
+<ModularProduct productId="5c751cf82d3f3b0001bcec8c">
+  <ProductSimilarProducts />
+</ModularProduct>
+```
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
 

@@ -165,7 +165,7 @@ To display a list of products (rendered as small product tiles), add `data-tipse
 
 ---
 
-## `Modular product` element
+## Modular Product Element
 
 A modular product is a product that can be constructed from lower level components.
 
@@ -199,25 +199,47 @@ The complete list of HTML attributes related to modular product:
 - data-tipser-modular-product-style-with-products
 - data-tipser-modular-product-color-relations
 
-### `data-tipser-modular-product-image attributes:`
+### Product Image
 
-| Attribute                   | Type    | Description                                                 | Default |
-| --------------------------- | ------- | ----------------------------------------------------------- | ------- |
-| data-tipser-enable-swipe    | boolean | enables swipe functionality (recommended for touch devices) | false   |
-| data-tipser-swipe-animation | boolean | add animation when changing image from thumbnails           | false   |
-| data-tipser-enable-arrows   | boolean | show left and right arrows for changing images              | false   |
-| data-tipser-enable-dots     | boolean | show slider bullet dots                                     | false   |
-| data-tipser-class-name      | string  | custom CSS class name to apply                              | none    |
+Displays the full-size version of the currently selected product image.
 
-### `data-tipser-modular-product-thumbnails attributes:`
+```html
+<div
+  id="modular-product-root"
+  data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
+>
+  <div data-tipser-modular-product-image></div>
+</div>
+```
 
-| Attribute              | Possible values                | Description                                         | Default      |
-| ---------------------- | ------------------------------ | --------------------------------------------------- | ------------ |
-| data-tipser-image-fit  | "contain" &#124; "cover"       | changes the background-size property                | "cover"      |
-| data-tipser-direction  | "vertical" &#124; "horizontal" | changes the orientation of the thumbnails container | "horizontal" |
-| data-tipser-class-name |                                | custom CSS class name to apply                      | none         |
+| Attribute                                                        | Type                                                                                                                           | Description                                                 | Default |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ------- |
+| <code style="font-size: 10px">data-tipser-enable-swipe</code>    | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | enables swipe functionality (recommended for touch devices) | false   |
+| <code style="font-size: 10px">data-tipser-swipe-animation</code> | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | add animation when changing image from thumbnails           | false   |
+| <code style="font-size: 10px">data-tipser-enable-arrows</code>   | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | show left and right arrows for changing images              | false   |
+| <code style="font-size: 10px">data-tipser-enable-dots</code>     | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | show slider bullet dots                                     | false   |
+| <code style="font-size: 10px">data-tipser-class-name</code>      | string                                                                                                                         | custom CSS class name to apply                              | none    |
 
-## `ProductPage`
+### Product Thumbnails
+
+Displays the product thumbnails.
+
+```html
+<div
+  id="modular-product-root"
+  data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
+>
+  <div data-tipser-modular-product-thumbnails></div>
+</div>
+```
+
+| Attribute                                                   | Type   | Possible values                | Description                                         | Default      |
+| ----------------------------------------------------------- | ------ | ------------------------------ | --------------------------------------------------- | ------------ |
+| <code style="font-size: 10px">data-tipser-image-fit</code>  | string | 'contain' &#124; 'cover'       | changes the background-size property                | 'cover'      |
+| <code style="font-size: 10px">data-tipser-direction</code>  | string | 'vertical' &#124; 'horizontal' | changes the orientation of the thumbnails container | 'horizontal' |
+| <code style="font-size: 10px">data-tipser-class-name</code> | string |                                | custom CSS class name to apply                      | none         |
+
+## Product Page Element
 
 A full-sized product component to be used on a dedicated page.
 

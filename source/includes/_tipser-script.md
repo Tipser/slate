@@ -256,7 +256,7 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 
 ***
 
-## `Checkout` Element
+## Checkout
 
 A Checkout component providing the checkout experience on your site.
 
@@ -311,8 +311,8 @@ It also accepts attributes that change the appearance and/or functionality of th
 | attr name| description | type   | values | default value    |
 | --------- | ------------------------------------------------------------------------------------------------- | ------ | -------- | ---------------- |
 |<code style="font-size: 10px">data-tipser-hide-submit-button</code>| hides the "submit" button that collapses the form after filling it with correct data | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | | 
-|<code style="font-size: 10px">data-tipser-submit-behaviour</code>| the behaviour of the form after submitting it|string|collapse, none|collapse
-|<code style="font-size: 10px">data-tipser-hide-use-as-billing-address-checkbox</code>|hides the checkbox allowing to copy delivery address as billing address|boolean|true, false| false
+|<code style="font-size: 10px">data-tipser-submit-behaviour</code>| the behaviour of the form after submitting it|string|'collapse', 'none'|'collapse'
+|<code style="font-size: 10px">data-tipser-hide-use-as-billing-address-checkbox</code>|hides the checkbox allowing to copy delivery address as billing address|<a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | | 
 
 ### Checkout Customer Billing Address form 
 This form accepts User's billing address details.
@@ -326,8 +326,8 @@ It also accepts attributes that change the appearance and/or functionality of th
 | attr name | description | type   | values | default value    |
 | --------- | ------------------------------------------------------------------------------------------------- | ------ | -------- | ---------------- |
 |<code style="font-size: 10px">data-tipser-hide-submit-button</code>| hides the "submit" button that collapses the form after filling it with correct data | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | | 
-|<code style="font-size: 10px">data-tipser-submit-behavior</code>| the behavior of the form after submitting it|string|collapse, none|collapse
-|<code style="font-size: 10px">data-tipser-depends-on</code> | lets you render the component depending on the delivery form being valid| string | none, validDeliveryAddress |
+|<code style="font-size: 10px">data-tipser-submit-behavior</code>| the behavior of the form after submitting it|string|'collapse', 'none'|'collapse'
+|<code style="font-size: 10px">data-tipser-depends-on</code> | lets you render the component depending on the delivery form being valid| string | 'none', 'validDeliveryAddress' | 'none'
 
 ### Checkout Cart Summary
 
@@ -349,7 +349,7 @@ It also accepts attributes that change the functionality of the component:
 | attr name | description | type   | values | default value    |
 | --------- | ------------------------------------------------------------------------------------------------- | ------ | -------- | ---------------- |
 |<code style="font-size: 10px">data-tipser-hide-pay-button</code>| hides the "pay" button in Stripe payment provider form | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> | | 
-|<code style="font-size: 10px">data-tipser-depends-on</code> | lets you render the component depending on the delivery form being valid| string | none, validDeliveryAddress |
+|<code style="font-size: 10px">data-tipser-depends-on</code> | lets you render the component depending on the delivery form being valid| string | 'none', 'validDeliveryAddress' | 'none'
 
 ### Checkout Promotion Code
 An element for entering promotion codes

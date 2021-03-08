@@ -407,7 +407,7 @@ Displays the full-size version of the currently selected product image and thumb
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
 
-## `Checkout`
+## Checkout Element
 
 A predefined checkout component with all necessary elements (product list, user address form, payment widget, etc) to make the purchase possible.
 
@@ -426,7 +426,7 @@ Properties:
 | ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
 | className  | custom CSS class name to apply          | string                                | false    | none          |
 
-## Modular Checkout
+## Modular Checkout Element
 
 For more flexibility use `ModularCheckout` component.
 
@@ -478,8 +478,8 @@ Properties:
 | ---------- | --------------------------------------- | ----------------------|--------------- | -------- | ------------- |
 | className  | custom CSS class name to apply          | string                                | |false    | none          |
 | hideUseAsBillingAddressCheckbox |hides the checkbox allowing to copy delivery address as billing address | boolean | | false | false|
-| submitBehavior | the behaviour of the form after submitting it | enum | collapse, none |false |none |
-| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean | false | false|
+| submitBehavior | the behaviour of the form after submitting it | enum | 'collapse', 'none' |false |'none' |
+| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean || false | false|
 
 ### Checkout Customer Address Billing
 `<CheckoutCustomerAddressBilling />`
@@ -490,9 +490,9 @@ Properties:
 | prop name  | description                             | type                     | values             | required | default value |
 | ---------- | --------------------------------------- | ----------------------|--------------- | -------- | ------------- |
 | className  | custom CSS class name to apply          | string                                | |false    | none          |
-| submitBehavior | the behaviour of the form after submitting it | enum | collapse, none |false |none |
-| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean | false | false|
-| submitBehavior | the behavior of the form after submitting it|string|collapse, none|false|collapse|
+| submitBehavior | the behaviour of the form after submitting it | enum | 'collapse', 'none' |false |none |
+| hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean || false | false|
+| submitBehavior | the behavior of the form after submitting it|string|'collapse', 'none'|false|'collapse'|
 
 ### Checkout Cart Summary
 `<CheckoutCartSummary />` 
@@ -514,7 +514,7 @@ Properties:
 | ---------- | --------------------------------------- | -----------------------|-------------- | -------- | ------------- |
 | className  | custom CSS class name to apply          | string                             |   | false    | none          |
 |hidePayButton| hides the "pay" button in Stripe payment provider form | boolean | | false | false
-|dependsOn | lets you render the component depending on the delivery form being valid| string | none, validDeliveryAddress |false |false
+|dependsOn | lets you render the component depending on the delivery form being valid| string | 'none', 'validDeliveryAddress' |false |'none'
 
 ### CheckoutCartPromoCode
 `<CheckoutCartPromoCode />`

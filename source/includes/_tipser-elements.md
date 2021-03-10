@@ -786,3 +786,87 @@ import { Store } from '@tipser/tipser-elements';
 
 Note: the `Store` component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework.
 For the same reason, it's not recommended to include more than one `<Store />` on a single page.
+
+## Imprerative elements functions
+
+In case you need to open Tipser dialogs from the code or perform operations like adding a Tipser product to cart, we provide a set of JavaScript functions that serve that purpose.
+
+<aside class="info">Typical use case for calling the actions described here is when you want to build your own implementation of some of the components, e.g. the product tile component or the cart icon component.</aside>
+
+<aside class="warning">The below functions will work correctly only with <code>openOldDialog: false</code> setting in the configuration.</aside>
+
+All the below functions are accessible from `useInternalFunctions` hook to every component living in the context of `TipserElementsProvider`.
+
+```js
+const { goToProduct, goToCheckout, addToCart, removeFromCart, addToCartAndGoToCheckout } = useInternalFunctions();
+```
+
+### goToProduct() function
+
+```js
+const { goToProduct } = useInternalFunctions();
+goToProduct(productId);
+```
+
+Opens the product modal dialog for a product with a given Tipser product id. Alternatively, redirects to the URL defined in `customUrls.baseProductUrl` configuration option if specified.
+
+### goToCheckout() function
+
+```js
+const { goToCheckout } = useInternalFunctions();
+goToCheckout();
+```
+
+Opens the checkout modal dialog. Alternatively, redirects to the URL defined in `customUrls.checkoutUrl` configuration option if specified.
+
+### addToCart(productId) function
+
+```js
+const { addToCart } = useInternalFunctions();
+addToCart(productId).then(() => {
+  console.log("adding to cart successful");
+}).catch((e) => {
+  console.log("adding to cart failed", e)
+});
+```
+
+Adds to cart a product with a given Tipser product id. Return a promise 
+
+### removeFromCart(productId) function
+
+```js
+const { removeFromCart } = useInternalFunctions();
+removeFromCart(productId).then(() => {
+    console.log("removing from cart successful");
+}).catch((e) => {
+    console.log("removing from cart failed", e)
+});
+```
+
+Adds to cart a product with a given Tipser product id. Returns a promise that will succeed or reject depending on the status of that operation. 
+
+### getCartItems() function
+
+```js
+const { getCartItems } = useInternalFunctions();
+getCartItems().then((cartItems) => {
+    console.log("cart items: ", cartItems)
+}).catch((e) => {
+    console.log("failed to get cart items", e)
+});
+```
+
+Returns a Promise that will eventually return a list of all Tipser products currently in the shopping cart.
+
+### addToCartAndGoToCheckout(productId) function
+
+```js
+const { addToCartAndGoToCheckout } = useInternalFunctions();
+addToCartAndGoToCheckout(productId).then(() => {
+   console.log("add to cart and go to checkout successful");
+}).catch((e) => {
+   console.log("add to cart and go to checkout  failed", e)
+});
+```
+
+Adds to cart a product with a given Tipser product id and then opens the checkout modal dialog. Alternatively, redirects to the URL defined in `customUrls.checkoutUrl` configuration option if specified. Returns a promise that will succeed or reject depending on the status of that operation. 

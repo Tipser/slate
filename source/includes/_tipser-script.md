@@ -46,9 +46,9 @@ Insert this HTML snippet on your page in the place where you want the `Store` el
 <aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 ***
 
-## Initializing Tipser Elements
+## Initializing Tipser Script
 
-Initializing Tipser Elements is a line of JavaScript code.
+You can initialise Tipser Script with the following line of JavaScript code:
 
 ```js
 tipser.elements("posId");
@@ -71,11 +71,13 @@ Complete working example could look like:
     <div id="tipser_store"></div>
     <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
     <script>
-      tipser.elements("posId");
+      tipser.elements("posId", {lang: "en-US", openOldDialog: "false"});
     </script>
   </body>
 </html>
 ```
+
+<aside class="info">We recommend every new implementation of Tipser Script to enable new modal dialogs implementation by setting <code>openOldDialog</code> to <code>false</code>, as in the snippet above. (In the next major release this implementation will be active by default)</aside>
 
 If everything was setup correctly, you should see the `Store` element populated with all your collections in place of `<div id="tipser_store">`.
 
@@ -89,14 +91,14 @@ If everything was setup correctly, you should see the `Store` element populated 
 
 ## Configuration
 
-Main Tipser Elements function has two arguments.
+The `elements` initialization function accepts two arguments.
 
 ```ts
 tipser.elements(posId: string, config?: TipserElementsConfig)
 ```
 
-- `posId` - **required** - unique POS identifier. Must be specified in order to show your personalized store, show discounted product prices according to your current campaigns and - most important of all - grant you commissions for every purchase on your site! If you are not sure where to get it from, contact your account manager.
-- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [customization](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
+- `posId` - **required** - a unique Tipser publisher identifier. Must be specified in order to show your personalized store, show discounted product prices according to your current campaigns and - most important of all - grant you commissions for every purchase on your site! If you are not sure where to get it from, contact your account manager.
+- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [Configuration options](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
 
 ---
 
@@ -444,7 +446,87 @@ An element with text explaining legal terms of the purchase.
 
 Tipser Elements follows <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. This means that an increase in the major number in our version indicates potential <b>breaking changes</b>. Please be aware of that! For the react version, it is recommended to auto-update to the latest version with the same major number (see the caret (^) character in `package.json` file described <a href="https://stackoverflow.com/a/22345808" target="_blank">here</a>).
 
-<aside class="warning">Be aware, that tipser-elements (non-react) is always updating to the newest version published, even if the increased major version is introduced.</aside>
+<aside class="warning">Be aware, that <code>latest.js</code> distribution of Tipser Script is always usuing to the most recent version of the code. To avoid that, you can fix your implementation to the specific version of Tipser Script, e.g. by using URL like <code>https://cdn.tipser.com/tipser-script/2.2.14.js</code></aside>
+
+## Imperative script functions
+
+In case you need to open Tipser dialogs from the code or perform operations like adding a Tipser product to cart, we provide a set of JavaScript functions that serve that purpose.
+
+<aside class="info">Typical use case for calling the actions described here is when you want to build your own implementation of some of the components, e.g. the product tile component or the cart icon component.</aside>
+
+<aside class="warning">The below functions will work correctly only with <code>openOldDialog: false</code> setting in the configuration.</aside>
+
+All the below functions are accessible from the Tipser Script instance:
+
+```js
+const script = tipser.elements(posId, options);
+script.goToProduct(productId);
+```
+
+### goToProduct() function
+
+```js
+script.goToProduct(productId);
+```
+
+Opens the product modal dialog for a product with a given Tipser product id. Alternatively, redirects to the URL defined in `customUrls.baseProductUrl` configuration option if specified.
+
+### goToCheckout() function
+
+```js
+script.goToCheckout();
+```
+
+Opens the checkout modal dialog. Alternatively, redirects to the URL defined in `customUrls.checkoutUrl` configuration option if specified.
+
+### addToCart(productId) function
+
+```js
+script.addToCart(productId).then(() => {
+ console.log("adding to cart successful");
+}).catch((e) => {
+ console.log("adding to cart failed", e)
+});
+```
+
+Adds to cart a product with a given Tipser product id. Returns a promise that will succeed or reject depending on the status of that operation.
+
+### removeFromCart(productId) function
+
+```js
+script.removeFromCart(productId).then(() => {
+    console.log("removing from cart successful");
+}).catch((e) => {
+    console.log("removing from cart failed", e)
+});
+```
+
+Adds to cart a product with a given Tipser product id. Returns a promise that will succeed or reject depending on the status of that operation.
+
+### getCartItems() function
+
+```js
+script.getCartItems().then((cartItems) => {
+    console.log("cart items: ", cartItems)
+}).catch((e) => {
+    console.log("failed to get cart items", e)
+});
+```
+
+Returns a Promise that will eventually return a list of all Tipser products currently in the shopping cart.
+
+### addToCartAndGoToCheckout(productId) function
+
+```js
+script.addToCartAndGoToCheckout(productId).then(() => {
+    console.log("add to cart and go to checkout successful");
+}).catch((e) => {
+    console.log("add to cart and go to checkout  failed", e)
+});
+```
+
+Adds to cart a product with a given Tipser product id and then opens the checkout modal dialog. Alternatively, redirects to the URL defined in `customUrls.checkoutUrl` configuration option if specified. Returns a promise that will succeed or reject depending on the status of that operation.
+  
 
 ## API reference
 
@@ -454,10 +536,11 @@ All configuration supported by Tipser Elements is listed below.
 | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ---------------------------------------- |
 | lang                    | `'en-US'` | a locale to be used by the Tipser content. Possible values: `'en-US'`, `'de-DE'`, `'fr-FR'` and `'sv-SE'`. More info at [Language and locale](#language-and-locale)[Environment](#environment) | `'de-DE'`                              |
 | env                     | `'prod'`  | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)                                                         | `'stage'`                              |
+| openOldDialog           | `true`    | Enables the new implementation of modal dialogs. It is much recommended for the new users to set it to `false`.                                                                                | `false`                                |
 | defaultAddedToCartPopup | `true`    | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.    | `true` or `false`                      |
 | useDefaultErrorHandler  | `true`    | when set to false and error happens, default message won't be displayed                                                                                                                        | see [Adding onError handler](#onerror) |
 | eventsHandlers          | `{}`      | the object of event handlers. See [Event handlers](#event-handlers)                                                                                                                            | `object`                               | { onError: console.error.bind(console) } |
-| useDeepLinking          | `true`    | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking):                                                               | `false`                                |
+| useDeepLinking          | `true`    | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking)                                                                | `false`                                |
 | modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)                                                                       | `{ hideSearchIcon : true}`             |
 | primaryColor            | #333      | Hex color code, affecting eg. buy-button color and Cart indicator                                                                                                                              | #5F9F9F                                |
 | disableDialog           | false     | If set to `true`, a redirect to the product page is done instead of opening the product dialog (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section) | `false`                                |
@@ -546,9 +629,9 @@ The `onError` event handler is used with `useDefaultErrorHandler` config option.
 
 This handler takes care of the edge case, when while in the checkout process and before payment, the stock count of an item in the cart becomes lower than the number of items in the cart. By default, in such a situation, we display an overlay with an information about the stock count change and the button for reloading the checkout. If you wish to customize this behaviour, you can use a callback `onStockCountChange(items: CartItemModel[]) => void`, which will prevent the default behavior.
 
-## Customizing Tipser Elements Styles
+## Customizing the styles
 
-Tipser Elements are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. For example, all elements' `font-family` and `font-size` attributes are set to inherit them from the host page. If you need to change some other styles, please overwrite the CSS classes corresponding to the elements that you customize (listed below).
+Our e-commerce components are the "building blocks" designed to fit your page as much as possible. We created the styling in a way that delivers a nice look & feel from the start, but also allows you to change them easily to fit your unique sense of style. For example, all elements' `font-family` and `font-size` attributes are set to inherit them from the host page. If you need to change some other styles, please overwrite the CSS classes corresponding to the elements that you customize (listed below).
 
 ### Product Card
 

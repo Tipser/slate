@@ -184,7 +184,7 @@ document.addEventListener('tw-track', callPixelEvent);
 
 The code above assumes that you use <a href="https://developers.facebook.com/docs/facebook-pixel/implementation" target="_blank">pixel.js</a> facebook client library on your page.
 
-For the instructions how to setup pixel.js script on your site and connect it to your Facebook for Developers account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.
+For the instructions how to setup pixel.js script on your site and connect it to your Facebook for Developers account, refer to the <a href="https://developers.facebook.com/docs/facebook-pixel/implementation" target="_blank">official documentation</a>.
 
 ## List of supported interactions
 

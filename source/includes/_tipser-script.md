@@ -311,7 +311,9 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 
 ## Checkout
 
-A Checkout component providing the checkout experience on your site.
+To lead the user from product and collection elements to your dedicated checkout page, please define the [checkoutUrl and checkoutConfirmationUrl](#custom-urls) from the `customUrls` config options.
+
+Then use this HTML tag to render Checkout on your dedicated page.
 
 ```html
 <div id="tipser_checkout"></div>
@@ -321,19 +323,16 @@ A Checkout component providing the checkout experience on your site.
 This component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
 </aside>
 
-To lead the user from product and collection elements to your dedicated checkout page, please define the [checkoutUrl and checkoutConfirmationUrl](#custom-urls) from the `customUrls` config options.
-
 ---
 
 ## Modular Checkout
 
-If you need more flexibility, you can use an element with `data-tipser-modular-checkout` attribute. The children of this element will define a set of
-checkout modules to be displayed.
+If you need more flexibility, you can use an element with `data-tipser-modular-checkout` attribute. Please bear in mind, that to lead the user from product and collection elements to your dedicated checkout page, you need to define the [checkoutUrl and checkoutConfirmationUrl](#custom-urls) from the `customUrls` config options.
 
-For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
+The children of this element will define a set of checkout modules to be displayed. For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
 are being purchased by the user.
 
-A working example of the checkout view consisting of: items list, delivery address form and the payment form.
+A working example of the checkout view consisting of: items list, delivery address form and the payment form:
 
 ```html
 <div data-tipser-modular-checkout>
@@ -343,9 +342,9 @@ A working example of the checkout view consisting of: items list, delivery addre
 </div>
 ```
 
-Following modules can be nested under within `<div data-tipser-modular-checkout></div>`:
+Following modules can be nested within `<div data-tipser-modular-checkout></div>`:
 
-### Checkout Cart Porducts
+### Checkout Cart Products
 
 This section displays a list of items in the current checkout.
 
@@ -688,3 +687,44 @@ If you'd like to change other elements' color as well, please use specific class
 A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/" target="_blank">Tipser Widget Bootstrap page</a>.
 
 The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap" target="_blank">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!
+
+## Advanced usages
+
+If your use of Tipser Script is more complex than a default setup, you can use some of our more advanced options allowing you to control the checkout process. 
+
+### advanced Checkout functions
+
+Even if you don't use React in your project, we allow you to access the checkout context and create custom functions for submitting delivery and billing address forms as well as Stripe payment details. 
+
+To access the context, first make sure that your checkout wrapper has an `id` attribute (eg. 'modular_checkout_root'). This way you can create an Event Listener attached to it:
+
+```javascript
+const modularCheckoutDiv = document.querySelector('#modular_checkout_root');
+let getCheckoutContext = null;
+
+modularCheckoutDiv.addEventListener('checkout-context-ready', (evt) => {
+  getCheckoutContext = evt.detail.getCheckoutContext;
+});
+```
+
+Now create your custom Submit button, eg: 
+
+```html
+<button id="submit-button" onclick="customSubmitDeliveryAddress()"></button>
+```
+
+and define your submit delivery address function:
+
+```javascript
+const customSubmitDeliveryAddress = () => {
+  if (getCheckoutContext) {
+    const checkoutContext = getCheckoutContext();
+  // for delivery addres submition use:
+    checkoutContext.addresses.deliveryAddressForm.submit();
+  // for billing address submition use:
+    checkoutContext.addresses.billingAddressForm.submit();
+  // for payment submition use:
+    checkoutContext.payment.paymentForm.submit();
+  }
+};
+```

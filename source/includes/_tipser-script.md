@@ -696,7 +696,7 @@ If your use of Tipser Script is more complex than a default setup, you can use s
 
 Even if you don't use React in your project, we allow you to access the checkout context and create custom functions for submitting delivery and billing address forms as well as Stripe payment details. 
 
-To access the context, first make sure that your checkout wrapper has an `id` attribute (eg. 'modular_checkout_root'). This way you can create an Event Listener attached to it:
+To access the context, create an Event Listener attached to your checkout wrapper (the element with `data-tipser-modular-checkout` attribute):
 
 ```javascript
 const modularCheckoutDiv = document.querySelector('#modular_checkout_root');
@@ -717,7 +717,6 @@ and define your submit delivery address function:
 
 ```javascript
 const customSubmitDeliveryAddress = () => {
-  if (getCheckoutContext) {
     const checkoutContext = getCheckoutContext();
   // for delivery addres submition use:
     checkoutContext.addresses.deliveryAddressForm.submit();
@@ -725,6 +724,5 @@ const customSubmitDeliveryAddress = () => {
     checkoutContext.addresses.billingAddressForm.submit();
   // for payment submition use:
     checkoutContext.payment.paymentForm.submit();
-  }
 };
 ```

@@ -441,3 +441,41 @@ Each value is url for the certain variation of an image. `key` determines size, 
   formatted: string, # human readable price string    
 }
 ```
+
+## Disabling analytics
+
+In case analytics needs to be disabled (e.g. as a result of the user rejecting the GDPR terms), the `disableAnalytics: true` configuration option can be used. Doing so will prevent the following from happening:
+
+- sending web requests to Tipser's Google Analytics property
+- sending web requests to Tipser's internal analytics system (stats.tipser.com)
+- placing Google Analytics tracking cookies in the user's browser by Tipser's Google Analytics script
+
+### Disabling analytics statically vs dynamically
+
+You can decide to disable analytics from the start when `disableAnalytics: true` setting is a part of your initial configuration. 
+
+Or, instead, you may want to initially keep it enabled (by setting `disableAnalytics: false` setting in your initial configuration or simply skipping that setting) and only disable it dynamically at the later time (if necessary) by updating the value of `disableAnalytics` config to `true` (e.g. at the moment when the user declines the GDPR terms).
+
+If you're using Tipser Script, you can dynamically update `disableAnalytics` value with the following line:
+
+```javascript
+tipserScript.updateConfig({disableAnalytics: true});
+```
+
+If you're using Tipser Elements, just update the value passed to the `config` prop of `TipserElementsProvider` in the next render cycle:
+
+```jsx
+const elementsConfigWithAnalytics = {...baseElementsConfig, disableAnalytics: shouldDisableAnalytics()};
+
+return <TipserElementsProvider config={elementsConfigWithAnalytics}>
+...
+</TipserElementsProvider>
+```
+ 
+
+    
+
+<aside class="warning">
+The configuration setting <code>disableAnalytics: true</code> does not block <code>tw-track</code> events from being emitted. In case you are translating <code>tw-track</code> events to analytics events (e.g. as described in <a href="#typical-use-case-google-analytics">Typical use case: Google Analytics</a> section), then it's your responsibility 
+to block that sending your own analytics events when necessary.     
+</aside>

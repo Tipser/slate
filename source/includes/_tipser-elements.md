@@ -875,7 +875,8 @@ Adds to cart a product with a given Tipser product id and then opens the checkou
 
 ## Advanced usages of Elements
 
-If your use of Tipser Script is more complex than a default setup, you can use some of our more advanced options allowing you to control the checkout process.
+If your use of Tipser Elements is more complex than a default setup, you can use some of our more advanced options 
+allowing you to control the checkout process.
 
 ### advanced Checkout functions
 

@@ -882,7 +882,6 @@ If your use of Tipser Script is more complex than a default setup, you can use s
 You can access the checkout context and create custom functions for submitting delivery and billing address forms as 
 well as Stripe payment details.
 
-
 ```javascript
 const CustomSubmitButton = () => {
   const checkoutContext = useCheckoutContext();

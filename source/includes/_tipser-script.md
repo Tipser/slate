@@ -688,7 +688,7 @@ A working examples of page based on Tipser Widget can be found on <a href="https
 
 The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap" target="_blank">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!
 
-## Advanced usages
+## Advanced usages of Script
 
 If your use of Tipser Script is more complex than a default setup, you can use some of our more advanced options allowing you to control the checkout process. 
 

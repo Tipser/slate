@@ -871,3 +871,4 @@ addToCartAndGoToCheckout(productId).then(() => {
 ```
 
 Adds to cart a product with a given Tipser product id and then opens the checkout modal dialog. Alternatively, redirects to the URL defined in `customUrls.checkoutUrl` configuration option if specified. Returns a promise that will succeed or reject depending on the status of that operation. 
+

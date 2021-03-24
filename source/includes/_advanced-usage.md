@@ -47,6 +47,63 @@ tipserSdk.addToCart(productId, addToCartOptions);
 <aside class="warning">Warning: for performance reasons, the number of characters in <code>posData</code> is limited to 4000. Longer strings will be truncated down to 4000 characters.</aside>
 
 
+## Checkout submit functions
+
+You can access the checkout context and create custom functions for submitting delivery and billing address forms as
+well as Stripe payment details.
+
+### in Tipser Elements:
+If you're using React in your project, you can apply `useCheckoutContext` hook:
+
+```javascript
+const CustomSubmitButton = () => {
+  const checkoutContext = useCheckoutContext();
+  const handleClick = useCallback(() => {
+    // for delivery addres submition use:
+    checkoutContext.addresses.deliveryAddressForm.submit()
+    // for billing address submition use:
+    checkoutContext.addresses.billingAddressForm.submit();
+    // for payment submition use:
+    checkoutContext.payment.paymentForm.submit();
+  }, [checkoutContext]);
+  return <button onClick={handleClick}>Submit delivery address</button>
+}
+```
+
+### in Tipser Script:
+
+Even if you don't use React in your project, we allow you to access the checkout context and create custom functions for submitting delivery and billing address forms as well as Stripe payment details.
+
+To access the context, create an Event Listener attached to your checkout wrapper (the element with `data-tipser-modular-checkout` attribute):
+
+```javascript
+const modularCheckoutDiv = document.querySelector('#modular_checkout_root');
+let getCheckoutContext = null;
+
+modularCheckoutDiv.addEventListener('checkout-context-ready', (evt) => {
+  getCheckoutContext = evt.detail.getCheckoutContext;
+});
+```
+
+Now create your custom Submit button, eg:
+
+```html
+<button id="submit-button" onclick="customSubmit()"></button>
+```
+
+and define your submit delivery address function:
+
+```javascript
+const customSubmit = () => {
+    const checkoutContext = getCheckoutContext();
+  // for delivery addres submition use:
+    checkoutContext.addresses.deliveryAddressForm.submit();
+  // for billing address submition use:
+    checkoutContext.addresses.billingAddressForm.submit();
+  // for payment submition use:
+    checkoutContext.payment.paymentForm.submit();
+};
+```
 
 ## Accessing Tipser SDK
 

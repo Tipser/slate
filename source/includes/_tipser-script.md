@@ -311,29 +311,28 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 
 ## Checkout
 
-A Checkout component providing the checkout experience on your site.
+<aside class="notice">To lead the user from product and collection elements to your dedicated checkout page, please define the <a href="#custom-urls">checkoutUrl and checkoutConfirmationUrl</a> from the `customUrls` config options.</aside>
+
+Then use this HTML tag to render Checkout on your page.
 
 ```html
 <div id="tipser_checkout"></div>
 ```
 
-<aside class="notice">
+<aside class="info">
 This component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
 </aside>
-
-To lead the user from product and collection elements to your dedicated checkout page, please define the [checkoutUrl and checkoutConfirmationUrl](#custom-urls) from the `customUrls` config options.
 
 ---
 
 ## Modular Checkout
 
-If you need more flexibility, you can use an element with `data-tipser-modular-checkout` attribute. The children of this element will define a set of
-checkout modules to be displayed.
+<aside class="notice">To lead the user from product and collection elements to your dedicated checkout page, you need to define the <a href="#custom-urls">checkoutUrl and checkoutConfirmationUrl</a> from the `customUrls` config options.</aside>
 
-For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
+If you need more flexibility, you can use an element with `data-tipser-modular-checkout` attribute. The children of this element will define a set of checkout modules to be displayed. For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
 are being purchased by the user.
 
-A working example of the checkout view consisting of: items list, delivery address form and the payment form.
+A working example of the checkout view consisting of: items list, delivery address form and the payment form:
 
 ```html
 <div data-tipser-modular-checkout>
@@ -343,9 +342,9 @@ A working example of the checkout view consisting of: items list, delivery addre
 </div>
 ```
 
-Following modules can be nested under within `<div data-tipser-modular-checkout></div>`:
+Following modules can be nested within `<div data-tipser-modular-checkout></div>`:
 
-### Checkout Cart Porducts
+### Checkout Cart Products
 
 This section displays a list of items in the current checkout.
 
@@ -689,3 +688,4 @@ If you'd like to change other elements' color as well, please use specific class
 A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/" target="_blank">Tipser Widget Bootstrap page</a>.
 
 The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap" target="_blank">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!
+

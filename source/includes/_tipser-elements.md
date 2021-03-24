@@ -871,29 +871,3 @@ addToCartAndGoToCheckout(productId).then(() => {
 
 Adds to cart a product with a given Tipser product id and then opens the checkout modal dialog. Alternatively, redirects to the URL defined in `customUrls.checkoutUrl` configuration option if specified. Returns a promise that will succeed or reject depending on the status of that operation. 
 
-
-
-## Advanced usages of Elements
-
-If your use of Tipser Elements is more complex than a default setup, you can use some of our more advanced options 
-allowing you to control the checkout process.
-
-### advanced Checkout functions
-
-You can access the checkout context and create custom functions for submitting delivery and billing address forms as 
-well as Stripe payment details.
-
-```javascript
-const CustomSubmitButton = () => {
-  const checkoutContext = useCheckoutContext();
-  const handleClick = useCallback(() => {
-    // for delivery addres submition use:
-    checkoutContext.addresses.deliveryAddressForm.submit()
-    // for billing address submition use:
-    checkoutContext.addresses.billingAddressForm.submit();
-    // for payment submition use:
-    checkoutContext.payment.paymentForm.submit();
-  }, [checkoutContext]);
-  return <button onClick={handleClick}>Submit delivery address</button>
-}
-```

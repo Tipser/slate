@@ -24,18 +24,36 @@ const tipserConfig = { posData: "release_2.1.5" };
 ```
 
 
-Option 2: After Elements/SDK initialization with `setPosData(posData: string)` function of Tipser SDK (useful for the data that is not yet available at the time of initialization):
+Option 2: After Elements/Script initialization with `updateConfig(posData: string)` function (useful for 
+the data that is not yet available at the time of initialization):
+
+in Tipser Script:
 
 ```javascript
-tipserSdk.setPosData(JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"}));
+const someData = JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"});
+
+tipserScript.updateConfig({posData: someData});
 ``` 
+
+in Elements: 
+
+Just update the value passed to the config prop of TipserElementsProvider in the next render cycle:
+
+```javascript
+const someData = JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"});
+const elementsConfigWithPosData = {...baseElementsConfig, posData: someData};
+
+return <TipserElementsProvider config={elementsConfigWithPosData}>
+...
+</TipserElementsProvider>
+```
 
 This will apply for the next and all the subsequent products added to cart (unless overriden by calling another `setPosData` or in the way described in Option 3)
 
 <aside class="notice">The timing of calling <code>setPosData</code> is relevant. The <code>posData</code> is being sent in the Tipser backend with the add to cart API request. This means that to have any effect, <code>setPosData</code> needs to be called <strong>before</strong> the product is added to cart (either from the API or by user's action).</aside>
 
-
 Option 3: In the second parameter of `addToCart` or `openDirectToCheckoutDialog` function (convenient if each product added to cart needs to have a different value of `posData`):
+<aside class="warning">Please note, that Tipser SDK is deprecated</aside>
 
 ```javascript
 const addToCartOptions = {

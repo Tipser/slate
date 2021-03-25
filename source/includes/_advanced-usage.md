@@ -24,11 +24,29 @@ const tipserConfig = { posData: "release_2.1.5" };
 ```
 
 
-Option 2: After Elements/SDK initialization with `setPosData(posData: string)` function of Tipser SDK (useful for the data that is not yet available at the time of initialization):
+Option 2: After Elements/Script initialization with `updateConfig(posData: string)` function (useful for 
+the data that is not yet available at the time of initialization):
+
+in Tipser Script:
 
 ```javascript
-tipserSdk.setPosData(JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"}));
+const someData = JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"});
+
+tipserScript.updateConfig({posData: someData});
 ``` 
+
+in Elements: 
+
+Just update the value passed to the config prop of TipserElementsProvider in the next render cycle:
+
+```javascript
+const someData = JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"});
+const elementsConfigWithPosData = {...baseElementsConfig, posData: someData};
+
+return <TipserElementsProvider config={elementsConfigWithPosData}>
+...
+</TipserElementsProvider>
+```
 
 This will apply for the next and all the subsequent products added to cart (unless overriden by calling another `setPosData` or in the way described in Option 3)
 

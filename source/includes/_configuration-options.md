@@ -218,7 +218,7 @@ const tipserOptions = {
 }
 ```
 
-To add the address data dynamically, please use the [`updateConfig`](#updateconfig())function.
+To add the address data dynamically, please use the [`updateConfig`](#updateconfig)function.
 
 ##Parameters for old dialog customization
 Sometimes Tipser dialogue styling and functionality needs to be customized. It is possible with modalUi parameters group.

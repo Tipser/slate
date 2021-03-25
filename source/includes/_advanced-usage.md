@@ -52,7 +52,7 @@ This will apply for the next and all the subsequent products added to cart (unle
 
 <aside class="notice">The timing of calling <code>setPosData</code> is relevant. The <code>posData</code> is being sent in the Tipser backend with the add to cart API request. This means that to have any effect, <code>setPosData</code> needs to be called <strong>before</strong> the product is added to cart (either from the API or by user's action).</aside>
 
-
+<aside class="warning">Please note, that Tipser SDK is deprecated</aside>
 Option 3: In the second parameter of `addToCart` or `openDirectToCheckoutDialog` function (convenient if each product added to cart needs to have a different value of `posData`):
 
 ```javascript

@@ -48,7 +48,7 @@ return <TipserElementsProvider config={elementsConfigWithPosData}>
 </TipserElementsProvider>
 ```
 
-This will apply for the next and all the subsequent products added to cart (unless overriden by calling another `setPosData` or in the way described in Option 3)
+This will apply for the next and all the subsequent products added to cart.
 
 <aside class="notice">The timing of calling <code>setPosData</code> is relevant. The <code>posData</code> is being sent in the Tipser backend with the add to cart API request. This means that to have any effect, <code>setPosData</code> needs to be called <strong>before</strong> the product is added to cart (either from the API or by user's action).</aside>
 

@@ -4,7 +4,28 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2021-03-26
+
+### Added
+- `ModularCart` component with `CartProductList` and `CartSummary` subcomponents
+- Integration with the more robust Tipser Checkout 2.0 API, that is enabled with `enableCheckoutV2` configuration option
+- `readOnly` prop on `CheckoutProductList` to disable making any modifications to the checkout on the checkout page (disabled by default)
+- customs warning displayed on the `CheckoutSummary` component, when the US checkout has products imported from outside of US
+
+
+### Changed
+- On the checkout address state pickers removed the states that are not supported by Tipser (like `American Samoa` or `Guam`)
+- `Checkout` stylistic improvement: the pay button now has more width and padding
+- "added to cart" popup is being displayed after adding a product to cart even when there is no `Cart` component on page (before having a `Cart` component was a hard dependency)
+
+### Deprecated
+- `CheckoutCartProducts` and `CheckoutCartSummary` components. Renamed to `CheckoutProductList` and `CheckoutSummary` respectively
+
+
 ## [2.2.14] - 2021-03-05
+
+### Changed
+- `ProductImage` component contains only main product image with new props (enableDots, enableSwipe, swipeAnimation, enableArrows)
 
 ### Added
 - `ProductThumbnails` component for displaying thumbnails in `ModularProduct`

@@ -102,7 +102,7 @@ tipser.elements(posId: string, config?: TipserElementsConfig)
 
 ---
 
-## `Store` Element
+## Store tag
 
 The Store is the best way to present a group of collections on a separate page. It is best to place it on a page where sufficient space is available, however, the script automatically blends in and adapts to the given space.
 
@@ -127,7 +127,7 @@ The optional menu renders inline menu items, and is applied by adding `data-tips
 
 ---
 
-## `Product` Element
+## Product tag
 
 In order to insert a `Product` Element in your content, insert the following code snippet in your content:
 
@@ -167,7 +167,7 @@ To display a list of products (rendered as small product tiles), add `data-tipse
 
 ---
 
-## Modular Product Element
+## Modular Product tag
 
 A modular product is a product that can be constructed from lower level components.
 
@@ -241,7 +241,7 @@ Displays the product thumbnails.
 | <code style="font-size: 10px">data-tipser-direction</code>  | string | 'vertical' &#124; 'horizontal' | changes the orientation of the thumbnails container | 'horizontal' |
 | <code style="font-size: 10px">data-tipser-class-name</code> | string |                                | custom CSS class name to apply                      | none         |
 
-## Product Page Element
+## Product page tag
 
 A full-sized product component to be used on a dedicated page.
 
@@ -261,7 +261,7 @@ This component renders the same product view that is displayed inside the produc
 
 ---
 
-## `Collection` Element
+## Collection tag
 
 `Collection` is a group of simple product tiles. Clicking on any title displays a product dialog with more product details and add to cart button. Products displayed in a collection are defined in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
@@ -295,7 +295,7 @@ If you'd like the collection of more than several products to take less space, y
 
 ---
 
-## `Cart` Element
+## Cart tag
 
 To keep the user informed about the state of their shopping cart and make it possible to finalize the checkout process at any time, you can attach a live shopping cart icon on your page.
 
@@ -309,7 +309,7 @@ The cart icon can be placed anywhere on your website. If you want to keep it vis
 
 ---
 
-## Checkout
+## Checkout tag
 
 <aside class="notice">To lead the user from product and collection elements to your dedicated checkout page, please define the <a href="#custom-urls">checkoutUrl and checkoutConfirmationUrl</a> from the `customUrls` config options.</aside>
 

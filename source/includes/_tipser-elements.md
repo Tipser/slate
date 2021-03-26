@@ -16,7 +16,7 @@ The code of that page is available as a GitHub <a href="https://github.com/Tipse
 
 ---
 
-## Quick React Start
+## Tipser Elements: Quick Start
 
 This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
 
@@ -100,23 +100,9 @@ Also, check our [configuration](#configuration-options) options.
 
 ---
 
-## API reference of Tipser React Elements
+## Tipser Elements API
 
-### `TipserElementsProvider`
-
-Entry point to Tipser Elements (creating a context for other Elements);
-
-| prop name | description                                                                                       | type   | required | default value    |
-| --------- | ------------------------------------------------------------------------------------------------- | ------ | -------- | ---------------- |
-| posId     | id of Point of sale                                                                               | string | true     |
-| config    | configuration object (see [definition here](#all-configuration-options-of-tipser-react-elements)) | {}     | false    | {}               |
-| history   | history object                                                                                    | {}     | false    | `window.history` |
-
-#### `TipserElement`
-
-Generic Element that can render any Contentful content that's fed as a prop to the element.
-
-### All configuration options of Tipser React Elements
+### Configuration options of Tipser Elements
 
 Configuration is an object, which should be inserted into `TipserElementsProvider` as `config` prop.
 
@@ -133,6 +119,7 @@ All properties are optional:
 | modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                 |
 | disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening product dialogs (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section)    | `false`                                    |
 | disableAnalytics        | `false`   | If set to `true`, all Tipser analytics requests will be blocked (no events to Analytics and stats.tipser.com will be sent)                                                                     | `true`                                     |
+| enableCheckoutV2        | `false`   | If set to `true`, the more robust v2 version of Tipser Checkout API is used (recommended)                                                                                                      | `true`                                     |
 
 ### Event Handlers
 
@@ -198,38 +185,15 @@ export interface TipserProductModel {
 
 When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
 
-### Components
+## `TipserElementsProvider`
 
-Components are the building blocks of Tipser Elements. Any components need to be a descendant of **TipserElementsProvider** component.
+Entry point to Tipser Elements (providing a context for other elements living inside it). Every other element documented here needs to be below `TipserElementsProvider` in the React elements hierarchy.
 
-`Collection`<br>
-`Product`<br>
-`ProductList`<br>
-`Cart`<br>
-`Store`<br>
-`Checkout`<br>
-
-## `Collection`
-
-Element that renders a collection of product tiles based on [collectionId](#getting-tipser-product-id-and-collection-id) prop.
-
-If the collection has many elements and you want to display it in one row as a collection, you need to add `carousel` prop. You can also use 'imgSize' prop to control the size of displayed product tiles. [Learn more](#collection-element).
-
-_example:_
-
-```jsx
-<Collection
-  collectionId={"5b2788909d25801adcb23f4f"}
-  carousel
-  imgSize={"small"}
-/>
-```
-
-| prop name    | description                                                   | type                                  | required | default value |
-| ------------ | ------------------------------------------------------------- | ------------------------------------- | -------- | ------------- |
-| collectionId | [where to find](#getting-tipser-product-id-and-collection-id) | string                                | true     | none          |
-| carousel     | enables carousel display                                      | boolean                               | false    | false         |
-| imgSize      | changes the size of single product tile                       | string ('small', 'medium' or 'large') | false    | none          |
+| prop name | description                                                                                                      | type   | required | default value    |
+| --------- | ---------------------------------------------------------------------------------------------------------------  | ------ | -------- | ---------------- |
+| posId     | id of Point of sale                                                                                              | string | true     |                  |
+| config    | configuration object (see [definition here](#all-configuration-options-of-tipser-react-elements))                | object | false    | {}               |
+| history   | a history implementation specific for your web framework, needed for soft redirects instead of full page reloads | object | false    | `window.history` |
 
 ## `Product`
 
@@ -264,7 +228,29 @@ _example:_
 
 [Learn more](#product-element).
 
-## ProductPage
+## `Collection`
+
+Renders a collection of product tiles based on [collectionId](#getting-tipser-product-id-and-collection-id) prop.
+
+If the collection has many elements and you want to display it in one row as a collection, you need to add `carousel` prop. You can also use 'imgSize' prop to control the size of displayed product tiles. [Learn more](#collection-element).
+
+_example:_
+
+```jsx
+<Collection
+  collectionId={"5b2788909d25801adcb23f4f"}
+  carousel
+  imgSize={"small"}
+/>
+```
+
+| prop name    | description                                                   | type                                  | required | default value |
+| ------------ | ------------------------------------------------------------- | ------------------------------------- | -------- | ------------- |
+| collectionId | [where to find](#getting-tipser-product-id-and-collection-id) | string                                | true     | none          |
+| carousel     | enables carousel display                                      | boolean                               | false    | false         |
+| imgSize      | changes the size of single product tile                       | string ('small', 'medium' or 'large') | false    | none          |
+
+## `ProductPage`
 
 A full-sized product component to be used on a dedicated page.
 
@@ -286,7 +272,7 @@ Properties:
 | --------- | -------------------------------------- | ------ | -------- | ------------- |
 | productId | the Tipser id of the product to render | string | true     |
 
-## Modular Product
+## `ModularProduct`
 
 This is a more customisable and feature-rich version <code>Product</code> component.
 
@@ -330,7 +316,7 @@ It's important that all the lower-level modules are located under <code>ModularP
 In case you don't want to mess with the main part of the product view,
 and just want to control the four main sections, you can use the `ProductContainer` component.
 
-### Product Container
+### `ProductContainer`
 
 ```jsx
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
@@ -345,7 +331,7 @@ and just want to control the four main sections, you can use the `ProductContain
 
 The default implementation of the main part of the product view, consisting of `ProductImage`, `ProductTitle`, `ColorRelations`, `ProductVariantSelector`, `ProductAvailabilityInfo` and `ProductBuyButton`.
 
-### Product Image
+### `ProductImage`
 
 Displays the full-size version of the active product image. With some configuration options it can be also use to change the active product image.
 
@@ -371,7 +357,7 @@ Displays the full-size version of the active product image. With some configurat
 ProductImage component will always expand to the 100% width and height of its parent container.
 </aside>
 
-### Product Thumbnails
+### `ProductThumbnails`
 
 Displays the product thumbnails.
 
@@ -399,7 +385,7 @@ In the <b>horizontal</b> mode thumbnails will always expand to 100% of the width
 
 <aside class="notice">In the <b>vertical</b> mode a single thumbnail will always have a fixed width of 100px, so to change the number of the thumbnails you should change only the height of its parent container.</aside>
 
-### Product Title
+### `ProductTitle`
 
 Displays the name and the brand of the product
 
@@ -411,7 +397,7 @@ Displays the name and the brand of the product
 
   <img src="/images/modular-product/product_title.png" alt="Similar Products Component" width="305"/>
 
-### Product Price
+### `ProductPrice`
 
 Displays the price, discount price and unit price ( eg. 2$/100ml, if applicable ) for the product.
 
@@ -423,7 +409,7 @@ Displays the price, discount price and unit price ( eg. 2$/100ml, if applicable 
 
   <img src="/images/modular-product/product_price.png" alt="Similar Products Component" width="305"/>
 
-### Color Relations
+### `ProductColorRelations`
 
 Displays the list of color variants of the product and switches the product view to any of them, when clicked.
 
@@ -435,7 +421,7 @@ Displays the list of color variants of the product and switches the product view
 
   <img src="/images/modular-product/color_relations.png" alt="Similar Products Component" width="305"/>
 
-### Variant Selector
+### `ProductVariantSelector`
 
 A dropdown listing all variants of the product. When a variant is selected from the list, all the displayed product information will be updated accordingly (only available variants are selectable).
 
@@ -447,15 +433,13 @@ A dropdown listing all variants of the product. When a variant is selected from 
 
   <img src="/images/modular-product/product_variant_selector.png" alt="Similar Products Component" />
 
-### Availability Info
+### `ProductAvailabilityInfo`
 
 Displays information related to product availability and delivery, such as:
 
-  <ul>
-  <li>product availability</li>
-  <li>delivery cost</li>
-  <li>delivery time</li>
-  </ul>
+- product availability
+- delivery cost
+- delivery time
 
 ```jsx
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
@@ -465,7 +449,7 @@ Displays information related to product availability and delivery, such as:
 
     <img src="/images/modular-product/product_availability_info.png" alt="Product availability component" width="305"/>
 
-### Add To Cart button
+### `ProductBuyButton`
 
 A button adding the product to the shopping cart. In case the variant has not been yet selected, clicking the button will expand the variant selector instead.
 
@@ -477,7 +461,7 @@ A button adding the product to the shopping cart. In case the variant has not be
 
   <img src="/images/modular-product/product_buy_button.png" alt="Product buy button component" width="305"/>
 
-### Description
+### `ProductDescription`
 
 Displays the product text description.
 
@@ -489,7 +473,7 @@ Displays the product text description.
 
   <img src="/images/modular-product/description.png" alt="Product description Component" width="610"/>
 
-### Style With Products
+### `ProductStyleWithProducts`
 
 A hand-picked list of other products that go well together with the current product.
 
@@ -501,7 +485,7 @@ A hand-picked list of other products that go well together with the current prod
 
   <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
 
-### Similar Products
+### `ProductSimilarProducts`
 
 An automatically generated list of similar products (basing on text similarity, image similarity, more from the same brand, etc).
 
@@ -513,7 +497,7 @@ An automatically generated list of similar products (basing on text similarity, 
 
   <img src="/images/modular-product/similar_products.png" alt="Similar Products Component" width="610"/>
 
-## Checkout Element
+## `Checkout`
 
 A predefined checkout component with all necessary elements (product list, user address form, payment widget, etc) to make the purchase possible.
 
@@ -532,9 +516,11 @@ Properties:
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
-## Modular Checkout Element
-
 For more flexibility use `ModularCheckout` component.
+
+## `ModularCheckout`
+
+The main element providing the checkout context for all of the checkout modules nested under it.
 
 ```jsx
 import {
@@ -564,27 +550,27 @@ import {
   <ModularCheckout.Confirmed>
     <CheckoutOrderConfirmation />
   </ModularCheckout.Confirmed>
-</ModularCheckout>;
+</ModularCheckout>
 ```
-
-`ModularCheckout` is the main element providing the product context for all of the checkout modules nested under it.
 
 A list of supported modules that can be nested under `ModularCheckout`:
 
-### Checkout Cart Products
+### `CheckoutProductList`
 
-`<CheckoutCartProducts />`
-A list of items in the current checkout
+A list of items in the current checkout. By default, (unless `readOnly` prop is set to `true`) comes toger with controls allowing the user to remove products and change their quantities in the current checkout. 
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
-| --------- | ------------------------------ | ------ | -------- | ------------- |
-| className | custom CSS class name to apply | string | false    | none          |
+| prop name | description                                                        | type    | required | default value |
+| --------- | ------------------------------------------------------------------ | ------  | -------- | ------------- |
+| className | custom CSS class name to apply                                     | string  | false    | none          |
+| readOnly  | should removing from cart and changing quantities be blocked?      | boolean | false    | false         |
 
-### Checkout Customer Address Delivery
+<aside class="info">Modifications (remove, change quantity) made within <code>CheckoutProductList</code> component are scoped to the current checkout not the shopping cart. This means that after leaving the checkout page, the user will see the same
+state of the shopping cart as before entering the checkout.</aside>
 
-`<CheckoutCustomerAddressDelivery />`
+### `CheckoutCustomerAddressDelivery`
+
 A form accepting user’s delivery address
 
 Properties:
@@ -596,9 +582,8 @@ Properties:
 | submitBehavior                  | the behaviour of the form after submitting it                                        | enum    | 'collapse', 'none' | false    | 'none'        |
 | hideSubmitButton                | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
 
-### Checkout Customer Address Billing
+### `CheckoutCustomerAddressBilling`
 
-`<CheckoutCustomerAddressBilling />`
 A form accepting user’s billing address
 
 Properties:
@@ -610,10 +595,9 @@ Properties:
 | hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
 | submitBehavior   | the behavior of the form after submitting it                                         | string  | 'collapse', 'none' | false    | 'collapse'    |
 
-### Checkout Cart Summary
+### `CheckoutSummary`
 
-`<CheckoutCartSummary />`
-A summary of the total costs resulting from the checkout
+A summary of the total costs and taxes resulting from the checkout
 
 Properties:
 
@@ -621,9 +605,10 @@ Properties:
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
-### Checkout Payment
+<aside class="info">On the US market the taxes will be calculated only after delivery address is filled.</aside>
 
-`<CheckoutPayment />`
+### `CheckoutPayment`
+
 A payment section, accepting user's payment input (e.g. credit card number)
 
 Properties:
@@ -634,9 +619,8 @@ Properties:
 | hidePayButton | hides the "pay" button in Stripe payment provider form                   | boolean |                                | false    | false         |
 | dependsOn     | lets you render the component depending on the delivery form being valid | string  | 'none', 'validDeliveryAddress' | false    | 'none'        |
 
-### CheckoutCartPromoCode
+### `CheckoutCartPromoCode`
 
-`<CheckoutCartPromoCode />`
 A widget for entering promotion codes
 
 Properties:
@@ -645,9 +629,8 @@ Properties:
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
-### Checkout Legal
+### `CheckoutLegal`
 
-`<CheckoutLegal />`
 A text explaining legal terms of the purchase
 
 Properties:
@@ -656,9 +639,8 @@ Properties:
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
-### Checkout Order Processing
+### `CheckoutOrderProcessing`
 
-`<CheckoutOrderProcessing />`
 A loading animation for checkout processing
 
 Properties:
@@ -667,9 +649,8 @@ Properties:
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
-### Checkout Order Confirmation
+### `CheckoutOrderConfirmation`
 
-`<CheckoutOrderConfirmation />`
 A confirmation page displaying a summary of the completed order
 
 Properties:
@@ -743,7 +724,52 @@ const CheckoutPage2 = ({ checkout }) => (
 );
 ```
 
-## `Product List`
+## `ModularCart`
+
+The main element providing the shopping cart context for all of the shopping cart modules nested under it.
+
+```jsx
+import {
+  ModularCart,
+  CartProductList,
+  CartSummary,
+} from "@tipser/tipser-elements";
+
+<ModularCart>
+    <CartProductList />
+    <CartSummary />
+</ModularCart>
+```
+
+A list of supported modules that can be nested under `ModularCart`:
+
+### `CartProductList`
+
+A list of items in the shopping cart. By default, (unless `readOnly` prop is set to `true`) comes together with controls allowing the user to remove products and change their quantities in the shopping cart.
+
+Properties:
+
+| prop name | description                                                        | type    | required | default value |
+| --------- | ------------------------------------------------------------------ | ------  | -------- | ------------- |
+| className | custom CSS class name to apply                                     | string  | false    | none          |
+| readOnly  | should removing from cart and changing quantities be blocked?      | boolean | false    | false         |
+
+<aside class="info">As opposed to the <code>CheckoutProductList</code>, modifications (remove, change quantity) made within <code>CartProductList</code> component are affecting the shopping cart. 
+This means that these changes will be permanent and reflected on every page using the Tipser shopping cart.</aside>
+
+### `CartSummary`
+
+A summary of the total costs and taxes for the products in the shopping cart.
+
+Properties:
+
+| prop name | description                    | type   | required | default value |
+| --------- | ------------------------------ | ------ | -------- | ------------- |
+| className | custom CSS class name to apply | string | false    | none          |
+
+<aside class="info">On the US market the tax value will not be displayed as the tax value can only be calculated at the checkout phase, after the customer fills the delivery address.</aside>
+
+## `ProductList`
 
 A list of products, looking the same as `Collection` component, but instead of the `collectionId`, you need to pass the array of `productId`s. and optional `carousel` and `imgSize` attributes.
 
@@ -769,24 +795,21 @@ _example:_
 
 ## `Cart`
 
-Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.
+A cart icon element that displays the number of items in your cart and brings the user to the checkout when clicked (either by opening the checkout dialog or by redirecting to the checkout embedded page).
 
 ## `Store`
 
-Element that displays the store consisting of all your collections.
+Displays the store view consisting of all your store collections. We recommend to use it on a dedicated store subpage on your site.
 
 The `Store` element accepts additional `inlineMenu` prop, which renders mobile menu items inline, as opposed to the default dropdown one.
 
-It can be used as `Store` react component.
-
 ```js
 import { Store } from '@tipser/tipser-elements';
- ...
+ 
 <Store />
 ```
 
-Note: the `Store` component is updating the top-level page URL (when it's tabs are clicked). For this reason, please double check if it won't interfere with your web framework.
-For the same reason, it's not recommended to include more than one `<Store />` on a single page.
+<aside class="warning">When the active store category is changed, the <code>Store</code> component is updating the top-level page URL. For this reason, please make sure that it doesn't interfere with the routing system of your your web framework. For the same reason, it's not recommended to include more than one `Store` on a single page.</aside>
 
 ## Imprerative elements functions
 

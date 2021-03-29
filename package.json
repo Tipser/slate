@@ -12,8 +12,8 @@
   "scripts": {
     "build-all": "npm run build-docs && npm run build-changelog",
     "build-docs": "npm run build-docs-v2 && npm run build-docs-v3",
-    "build-docs-v2": "cd docs-v2 && bundle install && bundle exec middleman build --clean --verbose && mkdir -p ../build/v2 && cp -Rv build/ ../build/v2",
-    "build-docs-v3": "cd docs-v3 && bundle install && bundle exec middleman build --clean --verbose && mkdir -p ../build/v3 && cp -Rv build/ ../build/v3",
+    "build-docs-v2": "cd docs-v2 && bundle install && bundle exec middleman build --clean --verbose && mkdir -p ../build/v2 && cp -Rv build ../build/v2",
+    "build-docs-v3": "cd docs-v3 && bundle install && bundle exec middleman build --clean --verbose && mkdir -p ../build/v3 && cp -Rv build ../build/v3",
     "build-changelog": "changelog/scripts/generate_changelog_html.sh"
   }
 }

@@ -10,6 +10,10 @@
     "showdown": "^1.9.1"
   },
   "scripts": {
+    "build-all": "npm run build-docs && npm run build-changelog",
+    "build-docs": "npm run build-docs-v2 && npm run build-docs-v3",
+    "build-docs-v2": "cd docs-v2 && bundle exec middleman build --clean && mkdir -p ../build/v2 && cp -R build/ ../build/v2",
+    "build-docs-v3": "cd docs-v3 && bundle exec middleman build --clean && mkdir -p ../build/v3 && cp -R build/ ../build/v3",
     "build-changelog": "changelog/scripts/generate_changelog_html.sh"
   }
 }

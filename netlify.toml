@@ -1,5 +1,5 @@
 [build]
-  command = "bundle install && npm run build-all"
+  command = "BUNDLE_ALLOW_BUNDLER_DEPENDENCY_CONFLICTS=true bundle install && npm run build-all"
   publish = "build"
 
 [[redirects]]

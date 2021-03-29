@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build-all"
+  command = "bundle install && npm run build-all"
   publish = "build"
 
 [[redirects]]

@@ -16,6 +16,7 @@ includes:
   - configuration-options.md
   - tipser-elements-analytics.md
   - rest-api.md
+  - migration-guide.md
 
 
 

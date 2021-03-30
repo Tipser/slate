@@ -6,4 +6,4 @@ Need more control? Check the sections for advanced integrations, such as integra
 
 <aside class="notice">This document is a technical reference of Tipser Elements an Tipser Script. It requires some technical knowledge. For conceptual and business resources, head out to our official <a href="https://www.tipser.com/tipser-elements" target="_blank">Publisher's Guide</a>.</aside>
 
-<aside class="notice">Please note, that since Microsoft are recommending their IE11 users to switch to their new browser Edge, the Tipser Elements library is compatible with Edge 15 (and higher) as well as other popular browsers.</aside>
+<aside class="notice">Please note, that since Microsoft are recommending their IE11 users to switch to their new browser Edge, the Tipser libraries documented here are compatible with Edge 15 (and higher) as well as other popular browsers.</aside>

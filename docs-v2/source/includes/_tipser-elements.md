@@ -666,7 +666,9 @@ Properties:
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
-The elements `ModularCheckout.New`, `ModularCheckout.Processing`, `ModularCheckout.Empty` and `ModularCheckout.Confirmed` are helper elements that are used
+### `ModularCheckout.Empty`, `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmed`  
+
+The elements `ModularCheckout.Empty`, `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmed` are helper elements that are used
 to conditionally render their children only for a given checkout status. If none of these elements, will be used, all the elements passed to `ModularCheckout`
 will be rendered for every checkout status.
 
@@ -775,6 +777,23 @@ Properties:
 | className | custom CSS class name to apply | string | false    | none          |
 
 <aside class="info">On the US market the tax value will not be displayed as the tax value can only be calculated at the checkout phase, after the customer fills the delivery address.</aside>
+
+### `ModularCart.Empty` and `ModularCart.NonEmpty`  
+
+`ModularCart.Empty` and `ModularCart.NonEmpty` are helper elements that are used to conditionally render their children only for a given shopping cart status. If none of these elements is be used, all the elements passed to `ModularCart`
+will be rendered for every shopping cart status.
+
+For example, to provide a custom empty cart information:
+
+```jsx
+<ModularCart>
+    <ModularCart.Empty>The shopping cart is empty, please add some products first!</ModularCart.Empty>
+    <ModularCart.NonEmpty>
+        <CartProductList />
+        <CartSummary />
+    </ModularCart.NonEmpty>
+</ModularCart>
+```
 
 ## `ProductList`
 

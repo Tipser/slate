@@ -817,8 +817,6 @@ In case you need to open Tipser dialogs from the code or perform operations like
 
 <aside class="info">Typical use case for calling the actions described here is when you want to build your own implementation of some of the components, e.g. the product tile component or the cart icon component.</aside>
 
-<aside class="warning">The below functions will work correctly only with <code>openOldDialog: false</code> setting in the configuration.</aside>
-
 All the below functions are accessible from `useInternalFunctions` hook to every component living in the context of `TipserElementsProvider`.
 
 ```js

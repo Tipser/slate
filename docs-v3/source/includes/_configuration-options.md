@@ -1,22 +1,11 @@
 #Configuration options
 
 
-Both Tipser Elements and Tipser SDK initialization functions accept configuration object as a second parameter. 
-
-
-Tipser Elements example:
+Tipser Script initialization function accepts configuration object as a second parameter. The same configuration can be passed to the `config` prop of `TipserElementsProvider`.
 
 ```javascript
 const tipserElements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
 ```
-
-Tipser SDK Example:
-
-```javascript
-const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
-```
-
-The example connects Tipser SDK and sets primary color to `#0000FF`.
 
 All the available configuaration options are: 
 
@@ -25,11 +14,9 @@ const configurationOptions = {
   primaryColor: "#0000FF",
   env: "stage",
   lang: 'en-US',
-  openOldDialog: false,
   addToCartSettings: {
       directToCheckoutMode: false,
   },
-  useDeepLinking: false,
   customLabels: {
     buy: "buy now!",
     unavailable: "not available",
@@ -86,7 +73,7 @@ They will be described in the following sections.
 If you'd like to unify our design with your own color-theme, you can use our primary color configuration option to change the color of `buy` buttons in Product and indicator of items number in Cart. You only need to make sure to use the right hex color code.
 
 ```javascript
-const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#5F9F9F"});
+const elements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#5F9F9F"});
 ```
 
 [![](primary-color.png)](/images/primary-color.png)
@@ -120,12 +107,6 @@ By default, Tipser Elements connect to production Tipser environment. Yet if tes
 ```
 
 It affects all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It does not affect the currency in which the customer will pay for the product.
-
-***
-
-## Open Old Dialog
-
-If you set this option to `false`, you will have an early access the new Product Dialog (after clicking product tile eg. in a collection), which is based entirely on Tipser Elements and not opened in an iframe. Therefore, it is much easier to style via CSS overwrite. New product dialog will allow some new features and better User Experience compared to the one used previously. Consequently, the old product dialog will be deprecated soon, which will be communicated ahead to every POS through an appropriate channels.
 
 ***
 

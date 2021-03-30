@@ -71,13 +71,11 @@ Complete working example could look like:
     <div id="tipser_store"></div>
     <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
     <script>
-      tipser.elements("posId", {lang: "en-US", openOldDialog: "false"});
+      tipser.elements("posId", {lang: "en-US"});
     </script>
   </body>
 </html>
 ```
-
-<aside class="info">We recommend every new implementation of Tipser Script to enable new modal dialogs implementation by setting <code>openOldDialog</code> to <code>false</code>, as in the snippet above. (In the next major release this implementation will be active by default)</aside>
 
 If everything was setup correctly, you should see the `Store` element populated with all your collections in place of `<div id="tipser_store">`.
 
@@ -453,8 +451,6 @@ In case you need to open Tipser dialogs from the code or perform operations like
 
 <aside class="info">Typical use case for calling the actions described here is when you want to build your own implementation of some of the components, e.g. the product tile component or the cart icon component.</aside>
 
-<aside class="warning">The below functions will work correctly only with <code>openOldDialog: false</code> setting in the configuration.</aside>
-
 All the below functions are accessible from the Tipser Script instance:
 
 ```js
@@ -535,7 +531,6 @@ All configuration supported by Tipser Elements is listed below.
 | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------    |
 | lang                    | `'en-US'` | a locale to be used by the Tipser content. Possible values: `'en-US'`, `'de-DE'`, `'fr-FR'` and `'sv-SE'`. More info at [Language and locale](#language-and-locale)[Environment](#environment) | `'de-DE'`                                 |
 | env                     | `'prod'`  | Tipser environment to be used by the Tipser content. Possible values: `'stage'` and `'prod'`. More info at [Environment](#environment)                                                         | `'stage'`                                 |
-| openOldDialog           | `true`    | Enables the new implementation of modal dialogs. It is much recommended for the new users to set it to `false`.                                                                                | `false`                                   |
 | defaultAddedToCartPopup | `true`    | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.    | `true` or `false`                         |
 | useDefaultErrorHandler  | `true`    | when set to false and error happens, default message won't be displayed                                                                                                                        | see [Adding onError handler](#onerror)    |
 | eventsHandlers          | `{}`      | the object of event handlers. See [Event handlers](#event-handlers)                                                                                                                            | `{ onError: console.error.bind(console) }`|

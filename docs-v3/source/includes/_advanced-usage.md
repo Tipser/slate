@@ -14,7 +14,7 @@ After the transaction is finalized, the string passed as `posData` will be avail
 
 <aside class="notice">Because <code>posData</code> is treated as a string in the Tipser system, then if you need to store a structured data (a common use case), please call <code>JSON.stringify()</code> function on a JS object before passing it to Tipser (see: the examples below) and parse it back to JS object when receiving it back.</aside>
 
-There are three ways to enable `posData`:
+There are two ways to enable `posData`:
 
 
 Option 1: As a global configuration setting that is passed to Elements/SDK initialization (good for static data, like the release number):
@@ -35,9 +35,9 @@ const someData = JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be
 tipserScript.updateConfig({posData: someData});
 ``` 
 
-in Elements: 
+in Tipser Elements: 
 
-Just update the value passed to the config prop of TipserElementsProvider in the next render cycle:
+Just update the value passed to the config prop of `TipserElementsProvider` in the next render cycle:
 
 ```javascript
 const someData = JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"});
@@ -50,17 +50,7 @@ return <TipserElementsProvider config={elementsConfigWithPosData}>
 
 This will apply for the next and all the subsequent products added to cart.
 
-<aside class="notice">The timing of calling <code>setPosData</code> is relevant. The <code>posData</code> is being sent in the Tipser backend with the add to cart API request. This means that to have any effect, <code>setPosData</code> needs to be called <strong>before</strong> the product is added to cart (either from the API or by user's action).</aside>
-
-Option 3: In the second parameter of `addToCart` or `openDirectToCheckoutDialog` function (convenient if each product added to cart needs to have a different value of `posData`):
-<aside class="warning">Please note, that Tipser SDK is deprecated</aside>
-
-```javascript
-const addToCartOptions = {
-  posData: JSON.stringify({sessionId: "5fa01be88b51", userId: "5fa01bfd3be2"})
-};
-tipserSdk.addToCart(productId, addToCartOptions);
-``` 
+<aside class="notice">The timing of calling <code>setPosData</code> is relevant. The <code>posData</code> is being sent in the Tipser backend with the add to cart API request. This means that to have any effect, <code>setPosData</code> needs to be called <strong>before</strong> the product is added to cart (either from the API or by user's action).</aside> 
 
 <aside class="warning">Warning: for performance reasons, the number of characters in <code>posData</code> is limited to 4000. Longer strings will be truncated down to 4000 characters.</aside>
 
@@ -121,45 +111,6 @@ const customSubmit = () => {
   // for payment submition use:
     checkoutContext.payment.paymentForm.submit();
 };
-```
-
-## Accessing Tipser SDK
-
-<aside class="warning">Please note, that Tipser SDK is deprecated. Until Q2 2021 we plan to stop bug fixing and in Q3 2021 we'll stop supporting it altogether. The following documentation is for users who are currently in transition to Tipser Elements. If you need help with choosing the right Tipser solution to fit your technology stack, please contact us at <a href="mailto:tech@tipser.com">tech@tipser.com</a></aside>
-
-
-Low level operations, like programatically opening Tipser dialogs can be done by using the underlying [Tipser SDK](#tipser-sdk) instance, which is a part of the Tipser Elements library.
-
-__If you use Tipser Elements:__
-
-```javascript
-const elements = tipser.elements(posId, config);
-elements.sdkInstance.openProductDialog(productId);
-```
-
-__If you use Tipser React Elements:__
-
-1. Create a custom React component and mount it anywhere under `TipserElementsProvider` in React elements hierarchy.
-2. Inside that component you can use tipserSdk instance from the context `TipserContext`. This how it can be done with [React Hooks](https://reactjs.org/docs/hooks-intro.html):
-
-
-```javascript
-import { useTipserSdk } from `@tipser/tipser-elements`;
-
-const DialogOpener = () => {
-  const sdk = useTipserSdk();
-  
-  useEffect(() => { sdk.openProductDialog(productId); }, []);
-}
-```
-
-This will only work if the `DialogOpener` component is under `TipserElementsProvider` in React components hierarchy: 
-
-```html
-<TipserElementsProvider>
-  <!-- Any number of other components -->
-  <DialogOpener />
-</TipserElementsProvider>
 ```
 
 ***

@@ -1,3 +1,3 @@
 # Migration guide
 
-Migration guide will come here.
+The migration guide will be here soon.

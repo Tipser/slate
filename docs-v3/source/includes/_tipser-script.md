@@ -173,7 +173,6 @@ Below is an example HTML snippet that renders a modular product with an image, t
 
 ```html
 <div
-  id="modular-product-root"
   data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
 >
   <div data-tipser-modular-product-image></div>
@@ -205,7 +204,6 @@ Displays the full-size version of the currently selected product image.
 
 ```html
 <div
-  id="modular-product-root"
   data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
 >
   <div data-tipser-modular-product-image></div>
@@ -226,7 +224,6 @@ Displays the product thumbnails.
 
 ```html
 <div
-  id="modular-product-root"
   data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
 >
   <div data-tipser-modular-product-thumbnails></div>

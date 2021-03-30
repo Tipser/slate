@@ -1,13 +1,39 @@
 [build]
-  command = "middleman build --clean && npm run build-changelog"
+  command = "npm run build-all"
   publish = "build"
 
 [[redirects]]
- from = "/docs"
- to = "index.html"
- status = 200
+  from = "/docs"
+  to = "/docs/v2"
+  status = 302
+  force = true
 
- [[redirects]]
+[[redirects]]
+  from = "/docs"
+  to = "/docs/v3"
+  status = 200
+
+[[redirects]]
+  from = "/docs/v3"
+  to = "/v3/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/docs/v3/*"
+  to = "/v3/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/docs/v2"
+  to = "/v2/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/docs/v2/*"
+  to = "/v2/:splat"
+  status = 200
+
+[[redirects]]
   from = "/changelog"
   to = "changelog.html"
   status = 200

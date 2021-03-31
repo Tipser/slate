@@ -1,6 +1,8 @@
 # Introduction
 
-This docs describes versions 3.x of Tipser Script and Tipser Elements. If you still use versions 2.x, please refer to the [Migration Guide](#migration-guide) chapter or switch to the [2.x docs page](/docs/v2).
+<aside class="warning">
+This docs describes versions 3.x of Tipser Script and Tipser Elements. If you still use versions 2.x, please refer to the <a href="#migration-guide">Migration Guide</a> chapter or switch to the <a href="/docs/v2">2.x docs page</a>.
+</aside>
 
 You can integrate Tipser in your website in multiple ways. The fastest way is to use [Tipser Script](#tipser-script) or [Tipser Elements](#tipser-elements) - a complete toolkit of native commerce experience that requires less than 5 minutes of tech setup.
 

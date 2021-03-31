@@ -1,6 +1,6 @@
 #Tipser Script
 
-Tipser Script is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and [Tipser Elements](#tipser-elements). It introduces support for several special attributes in your HTML code, and a runtime HTML scanner that will replace nodes marked with these attributes with the corresponding E-commerce elements.
+Tipser Script is a set of shoppable elements built on top of Tipser <a href="https://developers.tipser.com/rest-api" target="_blank">REST API</a> and [Tipser Script](#tipser-elements). It introduces support for several special attributes in your HTML code, and a runtime HTML scanner that will replace nodes marked with these attributes with the corresponding E-commerce elements.
 
 A few basic examples:
 
@@ -9,33 +9,33 @@ A few basic examples:
 - **Store** (activated by `tipser_store` value of the id attribute) - a shop view displaying the inventory of buyable products, grouped by categories
 - **Cart** - cart icon with easy access to the cart and checkout
 
-![Tipser Elements Script](https://images.ctfassets.net/i8t5uby4h6ds/5PibEm4ryfOXZHxZtZDEXd/f604521da24ce17b93bfd3c24a87e619/collection-small.png)
+![Tipser Script](https://images.ctfassets.net/i8t5uby4h6ds/5PibEm4ryfOXZHxZtZDEXd/f604521da24ce17b93bfd3c24a87e619/collection-small.png)
 
 ---
 
 ## Quick start
 
-This quick guide explains how to initialize and render Tipser Elements Script on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
+This quick guide explains how to initialize and render Tipser Script on your page. It requires you to have a publisher account created in order to get the `posId`, as well as have some collections created in your shop <a href="https://app.tipser.com/" target="_blank">here</a>.
 
-If you're all set up, follow these three steps to install Tipser Elements on your site!
+If you're all set up, follow these three steps to install Tipser Script on your site!
 
 ---
 
-### Installation of Tipser Elements Script
+### Installation of Tipser Script
 
-To use Tipser Elements on your site, add the following script to your page. This is an entry point to Tipser Elements that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
+To use Tipser Script on your site, add the following script to your page. This is an entry point to Tipser Script that exposes a global `tipser` object, that you will use later to initialize Elements and customize its behavior.
 
 ```html
 <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
 ```
 
 <aside class="notice">
-Make sure, that Tipser Elements script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load the scripts at the end of the <code>body</code> element on your page so that the rendering is not blocked by JavaScript parsing. 
+Make sure, that Tipser script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load the scripts at the end of the <code>body</code> element on your page so that the rendering is not blocked by JavaScript parsing. 
 </aside>
 
 ---
 
-### Inserting Tipser Element
+### Inserting Store Element
 
 Insert this HTML snippet on your page in the place where you want the `Store` element to be rendered. Typically, this will be a new blank subpage created in your CMS, as the `Store` is best displayed in the full page mode.
 
@@ -43,7 +43,7 @@ Insert this HTML snippet on your page in the place where you want the `Store` el
 <div id="tipser_store"></div>
 ```
 
-<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
+<aside class="notice">Tipser Script works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 ***
 
 ## Initializing Tipser Script
@@ -62,7 +62,7 @@ If you need to pass custom settings (see: [configuration](#configuration-options
 tipser.elements("posId", options);
 ```
 
-Complete working example could look like:
+A complete working example could look like below:
 
 ```html
 <!DOCTYPE html>
@@ -85,7 +85,7 @@ If everything was setup correctly, you should see the `Store` element populated 
 
 > <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
 
-<aside class="success">Congratulations! You have successfully integrated and setup Tipser Elements on your site.</aside>
+<aside class="success">Congratulations! You have successfully integrated and setup Tipser Script on your site.</aside>
 
 ---
 
@@ -94,11 +94,30 @@ If everything was setup correctly, you should see the `Store` element populated 
 The `elements` initialization function accepts two arguments.
 
 ```ts
-tipser.elements(posId: string, config?: TipserElementsConfig)
+tipser.elements(posId: string, config?: object)
 ```
 
 - `posId` - **required** - a unique Tipser publisher identifier. Must be specified in order to show your personalized store, show discounted product prices according to your current campaigns and - most important of all - grant you commissions for every purchase on your site! If you are not sure where to get it from, contact your account manager.
-- `config` - allows you to specify how Tipser Elements will look and behave on your site. See the [Configuration options](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
+- `config` - allows you to specify how Tipser Script will look and behave on your site. See the [Configuration options](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
+
+<aside class="notice">
+Please, make sure, that <code>tipser.elements()</code> function is called only once, after the page is loaded. If you need to use the Tipser Script instance in several places in your code, feel free
+to assign it to a variable (even a global one, if needed) and refer to it further in the code.
+</aside>
+
+For example:
+
+```js
+window.tipserScript = tipser.elements();
+```
+
+And then at some other place in the code:
+
+```js
+const onButtonClicked = () => {
+    window.tipserScript.goToProduct(productId);
+}
+```
 
 ---
 
@@ -353,6 +372,8 @@ This section displays a list of items in the current checkout.
 
 This form accepts User's delivery address details.
 
+<aside class="info">This component is only available for integrations using Stripe as the payment provider. In case of Klarna, <code>data-tipser-modular-checkout-payment</code> contains its own fields for entering delivery and billing address</aside>
+
 ```html
 <div data-tipser-modular-checkout-customer-address-delivery></div>
 ```
@@ -368,6 +389,8 @@ It also accepts attributes that change the appearance and/or functionality of th
 ### Checkout Customer Billing Address form
 
 This form accepts User's billing address details.
+
+<aside class="info">This component is only available for integrations using Stripe as the payment provider. In case of Klarna, <code>data-tipser-modular-checkout-payment</code> contains its own fields for entering delivery and billing address</aside>
 
 ```html
 <div data-tipser-modular-checkout-customer-address-billing></div>
@@ -391,7 +414,7 @@ A section with a summary of the total costs resulting from the checkout.
 
 ### Checkout Payment
 
-A payment section, accepting user's payment input (e.g. credit card number).
+A payment section, accepting user's payment input (e.g. credit card number). In case of Klarna integrations, this component will additionally contain delivery and billing address forms.
 
 ```html
 <div data-tipser-modular-checkout-payment></div>
@@ -440,7 +463,7 @@ An element with text explaining legal terms of the purchase.
 
 ## Versioning
 
-Tipser Elements follows <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. This means that an increase in the major number in our version indicates potential <b>breaking changes</b>. Please be aware of that! For the react version, it is recommended to auto-update to the latest version with the same major number (see the caret (^) character in `package.json` file described <a href="https://stackoverflow.com/a/22345808" target="_blank">here</a>).
+Tipser Script follows <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. This means that an increase in the major number in our version indicates potential <b>breaking changes</b>. Please be aware of that! For the react version, it is recommended to auto-update to the latest version with the same major number (see the caret (^) character in `package.json` file described <a href="https://stackoverflow.com/a/22345808" target="_blank">here</a>).
 
 <aside class="warning">Be aware, that <code>latest.js</code> distribution of Tipser Script is always usuing to the most recent version of the code. To avoid that, you can fix your implementation to the specific version of Tipser Script, e.g. by using URL like <code>https://cdn.tipser.com/tipser-script/2.2.14.js</code></aside>
 
@@ -526,7 +549,7 @@ Adds to cart a product with a given Tipser product id and then opens the checkou
 
 ## API reference
 
-All configuration supported by Tipser Elements is listed below.
+All configuration supported by Tipser Script is listed below.
 
 | Parameter               | Default   | Description                                                                                                                                                                                    | Example                                   |
 | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------    |
@@ -546,7 +569,7 @@ All configuration supported by Tipser Elements is listed below.
 
 ### Event handlers
 
-Event handlers can be passed as part of configuration. There is a number of event exposed by the Tipser Elements that can be listened to programatically, such as technical events, shopping behavior, errors and analytics. You may hook in your event listener into Tipser Elements via `eventsHandlers` option.
+Event handlers can be passed as part of configuration. There is a number of event exposed by the Tipser Script that can be listened to programatically, such as technical events, shopping behavior, errors and analytics. You may hook in your event listener into Tipser Script via `eventsHandlers` option.
 
 ```js
 tipser.elements("posId", {
@@ -559,7 +582,7 @@ tipser.elements("posId", {
 });
 ```
 
-Whenever an event occurs, Tipser Elements will call your event listener, passing only one argument - `payload` - which will hold event data (different to each event type). Above example demonstrates how to listen to the add to cart event and log current cart size and newly added product. Currently supported handlers are: `onAddToCart` and `onError`.
+Whenever an event occurs, Tipser Script will call your event listener, passing only one argument - `payload` - which will hold event data (different to each event type). Above example demonstrates how to listen to the add to cart event and log current cart size and newly added product. Currently supported handlers are: `onAddToCart` and `onError`.
 
 ---
 
@@ -682,7 +705,7 @@ If you'd like to change other elements' color as well, please use specific class
 
 ## Starter projects
 
-A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/" target="_blank">Tipser Widget Bootstrap page</a>.
+A working examples of page based on Tipser Script can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/" target="_blank">Tipser Script Bootstrap page</a>.
 
-The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap" target="_blank">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!
+The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap" target="_blank">Tipser Script Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!
 

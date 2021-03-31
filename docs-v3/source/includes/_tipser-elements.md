@@ -579,6 +579,8 @@ state of the shopping cart as before entering the checkout.</aside>
 
 A form accepting user’s delivery address
 
+<aside class="info">This component is only available for integrations using Stripe as the payment provider. In case of Klarna, <code>CheckoutPayment</code> contains its own fields for entering delivery and billing address</aside>
+
 Properties:
 
 | prop name                       | description                                                                          | type    | values             | required | default value |
@@ -591,6 +593,8 @@ Properties:
 ### `CheckoutCustomerAddressBilling`
 
 A form accepting user’s billing address
+
+<aside class="info">This component is only available for integrations using Stripe as the payment provider. In case of Klarna, <code>CheckoutPayment</code> contains its own fields for entering delivery and billing address</aside>
 
 Properties:
 
@@ -615,7 +619,7 @@ Properties:
 
 ### `CheckoutPayment`
 
-A payment section, accepting user's payment input (e.g. credit card number)
+A payment section, accepting user's payment input (e.g. credit card number). In case of Klarna integrations, this component will additionally contain delivery and billing address forms.
 
 Properties:
 

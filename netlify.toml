@@ -3,6 +3,12 @@
   publish = "build"
 
 [[redirects]]
+  from = "/"
+  to = "/docs/v2"
+  status = 302
+  force = true
+
+[[redirects]]
   from = "/docs"
   to = "/docs/v2"
   status = 302
@@ -37,12 +43,6 @@
   from = "/changelog"
   to = "changelog.html"
   status = 200
-
-[[redirects]]
-  from = "http://tipser.dev"
-  to = "https://developers.tipser.com"
-  status = 302
-  force = true
 
 [[redirects]]
   from = "https://tipser.dev"

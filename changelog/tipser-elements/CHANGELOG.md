@@ -4,6 +4,11 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.4] - 2021-04-01
+
+### Changed
+- The error object returned from failed promises (e.g. from the "internal functions", like `addToCart`) has now a simple structure of `{id: string, message: string}`
+
 ## [2.3.3] - 2021-03-31
 
 ### Changed

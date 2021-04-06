@@ -15,18 +15,29 @@
   force = true
 
 [[redirects]]
-  from = "/docs"
-  to = "/docs/v3"
+from = "/docs/v3"
+to = "/docs/v3/script"
+status = 302
+force = true
+
+[[redirects]]
+  from = "/docs/v3/script"
+  to = "/v3/script/index.html"
   status = 200
 
 [[redirects]]
-  from = "/docs/v3"
-  to = "/v3/index.html"
+  from = "/docs/v3/elements"
+  to = "/v3/elements/index.html"
   status = 200
 
 [[redirects]]
-  from = "/docs/v3/*"
-  to = "/v3/:splat"
+  from = "/docs/v3/script/*"
+  to = "/v3/script/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/docs/v3/elements/*"
+  to = "/v3/elements/:splat"
   status = 200
 
 [[redirects]]
@@ -43,20 +54,4 @@
   from = "/changelog"
   to = "changelog.html"
   status = 200
-
-[[redirects]]
-  from = "https://tipser.dev"
-  to = "https://developers.tipser.com"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "http://tipser.dev/*"
-  to = "https://developers.tipser.com/:splat"
-  status = 302
-
-[[redirects]]
-  from = "https://tipser.dev/*"
-  to = "https://developers.tipser.com/:splat"
-  status = 302
 

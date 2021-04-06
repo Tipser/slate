@@ -11,11 +11,18 @@
   },
   "scripts": {
     "build": "npm run build-docs && npm run build-changelog",
-    "build-docs": "npm run build-docs-v2 && npm run build-docs-v3",
+    "build-docs": "npm run build-docs-v2 && npm run build-docs-v3-script && npm run build-docs-v3-elements",
     "build-docs-v2": "cd docs-v2 && bundle exec middleman build --clean && mkdir -p ../build/v2 && cp -R build/. ../build/v2",
-    "build-docs-v3": "cd docs-v3 && bundle exec middleman build --clean && mkdir -p ../build/v3 && cp -R build/. ../build/v3",
+    "build-docs-v3": "concurrently \"npm run build-docs-v3-script\" \"npm run build-docs-v3-elements\"",
+    "build-docs-v3-script": "cd docs-v3/script && bundle exec middleman build --clean && mkdir -p ../../build/v3/script && cp -R build/. ../../build/v3/script",
+    "build-docs-v3-elements": "cd docs-v3/elements && bundle exec middleman build --clean && mkdir -p ../../build/v3/elements && cp -R build/. ../../build/v3/elements",
     "build-docs-v2:watch": "npx nodemon -w docs-v2/source -e md -x \"npm run build-docs-v2\"",
-    "build-docs-v3:watch": "npx nodemon -w docs-v3/source -e md -x  \"npm run build-docs-v3\"",
+    "build-docs-v3:watch": "concurrently \"npm run build-docs-v3-script:watch\" \"npm run build-docs-v3-elements:watch\"",
+    "build-docs-v3-script:watch": "npx nodemon -w docs-v3/script/source -e md -x  \"npm run build-docs-v3-script\"",
+    "build-docs-v3-elements:watch": "npx nodemon -w docs-v3/elements/source -e md -x  \"npm run build-docs-v3-elements\"",
     "build-changelog": "changelog/scripts/generate_changelog_html.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
   }
 }

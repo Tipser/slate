@@ -11,11 +11,11 @@ includes:
   - overview.md
   - tipser-script.md
   - tipser-elements.md
-  - advanced-usage.md
+  - advanced.md
   - embedded-mode.md
   - tipser-sdk.md
-  - configuration-options.md
-  - tipser-elements-analytics.md
+  - configuration.md
+  - analytics.md
   - rest-api.md
 
 

@@ -96,7 +96,7 @@ addToCart(productId: string, options: {posData?: string}): Promise<void>
 
 Adds a product with a given productId (specific to Tipser) to a cart.
 
-`productId`: string, with the stucture described [here](#the-script-api).
+`productId`: string, with the structure described [here](#the-format-of-product-ids).
 
 `options`: currently the only supported option is [posData](#publisher-data), which is a string to be attached to a product order.
 
@@ -168,7 +168,7 @@ By using the method `Direct To Checkout`, you add a product to the cart, at the 
  
 Adds the product with a given id to the shopping cart and then opens Tipser purchase (checkout) dialog with products that are currently in the shopping cart (including the newly added product).
 
-`productId`: string, with the stucture described [here](#the-script-api).
+`productId`: string, with the stucture described [here](#the-format-of-product-ids).
 
 
 `options`: currently the only supported option is [posData](#publisher-data), which is a string to be attached to a product order.

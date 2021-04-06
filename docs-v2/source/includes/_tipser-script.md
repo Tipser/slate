@@ -305,7 +305,7 @@ To make the collection items smaller / larger use the `data-tipser-imgsize` attr
 
 If you'd like the collection of more than several products to take less space, you can display it as one-row only carousel element. To do that, please use `data-tipser-carousel` attribute.
 
-[![](collection-carousel.png)](/images/colltion-carousel.png)
+[![](collection-carousel.png)](/images/collection-carousel.png)
 
 > <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
 
@@ -559,10 +559,10 @@ All configuration supported by Tipser Script is listed below.
 | defaultAddedToCartPopup | `true`    | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.    | `true` or `false`                         |
 | useDefaultErrorHandler  | `true`    | when set to false and error happens, default message won't be displayed                                                                                                                        | see [Adding onError handler](#onerror)    |
 | eventsHandlers          | `{}`      | the object of event handlers. See [Event handlers](#event-handlers)                                                                                                                            | `{ onError: console.error.bind(console) }`|
-| useDeepLinking          | `true`    | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking)                                                                | `false`                                   |
-| modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                |
+| useDeepLinking          | `true`    | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#deep-linking)                                                                | `false`                                   |
+| modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-old-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                |
 | primaryColor            | `#333`    | Hex color code, affecting eg. buy-button color and Cart indicator                                                                                                                              | #5F9F9F                                   |
-| disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening the product dialog (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section) | `false`                                   |
+| disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening the product dialog (read more at: [Embedding Elements in native apps](#native-apps) section) | `false`                                   |
 | disableAnalytics        | `false`   | If set to `true`, all Tipser analytics requests will be blocked (no events to Analytics and stats.tipser.com will be sent)                                                                     | `true`                                    |
 
 ---

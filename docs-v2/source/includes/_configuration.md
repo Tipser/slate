@@ -91,7 +91,7 @@ const tipserSdk = TipserSDK("59e86b79b8f3f60a94ecd26a", {primaryColor: "#5F9F9F"
 
 [![](primary-color.png)](/images/primary-color.png)
 
-* If your primary color is bright, you may consider changing also the text color for elements like buttons via CSS overrides of element's specific class [(examples)](#customizing-tipser-elements-styles). 
+* If your primary color is bright, you may consider changing also the text color for elements like buttons via CSS overrides of element's specific class [(examples)](#customizing-the-styles). 
 
 
 ***
@@ -167,7 +167,7 @@ const tipserOptions = {
 
 ## POS data
 
-Go to [this](#adding-pos-data) section to see the usage.
+Go to [this](#pos-data) section to see the usage.
 
 ***
 

@@ -1,6 +1,10 @@
 # Tipser Elements
 
-Tipser Elements is a component library from Tipser enabling you to add shoppable content to your React APP with minimal effort. You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.
+Tipser Elements is a React library provided by Tipser enabling you to add shoppable content to your React app connected to Tipser e-commerce system with minimal effort.
+
+<aside class="notice">
+Not using React? Please use <a href="#tipser-script">Tipser Script</a> library instead, which is designed to be used in non-React projects. 
+</aside>
 
 <aside class="notice">
 Not using React? Looking for an overview on Tipser Elements? Go check <a href="#tipser-script">Tipser Script</a> docs. This section covers only <strong>React API</strong> for Elements. 
@@ -116,8 +120,8 @@ All properties are optional:
 | useDefaultErrorHandler  | `true`    | when set to false and error happens, default message won't be displayed                                                                                                                        | see [Adding onError handler](#onerror)     |
 | eventsHandlers          | `{}`      | the object of event handlers. See [Event handlers](#event-handlers)                                                                                                                            | `{ onError: console.error.bind(console) }` |
 | useDeepLinking          | `true`    | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#deep-linking):                                                                   | `false`                                    |
-| modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                 |
-| disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening product dialogs (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section)    | `false`                                    |
+| modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-old-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                 |
+| disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening product dialogs (read more at: [Embedding Elements in native apps](#native-apps) section)    | `false`                                    |
 | disableAnalytics        | `false`   | If set to `true`, all Tipser analytics requests will be blocked (no events to Analytics and stats.tipser.com will be sent)                                                                     | `true`                                     |
 | enableCheckoutV2        | `false`   | If set to `true`, the more robust v2 version of Tipser Checkout API is used (recommended)                                                                                                      | `true`                                     |
 

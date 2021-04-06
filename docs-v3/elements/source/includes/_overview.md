@@ -5,7 +5,7 @@
 Tipser Elements is a React library provided by Tipser enabling you to add shoppable content to your React app connected to Tipser e-commerce system with minimal effort.
 
 <aside class="notice">
-Not using React? Please use <a href="#tipser-script">Tipser Script</a> library instead, which is designed to be used in non-React projects. 
+Not using React? Please use <a href="/v3/script">Tipser Script</a> library instead, which is designed to be used in non-React projects. 
 </aside>
 
 <aside class="warning">

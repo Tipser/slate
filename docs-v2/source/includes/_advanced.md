@@ -166,13 +166,13 @@ This will only work if the `DialogOpener` component is under `TipserElementsProv
 
 ## Buyable banners
 
- [![](buyable-banners.gif)](buyable-banners.gif)
+ [![](buyable-banners.gif)](/images/buyable-banners.gif)
  
  Tipser dialogs can be opened by the banners on your site. That way you can use your banners for E-commerce. 
  
  To connect your banner to Tipser, you need to do the following two steps:
  
- 1. follow the instructions from [Initializing Tipser Elements](#initializing-tipser-elements)
+ 1. follow the instructions from [Initializing Tipser Elements](#initializing-tipser-script)
  2. Add the line of javascript posted below to you banner. It should be invoked when the banner is clicked. 
    
  __To display product dialog:__
@@ -188,7 +188,7 @@ __To open the checkout view for a product directly:__
 
 ```
  
- Check [this](#getting-tipser-product-id-and-collection-id) section to learn how to obtain the `tipserProductId`.
+ Check [this](#getting-tipser-ids) section to learn how to obtain the `tipserProductId`.
  
  <a href="https://bbc-bootstrap.netlify.com/" target="_blank">Live demo</a>
  

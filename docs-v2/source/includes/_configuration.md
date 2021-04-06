@@ -1,13 +1,13 @@
 #Configuration options
 
 
-Both Tipser Elements and Tipser SDK initialization functions accept configuration object as a second parameter. 
+Both Tipser Elements and Tipser Script initialization functions accept configuration object as a second parameter. 
 
 
 Tipser Elements example:
 
 ```javascript
-const tipserElements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
+const tipserScript = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
 ```
 
 Tipser SDK Example:

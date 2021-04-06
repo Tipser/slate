@@ -192,12 +192,12 @@ Entry point to Tipser Elements (providing a context for other elements living in
 | prop name | description                                                                                                      | type   | required | default value    |
 | --------- | ---------------------------------------------------------------------------------------------------------------  | ------ | -------- | ---------------- |
 | posId     | id of Point of sale                                                                                              | string | true     |                  |
-| config    | configuration object (see [definition here](#all-configuration-options-of-tipser-react-elements))                | object | false    | {}               |
+| config    | configuration object (see [definition here](#configuration-options))                | object | false    | {}               |
 | history   | a history implementation specific for your web framework, needed for soft redirects instead of full page reloads | object | false    | `window.history` |
 
 ## `Product`
 
-Displays a tile or a listing for the product specified by the [productId](#getting-tipser-product-id-and-collection-id) prop. Comes in three different flavours, described below.
+Displays a tile or a listing for the product specified by the [productId](#getting-tipser-ids) prop. Comes in three different flavours, described below.
 
 **Product tile** - a small, rectangular product preview with the title, the price and the buy button. When clicked (over the buy button or anywhere else), it opens a dialog with product details.
 
@@ -217,7 +217,7 @@ _Example:_
 
 | prop name | description                                                   | type                       | required | default value |
 | --------- | ------------------------------------------------------------- | -------------------------- | -------- | ------------- |
-| productId | [where to find](#getting-tipser-product-id-and-collection-id) | string                     | true     | none          |
+| productId | [where to find](#getting-tipser-ids) | string                     | true     | none          |
 | viewMode  | enables full or compact product display                       | string ('full', 'compact') | false    | 'full'        |
 
 _example:_
@@ -230,7 +230,7 @@ _example:_
 
 ## `Collection`
 
-Renders a collection of product tiles based on [collectionId](#getting-tipser-product-id-and-collection-id) prop.
+Renders a collection of product tiles based on [collectionId](#getting-tipser-ids) prop.
 
 If the collection has many elements and you want to display it in one row as a collection, you need to add `carousel` prop. You can also use 'imgSize' prop to control the size of displayed product tiles. [Learn more](#collection-element).
 
@@ -246,7 +246,7 @@ _example:_
 
 | prop name    | description                                                   | type                                  | required | default value |
 | ------------ | ------------------------------------------------------------- | ------------------------------------- | -------- | ------------- |
-| collectionId | [where to find](#getting-tipser-product-id-and-collection-id) | string                                | true     | none          |
+| collectionId | [where to find](#getting-tipser-ids) | string                                | true     | none          |
 | carousel     | enables carousel display                                      | boolean                               | false    | false         |
 | imgSize      | changes the size of single product tile                       | string ('small', 'medium' or 'large') | false    | none          |
 

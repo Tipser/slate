@@ -8,10 +8,10 @@ If you're all set up, follow the three steps below to install Tipser Script on y
 
 ## Installation of Tipser Script
 
-To include Tipser Script on your site, use the following `script` element. It exposes a global `tipser` variable that can be used to initialize and configure Tipser Script.
+To include Tipser Script on your site, use the following `script` element. It exposes a global `tipserScript` variable that can be used to initialize and configure Tipser Script.
 
 ```html
-<script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
+<script src="https://cdn.tipser.com/tipser-script/v3-dev/tipser-script.min.js"></script>
 ```
 
 <aside class="notice">
@@ -25,7 +25,7 @@ Make sure that Tipser Script is <strong>loaded only once on your page</strong>. 
 Insert this HTML tag on your page in the place where you want the store to appear. For a good effect you may want to put it on a dedicated subpage, as larger stores may occupy a significant space on the page.
 
 ```html
-<div id="tipser_store"></div>
+<div data-tipser-store></div>
 ```
 
 <aside class="notice">Tipser Script works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
@@ -62,7 +62,7 @@ A complete working example could look like below:
 </html>
 ```
 
-If everything was done correctly, you should see the `Store` element populated with all your store collections in place of the `<div id="tipser_store">` tag.
+If everything was done correctly, you should see the `Store` element populated with all your store collections in place of the `<div data-tipser-store></div>` tag.
 
 [![](../images/tipser_elements_store.png)](/images/tipser_elements_store.png)
 

@@ -45,14 +45,14 @@ Before you insert Store on your page, make sure there is at least one collection
 Insert the following HTML snippet in your code in the place where you want the `Store` element to be rendered.
 
 ```html
-<div id="tipser_store"></div>
+<div data-tipser-store></div>
 ```
 
 For more fitting mobile experience you can choose between two types of mobile menu. The default one is a dropdown with categories.
 The optional menu renders inline menu items, and is applied by adding `data-tipser-inlineMenu` attribute to the HTML snippet:
 
 ```html
-<div id="tipser_store" data-tipser-inlineMenu></div>
+<div data-tipser-store data-tipser-inlineMenu></div>
 ```
 
 <aside class="notify"><code>Store</code> Element is best inserted as a top-level Element on a separate page and should take the full content area for the best shopping experience.</aside>

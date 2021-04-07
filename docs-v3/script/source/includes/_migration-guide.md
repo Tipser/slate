@@ -8,7 +8,7 @@ The way to initialize Tipser Script has changed. It used to be:
 tipser.elements(posId,config)
 ```
 
-but it has changed to:
+It is now:
 
 ```js
 tipserScript.initialize(posId, config)

@@ -5,7 +5,7 @@
 The way to initialize Tipser Script has changed. It used to be:
 
 ```js
-tipser.elements(posId,config)
+tipserScript.initialize(posId,config)
 ```
 
 It is now:

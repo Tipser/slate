@@ -1,6 +1,6 @@
 #Components
 
-## Configuration
+## Initialization
 
 The `initialize` function accepts two arguments.
 
@@ -29,6 +29,8 @@ const onButtonClicked = () => {
     window.tipserScriptInstance.goToProduct(productId);
 }
 ```
+
+In most cases, however, initializing Tipser Script in-place (without assigning it to a variable) will be just enough!
 
 ---
 
@@ -227,7 +229,7 @@ If you'd like the collection of more than several products to take less space, y
 To keep the user informed about the state of their shopping cart and make it possible to finalize the checkout process at any time, you can attach a live shopping cart icon on your page.
 
 ```js
-tipser.elements("posId").mountCart(".my-cart-container");
+tipserScript.initialize("posId").mountCart(".my-cart-container");
 ```
 
 To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to the `mountCart` function, as in the example snippet.
@@ -387,14 +389,14 @@ In case you need to open Tipser dialogs from the code or perform operations like
 All the below functions are accessible from the Tipser Script instance:
 
 ```js
-const script = tipser.elements(posId, options);
-script.goToProduct(productId);
+const tipserScriptInstance = tipserScript.initialize(posId, options);
+tipserScriptInstance.goToProduct(productId);
 ```
 
 ### goToProduct() function
 
 ```js
-script.goToProduct(productId);
+tipserScriptInstance.goToProduct(productId);
 ```
 
 Opens the product modal dialog for a product with a given Tipser product id. Alternatively, redirects to the URL defined in `customUrls.baseProductUrl` configuration option if specified.
@@ -402,7 +404,7 @@ Opens the product modal dialog for a product with a given Tipser product id. Alt
 ### goToCheckout() function
 
 ```js
-script.goToCheckout();
+tipserScriptInstance.goToCheckout();
 ```
 
 Opens the checkout modal dialog. Alternatively, redirects to the URL defined in `customUrls.checkoutUrl` configuration option if specified.
@@ -410,7 +412,7 @@ Opens the checkout modal dialog. Alternatively, redirects to the URL defined in 
 ### addToCart(productId) function
 
 ```js
-script.addToCart(productId).then(() => {
+tipserScriptInstance.addToCart(productId).then(() => {
  console.log("adding to cart successful");
 }).catch((e) => {
  console.log("adding to cart failed", e)
@@ -422,7 +424,7 @@ Adds to cart a product with a given Tipser product id. Returns a promise that wi
 ### removeFromCart(productId) function
 
 ```js
-script.removeFromCart(productId).then(() => {
+tipserScriptInstance.removeFromCart(productId).then(() => {
     console.log("removing from cart successful");
 }).catch((e) => {
     console.log("removing from cart failed", e)
@@ -434,7 +436,7 @@ Adds to cart a product with a given Tipser product id. Returns a promise that wi
 ### getCartItems() function
 
 ```js
-script.getCartItems().then((cartItems) => {
+tipserScriptInstance.getCartItems().then((cartItems) => {
     console.log("cart items: ", cartItems)
 }).catch((e) => {
     console.log("failed to get cart items", e)
@@ -446,7 +448,7 @@ Returns a Promise that will eventually return a list of all Tipser products curr
 ### addToCartAndGoToCheckout(productId) function
 
 ```js
-script.addToCartAndGoToCheckout(productId).then(() => {
+tipserScriptInstance.addToCartAndGoToCheckout(productId).then(() => {
     console.log("add to cart and go to checkout successful");
 }).catch((e) => {
     console.log("add to cart and go to checkout  failed", e)

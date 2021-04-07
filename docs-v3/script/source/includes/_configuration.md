@@ -4,7 +4,7 @@
 Tipser Script initialization function accepts configuration object as a second parameter. The same configuration can be passed to the `config` prop of `TipserElementsProvider`.
 
 ```javascript
-const tipserElements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
+tipserScript.initialize("59e86b79b8f3f60a94ecd26a", {primaryColor: "#222"});
 ```
 
 All the available configuaration options are: 
@@ -73,7 +73,7 @@ They will be described in the following sections.
 If you'd like to unify our design with your own color-theme, you can use our primary color configuration option to change the color of `buy` buttons in Product and indicator of items number in Cart. You only need to make sure to use the right hex color code.
 
 ```javascript
-const elements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#5F9F9F"});
+tipserScript.initialize("59e86b79b8f3f60a94ecd26a", {primaryColor: "#5F9F9F"});
 ```
 
 [![](primary-color.png)](/images/primary-color.png)
@@ -86,7 +86,7 @@ const elements = tipser.elements("59e86b79b8f3f60a94ecd26a", {primaryColor: "#5F
 ## Environment
 
 ```javascript
-const tipser = tipser.elements("59e86b79b8f3f60a94ecd26a", {env: "stage"});
+tipserScript.initialize("59e86b79b8f3f60a94ecd26a", {env: "stage"});
 ```
 
 By default, Tipser Elements connect to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in Tipser options, which accept the following values:
@@ -101,9 +101,9 @@ By default, Tipser Elements connect to production Tipser environment. Yet if tes
 `lang` configuration option specifies the language to be used. Supported languages are currently: `en-US`, `en-GB`, `de-DE`, `de-DE-formal`, `fr-FR`, `fi-FI` and `sv-SE`.
                                                                                                                                         
 ```js
-  tipser.elements('posId', {
+tipserScript.initialize('posId', {
     lang: 'en-US'
-  })
+})
 ```
 
 It affects all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It does not affect the currency in which the customer will pay for the product.

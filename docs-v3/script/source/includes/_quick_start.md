@@ -56,7 +56,7 @@ A complete working example could look like below:
     <div data-tipser-store></div>
     <script src="https://cdn.tipser.com/tipser-script/v3/tipser-script.min.js"></script>
     <script>
-      tipser.elements(MY_POS_ID, {lang: "en-US"});
+      tipserScript.initialize(MY_POS_ID, {lang: "en-US"});
     </script>
   </body>
 </html>

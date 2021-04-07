@@ -48,14 +48,14 @@ Insert the following HTML snippet in your code in the place where you want the `
 <div data-tipser-store></div>
 ```
 
-For more fitting mobile experience you can choose between two types of mobile menu. The default one is a dropdown with categories.
-The optional menu renders inline menu items, and is applied by adding `data-tipser-inlineMenu` attribute to the HTML snippet:
+You can choose between two ways of displaying the mobile menu. The default one is a dropdown with categories. 
+If you prefer to display inline menu instead (the same one as is displayed on other screen sizes), you can enforce it by adding `data-tipser-inline-mobile-menu` attribute to the HTML snippet:
 
 ```html
-<div data-tipser-store data-tipser-inlineMenu></div>
+<div data-tipser-store data-tipser-inline-mobile-menu></div>
 ```
 
-<aside class="notify"><code>Store</code> Element is best inserted as a top-level Element on a separate page and should take the full content area for the best shopping experience.</aside>
+<aside class="notify">The <code>Store</code> element is best inserted as a top-level element on a separate page and should take the full content area for the optimal shopping experience.</aside>
 
 ---
 

@@ -1,6 +1,6 @@
 # Migration guide
 
-## Initialization
+### Initialization
 
 The way to initialize Tipser Script has changed. It used to be:
 
@@ -8,8 +8,24 @@ The way to initialize Tipser Script has changed. It used to be:
 tipserScript.initialize(posId,config)
 ```
 
-It is now:
+Now it is:
 
 ```js
 tipserScript.initialize(posId, config)
 ```
+
+### `Store` component
+
+The HTML syntax for the `Store` component used to be:
+
+```html
+<div id="tipser_store"></div>
+```
+
+Now it is:
+
+```html
+<div data-tipser-store /></div>
+```
+
+Additionally, optional `data-tipser-inline-menu` was renamed to `data-tipser-inline-mobile-menu`. 

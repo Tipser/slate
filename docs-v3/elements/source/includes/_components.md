@@ -812,9 +812,14 @@ A cart icon element that displays the number of items in your cart and brings th
 
 ## `Store`
 
-Displays the store view consisting of all your store collections. We recommend to use it on a dedicated store subpage on your site.
+Displays the store view consisting of all your store collections. We recommend using it on a dedicated store subpage on your site.
 
-The `Store` element accepts additional `inlineMenu` prop, which renders mobile menu items inline, as opposed to the default dropdown one.
+The collections menu is displayed in form of inline "tags" on larger screens and as a native dropdown on mobile breakpoint (`inlineMobileMenu` prop can be used to change this behavior).
+
+| prop name         | description                                                                             | type    | required | default value |
+| ---------         | --------------------------------------------------------------------------------------- | ------  | -------- | ------------- |
+| className         | custom CSS class name to apply                                                          | string  | false    | none          |
+| inlineMobileMenu  | should the menu be displayed inline on the mobile breakpoint instead of in a dropdown?  | boolean | false    | false         |
 
 ```js
 import { Store } from '@tipser/tipser-elements';

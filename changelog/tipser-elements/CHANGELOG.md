@@ -4,6 +4,23 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.6] - 2021-04-08
+
+### Fixed
+- Modular Checkout not rendering with Tipser Script when used with `enableCheckoutV2` flag enabled
+
+## [2.3.5] - 2021-04-08
+
+### Added
+- Alternative TipserScript tags: `data-tipser-product-tile`, `data-tipser-product-listing`, `data-tipser-product-page`, `data-tipser-product-id`, `data-tipser-collection`, `data-tipser-collection-id`
+
+### Changed
+- Unified order summary across the checkout page and confirmation page in the checkout component for US
+
+### Fixed
+- Modular Checkout not rendering with Tipser Script when used with `enableCheckoutV2` flag enabled
+- Swiping problem solved in `ProductThumbnails` with `direction: "horizontal"`
+
 ## [2.3.4] - 2021-04-01
 
 ### Changed

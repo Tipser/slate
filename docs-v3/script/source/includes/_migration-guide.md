@@ -92,7 +92,7 @@ Now the cart is mounted via HTML tag, just as any other components:
 
 **`data-tipser-store` component**
 
-The HTML syntax for the `Store` component used to be:
+The HTML syntax for the store component used to be:
 
 ```html
 <div id="tipser_store"></div>
@@ -104,7 +104,10 @@ Now it is:
 <div data-tipser-store /></div>
 ```
 
-Additionally, optional `data-tipser-inline-menu` was renamed to `data-tipser-inline-mobile-menu`.
+Additional changes:
+
+- the optional `data-tipser-inline-menu` attribute was renamed to `data-tipser-inline-mobile-menu`
+- the `useDeepLinking` configuration option was replaced by `data-tipser-disable-deep-linking` attribute with inverted logic   
 
 ---
 

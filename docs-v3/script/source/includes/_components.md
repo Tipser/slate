@@ -1,14 +1,14 @@
 #Components
 
-## Initialization
+## initialize()
 
-The `initialize` function accepts two arguments.
+The `initialize` function is used to configure and bootstrap Tipser Script. Until it's called, no HTML replacements will be performed. It accepts two arguments:
 
 ```ts
 tipserScript.initialize(posId: string, config?: object)
 ```
 
-- `posId` - **required** - a unique Tipser publisher identifier. Must be specified in order to show your personalized store, show discounted product prices according to your current campaigns and - most important of all - grant you commissions for every purchase on your site! If you are not sure where to get it from, contact your account manager.
+- `posId` (**required**) - a unique Tipser publisher identifier. Must be specified in order to show your personalized store, show discounted product prices according to your current campaigns and - most important of all - grant you commissions for every purchase on your site! If you are not sure where to get it from, contact your account manager.
 - `config` - allows you to specify how Tipser Script will look and behave on your site. See the [Configuration options](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
 
 <aside class="notice">
@@ -36,26 +36,33 @@ In most cases, however, initializing Tipser Script in-place (without assigning i
 
 ## Store
 
-The `Store` is the best way to present a group of collections on a separate page. It is best to place it on a page where sufficient space is available, however, the script automatically blends in and adapts to the given space.
+The store component, activated by `data-tipser-store` tag, is the best way to present a group of collections. We recommend placing it on a dedicated page where sufficient space is available but the store component will try to adapt to the available space.
 
-Collections are created using the <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a> (when logged in to a publisher account).
+Before you insert the store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered. The store collections can be created using the <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
-Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered.
-
-Insert the following HTML snippet in your code in the place where you want the `Store` element to be rendered.
+Insert the following HTML snippet in the place where you want the store to be rendered.
 
 ```html
 <div data-tipser-store></div>
 ```
 
-You can choose between two ways of displaying the mobile menu. The default one is a dropdown with categories. 
-If you prefer to display inline menu instead (the same one as is displayed on other screen sizes), you can enforce it by adding `data-tipser-inline-mobile-menu` attribute to the HTML snippet:
+<aside class="notify">The <code>Store</code> element is best inserted as a top-level element on a separate page and should take the full content area for the optimal shopping experience.</aside>
+
+### Store menu display
+
+You can choose between two ways of displaying the store menu on the mobile screens. The default one is a native dropdown. If you prefer to use the inline menu instead (the same one as is displayed on other screen sizes), add `data-tipser-inline-mobile-menu` attribute to the HTML snippet:
 
 ```html
 <div data-tipser-store data-tipser-inline-mobile-menu></div>
 ```
 
-<aside class="notify">The <code>Store</code> element is best inserted as a top-level element on a separate page and should take the full content area for the optimal shopping experience.</aside>
+### Updating the browser's URL
+
+By default, the store component saves the active collection in the browser's URL hash part (everything after the `#` symbol in the URL). It allows the users to bookmark the store page or share the URL with others (the same collection will be active in the store when opening the link). To opt-out of this behaviour (e.g. because it interferes with the routing system of your site), add the `data-tipser-disable-deep-linking` attribute.
+
+```html
+<div data-tipser-store data-tipser-disable-deep-linking></div>
+```
 
 ---
 
@@ -469,7 +476,6 @@ All configuration supported by Tipser Script is listed below.
 | defaultAddedToCartPopup | `true`    | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.    | `true` or `false`                         |
 | useDefaultErrorHandler  | `true`    | when set to false and error happens, default message won't be displayed                                                                                                                        | see [Adding onError handler](#onerror)    |
 | eventsHandlers          | `{}`      | the object of event handlers. See [Event handlers](#event-handlers)                                                                                                                            | `{ onError: console.error.bind(console) }`|
-| useDeepLinking          | `true`    | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#use-deep-linking)                                                                | `false`                                   |
 | modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                |
 | primaryColor            | `#333`    | Hex color code, affecting eg. buy-button color and Cart indicator                                                                                                                              | #5F9F9F                                   |
 | disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening the product dialog (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section) | `false`                                   |

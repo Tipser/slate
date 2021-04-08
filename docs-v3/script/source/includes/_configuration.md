@@ -117,14 +117,6 @@ When the`directToCheckoutMode` option is set to `true`, after clicking the `buy 
 
 ***
 
-## Deep linking
-
-By default the `Store` component saves the active collection in the browser's URL hash part (everything after the `#` symbol in the URL). It means that your shopping page may be bookmarked by the user or shared with other users by sending a browser link (the same collection will be active in the `Store` when opening that link). 
-
-If you wish to turn this behaviour off (e.g. because it interferes with the routing system of your site), set the `useDeepLinking` parameter to **false**.
-
-***
-
 ## Custom Labels
 
 If you want to override our default text with your own, you can do it via `customLabels` option. At the moment we allow to change following labels for buttons and product information: 

@@ -99,7 +99,6 @@ All properties are optional:
 | defaultAddedToCartPopup | `true`    | Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.    | `true` or `false`                          |
 | useDefaultErrorHandler  | `true`    | when set to false and error happens, default message won't be displayed                                                                                                                        | see [Adding onError handler](#onerror)     |
 | eventsHandlers          | `{}`      | the object of event handlers. See [Event handlers](#event-handlers)                                                                                                                            | `{ onError: console.error.bind(console) }` |
-| useDeepLinking          | `true`    | Makes Shop element to use hash navigation when switching between categories. More info at [Use Deep Linking](#deep-linking):                                                                   | `false`                                    |
 | modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                 |
 | disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening product dialogs (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section)    | `false`                                    |
 | disableAnalytics        | `false`   | If set to `true`, all Tipser analytics requests will be blocked (no events to Analytics and stats.tipser.com will be sent)                                                                     | `true`                                     |
@@ -169,9 +168,9 @@ export interface TipserProductModel {
 
 When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
 
-## `TipserElementsProvider`
+## TipserElementsProvider
 
-Entry point to Tipser Elements (providing a context for other elements living inside it). Every other element documented here needs to be below `TipserElementsProvider` in the React elements hierarchy.
+The entry point to Tipser Elements (providing a context for other elements living inside it). Every other element documented here needs to be located below `TipserElementsProvider` in the React elements hierarchy.
 
 | prop name | description                                                                                                      | type   | required | default value    |
 | --------- | ---------------------------------------------------------------------------------------------------------------  | ------ | -------- | ---------------- |
@@ -179,7 +178,7 @@ Entry point to Tipser Elements (providing a context for other elements living in
 | config    | configuration object (see [definition here](#configuration-options))                | object | false    | {}               |
 | history   | a history implementation specific for your web framework, needed for soft redirects instead of full page reloads | object | false    | `window.history` |
 
-## `Product`
+## Product
 
 Displays a tile or a listing for the product specified by the [productId](#getting-tipser-ids) prop. Comes in three different flavours, described below.
 
@@ -212,7 +211,7 @@ _example:_
 
 [Learn more](#product-element).
 
-## `Collection`
+## Collection
 
 Renders a collection of product tiles based on [collectionId](#getting-tipser-ids) prop.
 
@@ -234,7 +233,7 @@ _example:_
 | carousel     | enables carousel display                                      | boolean                               | false    | false         |
 | imgSize      | changes the size of single product tile                       | string ('small', 'medium' or 'large') | false    | none          |
 
-## `ProductPage`
+## ProductPage
 
 A full-sized product component to be used on a dedicated page.
 
@@ -256,7 +255,7 @@ Properties:
 | --------- | -------------------------------------- | ------ | -------- | ------------- |
 | productId | the Tipser id of the product to render | string | true     |
 
-## `ModularProduct`
+## ModularProduct
 
 A more customisable and feature-rich version <code>Product</code> component. `ModularProduct` component allows you to mix and match the elements that are included in your product view.
 In other words, you can build you own version of product view from the existing components like from Lego pieces. And you can even mix in your own components in between.
@@ -487,7 +486,7 @@ A hand-picked list of other products that go well together with the current prod
 
   <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
 
-## `Checkout`
+## Checkout
 
 A predefined checkout component with all necessary elements (product list, user address form, payment widget, etc) to make the purchase possible.
 
@@ -508,7 +507,7 @@ Properties:
 
 For more flexibility use `ModularCheckout` component.
 
-## `ModularCheckout`
+## ModularCheckout
 
 The main element providing the checkout context for all of the checkout modules nested under it.
 
@@ -720,7 +719,7 @@ const CheckoutPage2 = ({ checkout }) => (
 );
 ```
 
-## `ModularCart`
+## ModularCart
 
 The main element providing the shopping cart context for all of the shopping cart modules nested under it.
 
@@ -782,7 +781,7 @@ For example, to provide a custom empty cart information:
 </ModularCart>
 ```
 
-## `ProductList`
+## ProductList
 
 A list of products, looking the same as `Collection` component, but instead of the `collectionId`, you need to pass the array of `productId`s. and optional `carousel` and `imgSize` attributes.
 
@@ -806,30 +805,39 @@ _example:_
 
 [Learn more](#product-element).
 
-## `Cart`
+## CartIcon
 
 A cart icon element that displays the number of items in your cart and brings the user to the checkout when clicked (either by opening the checkout dialog or by redirecting to the checkout embedded page).
 
-## `Store`
+## Store
 
-Displays the store view consisting of all your store collections. We recommend using it on a dedicated store subpage on your site.
+A component displaying of all your store collections with the store menu and the active collection. We recommend using it on a dedicated subpage on your site.
 
-The collections menu is displayed in form of inline "tags" on larger screens and as a native dropdown on mobile breakpoint (`inlineMobileMenu` prop can be used to change this behavior).
-
-| prop name         | description                                                                             | type    | required | default value |
-| ---------         | --------------------------------------------------------------------------------------- | ------  | -------- | ------------- |
-| className         | custom CSS class name to apply                                                          | string  | false    | none          |
-| inlineMobileMenu  | should the menu be displayed inline on the mobile breakpoint instead of in a dropdown?  | boolean | false    | false         |
-
-```js
+```jsx
 import { Store } from '@tipser/tipser-elements';
  
 <Store />
 ```
 
-<aside class="warning">When the active store category is changed, the <code>Store</code> component is updating the top-level page URL. For this reason, please make sure that it doesn't interfere with the routing system of your your web framework. For the same reason, it's not recommended to include more than one `Store` on a single page.</aside>
+### Store menu display
 
-## Imprerative elements functions
+You can choose between two ways of displaying the store menu on the mobile screens. The default one is a native dropdown. If you prefer to use the inline menu instead (the same one as is displayed on other screen sizes), set the `inlineMobileMenu` prop to `true`.
+
+### Updating the browser's URL
+
+By default, the `Store` component saves the active collection in the browser's URL hash part (everything after the `#` symbol in the URL). It allows the users to bookmark the store page or share the URL with others (the same collection will be active in the store when opening the link). To opt-out of this behaviour (e.g. because it interferes with the routing system of your site), set the `disableDeepLinking` prop to `true`.
+
+<aside class="warning">When the active store category is changed, the <code>Store</code> component is updating the top-level page URL (unless <code>disableDeepLinking</code> prop is set to <code>true</code>). For this reason, please make sure that it doesn't interfere with the routing system of your your web framework. For the same reason, it's not recommended to include more than one `Store` on a single page.</aside>
+
+### Supported props
+
+| prop name          | description                                                                             | type    | required | default value |
+| ---------          | --------------------------------------------------------------------------------------- | ------  | -------- | ------------- |
+| className          | custom CSS class name to apply                                                          | string  | false    | none          |
+| inlineMobileMenu   | should the menu be displayed inline on the mobile breakpoint instead of in a dropdown?  | boolean | false    | false         |
+| disableDeepLinking | should reflecting the active collection in the hash part of the URL be disabled?        | boolean | false    | false         |
+
+## Imprerative functions
 
 In case you need to open Tipser dialogs from the code or perform operations like adding a Tipser product to cart, we provide a set of JavaScript functions that serve that purpose.
 

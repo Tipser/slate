@@ -4,6 +4,16 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.8] - 2021-04-12
+
+### Fixed
+- Fixed the “zip code does not match state” error not being displayed to the user after submitting the delivery address form
+- `ModularCheckout.Empty` section is no longer getting ignored in Checkout V2 when opening the checkout page with an empty cart
+- "Added to cart" popup shows the price of the specific variant added instead of of master product price
+
+### Changed
+- Removed “org. no” row on the checkout merchant summary on the US market
+
 ## [2.3.7] - 2021-04-08
 
 ### Fixed

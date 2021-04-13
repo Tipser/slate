@@ -4,6 +4,15 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.9] - 2021-04-13
+
+### Fixed
+- removed delay when rendering Modular Checkout with Tipser Script
+- `ProductPrice` component is not displaying tax information for the US market
+
+### Changed
+- the currency is no longer displayed on `CheckoutProductList` component when there is no products in the checkout
+
 ## [2.3.8] - 2021-04-12
 
 ### Fixed

@@ -225,14 +225,13 @@ Displays the full-size version of the currently selected product image.
 
 <aside class="notice">
 Product Image requires fixed width and height:
-<div data-tipser-product-image style=“width:…,height:” ></div>
 </aside>
 
 ```html
 <div
   data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
 >
-  <div data-tipser-modular-product-image></div>
+  <div data-tipser-modular-product-image style=“width:…,height:”></div>
 </div>
 ```
 
@@ -250,14 +249,13 @@ Displays the product thumbnails.
 
 <aside class="notice">
 Product Thumbnails requires fixed width and height:
-<div data-tipser-product-thumbnails style=“width:…,height:” ></div>
 </aside>
 
 ```html
 <div
   data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
 >
-  <div data-tipser-modular-product-thumbnails></div>
+  <div data-tipser-modular-product-thumbnails style=“width:…,height:”></div>
 </div>
 ```
 

@@ -4,6 +4,11 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2021-04-15
+
+### Changed
+- this is the first version 3.x with a set of backwards-incompatible changes that are described in detail on the [Tipser Script 3.x Migration Guide](https://tipser.dev/docs/v3/script/#migration-guide) and [Elements 3.x Migration Guide](https://tipser.dev/docs/v3/elements/#migration-guide) pages
+
 ## [2.3.9] - 2021-04-13
 
 ### Fixed

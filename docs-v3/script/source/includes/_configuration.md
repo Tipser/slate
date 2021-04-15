@@ -62,6 +62,10 @@ const configurationOptions = {
     hideMoreIcon: true,
     hideSimilarProducts: false,
   },
+    addToCartPopup: {
+    className: "custom-className",
+    duration: 5000;
+  };
 }
 ```
 They will be described in the following sections.
@@ -114,6 +118,21 @@ It affects all the localizable texts in the UI - buy buttons, store, shopping ca
 ### Add To Cart Settings
 
 When the`directToCheckoutMode` option is set to `true`, after clicking the `buy button` the user goes directly to checkout.
+
+***
+
+### Add To Cart Popup
+
+```javascript
+const tipserOptions={
+ addToCartPopup: {
+    className: "custom-className",
+    duration: 5000;
+  }
+};
+```
+- `className` parameter adds custom className to popup component.
+- `duration` parameter sets the time the popup appears (in ms).
 
 ***
 

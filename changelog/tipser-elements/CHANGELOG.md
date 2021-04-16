@@ -4,6 +4,15 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2021-04-15
+
+### Fixed
+- promo code savings information in `CheckoutSummary` (`data-tipser-modular-checkout-summary`) component is now displaying price ex. tax, as expected, after the delivery address is specifed
+- fixed a bug with promo code application error not appearing to the user 
+
+### Changed
+- product variant components separator has been changed from "x" to "-" in a various places of the UI, e.g. "S x White" variant name will be now displayed as "S - White"  
+
 ## [3.0.0] - 2021-04-15
 
 ### Changed

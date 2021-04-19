@@ -369,7 +369,7 @@ Displays the full-size version of the active product image. With some configurat
 | className      | string  | custom CSS class name to apply                              | none    |
 
 <aside class="notice">
-ProductImage component will always expand to the 100% width and height of its parent container.
+<code>ProductImage</code> component will always expand to the 100% width and height of its parent container.
 </aside>
 
 ### `ProductThumbnails`

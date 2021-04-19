@@ -368,7 +368,7 @@ Displays the price, discount price and unit price ( eg. 2$/100ml, if applicable 
 Displays the full-size version of the active product image. With some configuration options it can be also used to change the active product image.
 
 <aside class="notice">
-<code>ProductImage</code> component must be placed in a container with fixed width and height.
+<code>ProductImage</code> component must be placed in a container with fixed width and height and it will grow to fill that container.
 </aside>
 
 ```jsx
@@ -394,7 +394,7 @@ Displays the full-size version of the active product image. With some configurat
 Displays the product thumbnails.
 
 <aside class="notice">
-<code>ProductThumbanils</code> component must be placed in a container with fixed width and height.
+<code>ProductThumbnails</code> component must be placed in a container with fixed width and height and it will grow to fill that container.
 </aside>
 
 ```jsx

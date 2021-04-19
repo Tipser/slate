@@ -121,7 +121,7 @@ When the`directToCheckoutMode` option is set to `true`, after clicking the `buy 
 
 ***
 
-### Add To Cart Popup
+### Add to cart popup
 
 ```javascript
 const tipserOptions={
@@ -131,8 +131,8 @@ const tipserOptions={
   }
 };
 ```
-- `className` parameter adds custom className to popup component.
-- `duration` parameter sets the time the popup appears (in ms).
+- `className` adds a custom class name to the "added to cart" popup.
+- `duration` the amount of time (in ms) the "added to cart" popup remains visible.
 
 ***
 

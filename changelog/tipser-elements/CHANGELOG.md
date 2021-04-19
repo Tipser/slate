@@ -11,12 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fixed a bug with promo code application error not appearing to the user 
 
 ### Changed
-- product variant components separator has been changed from "x" to "-" in a various places of the UI, e.g. "S x White" variant name will be now displayed as "S - White"  
+- product variant separator has been changed from "x" to "-" in a various places of the UI, e.g. "S x White" variant name will be now displayed as "S - White"  
 
 ## [3.0.0] - 2021-04-15
 
-### Changed
-- this is the first version 3.x with a set of backwards-incompatible changes that are described in detail on the [Tipser Script 3.x Migration Guide](https://tipser.dev/docs/v3/script/#migration-guide) and [Elements 3.x Migration Guide](https://tipser.dev/docs/v3/elements/#migration-guide) pages
+## [2.3.10] - 2021-04-19
+
+### Added
+- new config props for `AddedToCart` component called `duration` and `className`
+- product brand and variant name to `AddedToCart` popup
+
+### Fixed
+- fixed the problem with infinite redirect cycle that may happen on the confirmation page when using `enableCheckoutV2: true` flag with Tipser Widget and `customUrls.confirmationUrl` 
 
 ## [2.3.9] - 2021-04-13
 

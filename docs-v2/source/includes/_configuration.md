@@ -75,7 +75,7 @@ const configurationOptions = {
     hideMoreIcon: true,
     hideSimilarProducts: false,
   },
-    addToCartPopup: {
+  addToCartPopup: {
     className: "custom-className",
     duration: 5000;
   };
@@ -134,17 +134,17 @@ If you set this option to `false`, you will have an early access the new Product
 ***
 
 
-### Add To Cart Settings
+## Direct to checkout mode
 
-When the`directToCheckoutMode` option is set to `true`, after clicking the `buy button` the user goes directly to checkout.
+When the`addToCartSettings.directToCheckoutMode` option is set to `true`, after clicking the `buy button` the user goes directly to checkout.
 
 ***
 
-### Add to cart popup
+## Add to cart popup
 
 ```javascript
 const tipserOptions={
- addToCartPopup: {
+  addToCartPopup: {
     className: "custom-className",
     duration: 5000;
   }

@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0] - 2021-04-15
 
+## [2.3.11] - 2021-04-21
+
+### Fixed
+- incorrect rendering of the product image on the default product dialog sometimes on the mobile breakpoint
+- too many render cycles of ProductImage component in some circumstances
+
 ## [2.3.10] - 2021-04-19
 
 ### Added

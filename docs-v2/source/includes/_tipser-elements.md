@@ -32,7 +32,7 @@ If you're all set up, follow this three steps to rock on your app with Tipser Re
 
 Add the library to your project:
 
-`npm install --save @tipser/tipser-elements`
+`npm install --save @tipser/tipser-elements@latest-v2`
 
 ---
 

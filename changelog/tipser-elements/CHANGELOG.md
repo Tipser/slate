@@ -24,7 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0] - 2021-04-15
 
-## [2.3.11] - 2021-04-26
+## [2.3.15] - 2021-04-27
+
+### Fixed
+- Fixed the problem with promo code not updating Klarna price in Checkout V1
+
+## [2.3.14] - 2021-04-26
 
 ### Added
 - `te-promo-code-toggle` CSS class on the promo code toggle element in the standard checkout for easier hiding it via CSS

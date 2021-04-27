@@ -24,6 +24,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0] - 2021-04-15
 
+## [2.3.16] - 2021-04-27
+
+### Added
+- new configuration option under `customUrls` called `cartUrl` controlling
+
+### Fixed
+- Fixed oversized image problem for some specific products
+
+### Changed
+- Products at the product list are no longer clickable on the default confirmation page
+
 ## [2.3.15] - 2021-04-27
 
 ### Fixed

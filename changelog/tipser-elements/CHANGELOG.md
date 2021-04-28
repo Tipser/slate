@@ -24,6 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0] - 2021-04-15
 
+## [2.3.17] - 2021-04-28
+
+### Added
+- `useCartContext` hook is now exported
+### Changed
+- trying to call tipser.elements() function more than once will display a warning on the JS console and return a cached instance from the original call
+- Unified the product list UX across cart, checkout and confirmation pages
+
 ## [2.3.16] - 2021-04-27
 
 ### Added

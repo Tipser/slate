@@ -1,15 +1,28 @@
 const fs = require("fs");
+const path = require('path');
+
 const showdown = require('showdown');
 
 const converter = new showdown.Converter();
-const stdinBuffer = fs.readFileSync(0);
-const changelogAsMarkdown = stdinBuffer.toString();
+
 const RELEASE_REGEX = /([#]+ \[[a-zA-Z0-9.-]+].+)/g;
+const LEGACY_CHANGELOG_FILE_REGEX = /CHANGELOG-v(\d+)\.md/g;
 const HTML_START = '<html><head><link rel="stylesheet" href="changelog.css"></head><body>';
 const HTML_END = '</body></html>';
+const CHANGELOG_DIR = path.join(__dirname, '..', 'tipser-elements')
+const LEGACY_CHANGELOGS = fs.readdirSync(CHANGELOG_DIR)
+  .filter(fileName => fileName.match(LEGACY_CHANGELOG_FILE_REGEX))
+  .map(fileName => [parseInt(fileName.replace('CHANGELOG-v', '').replace('.md', ''), 10), fileName])
+  .sort(([val1], [val2]) => val2 - val1 )
+  .map(([, fileName]) => fileName)
+  .map(fileName => path.join(CHANGELOG_DIR, fileName))
+  .map(changelogPath => fs.readFileSync(changelogPath, 'utf-8'))
+  .map(changelogContent => splitIntoHeaderAndContent(changelogContent).content)
+const MAIN_CHANGELOG_PATH = path.join(CHANGELOG_DIR, 'CHANGELOG.md');
+const MAIN_CHANGELOG = fs.readFileSync(MAIN_CHANGELOG_PATH, 'utf-8');
 
-
-const splitByRelease = changelogAsMarkdown.split(RELEASE_REGEX);
+const FULL_CHANGELOG = [MAIN_CHANGELOG, ...LEGACY_CHANGELOGS].join('\n');
+const splitByRelease = FULL_CHANGELOG.split(RELEASE_REGEX);
 const [header, ...rest] = splitByRelease
 
 console.log(HTML_START);
@@ -20,6 +33,12 @@ console.log(buildHeader(header));
 });
 
 console.log(HTML_END);
+
+function splitIntoHeaderAndContent(text) {
+  const splitByRelease = text.split(RELEASE_REGEX);
+  const [header, ...rest] = splitByRelease
+  return {header, content: rest};
+}
 
 function getVersionAndDate(text) {
   const [versionPart] = text.match(/\[([a-zA-Z0-9.-]+)]/g);

@@ -363,7 +363,6 @@ Displays the full-size version of the active product image. With some configurat
 | prop name      | type    | description                                                 | default |
 | -------------- | ------- | ----------------------------------------------------------- | ------- |
 | enableSwipe    | boolean | enables swipe functionality (recommended for touch devices) | false   |
-| swipeAnimation | boolean | add animation when changing image from thumbnails           | false   |
 | enableArrows   | boolean | show left and right arrows for changing images              | false   |
 | enableDots     | boolean | show slider bullet dots                                     | false   |
 | className      | string  | custom CSS class name to apply                              | none    |

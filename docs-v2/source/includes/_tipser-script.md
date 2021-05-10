@@ -71,7 +71,7 @@ A complete working example could look like below:
     <div id="tipser_store"></div>
     <script src="https://cdn.tipser.com/tipser-script/latest.js"></script>
     <script>
-      tipser.elements("posId", {lang: "en-US", openOldDialog: "false"});
+      tipser.elements("posId", {lang: "en-US", openOldDialog: false});
     </script>
   </body>
 </html>

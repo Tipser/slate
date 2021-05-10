@@ -193,7 +193,7 @@ A full-sized product component to be used on a dedicated page.
 <div data-tipser-product-page="5bc6e1c7df2ac60001158814"></div>
 ```
 
-Element with attribute `data-tipser-product-page` will be replaced with `Product Page` Element. Product ID is taken from the value of the attribute. The `productId` for a certain product can be generated in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
+Tags with attribute `data-tipser-product-page` will be replaced with the product page element. The `productId` for a certain product can obtained from <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
 _Example:_
 

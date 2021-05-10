@@ -24,6 +24,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0] - 2021-04-15
 
+## [2.3.17] - 2021-04-28
+
+### Added
+- `useCartContext` hook is now exported
+### Changed
+- trying to call tipser.elements() function more than once will display a warning on the JS console and return a cached instance from the original call
+- Unified the product list UX across cart, checkout and confirmation pages
+
+## [2.3.16] - 2021-04-27
+
+### Added
+- new configuration option under `customUrls` called `cartUrl` controlling
+
+### Fixed
+- Fixed oversized image problem for some specific products
+
+### Changed
+- Products at the product list are no longer clickable on the default confirmation page
+
+## [2.3.15] - 2021-04-27
+
+### Fixed
+- Fixed the problem with promo code not updating Klarna price in Checkout V1
+
+## [2.3.14] - 2021-04-26
+
+### Added
+- `te-promo-code-toggle` CSS class on the promo code toggle element in the standard checkout for easier hiding it via CSS
+
+### Fixed
+- Subtotal price is now correctly displayed in Checkout v2 when there is no discounts
+- `useCheckoutContext()` hook is now working correctly even with Checkout v1 being used
+
 ## [2.3.11] - 2021-04-21
 
 ### Fixed

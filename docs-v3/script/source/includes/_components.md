@@ -19,7 +19,7 @@ to assign it to a variable (even a global one, if needed) and refer to it furthe
 For example:
 
 ```js
-window.tipserScriptInstance = tipserScript.initialize();
+window.tipserScriptInstance = tipserScript.initialize(YOUR_POS_ID);
 ```
 
 And then at some other place in the code:
@@ -71,22 +71,22 @@ By default, the store component saves the active collection in the browser's URL
 In order to insert a `Product` Element in your content, insert the following code snippet in your content:
 
 ```html
-<div data-tipser-pid="5ba2334a781baa0001ccdf61"></div>
+<div data-tipser-product-listing data-tipser-product-id="5ba2334a781baa0001ccdf61"></div>
 ```
 
-Elements with attribute `data-tipser-pid` will be replaced with `Product` Element. Product ID is taken from the value of the attribute. The code snippet for a certain product can be generated in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
-By default, a full inline product component is displayed (with product details and variant selection).
+Elements with attribute `data-tipser-product-listing` will be replaced with the `product` element. Product ID is taken from the value of the `data-tipser-product-id` attribute. The code snippet for a certain product can be generated in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
+It will render a full inline product component (with product details and variant selection).
 
 [![](full-product.png)](/images/full-product.png)
 
 ---
 
-To display `Product` in a compact view, add the `data-tipser-view="compact"` attribute to above tag.
+To display a product tile with just a basic product info (image, title and price), use the `data-tipser-product-tile` attribute instead.
 
 ```html
 <div
-  data-tipser-pid="57233dac89862012f8ec1001"
-  data-tipser-view="compact"
+  data-tipser-product-tile
+  data-tipser-product-id="57233dac89862012f8ec1001"
 ></div>
 ```
 
@@ -96,13 +96,11 @@ To display a list of products (rendered as small product tiles), add `data-tipse
 
 ```html
 <div
-  data-tipser-pids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9"
+  data-tipser-product-list data-tipser-product-ids="5a8ac10d9d2580326ca4cf47,5a9735d99d25801620c3d3fc,5a8af4909d2580132ca4c1f9"
 ></div>
 ```
 
 [![](product-list.png)](/images/product-list.png)
-
-<aside class="success">All Elements are mobile first. This means that even if you insert a regular `Product` Element, it will be rendered like a compact product on the mobile devices for better experience.</aside>
 
 ---
 
@@ -189,10 +187,13 @@ The tag with <code>data-tipser-modular-product-thumbnails</code> attribute must 
 A full-sized product component to be used on a dedicated page.
 
 ```html
-<div data-tipser-product-page="5bc6e1c7df2ac60001158814"></div>
+<div 
+    data-tipser-product-page
+    data-tipser-product-id="5bc6e1c7df2ac60001158814">
+</div>
 ```
 
-Tags with attribute `data-tipser-product-page` will be replaced with the product page element. The `productId` for a certain product can obtained from <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
+Tags with attribute `data-tipser-product-page` will be replaced with the product page element. The value of the `data-tipser-product-id` attribute for a certain product can obtained from <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
 _Example:_
 
@@ -209,32 +210,40 @@ This component renders the same product view that is displayed inside the produc
 `Collection` is a group of simple product tiles. Clicking on any title displays a product dialog with more product details and add to cart button. Products displayed in a collection are defined in <a href="https://app.tipser.com/" target="_blank">app.tipser.com</a>.
 
 ```html
-<p name="My collection" data-tipser-cid="5b2788909d25801adcb23f4f"></p>
-<p
-  name="My collection"
-  data-tipser-cid="5b2788909d25801adcb23f4f"
-  data-tipser-imgsize="small"
-></p>
-<p
-  name="My collection"
-  data-tipser-cid="5b2788909d25801adcb23f4f"
-  data-tipser-carousel
-></p>
+<div data-tipser-collection
+    data-tipser-collection-id="5b2788909d25801adcb23f4f">
+</div>
 ```
 
-Elements with attribute `data-tipser-cid` will be replaced with `Collection` element of given id (value of `data-tipser-cid`).
+Tags with attribute `data-tipser-cid` will be replaced with `collection` component of given id (specified by the `data-tipser-collection-id` attribute).
 
 [![](collection.png)](/images/collection.png)
 
-To make the collection items smaller / larger use the `data-tipser-imgsize` attribute with values `small` for smaller and `large` for lager product tiles. The default value for imgSize parameter is `medium`. When changing the value to `small` you get slightly smaller product-cards:
+To make the collection items smaller / larger use the `data-tipser-img-size` attribute with values `small` for smaller and `large` for lager product tiles. The default value for `data-tipser-img-size` attribute is `medium`. When changing the value to `small` you get slightly smaller product-cards:
 
 [![](collection-imgSize.png)](/images/collection-imgSize.png)
 
-If you'd like the collection of more than several products to take less space, you can display it as one-row only carousel element. To do that, please use `data-tipser-carousel` attribute.
+```html
+<div
+  data-tipser-collection
+  data-tipser-collection-id="5b2788909d25801adcb23f4f"
+  data-tipser-img-size="small"
+></div>
+```
+
+If you'd like the collection of more than several products to take less space, you can display it as one-row only carousel component. To do that, please use `data-tipser-carousel` attribute.
 
 [![](collection-carousel.png)](/images/colltion-carousel.png)
 
 > <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
+
+```html
+<div
+  data-tipser-collection
+  data-tipser-collection-id="5b2788909d25801adcb23f4f"
+  data-tipser-carousel
+></div>
+```
 
 ---
 

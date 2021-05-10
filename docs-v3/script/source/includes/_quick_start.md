@@ -11,7 +11,7 @@ If you're all set up, follow the three steps below to install Tipser Script on y
 To include Tipser Script on your site, use the following `script` element. It exposes a global `tipserScript` variable that can be used to initialize and configure Tipser Script.
 
 ```html
-<script src="https://cdn.tipser.com/tipser-script/v3-dev/tipser-script.min.js"></script>
+<script src="https://cdn.tipser.com/tipser-script/v3/tipser-script.min.js"></script>
 ```
 
 <aside class="notice">

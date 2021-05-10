@@ -66,7 +66,7 @@ If everything was done correctly, you should see the `Store` element populated w
 
 [![](../images/tipser_elements_store.png)](/images/tipser_elements_store.png)
 
-> <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
+> <a href="https://codepen.io/tipser-tech/pen/wvJaYOZ" target="_blank">Open this snippet on Code Pen</a>
 
 <aside class="success">Congratulations! You have successfully integrated and setup Tipser Script on your site.</aside>
 

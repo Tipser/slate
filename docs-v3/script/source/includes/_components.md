@@ -235,7 +235,7 @@ If you'd like the collection of more than several products to take less space, y
 
 [![](collection-carousel.png)](/images/colltion-carousel.png)
 
-> <a href="https://codepen.io/tipser-tech/pen/YMMKMp" target="_blank">Open this snippet on Code Pen</a>
+> <a href="https://codepen.io/tipser-tech/pen/oNZbWxX" target="_blank">Open this snippet on Code Pen</a>
 
 ```html
 <div

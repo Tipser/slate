@@ -4,16 +4,16 @@ You can connect to Tipser analytics by listening to the `tw-track` event on your
 
 ```html
 <script>
-var tipserEventsCallback = function (e) {
+const analyticsHandler = function (e) {
   //put here your own code handling the event, example below
-  var detail = e.detail; 
+  const detail = e.detail; 
   console.log('Tipser analytics event: ', e);
-  console.log('Action',detail.action);
-  console.log('Description',detail.description);
-  console.log('Target',detail.target);
-  console.log('Object',detail.object);
+  console.log('Action',detail.action); //e.g. 'Cart'
+  console.log('Target',detail.target); //e.g. 'Product'
+  console.log('Description',detail.description); //e.g. 'Product added to cart'
+  console.log('Object',detail.object); //payload of the event (e.g. product id, price, etc)
 }
-document.addEventListener('tw-track', tipserEventsCallback);
+document.addEventListener('tw-track', analyticsHandler);
 </script>
 ```
 
@@ -33,7 +33,7 @@ What you do with those events is up to you. Typical usage examples are:
 
 ## Events structure
 
-Each event passed to `tipserEventsCallback` function follows the following structure:
+Each event passed to `analyticsHandler` function follows the following structure:
 
 ```yaml
 {

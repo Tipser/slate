@@ -247,29 +247,54 @@ If you'd like the collection of more than several products to take less space, y
 
 ---
 
-## Cart
+## Cart icon
 
 To keep the user informed about the state of their shopping cart and make it possible to finalize the checkout process at any time, you can attach a live shopping cart icon on your page.
 
-```js
-tipserScript.initialize("posId").mountCart(".my-cart-container");
+```html
+<div data-tipser-cart-icon></div>
 ```
 
-To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to the `mountCart` function, as in the example snippet.
+By default the cart icon position is static. One common use case that we know about is "sticky" cart icon (that stays on the screen when scrolling), you can use the following CSS style to get this behavior:
 
-The cart icon can be placed anywhere on your website. If you want to keep it visible at all times, please follow the [instructions](#cart).
+```css
+.cart-icon {
+  position: fixed;
+  right: 0;
+  top: 121px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+```
+
+---
+## Cart page
+
+To display the contents of the shopping cart you can use the cart page component.
+
+```html
+<div data-tipser-cart-page></div>
+```
+
+<aside class="notice">To provide a path to your custom cart page, please define the <a href="#custom-urls">cartUrl</a> key in the <code>customUrls</code> config option.</aside>
+
+<aside class="info">
+This component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
+</aside>
 
 ---
 
 ## Checkout
 
-<aside class="notice">To lead the user from product and collection elements to your dedicated checkout page, please define the <a href="#custom-urls">checkoutUrl and checkoutConfirmationUrl</a> from the `customUrls` config options.</aside>
-
-Then use this HTML tag to render Checkout on your page.
+Then use this HTML tag to render checkout on your page.
 
 ```html
-<div id="tipser_checkout"></div>
+<div data-tipser-checkout-page></div>
 ```
+
+<aside class="notice">To provide a path to your custom checkout page, please define the <a href="#custom-urls">checkoutUrl and checkoutConfirmation</a> key in the <code>customUrls</code> config option.</aside>
 
 <aside class="info">
 This component takes up a large part of the page, so it is recommended to place it on a dedicated subpage.
@@ -279,16 +304,14 @@ This component takes up a large part of the page, so it is recommended to place 
 
 ## Modular Checkout
 
-<aside class="notice">To lead the user from product and collection elements to your dedicated checkout page, you need to define the <a href="#custom-urls">checkoutUrl and checkoutConfirmationUrl</a> from the `customUrls` config options.</aside>
-
-If you need more flexibility, you can use an element with `data-tipser-modular-checkout` attribute. The children of this element will define a set of checkout modules to be displayed. For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
+If you need more flexibility, you can use `data-tipser-modular-checkout` tag. The children of this element will define a set of checkout modules to be displayed. For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
 are being purchased by the user.
 
 A working example of the checkout view consisting of: items list, delivery address form and the payment form:
 
 ```html
 <div data-tipser-modular-checkout>
-  <div data-tipser-modular-checkout-cart-products></div>
+  <div data-tipser-modular-checkout-product-list></div>
   <div data-tipser-modular-checkout-customer-address-delivery></div>
   <div data-tipser-modular-checkout-payment></div>
 </div>
@@ -296,15 +319,15 @@ A working example of the checkout view consisting of: items list, delivery addre
 
 Following modules can be nested within `<div data-tipser-modular-checkout></div>`:
 
-### Checkout Cart Products
+### Checkout cart products
 
 This section displays a list of items in the current checkout.
 
 ```html
-<div data-tipser-modular-checkout-cart-products></div>
+<div data-tipser-modular-checkout-product-list></div>
 ```
 
-### Checkout Customer Delivery Address form
+### Checkout customer delivery address form
 
 This form accepts user's delivery address details.
 
@@ -314,7 +337,7 @@ This form accepts user's delivery address details.
 <div data-tipser-modular-checkout-customer-address-delivery></div>
 ```
 
-It also accepts attributes that change the appearance and/or functionality of the component:
+Supported attributes:
 
 | attr name                                                                             | description                                                                          | type                                                                                                                           | values             | default value |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------- |
@@ -332,7 +355,7 @@ This form accepts user's billing address details.
 <div data-tipser-modular-checkout-customer-address-billing></div>
 ```
 
-It also accepts attributes that change the appearance and/or functionality of the component:
+Supported attributes:
 
 | attr name                                                           | description                                                                          | type                                                                                                                           | values                         | default value |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ------------- |
@@ -340,15 +363,15 @@ It also accepts attributes that change the appearance and/or functionality of th
 | <code style="font-size: 10px">data-tipser-submit-behavior</code>    | the behavior of the form after submitting it                                         | string                                                                                                                         | 'collapse', 'none'             | 'collapse'    |
 | <code style="font-size: 10px">data-tipser-depends-on</code>         | lets you render the component depending on the delivery form being valid             | string                                                                                                                         | 'none', 'validDeliveryAddress' | 'none'        |
 
-### Checkout Cart Summary
+### Checkout summary
 
-A section with a summary of the total costs resulting from the checkout.
+A summary of the total costs resulting from the checkout (total cost, shipping cost, taxes, discounts, etc).
 
 ```html
-<div data-tipser-modular-checkout-cart-summary></div>
+<div data-tipser-modular-checkout-summary></div>
 ```
 
-### Checkout Payment
+### Checkout payment
 
 A payment section, accepting user's payment input (e.g. credit card number). In case of Klarna integrations, this component will additionally contain delivery and billing address forms.
 
@@ -356,16 +379,16 @@ A payment section, accepting user's payment input (e.g. credit card number). In 
 <div data-tipser-modular-checkout-payment></div>
 ```
 
-It also accepts attributes that change the functionality of the component:
+Supported attributes:
 
 | attr name                                                        | description                                                              | type                                                                                                                           | values                         | default value |
 | ---------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ------------- |
 | <code style="font-size: 10px">data-tipser-hide-pay-button</code> | hides the "pay" button in Stripe payment provider form                   | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> |                                |
 | <code style="font-size: 10px">data-tipser-depends-on</code>      | lets you render the component depending on the delivery form being valid | string                                                                                                                         | 'none', 'validDeliveryAddress' | 'none'        |
 
-### Checkout Promotion Code
+### Checkout promotion code
 
-An element for entering promotion codes
+An element for entering promotion codes corresponding to Tipser campaigns (please contact your KAM to define one).
 
 ```html
 <div data-tipser-modular-checkout-cart-promo-code></div>
@@ -389,7 +412,7 @@ A loading animation for checkout processing.
 
 ### Checkout Legal Terms
 
-An element with text explaining legal terms of the purchase.
+A text explaining legal terms of the purchase.
 
 ```html
 <div data-tipser-modular-checkout-legal></div>

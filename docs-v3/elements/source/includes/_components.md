@@ -102,7 +102,6 @@ All properties are optional:
 | modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for dialog customization](#parameters-for-dialog-customization)                                                                       | `{ hideSearchIcon : true}`                 |
 | disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening product dialogs (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section)    | `false`                                    |
 | disableAnalytics        | `false`   | If set to `true`, all Tipser analytics requests will be blocked (no events to Analytics and stats.tipser.com will be sent)                                                                     | `true`                                     |
-| enableCheckoutV2        | `false`   | If set to `true`, the more robust v2 version of Tipser Checkout API is used (recommended)                                                                                                      | `true`                                     |
 
 ### Event Handlers
 
@@ -178,60 +177,43 @@ The entry point to Tipser Elements (providing a context for other elements livin
 | config    | configuration object (see [definition here](#configuration-options))                | object | false    | {}               |
 | history   | a history implementation specific for your web framework, needed for soft redirects instead of full page reloads | object | false    | `window.history` |
 
-## Product
+## ProductTile
 
-Displays a tile or a listing for the product specified by the [productId](#getting-tipser-ids) prop. Comes in three different flavours, described below.
-
-**Product tile** - a small, rectangular product preview with the title, the price and the buy button. When clicked (over the buy button or anywhere else), it opens a dialog with product details.
-
-Activated by `viewMode="compact"`.
+Displays a tile for the product specified by the [productId](#getting-tipser-ids) prop. When clicked (over the buy button or anywhere else), it opens a dialog with product details.
 
 _Example:_
 
 [![](compact-product.png)](/images/compact-product.png)
 
-**Full product view** - a larger, more detailed and better exposed product view, typically occupying the full width of the article. Allows the user to add the product to cart without opening the product dialog (which means less steps needed by the user to purchase the product). With
+```jsx
+<ProductTile productId="5c751cf82d3f3b0001bcec8c" />
+```
 
-Activated by `viewMode="full"` (or skipping the `viewMode` prop, as this is the default value).
+Properties:
+
+| prop name | description                                                   | type                       | required | default value |
+| --------- | ------------------------------------------------------------- | -------------------------- | -------- | ------------- |
+| productId | [where to find](#getting-tipser-ids)                          | string                     | true     | none          |
+| className | a custom CSS class name to apply                              | string                     | false    | none          |
+
+## ProductListing
+
+A larger, more detailed and better exposed product view, typically occupying the full width of the article. Allows the user to add the product to cart without opening the product dialog (which means less steps needed by the user to purchase the product).
 
 _Example:_
 
 [![](full-product.png)](/images/full-product.png)
 
+```jsx
+<ProductListing productId="5c751cf82d3f3b0001bcec8c" />
+```
+
+Properties:
+
 | prop name | description                                                   | type                       | required | default value |
 | --------- | ------------------------------------------------------------- | -------------------------- | -------- | ------------- |
-| productId | [where to find](#getting-tipser-ids) | string                     | true     | none          |
-| viewMode  | enables full or compact product display                       | string ('full', 'compact') | false    | 'full'        |
-
-_example:_
-
-```jsx
-<Product productId="5c751cf82d3f3b0001bcec8c" viewMode={"compact"} />
-```
-
-[Learn more](#product-element).
-
-## Collection
-
-Renders a collection of product tiles based on [collectionId](#getting-tipser-ids) prop.
-
-If the collection has many elements and you want to display it in one row as a collection, you need to add `carousel` prop. You can also use 'imgSize' prop to control the size of displayed product tiles. [Learn more](#collection-element).
-
-_example:_
-
-```jsx
-<Collection
-  collectionId={"5b2788909d25801adcb23f4f"}
-  carousel
-  imgSize={"small"}
-/>
-```
-
-| prop name    | description                                                   | type                                  | required | default value |
-| ------------ | ------------------------------------------------------------- | ------------------------------------- | -------- | ------------- |
-| collectionId | [where to find](#getting-tipser-ids) | string                                | true     | none          |
-| carousel     | enables carousel display                                      | boolean                               | false    | false         |
-| imgSize      | changes the size of single product tile                       | string ('small', 'medium' or 'large') | false    | none          |
+| productId | [where to find](#getting-tipser-ids)                          | string                     | true     | none          |
+| className | a custom CSS class name to apply                              | string                     | false    | none          |
 
 ## ProductPage
 
@@ -253,12 +235,40 @@ Properties:
 
 | prop name | description                            | type   | required | default value |
 | --------- | -------------------------------------- | ------ | -------- | ------------- |
-| productId | the Tipser id of the product to render | string | true     |
+| productId | the Tipser id of the product to render | string | true     | none          |
+| className | a custom CSS class name to apply       | string | false    | none          |
+
+## Collection
+
+Renders a collection of product tiles based on [collectionId](#getting-tipser-ids) prop.
+
+If the collection has many elements and you want to display them in just one row to conserve space, you may add `carousel` prop. You can also use `imgSize` prop to control the size of displayed product tiles.
+
+_example:_
+
+```jsx
+<Collection
+  collectionId={"5b2788909d25801adcb23f4f"}
+  carousel
+  imgSize={"small"}
+/>
+```
+
+Properties:
+
+| prop name    | description                                                   | type                                  | required | default value |
+| ------------ | ------------------------------------------------------------- | ------------------------------------- | -------- | ------------- |
+| collectionId | [where to find](#getting-tipser-ids)                          | string                                | true     | none          |
+| carousel     | enables carousel display                                      | boolean                               | false    | false         |
+| imgSize      | changes the size of single product tile                       | 'small', 'medium' or 'large'          | false    | 'medium'      |
+| className    | a custom CSS class name to apply                              | string                                | false    | none          |
 
 ## ModularProduct
 
-A more customisable and feature-rich version <code>Product</code> component. `ModularProduct` component allows you to mix and match the elements that are included in your product view.
+`ModularProduct` component allows you to mix and match the elements that are included in your product view.
 In other words, you can build you own version of product view from the existing components like from Lego pieces. And you can even mix in your own components in between.
+
+To be used if more flexibility is needed than what is provided by `ProductTile`, `ProductListing` and `ProductPage` components.
 
 A minimal working example:
 
@@ -278,7 +288,7 @@ And a more sophisticated one:
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
   <div className="top-container">
     <div className="left-column">
-      <ProductThumbnails direction="vertical">
+      <ProductThumbnails direction="vertical" />
       <ProductImage />
     </div>
     <div className="right-column">
@@ -297,6 +307,13 @@ And a more sophisticated one:
   </div>
 </ModularProduct>
 ```
+
+Properties:
+
+| prop name | description                            | type   | required | default value |
+| --------- | -------------------------------------- | ------ | -------- | ------------- |
+| productId | the Tipser id of the product to render | string | true     | none          |
+| className | a custom CSS class name to apply       | string | false    | none          |
 
 <aside class="notice">
 It's required that all the product modules are located under <code>ModularProduct</code> in the elements hierarchy.
@@ -559,8 +576,8 @@ Properties:
 
 | prop name | description                                                        | type    | required | default value |
 | --------- | ------------------------------------------------------------------ | ------  | -------- | ------------- |
-| className | custom CSS class name to apply                                     | string  | false    | none          |
 | readOnly  | should removing from cart and changing quantities be blocked?      | boolean | false    | false         |
+| className | custom CSS class name to apply                                     | string  | false    | none          |
 
 <aside class="info">Modifications (remove, change quantity) made within <code>CheckoutProductList</code> component are scoped to the current checkout not the shopping cart. This means that after leaving the checkout page, the user will see the same
 state of the shopping cart as before entering the checkout.</aside>
@@ -575,10 +592,10 @@ Properties:
 
 | prop name                       | description                                                                          | type    | values             | required | default value |
 | ------------------------------- | ------------------------------------------------------------------------------------ | ------- | ------------------ | -------- | ------------- |
-| className                       | custom CSS class name to apply                                                       | string  |                    | false    | none          |
 | hideUseAsBillingAddressCheckbox | hides the checkbox allowing to copy delivery address as billing address              | boolean |                    | false    | false         |
 | submitBehavior                  | the behaviour of the form after submitting it                                        | enum    | 'collapse', 'none' | false    | 'none'        |
 | hideSubmitButton                | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
+| className                       | custom CSS class name to apply                                                       | string  |                    | false    | none          |
 
 ### `CheckoutCustomerAddressBilling`
 
@@ -590,10 +607,10 @@ Properties:
 
 | prop name        | description                                                                          | type    | values             | required | default value |
 | ---------------- | ------------------------------------------------------------------------------------ | ------- | ------------------ | -------- | ------------- |
-| className        | custom CSS class name to apply                                                       | string  |                    | false    | none          |
 | submitBehavior   | the behaviour of the form after submitting it                                        | enum    | 'collapse', 'none' | false    | none          |
 | hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
 | submitBehavior   | the behavior of the form after submitting it                                         | string  | 'collapse', 'none' | false    | 'collapse'    |
+| className        | custom CSS class name to apply                                                       | string  |                    | false    | none          |
 
 ### `CheckoutSummary`
 
@@ -615,9 +632,9 @@ Properties:
 
 | prop name     | description                                                              | type    | values                         | required | default value |
 | ------------- | ------------------------------------------------------------------------ | ------- | ------------------------------ | -------- | ------------- |
-| className     | custom CSS class name to apply                                           | string  |                                | false    | none          |
 | hidePayButton | hides the "pay" button in Stripe payment provider form                   | boolean |                                | false    | false         |
 | dependsOn     | lets you render the component depending on the delivery form being valid | string  | 'none', 'validDeliveryAddress' | false    | 'none'        |
+| className     | custom CSS class name to apply                                           | string  |                                | false    | none          |
 
 ### `CheckoutCartPromoCode`
 
@@ -658,6 +675,23 @@ Properties:
 | prop name | description                    | type   | required | default value |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
+
+### `CheckoutPaymentRequestButton`
+
+Displays a contextual "express payment" button, using the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API).
+
+Depending on the user's environment, it will display either Apple Pay, Google Pay or browser pay button.
+- For Safari users with a credit cart connected to Apple Walltet, it will display Apple Pay button
+- For Chrome users with a credit cart connected to Google Pay, it will display Google Pay button
+- For users of supporting browsers (notably: Chrome, Safari, Edge) who configured a payment method in the browser settings, it will display a browser-specific payment button
+
+Properties:
+
+| prop name                | description                                                                                                                                                                                                       | type                             | optional or required           | default value |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------| -------------------------------| ------------- |
+| dependsOn                | should the component only be rendered when the delivery address is submitted?                                                                                                                                     | 'none' or 'validDeliveryAddress' | optional                       | 'none'        |
+| useStandaloneAddressForm | (EXPERIMENTAL!) should the user data (delivery address, contact info, etc) be entered inside the payment overlay instead of via `CheckoutCustomerAddressDelivery` and `CheckoutCustomerAddressBilling` components | boolean                          | optional                       | false 
+| className                | custom CSS class name to apply                                                                                                                                                                                    | string                           | optional                       | none          |
 
 ### `ModularCheckout.Empty`, `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmed`  
 

@@ -391,7 +391,7 @@ Supported attributes:
 An element for entering promotion codes corresponding to Tipser campaigns (please contact your KAM to define one).
 
 ```html
-<div data-tipser-modular-checkout-cart-promo-code></div>
+<div data-tipser-modular-checkout-promo-code></div>
 ```
 
 ### Order Confirmation Page

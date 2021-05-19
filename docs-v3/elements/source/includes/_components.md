@@ -171,7 +171,7 @@ When onAddToCart is being dispatched the handlers are triggered with object with
 
 The entry point to Tipser Elements (providing a context for other elements living inside it). Every other element documented here needs to be located below `TipserElementsProvider` in the React elements hierarchy.
 
-| prop name | description                                                                                                      | type   | required | default value    |
+| name      | description                                                                                                      | type   | required | default    |
 | --------- | ---------------------------------------------------------------------------------------------------------------  | ------ | -------- | ---------------- |
 | posId     | id of Point of sale                                                                                              | string | true     |                  |
 | config    | configuration object (see [definition here](#configuration-options))                | object | false    | {}               |
@@ -191,7 +191,7 @@ _Example:_
 
 Properties:
 
-| prop name | description                                                   | type                       | required | default value |
+| name      | description                                                   | type                       | required | default |
 | --------- | ------------------------------------------------------------- | -------------------------- | -------- | ------------- |
 | productId | [where to find](#getting-tipser-ids)                          | string                     | true     | none          |
 | className | a custom CSS class name to apply                              | string                     | false    | none          |
@@ -210,7 +210,7 @@ _Example:_
 
 Properties:
 
-| prop name | description                                                   | type                       | required | default value |
+| name      | description                                                   | type                       | required | default |
 | --------- | ------------------------------------------------------------- | -------------------------- | -------- | ------------- |
 | productId | [where to find](#getting-tipser-ids)                          | string                     | true     | none          |
 | className | a custom CSS class name to apply                              | string                     | false    | none          |
@@ -233,7 +233,7 @@ This component renders the same product view that is displayed inside the produc
 
 Properties:
 
-| prop name | description                            | type   | required | default value |
+| name      | description                            | type   | required | default |
 | --------- | -------------------------------------- | ------ | -------- | ------------- |
 | productId | the Tipser id of the product to render | string | true     | none          |
 | className | a custom CSS class name to apply       | string | false    | none          |
@@ -256,7 +256,7 @@ _example:_
 
 Properties:
 
-| prop name    | description                                                   | type                                  | required | default value |
+| name         | description                                                   | type                                  | required | default |
 | ------------ | ------------------------------------------------------------- | ------------------------------------- | -------- | ------------- |
 | collectionId | [where to find](#getting-tipser-ids)                          | string                                | true     | none          |
 | carousel     | enables carousel display                                      | boolean                               | false    | false         |
@@ -310,7 +310,7 @@ And a more sophisticated one:
 
 Properties:
 
-| prop name | description                            | type   | required | default value |
+| name      | description                            | type   | required | default |
 | --------- | -------------------------------------- | ------ | -------- | ------------- |
 | productId | the Tipser id of the product to render | string | true     | none          |
 | className | a custom CSS class name to apply       | string | false    | none          |
@@ -377,7 +377,7 @@ Displays the full-size version of the active product image. With some configurat
 
   <img src="/images/modular-product/product_image_props.png" alt="Product Image" width="305"/>
 
-| prop name      | type    | description                                                 | default |
+| name           | type    | description                                                 | default |
 | -------------- | ------- | ----------------------------------------------------------- | ------- |
 | enableSwipe    | boolean | enables swipe functionality (recommended for touch devices) | false   |
 | enableArrows   | boolean | show left and right arrows for changing images              | false   |
@@ -410,7 +410,7 @@ Displays the product thumbnails.
 In the <b>horizontal</b> mode thumbnails will always expand to 100% of the width and height to its parent container and automatically adjust the number of displaying thumbnails depending on the width, height and ratio of its parent container.
 </aside>
 
-| prop name | type                           | description                                         | default      |
+| name      | type                           | description                                         | default      |
 | --------- | ------------------------------ | --------------------------------------------------- | ------------ |
 | imageFit  | 'contain' &#124; 'cover'       | changes the background-size property                | 'cover'      |
 | direction | 'vertical' &#124; 'horizontal' | changes the orientation of the thumbnails container | 'horizontal' |
@@ -525,7 +525,7 @@ The above code will render more or less the following output:
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
+| name      | description                    | type   | required | default |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
@@ -574,13 +574,12 @@ A list of items in the current checkout. By default, (unless `readOnly` prop is 
 
 Properties:
 
-| prop name | description                                                        | type    | required | default value |
+| name      | description                                                        | type    | required | default |
 | --------- | ------------------------------------------------------------------ | ------  | -------- | ------------- |
 | readOnly  | should removing from cart and changing quantities be blocked?      | boolean | false    | false         |
 | className | custom CSS class name to apply                                     | string  | false    | none          |
 
-<aside class="info">Modifications (remove, change quantity) made within <code>CheckoutProductList</code> component are scoped to the current checkout not the shopping cart. This means that after leaving the checkout page, the user will see the same
-state of the shopping cart as before entering the checkout.</aside>
+<aside class="info">Modifications (remove, change quantity) made within <code>CheckoutProductList</code> component are scoped to the current checkout not the shopping cart. This means that after leaving the checkout page, the user will see the same state of the shopping cart as before entering the checkout.</aside>
 
 ### `CheckoutCustomerAddressDelivery`
 
@@ -590,12 +589,12 @@ A form accepting user’s delivery address
 
 Properties:
 
-| prop name                       | description                                                                          | type    | values             | required | default value |
-| ------------------------------- | ------------------------------------------------------------------------------------ | ------- | ------------------ | -------- | ------------- |
-| hideUseAsBillingAddressCheckbox | hides the checkbox allowing to copy delivery address as billing address              | boolean |                    | false    | false         |
-| submitBehavior                  | the behaviour of the form after submitting it                                        | enum    | 'collapse', 'none' | false    | 'none'        |
-| hideSubmitButton                | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
-| className                       | custom CSS class name to apply                                                       | string  |                    | false    | none          |
+| name                            | description                                                                          | type                 | required | default |
+| ------------------------------- | ------------------------------------------------------------------------------------ | -------------------- | -------- | ------------- |
+| hideUseAsBillingAddressCheckbox | hides the checkbox allowing to copy delivery address as billing address              | boolean              | false    | false         |
+| submitBehavior                  | the behaviour of the form after submitting it                                        | 'collapse' or 'none' | false    | 'none'        |
+| hideSubmitButton                | hides the "submit" button that collapses the form after filling it with correct data | boolean              | false    | false         |
+| className                       | custom CSS class name to apply                                                       | string               | false    | none          |
 
 ### `CheckoutCustomerAddressBilling`
 
@@ -605,7 +604,7 @@ A form accepting user’s billing address
 
 Properties:
 
-| prop name        | description                                                                          | type    | values             | required | default value |
+| name             | description                                                                          | type    | values             | required | default |
 | ---------------- | ------------------------------------------------------------------------------------ | ------- | ------------------ | -------- | ------------- |
 | submitBehavior   | the behaviour of the form after submitting it                                        | enum    | 'collapse', 'none' | false    | none          |
 | hideSubmitButton | hides the "submit" button that collapses the form after filling it with correct data | boolean |                    | false    | false         |
@@ -618,7 +617,7 @@ A summary of the total costs and taxes resulting from the checkout
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
+| name      | description                    | type   | required | default |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
@@ -630,7 +629,7 @@ A payment section, accepting user's payment input (e.g. credit card number). In 
 
 Properties:
 
-| prop name     | description                                                              | type    | values                         | required | default value |
+| name          | description                                                              | type    | values                         | required | default |
 | ------------- | ------------------------------------------------------------------------ | ------- | ------------------------------ | -------- | ------------- |
 | hidePayButton | hides the "pay" button in Stripe payment provider form                   | boolean |                                | false    | false         |
 | dependsOn     | lets you render the component depending on the delivery form being valid | string  | 'none', 'validDeliveryAddress' | false    | 'none'        |
@@ -642,7 +641,7 @@ A widget for entering promotion codes
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
+| name      | description                    | type   | required | default |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
@@ -652,7 +651,7 @@ A text explaining legal terms of the purchase
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
+| name      | description                    | type   | required | default |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
@@ -662,7 +661,7 @@ A loading animation for checkout processing
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
+| name      | description                    | type   | required | default |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
@@ -672,26 +671,37 @@ A confirmation page displaying a summary of the completed order
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
+| name      | description                    | type   | required | default |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
 ### `CheckoutPaymentRequestButton`
 
-Displays a contextual "express payment" button, using the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API).
+Displays a contextual "express payment" button, giving the user a chance to pay with favourite payment method (e.g Apple Pay or Google Pay).
 
-Depending on the user's environment, it will display either Apple Pay, Google Pay or browser pay button.
-- For Safari users with a credit cart connected to Apple Walltet, it will display Apple Pay button
-- For Chrome users with a credit cart connected to Google Pay, it will display Google Pay button
-- For users of supporting browsers (notably: Chrome, Safari, Edge) who configured a payment method in the browser settings, it will display a browser-specific payment button
+This component should be used _in addition_ to our standard `<CheckoutPayment />` component as a faster and more convenient alternative to pay for the order.
+
+Depending on the user's environment, the component will render as either Apple Pay, Google Pay or "pay via browser" button:
+
+- For Safari users with Apple Wallet configured, *Apple Pay* button will be displayed
+- For Chrome users logged on a user account connected to Google Pay, *Google Pay* button will be displayed
+- For users of supported browsers (notably: Chrome, Safari and Edge) with a credit card saved in the browser settings, a browser-specific pay button will be displayed
+
+<aside class="warning">
+For environments that are not supporting any express payment options, <b>this component will not be rendered</b>. For this reason, this component is not a full replacement to the <code>CheckoutPayment</code> component, just a supplement to it.
+</aside>
+
+<aside class="info">
+This component uses the the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API">Payment Request API</a> to open the dialog window for a given payment method.
+</aside>
 
 Properties:
 
-| prop name                | description                                                                                                                                                                                                       | type                             | optional or required           | default value |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------| -------------------------------| ------------- |
-| dependsOn                | should the component only be rendered when the delivery address is submitted?                                                                                                                                     | 'none' or 'validDeliveryAddress' | optional                       | 'none'        |
-| useStandaloneAddressForm | (EXPERIMENTAL!) should the user data (delivery address, contact info, etc) be entered inside the payment overlay instead of via `CheckoutCustomerAddressDelivery` and `CheckoutCustomerAddressBilling` components | boolean                          | optional                       | false 
-| className                | custom CSS class name to apply                                                                                                                                                                                    | string                           | optional                       | none          |
+| name                     | description                                                                                                                                                                                                       | type                             | required           | default |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------| -------------------| ------------- |
+| dependsOn                | should the component only be rendered when the delivery address is submitted?                                                                                                                                     | 'none' or 'validDeliveryAddress' | no                 | 'none'        |
+| useStandaloneAddressForm | (EXPERIMENTAL!) should the user data (delivery address, contact info, etc) be entered inside the payment overlay instead of via `CheckoutCustomerAddressDelivery` and `CheckoutCustomerAddressBilling` components | boolean                          | no                 | false         |
+| className                | custom CSS class name to apply                                                                                                                                                                                    | string                           | no                 | none          |
 
 ### `ModularCheckout.Empty`, `ModularCheckout.New`, `ModularCheckout.Processing` and `ModularCheckout.Confirmed`  
 
@@ -785,7 +795,7 @@ A list of items in the shopping cart. By default, (unless `readOnly` prop is set
 
 Properties:
 
-| prop name | description                                                        | type    | required | default value |
+| name      | description                                                        | type    | required | default |
 | --------- | ------------------------------------------------------------------ | ------  | -------- | ------------- |
 | className | custom CSS class name to apply                                     | string  | false    | none          |
 | readOnly  | should removing from cart and changing quantities be blocked?      | boolean | false    | false         |
@@ -799,7 +809,7 @@ A summary of the total costs and taxes for the products in the shopping cart.
 
 Properties:
 
-| prop name | description                    | type   | required | default value |
+| name      | description                    | type   | required | default |
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
@@ -838,7 +848,7 @@ _example:_
 />
 ```
 
-| prop name  | description                             | type                                  | required | default value |
+| name       | description                             | type                                  | required | default |
 | ---------- | --------------------------------------- | ------------------------------------- | -------- | ------------- |
 | productIds | array of single productIds              | array of strings                      | true     | none          |
 | carousel   | enables carousel display                | boolean                               | false    | false         |
@@ -872,8 +882,8 @@ By default, the `Store` component saves the active collection in the browser's U
 
 ### Supported props
 
-| prop name          | description                                                                             | type    | required | default value |
-| ---------          | --------------------------------------------------------------------------------------- | ------  | -------- | ------------- |
+| name               | description                                                                             | type    | required | default |
+| ------------------ | --------------------------------------------------------------------------------------- | ------  | -------- | ------------- |
 | className          | custom CSS class name to apply                                                          | string  | false    | none          |
 | inlineMobileMenu   | should the menu be displayed inline on the mobile breakpoint instead of in a dropdown?  | boolean | false    | false         |
 | disableDeepLinking | should reflecting the active collection in the hash part of the URL be disabled?        | boolean | false    | false         |

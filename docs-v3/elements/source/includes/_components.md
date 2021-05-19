@@ -681,6 +681,10 @@ Displays a contextual "express payment" button, giving the user a chance to pay 
 
 This component should be used _in addition_ to our standard `<CheckoutPayment />` component as a faster and more convenient alternative to pay for the order.
 
+_Example of checkout page with Apple Pay button:_
+
+[![](checkout_with_apple_pay.png)](/images/checkout_with_apple_pay.png)
+
 Depending on the user's environment, the component will render as either Apple Pay, Google Pay or "pay via browser" button:
 
 - For Safari users with Apple Wallet configured, *Apple Pay* button will be displayed

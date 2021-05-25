@@ -16,12 +16,12 @@ Add the library to your project:
 
 ---
 
-### Import Tipser React Elements
+### Import Tipser Elements
 
-The following lines of code import Tipser Elements to your project:
+The following lines of code import Tipser Elements to your React project:
 
 ```jsx
-import { Product, TipserElementsProvider } from "@tipser/tipser-elements"; // Imports all the needed React components
+import { ProductTile, TipserElementsProvider } from "@tipser/tipser-elements"; // Imports React components
 import "@tipser/tipser-elements/dist/index.css"; // Imports the base set of CSS styles (can be overriden)
 ```
 
@@ -31,8 +31,8 @@ Below is a full example illustrating how can you combine Tipser Elements with yo
 import React from "react";
 import ReactDOM from "react-dom";
 import {
-  Product,
-  Cart,
+  ProductTile,
+  CartIcon,
   Store,
   TipserElementsProvider,
 } from "@tipser/tipser-elements";
@@ -40,7 +40,7 @@ import history from "path/to/your/history"; // path to your history object that 
 // import CSS files for Tipser Elements
 import "@tipser/tipser-elements/dist/index.css";
 
-// simple configuration
+// a simple Tipser Elements configuration
 const config = {
   lang: "en-US",
   primaryColor: "#0000FF",
@@ -55,11 +55,11 @@ ReactDOM.render(
     <header>
       <nav>
         Welcome to my store!
-        <Cart />
+        <CartIcon />
       </nav>
     </header>
     <main>
-      <Product productId="5ba2334a781baa0001ccdffc" />
+      <ProductTile productId="5ba2334a781baa0001ccdffc" />
       <Store />
     </main>
     <footer>
@@ -109,8 +109,6 @@ All properties are optional:
 let tipserConfig = {
   lang: "en",
   primaryColor: "#FF0000",
-  // ----- EVENT HANDLING START
-  useDefaultErrorHandler: true,
   eventsHandlers: {
     onError: (error) => {
       console.log(error);
@@ -126,7 +124,7 @@ let tipserConfig = {
 // ... as in example above class App extends Component { ... }
 ```
 
-Event handlers may be passed as a part of `config` option of `TipserElementsProvider`. There is a number of events exposed for developer.
+Event handlers may be passed as a part of `config` option of `TipserElementsProvider`.
 
 | Handler name | description                                                                     | params                                                                                                                                                                                                           |
 | ------------ | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -242,7 +240,7 @@ Properties:
 
 Renders a collection of product tiles based on [collectionId](#getting-tipser-ids) prop.
 
-If the collection has many elements and you want to display them in just one row to conserve space, you may add `carousel` prop. You can also use `imgSize` prop to control the size of displayed product tiles.
+For large collections you may want to display them as carousels, by adding a `carousel` prop. You can also use `imgSize` prop to control the size of displayed product tiles.
 
 _example:_
 
@@ -259,7 +257,7 @@ Properties:
 | name         | description                                                   | type                                  | required | default |
 | ------------ | ------------------------------------------------------------- | ------------------------------------- | -------- | ------------- |
 | collectionId | [where to find](#getting-tipser-ids)                          | string                                | true     | none          |
-| carousel     | enables carousel display                                      | boolean                               | false    | false         |
+| carousel     | enables carousel display mode                                 | boolean                               | false    | false         |
 | imgSize      | changes the size of single product tile                       | 'small', 'medium' or 'large'          | false    | 'medium'      |
 | className    | a custom CSS class name to apply                              | string                                | false    | none          |
 
@@ -316,13 +314,13 @@ Properties:
 | className | a custom CSS class name to apply       | string | false    | none          |
 
 <aside class="notice">
-It's required that all the product modules are located under <code>ModularProduct</code> in the elements hierarchy.
+All the product modules must be located under <code>ModularProduct</code> in the elements hierarchy.
 </aside>
 
 ### `ProductContainer`
 
 The default implementation of the main part of the product view, consisting of `ProductImage`, `ProductTitle`, `ProductColorRelations`, `ProductVariantSelector`, `ProductAvailabilityInfo` and `ProductBuyButton`.
-It may come handy if you don't want to mess with the main part of the product view, and just need to customize the remaining sections.
+It may come handy if you don't want to mess with the main part of the product view and just need to customize the remaining sections.
 
 ```jsx
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
@@ -337,7 +335,7 @@ It may come handy if you don't want to mess with the main part of the product vi
 
 ### `ProductTitle`
 
-Displays the name and the brand of the product
+Displays the name and the brand of the product.
 
 ```jsx
 <ModularProduct productId="5c751cf82d3f3b0001bcec8c">
@@ -510,14 +508,14 @@ A hand-picked list of other products that go well together with the current prod
 
   <img src="/images/modular-product/style_with_products.png" alt="Similar Products Component" width="610"/>
 
-## Checkout
+## CheckoutPage
 
 A predefined checkout component with all necessary elements (product list, user address form, payment widget, etc) to make the purchase possible.
 
 ```jsx
-import { Checkout } from '@tipser/tipser-elements';
- ...
-<Checkout />
+import { CheckoutPage } from '@tipser/tipser-elements';
+// ...
+<CheckoutPage />
 ```
 
 The above code will render more or less the following output:
@@ -529,7 +527,7 @@ Properties:
 | --------- | ------------------------------ | ------ | -------- | ------------- |
 | className | custom CSS class name to apply | string | false    | none          |
 
-For more flexibility use `ModularCheckout` component.
+If you need more flexibility, use the `ModularCheckout` component instead.
 
 ## ModularCheckout
 
@@ -544,6 +542,8 @@ import {
   CheckoutOrderProcessing,
   CheckoutOrderConfirmation,
 } from "@tipser/tipser-elements";
+
+//...
 
 <ModularCheckout>
   <ModularCheckout.New>
@@ -737,7 +737,7 @@ The example below illustrates how to do it with the `react-router` library.
 
 ```jsx
 import React from "react";
-import { Checkout } from "@tipser/tipser-elements";
+import { Checkout, CheckoutProductList, ChekoutCustomerAddressDelivery, CheckoutSummary, CheckoutPromoCode, CheckoutPayment } from "@tipser/tipser-elements";
 import { Route, Switch, withRouter } from "react-router";
 
 export const CheckoutMultipage = withRouter(({ match }) => (
@@ -759,16 +759,16 @@ export const CheckoutMultipage = withRouter(({ match }) => (
 const CheckoutPage1 = () => (
   <>
     <h2>Step 1</h2>
-    <CartProducts />
-    <CustomerAddressDelivery />
-    <CartSummary />
+    <CheckoutProductList />
+    <ChekoutCustomerAddressDelivery />
+    <CheckoutSummary />
   </>
 );
 
 const CheckoutPage2 = ({ checkout }) => (
   <>
     <h2>Step 2</h2>
-    <CartPromoCode />
+    <CheckoutPromoCode />
     <CheckoutPayment />
   </>
 );

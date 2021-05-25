@@ -337,9 +337,9 @@ This form accepts user's delivery address details.
 <div data-tipser-modular-checkout-customer-address-delivery></div>
 ```
 
-Supported attributes:
+Attributes:
 
-| attr name                                                                             | description                                                                          | type                                                                                                                           | values             | default value |
+| name                                                                                  | description                                                                          | type                                                                                                                           | values             | default value |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------- |
 | <code style="font-size: 10px">data-tipser-hide-submit-button</code>                   | hides the "submit" button that collapses the form after filling it with correct data | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> |                    |
 | <code style="font-size: 10px">data-tipser-submit-behaviour</code>                     | the behaviour of the form after submitting it                                        | string                                                                                                                         | 'collapse', 'none' | 'collapse'    |
@@ -355,9 +355,9 @@ This form accepts user's billing address details.
 <div data-tipser-modular-checkout-customer-address-billing></div>
 ```
 
-Supported attributes:
+Attributes:
 
-| attr name                                                           | description                                                                          | type                                                                                                                           | values                         | default value |
+| name                                                                | description                                                                          | type                                                                                                                           | values                         | default value |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ------------- |
 | <code style="font-size: 10px">data-tipser-hide-submit-button</code> | hides the "submit" button that collapses the form after filling it with correct data | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> |                                |
 | <code style="font-size: 10px">data-tipser-submit-behavior</code>    | the behavior of the form after submitting it                                         | string                                                                                                                         | 'collapse', 'none'             | 'collapse'    |
@@ -379,9 +379,9 @@ A payment section, accepting user's payment input (e.g. credit card number). In 
 <div data-tipser-modular-checkout-payment></div>
 ```
 
-Supported attributes:
+Attributes:
 
-| attr name                                                        | description                                                              | type                                                                                                                           | values                         | default value |
+| name                                                             | description                                                              | type                                                                                                                           | values                         | default value |
 | ---------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ------------- |
 | <code style="font-size: 10px">data-tipser-hide-pay-button</code> | hides the "pay" button in Stripe payment provider form                   | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> |                                |
 | <code style="font-size: 10px">data-tipser-depends-on</code>      | lets you render the component depending on the delivery form being valid | string                                                                                                                         | 'none', 'validDeliveryAddress' | 'none'        |
@@ -424,7 +424,7 @@ A text explaining legal terms of the purchase.
 
 Tipser Script follows <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. This means that an increase in the major number in our version indicates potential <b>breaking changes</b>. Please be aware of that! For the react version, it is recommended to auto-update to the latest version with the same major number (see the caret (^) character in `package.json` file described <a href="https://stackoverflow.com/a/22345808" target="_blank">here</a>).
 
-<aside class="warning">Be aware, that <code>latest.js</code> distribution of Tipser Script is always usuing to the most recent version of the code. To avoid that, you can fix your implementation to the specific version of Tipser Script, e.g. by using URL like <code>https://cdn.tipser.com/tipser-script/2.2.14.js</code></aside>
+<aside class="warning">Be aware, that <code>https://cdn.tipser.com/tipser-script/v3/tipser-script.min.js</code> distribution of Tipser Script is always using to the most recent version of the code. To avoid that, you can fix your implementation to the specific version of Tipser Script, e.g. by using URL like <code>https://cdn.tipser.com/tipser-script/v3.0.5/tipser-script.min.js</code></aside>
 
 ## Imperative script functions
 

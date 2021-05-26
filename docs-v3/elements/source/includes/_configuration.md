@@ -56,11 +56,7 @@ const configurationOptions = {
       },
   },
   modalUi: {
-    hideSearchIcon: true,
-    hideFavouritesIcon: true,
-    hideCartIcon: false,
-    hideMoreIcon: true,
-    hideSimilarProducts: false,
+    hideSimilarProducts: true,
   },
   addToCartPopup: {
     className: "custom-className",

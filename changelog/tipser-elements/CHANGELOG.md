@@ -4,10 +4,23 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.6] - 2021-05-26
+
+## Added
+- `lang` config option impacts Klarna Checkout language 
+- `variantId` field added to checkout-related `tw-track` events
+- support for "preowned" label in product-related components
+- `CartPage` component: syncing cart between browser tabs
+
+## Fixed
+- CheckoutPaymentRequestButton no longer crashes with useStandaloneAddressForm=true prop
+- `Purchase` `tw-track` event is now being correctly send in Checkout 2.0 after successful transaction
+
 ## [3.0.5] - 2021-05-19
 
 ## Added
 - CheckoutPaymentRequestButton component (to be used in ModularCheckout context) displaying ApplePay or GooglePay payment option, depending on the environment
+- label for pre-owned products in `ProductPage`
 
 ## [3.0.4] - 2021-05-19
 

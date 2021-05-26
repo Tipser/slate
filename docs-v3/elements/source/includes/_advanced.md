@@ -154,7 +154,7 @@ stateBuilder.buildState({
 
 This method returns a promise in which the ready state will be available, which should then be passed to `SsrTipserElementsProvider`:
 
-```typescript
+```jsx
 stateBuilder.buildState({
     productIds: dataToFetch.productIds,
     collectionIds: dataToFetch.collectionIds,
@@ -178,7 +178,7 @@ The `initialState` should then be transferred to the browser. For this purpose, 
 
 On the client side, use `window.TIPSER_STATE` as the `initialState` of `SsrTipserElementsProvider`:
 
-```typescript
+```jsx
 <TipserElementsProvider posId={POS_ID}>
     <SsrTipserElementsProvider initialState={window.TIPSER_STATE}>
         <App/>
@@ -197,7 +197,7 @@ const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID);
 
 Then perform the first rendering that will collect information about the components on the page:
 
-```typescript
+```jsx
 const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID, 'prod')
 
 const toRender = (
@@ -213,7 +213,7 @@ renderToString(toRender);
 
 Next, use the `buildState` method available on the components instance of `StateSsrManager`, which returns a promise:
 
-```typescript
+```jsx
 const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID)
 
 const toRender = (
@@ -241,7 +241,7 @@ In this case, you no longer need to manually pass the state to the `SsrTipserEle
 
 The state should be passed to the `SsrTipserElementsProvider` on the browser side:
 
-```typescript
+```jsx
 <TipserElementsProvider posId={POS_ID}>
     <SsrTipserElementsProvider initialState={window.TIPSER_STATE}>
         <App/>
@@ -259,11 +259,11 @@ However it is possible to embed Elements in a native app if you are using WebVie
 
 In case your articles are managed by a Web CMS and are displayed in WebView you can simply install and use Tipser Elements in your web articles. Just follow the instructions from [Tipser Elements](#tipser-elements) or [Tipser Elements React](#tipser-react-elements) sections, depending on your technology of choice.
 
-The only customization that we recommend is using `disableDialog` option, as described below.
+The only customization that we recommend is using `customUrls.productUrl` configuration, as described below.
 
 *Replacing dialogs with redirects*
 
-By default, when a product tile is clicked, it opens a full screen product dialog. It may not be desired behavior in your mobile app. Set the configuration option: `disableDialog` to `true` to replace the dialog with a _redirect_ to the product page. That way pressing the back button will bring the user back to your article.                                                                                                                                                                                                 
+By default, when a product tile is clicked, it opens a full screen product dialog. It may not be desired behavior in your mobile app. Set the configuration option: `customUrls.productUrl` to a URL containing your product page to a _redirect_ to the product page. That way pressing the back button will bring the user back to your article.                                                                                                                                                                                                 
 
 ### Pattern 2: API integration
 

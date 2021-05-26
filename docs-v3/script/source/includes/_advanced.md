@@ -114,7 +114,7 @@ Server-side rendering takes place in several steps:
 ### Basic method
 In the basic method, you should use the `StateBuilder` class to build the state. Start with creating its instances (which can be global):
 
-```typescript
+```jsx
 import { StateBuilder } from '@tipser/tipser-elements';
 
 const stateBuilder = new StateBuilder(POS_ID);
@@ -122,7 +122,7 @@ const stateBuilder = new StateBuilder(POS_ID);
 
 Then, while handling a specific request, use the `stateBuilder.buildState` method, passing an object containing information about which elements are placed on the website, i.e. what products (PRODUCT_IDS), collections (COLLECTION_IDS) and whether there is the shop component (IS_SHOP_ON_PAGE).
 
-```typescript
+```jsx
 stateBuilder.buildState({
     productIds: PRODUCT_IDS,
     collectionIds: COLLECTION_IDS,
@@ -132,7 +132,7 @@ stateBuilder.buildState({
 
 This method returns a promise in which the ready state will be available, which should then be passed to `SsrTipserElementsProvider`:
 
-```typescript
+```jsx
 stateBuilder.buildState({
     productIds: dataToFetch.productIds,
     collectionIds: dataToFetch.collectionIds,
@@ -156,7 +156,7 @@ The `initialState` should then be transferred to the browser. For this purpose, 
 
 On the client side, use `window.TIPSER_STATE` as the `initialState` of `SsrTipserElementsProvider`:
 
-```typescript
+```jsx
 <TipserElementsProvider posId={POS_ID}>
     <SsrTipserElementsProvider initialState={window.TIPSER_STATE}>
         <App/>
@@ -169,13 +169,13 @@ That's all! The complete example is available [here](https://github.com/Tipser/t
 ### Smart method
 In the smart version, the `ComponentsStateSsrManager` class should be used to build the state. For this purpose, you should create an instance of this class, which cannot be global, i.e. a new instance should be created for each request:
 
-```typescript
+```jsx
 const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID);
 ```
 
 Then perform the first rendering that will collect information about the components on the page:
 
-```typescript
+```jsx
 const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID, 'prod')
 
 const toRender = (
@@ -191,7 +191,7 @@ renderToString(toRender);
 
 Next, use the `buildState` method available on the components instance of `StateSsrManager`, which returns a promise:
 
-```typescript
+```jsx
 const componentsStateSsrManager = new ComponentsStateSsrManager(POS_ID)
 
 const toRender = (
@@ -213,13 +213,13 @@ componentsStateSsrManager.buildState().then(() => {
 
 In this case, you no longer need to manually pass the state to the `SsrTipserElementsProvider`, it is done automatically. The last step is to transfer the state to the browser in a similar way as it was done in the basic version, but this time the state should be extracted from `componentsStateSsrManager` using the `getState` method:
 
-```typescript
+```jsx
 <script>window.TIPSER_STATE = ${JSON.stringify(componentsStateSsrManager.getState())}</script>
 ```
 
 The state should be passed to the `SsrTipserElementsProvider` on the browser side:
 
-```typescript
+```jsx
 <TipserElementsProvider posId={POS_ID}>
     <SsrTipserElementsProvider initialState={window.TIPSER_STATE}>
         <App/>
@@ -237,11 +237,11 @@ However it is possible to embed Elements in a native app if you are using WebVie
 
 In case your articles are managed by a Web CMS and are displayed in WebView you can simply install and use Tipser Elements in your web articles. Just follow the instructions from [Tipser Elements](#tipser-elements) or [Tipser Elements React](#tipser-react-elements) sections, depending on your technology of choice.
 
-The only customization that we recommend is using `disableDialog` option, as described below.
+The only customization that we recommend is using `customUrls.productUrl` configuration, as described below.
 
 *Replacing dialogs with redirects*
 
-By default, when a product tile is clicked, it opens a full screen product dialog. It may not be desired behavior in your mobile app. Set the configuration option: `disableDialog` to `true` to replace the dialog with a _redirect_ to the product page. That way pressing the back button will bring the user back to your article.                                                                                                                                                                                                 
+By default, when a product tile is clicked, it opens a full screen product dialog. It may not be desired behavior in your mobile app. Set the configuration option: `customUrls.productUrl` to a URL containing your product page to a _redirect_ to the product page. That way pressing the back button will bring the user back to your article.                                                                                                                                                                                                 
 
 ### Pattern 2: API integration
 

@@ -517,7 +517,6 @@ All configuration supported by Tipser Script is listed below.
 | eventsHandlers          | `{}`      | the object of event handlers. See [Event handlers](#event-handlers)                                                                                                                            | `{ onError: console.error.bind(console) }`|
 | modalUi                 | `{}`      | Customization of Tipser Dialog. More info at [Parameters for modal customization](#parameters-for-modal-customization)                                                                       | `{ hideSimilarProducts : true}`           |
 | primaryColor            | `#333`    | Hex color code, affecting eg. buy-button color and Cart indicator                                                                                                                              | #5F9F9F                                   |
-| disableDialog           | `false`   | If set to `true`, a redirect to the product page is done instead of opening the product dialog (read more at: [Embedding Elements in native apps](#embedding-elements-in-native-apps) section) | `false`                                   |
 | disableAnalytics        | `false`   | If set to `true`, all Tipser analytics requests will be blocked (no events to Analytics and stats.tipser.com will be sent)                                                                     | `true`                                    |
 
 ---

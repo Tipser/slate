@@ -9,7 +9,7 @@ tipserScript.initialize(posId: string, config?: object)
 ```
 
 - `posId` (**required**) - a unique Tipser publisher identifier. Must be specified in order to show your personalized store, show discounted product prices according to your current campaigns and - most important of all - grant you commissions for every purchase on your site! If you are not sure where to get it from, contact your account manager.
-- `config` - allows you to specify how Tipser Script will look and behave on your site. See the [Configuration options](#configuration-options) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
+- `config` - allows you to specify how Tipser Script will look and behave on your site. See the [Configuration](#configuration) section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="https://developers.tipser.com/rest-api" target="_blank">API reference</a>.
 
 <aside class="notice">
 Please, make sure, that <code>tipserScript.initialize()</code> function is called only once, after the page is loaded. If you need to use the Tipser Script instance in several places in your code, feel free

@@ -41,7 +41,7 @@ tipserScript.initialize("posId");
 
 Make sure that the `posId` is replaced with the actual id corresponding to your account.
 
-If you need to pass custom settings (see: [configuration](#configuration-options)), you can pass an `options` object as the second argument.
+If you need to pass custom settings (see: [configuration](#configuration)), you can pass an `options` object as the second argument.
 
 ```js
 tipserScript.initialize("posId", options);

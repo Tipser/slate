@@ -78,7 +78,7 @@ Please make sure:
 
 - import CSS files (`import '@tipser/tipser-elements/dist/index.css'`).
 
-Also, check our [configuration](#configuration-options) options.
+Also, check our [configuration](#configuration) options.
 
 <aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>
 
@@ -171,7 +171,7 @@ The entry point to Tipser Elements (providing a context for other elements livin
 | name      | description                                                                                                      | type   | required | default    |
 | --------- | ---------------------------------------------------------------------------------------------------------------  | ------ | -------- | ---------------- |
 | posId     | id of Point of sale                                                                                              | string | true     |                  |
-| config    | configuration object (see [definition here](#configuration-options))                | object | false    | {}               |
+| config    | configuration object ([read more here](#configuration))                                                     | object | false    | {}               |
 | history   | a history implementation specific for your web framework, needed for soft redirects instead of full page reloads | object | false    | `window.history` |
 
 ## ProductTile

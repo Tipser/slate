@@ -4,13 +4,13 @@
 
 [[redirects]]
   from = "/"
-  to = "/docs/v2"
+  to = "/docs/v3/script"
   status = 302
   force = true
 
 [[redirects]]
   from = "/docs"
-  to = "/docs/v2"
+  to = "/docs/v3/script"
   status = 302
   force = true
 

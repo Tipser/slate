@@ -4,10 +4,16 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.7] - 2021-05-31
+
+## Fixed
+- Customer data is available on confirmation page after payment using CheckoutPaymentRequestButton component
+- Tax calculation works correctly in case of combining external address form and CheckoutPaymentRequestButton
+
 ## [3.0.6] - 2021-05-26
 
 ## Added
-- `lang` config option impacts Klarna Checkout language 
+- `lang` config option impacts Klarna Checkout language
 - `variantId` field added to checkout-related `tw-track` events
 - support for "preowned" label in product-related components
 - `CartPage` component: syncing cart between browser tabs

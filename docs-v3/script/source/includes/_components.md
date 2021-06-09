@@ -301,7 +301,7 @@ This component takes up a large part of the page, so it is recommended to place 
 
 ## Modular Checkout
 
-If you need more flexibility, you can use `data-tipser-modular-checkout` tag. The children of this element will define a set of checkout modules to be displayed. For example, a children element with `data-tipser-modular-checkout-cart-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
+If you need more flexibility, you can use `data-tipser-modular-checkout` tag. The children of this element will define a set of checkout modules to be displayed. For example, a children element with `data-tipser-modular-checkout-products` attribute (nested under the master element with `data-tipser-modular-checkout` attribute) will render the list of items that
 are being purchased by the user.
 
 A working example of the checkout view consisting of: items list, delivery address form and the payment form:

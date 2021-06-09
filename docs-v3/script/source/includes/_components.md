@@ -111,9 +111,7 @@ A modular product is a product that can be constructed from lower level componen
 Below is an example HTML snippet that renders a modular product with an image, title, price and variant selector and buy button.
 
 ```html
-<div
-  data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
->
+<div data-tipser-modular-product data-tipser-product-id="5bc6e1c7df2ac60001158814">
   <div data-tipser-modular-product-image></div>
   <div data-tipser-modular-product-title></div>
   <div data-tipser-modular-product-price></div>
@@ -124,7 +122,10 @@ Below is an example HTML snippet that renders a modular product with an image, t
 
 The complete list of HTML attributes related to modular product:
 
-- data-tipser-modular-product-id="..." - the top level element providing the context (all the other elements need to be nested below it)
+`data-tipser-modular-product` attribute is a marker for the top level element providing the product context (all the other elements need to be nested below it)
+
+The list of all of the supported modular product subcomponents:
+
 - data-tipser-modular-product-title
 - data-tipser-modular-product-buy-button
 - data-tipser-modular-product-price
@@ -146,10 +147,8 @@ The tag with <code>data-tipser-modular-product-image</code> attribute must have 
 </aside>
 
 ```html
-<div
-  data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
->
-  <div data-tipser-modular-product-image style=“width:400px,height:500px”></div>
+<div data-tipser-modular-product data-tipser-product-id="5bc6e1c7df2ac60001158814">
+  <div data-tipser-modular-product-image></div>
 </div>
 ```
 
@@ -169,10 +168,8 @@ The tag with <code>data-tipser-modular-product-thumbnails</code> attribute must 
 </aside>
 
 ```html
-<div
-  data-tipser-modular-product-id="5bc6e1c7df2ac60001158814"
->
-  <div data-tipser-modular-product-thumbnails style=“width:400px,height:500px”></div>
+<div data-tipser-modular-product data-tipser-product-id="5bc6e1c7df2ac60001158814">
+  <div data-tipser-modular-product-thumbnails></div>
 </div>
 ```
 
@@ -326,6 +323,12 @@ This section displays a list of items in the current checkout.
 ```html
 <div data-tipser-modular-checkout-product-list></div>
 ```
+
+Attributes:
+
+| name                                                                                  | description                                                                          | type                                                                                                                           | values             | default value |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------- |
+| <code style="font-size: 10px">data-tipser-editable</code>                             | should the product list be editable? (changing quantities and/or removing items)     | <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes" target="_blank">HTML boolean</a> |                    | false
 
 ### Checkout customer delivery address form
 

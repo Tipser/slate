@@ -1,10 +1,10 @@
 # Migration guide
 
-Below is the list of all the HTML tags and JS calls that were available in Tipser Script 2.x that now have new counterparts in Tipser Script 3.x .
+Below is the list of all the backwards-incompatible changes between Tipser Script 2.x and 3.x.
 
-Migrating from 2.x to 3.x should be as simple as going through this list and replacing all the old calls in your code with the new ones, according to the instructions below.
+Migrating to 3.x should be as simple as going through this list and replacing all the old calls in your code with the new ones.
 
-## Components:
+### Components:
 
 **Tipser Script `initialize` function**
 
@@ -19,6 +19,8 @@ Now it is:
 ```js
 tipserScript.initialize(posId, config)
 ```
+
+Please note that the global variable name `tipser` has been renamed to `tipserScript`.
 
 ---
 
@@ -127,8 +129,8 @@ Now it is:
 
 Additional changes:
 
-- the optional `data-tipser-inline-menu` attribute was renamed to `data-tipser-inline-mobile-menu`
-- the `useDeepLinking` configuration option was replaced by `data-tipser-disable-deep-linking` attribute with inverted logic   
+- the optional `data-tipser-inline-menu` attribute has been renamed to `data-tipser-inline-mobile-menu`
+- the `useDeepLinking` configuration option has been replaced by `data-tipser-disable-deep-linking` attribute with inverted logic   
 
 ---
 
@@ -138,7 +140,7 @@ The HTML syntax for the product list component used to be:
 
 ```html
 <div 
-   data-tipser-pids="5fdb6c982ccf91000135deba,5fdb6c982ccf91000135debc,5fdb6c982ccf91000135debd,5fdb6c982ccf91000135debe,5fdb6c982ccf91000135dec0,5fdb6c982ccf91000135debb,5fdb6c982ccf91000135deb9">
+   data-tipser-pids="5fdb6c982ccf91000135deba,5fdb6c982ccf91000135debc,5fdb6c982ccf91000135debd">
 </div>
 ```
 
@@ -146,16 +148,18 @@ Now it is:
 
 ```html
 <div 
-   data-tipser-product-ids="5fdb6c982ccf91000135deba,5fdb6c982ccf91000135debc,5fdb6c982ccf91000135debd,5fdb6c982ccf91000135debe,5fdb6c982ccf91000135dec0,5fdb6c982ccf91000135debb,5fdb6c982ccf91000135deb9">
+   data-tipser-product-list
+   data-tipser-product-ids="5fdb6c982ccf91000135deba,5fdb6c982ccf91000135debc,5fdb6c982ccf91000135debd">
 </div>
 ```
 
-Or with `carousel`:
+Or with `data-tipser-carousel`:
 
 ```html
-<div 
-   data-tipser-product-ids="5fdb6c982ccf91000135deba,5fdb6c982ccf91000135debc,5fdb6c982ccf91000135debd,5fdb6c982ccf91000135debe,5fdb6c982ccf91000135dec0,5fdb6c982ccf91000135debb,5fdb6c982ccf91000135deb9">
-	data-tipser-carouseel
+<div
+   data-tipser-product-list
+   data-tipser-product-ids="5fdb6c982ccf91000135deba,5fdb6c982ccf91000135debc,5fdb6c982ccf91000135debd"
+   data-tipser-carousel>
 </div>
 ```
 
@@ -178,13 +182,13 @@ Now it is:
 </div>
 ```
 
-Or with `carousel`:
+Or with `data-tipser-carousel`:
 
 ```html
 <div
-   data-tipser-carousel 
    data-tipser-collection
-   data-tipser-collection-id="5f13cead3fc6c100012e2c12">
+   data-tipser-collection-id="5f13cead3fc6c100012e2c12"
+   data-tipser-carousel>
 </div>
 ```
 
@@ -210,41 +214,30 @@ Now it is:
 
 ---
 
-## SDK:
-   In Elements 3.x SDK is completely removed, as a replacement we created `internal functions` 
+## Tipser SDK removed
 
-   List Below contains all the `internal functions`:
-- addToCartAndGoToCheckout
-- goToProduct
-- goToCheckout
-- goToCart
-- addToCart
-- removeFromCart
-- getCartItems
+In Tipser Script 3.x `scriptInstance.sdkInstance` has been removed. Instead, we provide a set of functions available directly on `scriptInstance` object. Read the [Internal functions](#internal-functions) chapter for more details.
 
-## New Components:
-**`data-tipser-cart-page` component**
+So for example this snippet of code:
 
-   The HTML syntax for the cart-page component
+```js
+scriptInstance.sdkInstance.openProductDialog(productId);
+```
 
- ```html
-<div 
-   data-tipser-cart-page>
-</div>
-```  
-## Config:
-   new `CustomUrl` called `cartUrl` for displaying Cart Page
+Needs to be replaced with the following code:
 
-## Default Behaviors:
--  `cart-icon` dropdown enabled
--  new dialogs enabled
+```
+scriptInstance.goToProduct(productId);
+```
 
-## Important checkout flow changes:
+### Important checkout flow changes:
 
-- Before going to checkout there will be Cart phase page enabled by default.
-- Checkout products list will be non-editable by default.
-- We recommend using `cart-icon` or `cart-page` to represent editable cart.
+- In the dialog one more phase has been added between product view and checkout view: a cart phase 
+- Checkout product list is no longer editable by default (unless modular checkout is in use and `data-tipser-editable` attribute is used on `data-tipser-modular-checkout-product-list` component)
+- For embedded integrations we recommend using the `data-tipser-cart-page` component to present and modify cart contents (checkout page should not be editable unless absolutely required)
 
-## Deprecated
+### Configuration
 
-- The behavior of `disableDialog` config is replaced by `customUrls.productUrl`
+- The config option `disableDialog` is no longer supported. It should be replaced by building an embedded product page (with `customUrls.productUrl` config option)
+- `openOldDialog` and `openOldCheckout` config options are no longer supported (the old dialog is no longer available)
+- `useCheckoutV2` config option has been removed (Chekcout 2.0 is always used when PSP is non-Klarna)

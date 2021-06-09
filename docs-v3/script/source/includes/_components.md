@@ -394,7 +394,7 @@ Tipser Script follows <a href="https://semver.org/" target="_blank">Semantic Ver
 
 <aside class="warning">Be aware, that <code>latest.js</code> distribution of Tipser Script is always usuing to the most recent version of the code. To avoid that, you can fix your implementation to the specific version of Tipser Script, e.g. by using URL like <code>https://cdn.tipser.com/tipser-script/2.2.14.js</code></aside>
 
-## Imperative script functions
+## Internal functions
 
 In case you need to open Tipser dialogs from the code or perform operations like adding a Tipser product to cart, we provide a set of JavaScript functions that serve that purpose.
 

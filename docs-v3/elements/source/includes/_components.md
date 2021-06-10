@@ -891,7 +891,7 @@ By default, the `Store` component saves the active collection in the browser's U
 | inlineMobileMenu   | should the menu be displayed inline on the mobile breakpoint instead of in a dropdown?  | boolean | false    | false         |
 | disableDeepLinking | should reflecting the active collection in the hash part of the URL be disabled?        | boolean | false    | false         |
 
-## Imprerative functions
+## Internal functions
 
 In case you need to open Tipser dialogs from the code or perform operations like adding a Tipser product to cart, we provide a set of JavaScript functions that serve that purpose.
 

@@ -209,15 +209,28 @@ const tipserScriptConfig = {
 To add the address data dynamically, please use the [`updateConfig`](#updateconfig)function.
 
 ##Parameters for modal customization
-For now the only supported option of customizing the modal is hiding the similar products section:
+Hiding the similar products section in the product modal:
 
 ```js
 const tipserScriptConfig = {
     modalUi: {
-      hideSimilarProducts: true, //by default, the similar products section is visible
+      hideSimilarProducts: true, //by default the similar products section is visible
     }
 };
 ```
+
+Enabling styles inheritance in the modals:
+
+```js
+const tipserScriptConfig = {
+    modalUi: {
+      inheritStyles: true, //by default basic styles like font-size are overriden by Tipser in the dialogs
+    }
+};
+```
+
+Starting with Tipser Script 3.0 a set of default styles (`font-size`, `font-family`, header sizes, etc) is applied inside the Tipser modal (overriding corresponding styles from the parent page). The configuration option above disables the default styles in favour of using the styles inherited from the parent page.
+
 
 ### updateConfig()
 

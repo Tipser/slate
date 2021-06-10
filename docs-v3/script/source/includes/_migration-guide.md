@@ -4,6 +4,10 @@ Below is the list of all the backwards-incompatible changes between Tipser Scrip
 
 Migrating to 3.x should be as simple as going through this list and replacing all the old calls in your code with the new ones.
 
+<aside type="notice">
+Most of the changes described below have been backported to Tipser Script 2.x, meaning that you can first safely try them out in your current code using 2.x before bumping Tipser Script version to 3.x.
+</aside> 
+
 ### The new way to initialize
 
 The way to initialize Tipser Script used to be:
@@ -103,7 +107,7 @@ Now it is:
 
 **`data-tipser-cart-icon` component**
 
-Before the cart component was mounted with the following functon call:
+Before the cart component was mounted with the following function call:
 
 ```js
 tipserScriptInstance.mountCart(cartElementSelector);

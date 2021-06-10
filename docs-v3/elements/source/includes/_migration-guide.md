@@ -4,6 +4,10 @@ Below is the list of all the backwards-incompatible changes between Tipser Eleme
 
 Migrating to 3.x should be as simple as going through this list and replacing all the old calls in your code with the new ones.
 
+<aside type="notice">
+Most of the changes described below have been backported to Tipser Elements 2.x, meaning that you can first safely try them out in your current code using 2.x before bumping Tipser Elements version to 3.x.
+</aside>
+
 ### Configuration changes
 
 - The config option `disableDialog` is no longer supported. It should be replaced by building an embedded product page (with `customUrls.productUrl` config option)

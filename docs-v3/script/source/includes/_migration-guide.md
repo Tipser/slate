@@ -226,11 +226,28 @@ scriptInstance.sdkInstance.openProductDialog(productId);
 
 Needs to be replaced with the following code:
 
-```
+```js
 scriptInstance.goToProduct(productId);
 ```
 
-### Important checkout flow changes:
+### Styles inheritance in modal
+
+In Tipser Script 2.x all the basic CSS styles like `font-size`, `font-family`, header sizes, etc, are inherited from the parent page and applied to the Tipser modal.
+In Tipser Script 3.0 this behavior has been changed: a set of "reasonable" styles is applied inside the modal (overriding corresponding styles from the parent page).
+
+In order to activate the old behavior (recommended when migrating from 2.x), the following config option needs to be used:
+
+```js
+const scriptConfig = {
+    //...
+    modalUi: {
+        inheritStyles: true;
+    }
+    //...
+}
+```  
+
+### Checkout flow changes
 
 - In the dialog one more phase has been added between product view and checkout view: a cart phase 
 - Checkout product list is no longer editable by default (unless modular checkout is in use and `data-tipser-editable` attribute is used on `data-tipser-modular-checkout-product-list` component)
@@ -240,4 +257,4 @@ scriptInstance.goToProduct(productId);
 
 - The config option `disableDialog` is no longer supported. It should be replaced by building an embedded product page (with `customUrls.productUrl` config option)
 - `openOldDialog` and `openOldCheckout` config options are no longer supported (the old dialog is no longer available)
-- `useCheckoutV2` config option has been removed (Chekcout 2.0 is always used when PSP is non-Klarna)
+- `useCheckoutV2` config option has been removed (Checkout 2.0 is always used when PSP is non-Klarna)

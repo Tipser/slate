@@ -4,38 +4,46 @@ All notable changes to Tipser Elements project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.9] - 2021-06-10
+
+### Fixed
+- Tipser Script: Dynamic adding of modular product child components works correctly
+- Removed US payment provider logos from the EU checkout pages
+- Restored the "edit cart" button on the checkout page
+- Fixed `CartIcon` button not reacting to click after Tipser modal was open for a specific customer environment
+
 ## [3.0.8] - 2021-06-03
 
-## Fixed
+### Fixed
 - Using `CheckoutCustomerAddressDelivery` and `CheckoutPaymentRequestButton` together doesn't cause problems with selecting shipping address on payment request window
 
 ## [3.0.7] - 2021-05-31
 
-## Fixed
+### Fixed
 - Customer data is available on confirmation page after payment using CheckoutPaymentRequestButton component
 - Tax calculation works correctly in case of combining external address form and CheckoutPaymentRequestButton
 
 ## [3.0.6] - 2021-05-26
 
-## Added
+### Added
 - `lang` config option impacts Klarna Checkout language
 - `variantId` field added to checkout-related `tw-track` events
 - support for "preowned" label in product-related components
 - `CartPage` component: syncing cart between browser tabs
 
-## Fixed
+### Fixed
 - CheckoutPaymentRequestButton no longer crashes with useStandaloneAddressForm=true prop
 - `Purchase` `tw-track` event is now being correctly send in Checkout 2.0 after successful transaction
 
 ## [3.0.5] - 2021-05-19
 
-## Added
+### Added
 - CheckoutPaymentRequestButton component (to be used in ModularCheckout context) displaying ApplePay or GooglePay payment option, depending on the environment
 - label for pre-owned products in `ProductPage`
 
 ## [3.0.4] - 2021-05-19
 
-## Fixed
+### Fixed
 - fixed odd rendering of HTML product descriptions in some cases
 - fixed handling of customUrl.checkoutConfirmationUrl when custom `history` implementation from react-router 5 is provided
 
